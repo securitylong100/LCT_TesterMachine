@@ -1,0 +1,91 @@
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMI.exe.config
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMI.exe
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMI.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMI.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMIControls.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMIDrivers.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\MfgControl.AdvancedHMI.Controls.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\MfgControl.AdvancedHMI.Drivers.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\OpcNetApi.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\OpcNetApi.Com.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\OpcComRcw.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMIControls.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMIControls.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMIDrivers.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\AdvancedHMIDrivers.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\OpcNetApi.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\bin\Debug\OpcNetApi.Com.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.AssemblyReference.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.MainMenu.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Form1.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Form2.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.MainForm.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Resources.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Page2.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.GenerateResource.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.CoreCompileInputs.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.CopyComplete
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\AdvancedHMI.exe
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\AdvancedHMI.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMI\obj\Debug\AdvancedHMI.pdb
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMI.exe.config
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMI.exe
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMI.pdb
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMI.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMIControls.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMIDrivers.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\MfgControl.AdvancedHMI.Controls.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\MfgControl.AdvancedHMI.Drivers.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\OpcNetApi.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\OpcNetApi.Com.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\OpcComRcw.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMIControls.pdb
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMIControls.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMIDrivers.pdb
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\AdvancedHMIDrivers.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\OpcNetApi.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\bin\Debug\OpcNetApi.Com.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.AssemblyReference.cache
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.SuggestedBindingRedirects.cache
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.MainMenu.resources
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Form1.resources
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Form2.resources
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.MainForm.resources
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Resources.resources
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Page2.resources
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.GenerateResource.cache
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.CoreCompileInputs.cache
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.CopyComplete
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\AdvancedHMI.exe
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\AdvancedHMI.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMI\obj\Debug\AdvancedHMI.pdb
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMI.exe.config
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMI.exe
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMI.pdb
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMI.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMIControls.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMIDrivers.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\MfgControl.AdvancedHMI.Controls.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\MfgControl.AdvancedHMI.Drivers.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\OpcNetApi.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\OpcNetApi.Com.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\OpcComRcw.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMIControls.pdb
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMIControls.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMIDrivers.pdb
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\AdvancedHMIDrivers.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\OpcNetApi.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\bin\Debug\OpcNetApi.Com.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.AssemblyReference.cache
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.MainMenu.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Form1.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Form2.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.MainForm.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Resources.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\MfgControl.AdvancedHMI.Page2.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.GenerateResource.cache
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.CoreCompileInputs.cache
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\AdvancedHMI.vbproj.CopyComplete
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\AdvancedHMI.exe
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\AdvancedHMI.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMI\obj\Debug\AdvancedHMI.pdb

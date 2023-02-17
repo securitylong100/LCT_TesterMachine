@@ -1,0 +1,197 @@
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\AdvancedHMICS.exe.config
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\AdvancedHMICS.exe
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\AdvancedHMICS.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\AdvancedHMIControls.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\MfgControl.AdvancedHMI.Controls.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\MfgControl.AdvancedHMI.Drivers.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\OpcNetApi.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\OpcNetApi.Com.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\OpcComRcw.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\AdvancedHMIControls.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\AdvancedHMIControls.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\OpcNetApi.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\bin\Debug\OpcNetApi.Com.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.AssemblyReference.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.SuggestedBindingRedirects.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\obj\Debug\AdvancedHMICS.MainForm.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\obj\Debug\AdvancedHMICS.Properties.Resources.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.GenerateResource.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CoreCompileInputs.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\obj\Debug\AdvancedHMICS.exe
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3\AdvancedHMICS\obj\Debug\AdvancedHMICS.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMICS.exe.config
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMICS.exe
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMICS.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIControls.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\MfgControl.AdvancedHMI.Controls.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\MfgControl.AdvancedHMI.Drivers.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcNetApi.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcNetApi.Com.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcComRcw.dll
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIControls.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIControls.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.pdb
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcNetApi.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcNetApi.Com.xml
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.AssemblyReference.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.SuggestedBindingRedirects.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMICS.MainForm.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMICS.Properties.Resources.resources
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.GenerateResource.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CoreCompileInputs.cache
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMICS.exe
+D:\2022\11_Mr_Tung\Project\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMICS.pdb
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMICS.exe.config
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMICS.exe
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMICS.pdb
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIControls.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\MfgControl.AdvancedHMI.Controls.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\MfgControl.AdvancedHMI.Drivers.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcNetApi.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcNetApi.Com.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcComRcw.dll
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIControls.pdb
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIControls.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.pdb
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcNetApi.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\bin\Debug\OpcNetApi.Com.xml
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.AssemblyReference.cache
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.SuggestedBindingRedirects.cache
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMICS.MainForm.resources
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMICS.Properties.Resources.resources
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.GenerateResource.cache
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CoreCompileInputs.cache
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMICS.exe
+C:\Users\surface pro\Desktop\working-spaces\NidecVNDAQ\AdvancedHMIV399xPatched3_test\AdvancedHMICS\obj\Debug\AdvancedHMICS.pdb
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\AdvancedHMICS.exe.config
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\AdvancedHMICS.exe
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\AdvancedHMICS.pdb
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\AdvancedHMIControls.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\MfgControl.AdvancedHMI.Controls.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\MfgControl.AdvancedHMI.Drivers.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\OpcNetApi.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\OpcNetApi.Com.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\OpcComRcw.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\AdvancedHMIControls.pdb
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\AdvancedHMIControls.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.pdb
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\AdvancedHMIDrivers.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\OpcNetApi.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\OpcNetApi.Com.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.AssemblyReference.cache
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.MainForm.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.Properties.Resources.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.GenerateResource.cache
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CoreCompileInputs.cache
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.exe
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.pdb
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.LoginForm.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\MySql.Data.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\System.Memory.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\System.Numerics.Vectors.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\System.Buffers.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Data.Desktop.v20.1.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Data.v20.1.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Printing.v20.1.Core.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Utils.v20.1.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Pdf.v20.1.Core.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Pdf.v20.1.Drawing.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Data.Desktop.v20.1.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Data.v20.1.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Printing.v20.1.Core.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Utils.v20.1.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Pdf.v20.1.Core.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Pdf.v20.1.Drawing.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.Data.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.Data.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.Data.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.Data.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.Printing.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.Printing.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.Printing.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.Printing.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.Utils.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.Utils.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.Utils.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.Utils.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.Pdf.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.Pdf.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.Pdf.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.Pdf.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmMain.resources
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Sparkline.v20.1.Core.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraEditors.v20.1.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraGrid.v20.1.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraLayout.v20.1.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraPrinting.v20.1.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraBars.v20.1.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.RichEdit.v20.1.Core.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraTreeList.v20.1.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Office.v20.1.Core.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Sparkline.v20.1.Core.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraEditors.v20.1.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraGrid.v20.1.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraLayout.v20.1.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraPrinting.v20.1.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraBars.v20.1.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.RichEdit.v20.1.Core.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.XtraTreeList.v20.1.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\DevExpress.Office.v20.1.Core.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.Sparkline.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.Sparkline.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.Sparkline.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.Sparkline.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.XtraEditors.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.XtraEditors.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.XtraEditors.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.XtraEditors.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.XtraGrid.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.XtraGrid.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.XtraGrid.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.XtraGrid.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.XtraLayout.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.XtraLayout.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.XtraLayout.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.XtraLayout.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.XtraPrinting.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.XtraPrinting.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.XtraPrinting.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.XtraPrinting.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.XtraBars.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.XtraBars.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.XtraBars.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.XtraBars.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.RichEdit.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.RichEdit.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.RichEdit.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.RichEdit.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.XtraTreeList.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.XtraTreeList.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.XtraTreeList.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.XtraTreeList.v20.1.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\de\DevExpress.Office.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.Office.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.Office.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.Office.v20.1.Core.resources.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.exe.licenses
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\EntityFramework.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\EntityFramework.SqlServer.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\System.Data.SQLite.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\System.Data.SQLite.EF6.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\System.Data.SQLite.Linq.dll
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\EntityFramework.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\EntityFramework.SqlServer.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\bin\Debug\System.Data.SQLite.xml
+E:\PLC-C#\Modbus\TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmQuerySQLite.resources
