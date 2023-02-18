@@ -35,7 +35,7 @@ namespace AdvancedHMICS
             string username = con.sqlExecuteScalarString(sqllogin);
             if (username.Length > 1)
             {
-                MainForm f = new MainForm();
+                frmMain f = new frmMain();
                 f.ShowDialog();
                 // this.Hide();
             }

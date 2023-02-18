@@ -34,7 +34,7 @@ namespace AdvancedHMICS
         {
             txt_query.Text = "";
             dt = new DataTable();
-            dgv_main.DataSource = dt;
+            gc_main.DataSource = dt;
         }
 
         private void btn_query_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace AdvancedHMICS
              dt = new DataTable();
             sqlite _SQLite = new sqlite();
             _SQLite.SelectData(txt_query.Text.ToString().Trim(), ref dt);
-            dgv_main.DataSource = dt;
+            gc_main.DataSource = dt;
         }
     }
 }
