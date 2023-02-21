@@ -31,7 +31,6 @@ namespace AdvancedHMICS
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.modbusRTUCom1 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.modbusRTUCom2 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.modbusRTUCom3 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
@@ -137,11 +136,6 @@ namespace AdvancedHMICS
             this.button1 = new System.Windows.Forms.Button();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).BeginInit();
@@ -224,9 +218,8 @@ namespace AdvancedHMICS
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.OutsetPartial;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
@@ -243,10 +236,10 @@ namespace AdvancedHMICS
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::AdvancedHMICS.Properties.Resources.ifmlogo2;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 6);
+            this.pictureBox1.Image = global::AdvancedHMICS.Properties.Resources.ifmbigsize;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(74, 36);
+            this.pictureBox1.Size = new System.Drawing.Size(144, 36);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -256,9 +249,9 @@ namespace AdvancedHMICS
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(6, 51);
+            this.panel1.Location = new System.Drawing.Point(3, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1297, 645);
+            this.panel1.Size = new System.Drawing.Size(1303, 654);
             this.panel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -283,7 +276,7 @@ namespace AdvancedHMICS
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1297, 645);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1303, 654);
             this.tableLayoutPanel2.TabIndex = 71;
             // 
             // panel7
@@ -306,9 +299,9 @@ namespace AdvancedHMICS
             this.panel7.Controls.Add(this.button8);
             this.panel7.Controls.Add(this.button7);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(851, 508);
+            this.panel7.Location = new System.Drawing.Point(854, 517);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(443, 134);
+            this.panel7.Size = new System.Drawing.Size(446, 134);
             this.panel7.TabIndex = 79;
             // 
             // button19
@@ -469,7 +462,7 @@ namespace AdvancedHMICS
             this.panel3.Controls.Add(this.label45);
             this.panel3.Controls.Add(this.label63);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(451, 508);
+            this.panel3.Location = new System.Drawing.Point(454, 517);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(394, 134);
             this.panel3.TabIndex = 78;
@@ -545,9 +538,9 @@ namespace AdvancedHMICS
             this.panel5.Controls.Add(this.label35);
             this.panel5.Controls.Add(this.label36);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(851, 3);
+            this.panel5.Location = new System.Drawing.Point(854, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(443, 224);
+            this.panel5.Size = new System.Drawing.Size(446, 224);
             this.panel5.TabIndex = 73;
             // 
             // analogValueDisplay11
@@ -750,9 +743,9 @@ namespace AdvancedHMICS
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(333, 192);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(48, 25);
+            this.label27.Size = new System.Drawing.Size(41, 25);
             this.label27.TabIndex = 73;
-            this.label27.Text = "rpm";
+            this.label27.Text = "Kw";
             // 
             // label28
             // 
@@ -762,7 +755,7 @@ namespace AdvancedHMICS
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(26, 25);
             this.label28.TabIndex = 72;
-            this.label28.Text = "V";
+            this.label28.Text = "A";
             // 
             // label29
             // 
@@ -770,9 +763,9 @@ namespace AdvancedHMICS
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(333, 18);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(26, 25);
+            this.label29.Size = new System.Drawing.Size(31, 25);
             this.label29.TabIndex = 69;
-            this.label29.Text = "V";
+            this.label29.Text = "%";
             // 
             // label30
             // 
@@ -780,9 +773,9 @@ namespace AdvancedHMICS
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.Location = new System.Drawing.Point(333, 106);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(43, 25);
+            this.label30.Size = new System.Drawing.Size(38, 25);
             this.label30.TabIndex = 71;
-            this.label30.Text = "kW";
+            this.label30.Text = "Hz";
             // 
             // label31
             // 
@@ -790,9 +783,9 @@ namespace AdvancedHMICS
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.Location = new System.Drawing.Point(333, 62);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(26, 25);
+            this.label31.Size = new System.Drawing.Size(31, 25);
             this.label31.TabIndex = 70;
-            this.label31.Text = "A";
+            this.label31.Text = "%";
             // 
             // label32
             // 
@@ -855,7 +848,7 @@ namespace AdvancedHMICS
             this.panel4.Controls.Add(this.label22);
             this.panel4.Controls.Add(this.label23);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(451, 3);
+            this.panel4.Location = new System.Drawing.Point(454, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(394, 224);
             this.panel4.TabIndex = 72;
@@ -992,7 +985,7 @@ namespace AdvancedHMICS
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(442, 224);
+            this.panel2.Size = new System.Drawing.Size(445, 224);
             this.panel2.TabIndex = 69;
             // 
             // lbl_speedrpm
@@ -1268,9 +1261,9 @@ namespace AdvancedHMICS
             this.panel6.Controls.Add(this.label7);
             this.panel6.Controls.Add(this.label25);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 508);
+            this.panel6.Location = new System.Drawing.Point(3, 517);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(442, 134);
+            this.panel6.Size = new System.Drawing.Size(445, 134);
             this.panel6.TabIndex = 75;
             // 
             // label44
@@ -1491,11 +1484,11 @@ namespace AdvancedHMICS
             this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 448);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 457);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1291, 54);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1297, 54);
             this.tableLayoutPanel3.TabIndex = 76;
             // 
             // button6
@@ -1504,7 +1497,7 @@ namespace AdvancedHMICS
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Location = new System.Drawing.Point(1176, 6);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(109, 42);
+            this.button6.Size = new System.Drawing.Size(115, 42);
             this.button6.TabIndex = 10;
             this.button6.Text = "90% NA";
             this.button6.UseVisualStyleBackColor = true;
@@ -1620,74 +1613,30 @@ namespace AdvancedHMICS
             // 
             this.tableLayoutPanel2.SetColumnSpan(this.gridControl1, 3);
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
-            this.gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
             this.gridControl1.Location = new System.Drawing.Point(3, 233);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1291, 209);
-            this.gridControl1.TabIndex = 77;
+            this.gridControl1.Size = new System.Drawing.Size(1297, 218);
+            this.gridControl1.TabIndex = 80;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "gridColumn1";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "gridColumn2";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "gridColumn3";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "gridColumn4";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "gridColumn5";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(89, 3);
+            this.label1.Location = new System.Drawing.Point(153, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1214, 42);
+            this.label1.Size = new System.Drawing.Size(1153, 42);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Tester Machine Tool for V-Twin Model";
+            this.label1.Text = "General Dynamics Intelligent Test System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmMain
@@ -1696,8 +1645,9 @@ namespace AdvancedHMICS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1309, 702);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
-            this.Text = "frmMain";
+            this.Text = "Tester Machine v1.0.0";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).EndInit();
@@ -1792,8 +1742,6 @@ namespace AdvancedHMICS
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label37;
@@ -1836,12 +1784,9 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button btn_modelSetting;
         private System.Windows.Forms.Button button22;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private AdvancedHMIControls.AnalogValueDisplay avd_voltage;
         private System.Windows.Forms.Label lbl_speedrpm;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }

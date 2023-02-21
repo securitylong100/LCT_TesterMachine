@@ -34,17 +34,17 @@ namespace AdvancedHMICS
 
         private void btn_DBSetting_Click(object sender, EventArgs e)
         {
-            //sqlite _SQLite = new sqlite();
-            ////string sql2 = "CREATE TABLE IF NOT EXISTS test(" +
-            ////       "StaffId VARCHAR(20) PRIMARY KEY," +
-            ////       "FullName VARCHAR(50)," +
-            ////       "Age INT DEFAULT 0" +
-            ////       ")";
-            //string sql3 = "SELECT * FROM test";
-            //DataTable dt2 = new DataTable();
-            //// _SQLite.SelectData(sql, ref dt);       
-           
-            //_SQLite.SelectData(sql3, ref dt2);
+            sqlite _SQLite = new sqlite();
+            string sql2 = "CREATE TABLE IF NOT EXISTS test(" +
+                   "StaffId VARCHAR(20) PRIMARY KEY," +
+                   "FullName VARCHAR(50)," +
+                   "Age INT DEFAULT 0" +
+                   ")";
+          
+            DataTable dt2 = new DataTable();
+            // _SQLite.SelectData(sql, ref dt);       
+
+            _SQLite.SelectData(sql2, ref dt2);
         }
 
         private void btn_user_Click(object sender, EventArgs e)

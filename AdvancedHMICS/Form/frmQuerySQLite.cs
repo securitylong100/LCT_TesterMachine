@@ -39,12 +39,18 @@ namespace AdvancedHMICS
 
         private void btn_query_Click(object sender, EventArgs e)
         {
+            gc_main.DataSource = null;
             sqlite _SQLite = new sqlite();
             _SQLite.exeNonQuery(txt_query.Text.ToString().Trim());
         }
         private void btn_SelectData_Click(object sender, EventArgs e)
         {
-             dt = new DataTable();
+           
+            gv_main.RefreshData();
+            gc_main.RefreshDataSource();
+            gc_main.DataSource = null;
+            gv_main.Columns.Clear();
+            dt = new DataTable();
             sqlite _SQLite = new sqlite();
             _SQLite.SelectData(txt_query.Text.ToString().Trim(), ref dt);
             gc_main.DataSource = dt;

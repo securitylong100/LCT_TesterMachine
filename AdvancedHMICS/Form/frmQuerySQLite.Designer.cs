@@ -146,7 +146,7 @@ namespace AdvancedHMICS
             this.ClientSize = new System.Drawing.Size(829, 531);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmQuerySQLite";
-            this.Text = "QuerySQLite";
+            this.Text = "Tester Machine v1.0.0: QuerySQLite";
             this.Load += new System.EventHandler(this.frmQuerySQLite_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

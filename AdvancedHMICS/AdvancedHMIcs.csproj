@@ -171,7 +171,9 @@
   <ItemGroup>
     <None Include="Resources\ifm.PNG" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\ifmbigsize.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ifmlogo1.png" />
   </ItemGroup>
