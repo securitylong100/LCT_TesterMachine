@@ -324,12 +324,13 @@ namespace AdvancedHMICS
             // 
             // btn_modelSetting
             // 
+            this.btn_modelSetting.BackColor = System.Drawing.Color.Yellow;
             this.btn_modelSetting.Location = new System.Drawing.Point(230, 41);
             this.btn_modelSetting.Name = "btn_modelSetting";
             this.btn_modelSetting.Size = new System.Drawing.Size(97, 25);
             this.btn_modelSetting.TabIndex = 13;
             this.btn_modelSetting.Text = "Setting Model";
-            this.btn_modelSetting.UseVisualStyleBackColor = true;
+            this.btn_modelSetting.UseVisualStyleBackColor = false;
             this.btn_modelSetting.Click += new System.EventHandler(this.btn_modelSetting_Click);
             // 
             // button22
@@ -343,12 +344,13 @@ namespace AdvancedHMICS
             // 
             // btn_querysqlite
             // 
+            this.btn_querysqlite.BackColor = System.Drawing.Color.Green;
             this.btn_querysqlite.Location = new System.Drawing.Point(341, 101);
             this.btn_querysqlite.Name = "btn_querysqlite";
             this.btn_querysqlite.Size = new System.Drawing.Size(97, 25);
             this.btn_querysqlite.TabIndex = 11;
             this.btn_querysqlite.Text = "QuerySQLite";
-            this.btn_querysqlite.UseVisualStyleBackColor = true;
+            this.btn_querysqlite.UseVisualStyleBackColor = false;
             this.btn_querysqlite.Click += new System.EventHandler(this.btn_querysqlite_Click);
             // 
             // button18
@@ -820,6 +822,7 @@ namespace AdvancedHMICS
             // label35
             // 
             this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(8, 106);
             this.label35.Name = "label35";
@@ -1191,6 +1194,7 @@ namespace AdvancedHMICS
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(8, 188);
             this.label6.Name = "label6";
@@ -1211,7 +1215,9 @@ namespace AdvancedHMICS
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(8, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 25);
@@ -1231,6 +1237,7 @@ namespace AdvancedHMICS
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(8, 60);
             this.label3.Name = "label3";
