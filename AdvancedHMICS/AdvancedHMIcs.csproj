@@ -105,6 +105,18 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\frmSettingModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmSettingModel.Designer.cs">
+      <DependentUpon>frmSettingModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\frmSettingOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmSettingOrder.Designer.cs">
+      <DependentUpon>frmSettingOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,8 +140,14 @@
     <EmbeddedResource Include="Form\frmQuerySQLite.resx">
       <DependentUpon>frmQuerySQLite.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmSettingModel.resx">
+      <DependentUpon>frmSettingModel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmSettingOrder.resx">
+      <DependentUpon>frmSettingOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

@@ -39,7 +39,7 @@ namespace AdvancedHMICS
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button19 = new System.Windows.Forms.Button();
+            this.btn_settingorder = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.btn_modelSetting = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
@@ -282,7 +282,7 @@ namespace AdvancedHMICS
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel7.Controls.Add(this.button19);
+            this.panel7.Controls.Add(this.btn_settingorder);
             this.panel7.Controls.Add(this.button20);
             this.panel7.Controls.Add(this.btn_modelSetting);
             this.panel7.Controls.Add(this.button22);
@@ -304,14 +304,16 @@ namespace AdvancedHMICS
             this.panel7.Size = new System.Drawing.Size(446, 134);
             this.panel7.TabIndex = 79;
             // 
-            // button19
+            // btn_settingorder
             // 
-            this.button19.Location = new System.Drawing.Point(341, 41);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(97, 25);
-            this.button19.TabIndex = 15;
-            this.button19.Text = "Setting Timer";
-            this.button19.UseVisualStyleBackColor = true;
+            this.btn_settingorder.BackColor = System.Drawing.Color.Yellow;
+            this.btn_settingorder.Location = new System.Drawing.Point(341, 41);
+            this.btn_settingorder.Name = "btn_settingorder";
+            this.btn_settingorder.Size = new System.Drawing.Size(97, 25);
+            this.btn_settingorder.TabIndex = 15;
+            this.btn_settingorder.Text = "Setting Order";
+            this.btn_settingorder.UseVisualStyleBackColor = false;
+            this.btn_settingorder.Click += new System.EventHandler(this.btn_settingorder_Click);
             // 
             // button20
             // 
@@ -1787,7 +1789,7 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button btn_settingorder;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button btn_modelSetting;
         private System.Windows.Forms.Button button22;

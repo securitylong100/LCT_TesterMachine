@@ -317,3 +317,5 @@ E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.exe
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.pdb
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmSettingModel.resources
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmSettingOrder.resources

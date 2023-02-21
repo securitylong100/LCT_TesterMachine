@@ -29,7 +29,8 @@ namespace AdvancedHMICS
         }
         private void btn_modelSetting_Click(object sender, EventArgs e)
         {
-
+            frmSettingModel fr = new frmSettingModel();
+            fr.ShowDialog();
         }
 
         private void btn_DBSetting_Click(object sender, EventArgs e)
@@ -55,6 +56,12 @@ namespace AdvancedHMICS
         private void btn_querysqlite_Click(object sender, EventArgs e)
         {
             frmQuerySQLite f = new frmQuerySQLite();
+            f.ShowDialog();
+        }
+
+        private void btn_settingorder_Click(object sender, EventArgs e)
+        {
+            frmSettingOrder f = new frmSettingOrder();
             f.ShowDialog();
         }
     }
