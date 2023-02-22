@@ -32,9 +32,32 @@ namespace AdvancedHMICS
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettingModel));
             this.gc_main = new DevExpress.XtraGrid.GridControl();
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nud_numberofstep = new System.Windows.Forms.NumericUpDown();
             this.btn_export = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
@@ -80,34 +103,11 @@ namespace AdvancedHMICS
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_numberofstep)).BeginInit();
             this.SuspendLayout();
             // 
             // gc_main
@@ -150,6 +150,190 @@ namespace AdvancedHMICS
             this.gv_main.GridControl = this.gc_main;
             this.gv_main.Name = "gv_main";
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Steps";
+            this.gridColumn1.FieldName = "ck_serial";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Max No-load speed limit";
+            this.gridColumn2.FieldName = "ck_Max_Noloadlimitspeed";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Min No-load speed  limit";
+            this.gridColumn3.FieldName = "ck_Min_Noloadlimitspeed";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Step load power";
+            this.gridColumn4.FieldName = "ck_Steppower";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "rated power";
+            this.gridColumn5.FieldName = "ck_power";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "load percentage";
+            this.gridColumn6.FieldName = "ck_Steppercentage";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Max Generator";
+            this.gridColumn7.FieldName = "ck_Max_Generator";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 6;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Min Generator";
+            this.gridColumn8.FieldName = "ck_Min_Generator";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Max VolGenerator";
+            this.gridColumn9.FieldName = "ck_Max_VolGenerator";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 8;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Min VolGenerator";
+            this.gridColumn10.FieldName = "ck_Min_VolGenerator";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 9;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Max frequency";
+            this.gridColumn11.FieldName = "ck_Max_frequency";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 10;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Min frequency";
+            this.gridColumn12.FieldName = "ck_Min_frequency";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 11;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Max braketime";
+            this.gridColumn13.FieldName = "ck_Max_braketime";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 12;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Min braketime";
+            this.gridColumn14.FieldName = "ck_Min_braketime";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 13;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Max regulationspeed";
+            this.gridColumn15.FieldName = "ck_Max_regulationspeed";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 14;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "Min regulationSpeed";
+            this.gridColumn16.FieldName = "ck_Min_regulationSpeed";
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 15;
+            // 
+            // gridColumn17
+            // 
+            this.gridColumn17.Caption = "Max fluctuationspeed";
+            this.gridColumn17.FieldName = "ck_Max_fluctuationspeed";
+            this.gridColumn17.Name = "gridColumn17";
+            this.gridColumn17.Visible = true;
+            this.gridColumn17.VisibleIndex = 16;
+            // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Min fluctuationspeed";
+            this.gridColumn18.FieldName = "ck_Min_fluctuationspeed";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 17;
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "LoadTime";
+            this.gridColumn19.FieldName = "ck_LoadTime";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 18;
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.Caption = "Speed";
+            this.gridColumn20.FieldName = "ck_speed";
+            this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.Visible = true;
+            this.gridColumn20.VisibleIndex = 19;
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "Cycles";
+            this.gridColumn21.FieldName = "ck_cycles";
+            this.gridColumn21.Name = "gridColumn21";
+            this.gridColumn21.Visible = true;
+            this.gridColumn21.VisibleIndex = 20;
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "model";
+            this.gridColumn22.FieldName = "ck_model";
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 21;
+            // 
+            // gridColumn23
+            // 
+            this.gridColumn23.Caption = "testbrakes";
+            this.gridColumn23.FieldName = "ck_testbrakes";
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 22;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -167,7 +351,7 @@ namespace AdvancedHMICS
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.nud_numberofstep);
             this.panel1.Controls.Add(this.btn_export);
             this.panel1.Controls.Add(this.btn_clear);
             this.panel1.Controls.Add(this.btn_save);
@@ -219,18 +403,18 @@ namespace AdvancedHMICS
             this.panel1.Size = new System.Drawing.Size(1122, 254);
             this.panel1.TabIndex = 3;
             // 
-            // numericUpDown1
+            // nud_numberofstep
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(23, 72);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nud_numberofstep.Location = new System.Drawing.Point(23, 72);
+            this.nud_numberofstep.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(86, 20);
-            this.numericUpDown1.TabIndex = 49;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nud_numberofstep.Name = "nud_numberofstep";
+            this.nud_numberofstep.Size = new System.Drawing.Size(86, 20);
+            this.nud_numberofstep.TabIndex = 49;
+            this.nud_numberofstep.Value = new decimal(new int[] {
             5,
             0,
             0,
@@ -628,190 +812,6 @@ namespace AdvancedHMICS
             this.label2.TabIndex = 3;
             this.label2.Text = "New Model:";
             // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Steps";
-            this.gridColumn1.FieldName = "ck_serial";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Max No-load speed limit";
-            this.gridColumn2.FieldName = "ck_Max_Noloadlimitspeed";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Min No-load speed  limit";
-            this.gridColumn3.FieldName = "ck_Min_Noloadlimitspeed";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Step load power";
-            this.gridColumn4.FieldName = "ck_Steppower";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "rated power";
-            this.gridColumn5.FieldName = "ck_power";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "load percentage";
-            this.gridColumn6.FieldName = "ck_Steppercentage";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "Max Generator";
-            this.gridColumn7.FieldName = "ck_Max_Generator";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Min Generator";
-            this.gridColumn8.FieldName = "ck_Min_Generator";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "Max VolGenerator";
-            this.gridColumn9.FieldName = "ck_Max_VolGenerator";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.Caption = "Min VolGenerator";
-            this.gridColumn10.FieldName = "ck_Min_VolGenerator";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.Caption = "Max frequency";
-            this.gridColumn11.FieldName = "ck_Max_frequency";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 10;
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "Min frequency";
-            this.gridColumn12.FieldName = "ck_Min_frequency";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 11;
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.Caption = "Max braketime";
-            this.gridColumn13.FieldName = "ck_Max_braketime";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 12;
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.Caption = "Min braketime";
-            this.gridColumn14.FieldName = "ck_Min_braketime";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 13;
-            // 
-            // gridColumn15
-            // 
-            this.gridColumn15.Caption = "Max regulationspeed";
-            this.gridColumn15.FieldName = "ck_Max_regulationspeed";
-            this.gridColumn15.Name = "gridColumn15";
-            this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 14;
-            // 
-            // gridColumn16
-            // 
-            this.gridColumn16.Caption = "Min regulationSpeed";
-            this.gridColumn16.FieldName = "ck_Min_regulationSpeed";
-            this.gridColumn16.Name = "gridColumn16";
-            this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 15;
-            // 
-            // gridColumn17
-            // 
-            this.gridColumn17.Caption = "Max fluctuationspeed";
-            this.gridColumn17.FieldName = "ck_Max_fluctuationspeed";
-            this.gridColumn17.Name = "gridColumn17";
-            this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 16;
-            // 
-            // gridColumn18
-            // 
-            this.gridColumn18.Caption = "Min fluctuationspeed";
-            this.gridColumn18.FieldName = "ck_Min_fluctuationspeed";
-            this.gridColumn18.Name = "gridColumn18";
-            this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 17;
-            // 
-            // gridColumn19
-            // 
-            this.gridColumn19.Caption = "LoadTime";
-            this.gridColumn19.FieldName = "ck_LoadTime";
-            this.gridColumn19.Name = "gridColumn19";
-            this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 18;
-            // 
-            // gridColumn20
-            // 
-            this.gridColumn20.Caption = "Speed";
-            this.gridColumn20.FieldName = "ck_speed";
-            this.gridColumn20.Name = "gridColumn20";
-            this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 19;
-            // 
-            // gridColumn21
-            // 
-            this.gridColumn21.Caption = "Cycles";
-            this.gridColumn21.FieldName = "ck_cycles";
-            this.gridColumn21.Name = "gridColumn21";
-            this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 20;
-            // 
-            // gridColumn22
-            // 
-            this.gridColumn22.Caption = "model";
-            this.gridColumn22.FieldName = "ck_model";
-            this.gridColumn22.Name = "gridColumn22";
-            this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 21;
-            // 
-            // gridColumn23
-            // 
-            this.gridColumn23.Caption = "testbrakes";
-            this.gridColumn23.FieldName = "ck_testbrakes";
-            this.gridColumn23.Name = "gridColumn23";
-            this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 22;
-            // 
             // frmSettingModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -827,7 +827,7 @@ namespace AdvancedHMICS
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_numberofstep)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -881,7 +881,7 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Button btn_createnewmodel;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nud_numberofstep;
         private System.Windows.Forms.ComboBox comboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;

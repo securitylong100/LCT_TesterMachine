@@ -45,7 +45,37 @@ namespace AdvancedHMICS
 
         private void btn_createnewmodel_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (checkcondition())
+                {
+                    DataRow row = dt.NewRow();
+                    row["user_name"] = cbm_username.Text;
+                    row["basicsalary_month"] = calc_Basicsalary.Text;
+                    row["bonussalary"] = calc_bonussalary.Text;
+                    row["money_insurance"] = chb_insurance.Checked == true ? "True" : "False";
+                    row["u_update"] = "";
+                    row["d_update"] = DateTime.Now;
+                    row["u_create"] = ClsVariables.App.UserName;
+                    row["d_create"] = DateTime.Now;
+                    dt.Rows.Add(row);
+                    savedb();
+                    // LoadData(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+        bool checkcondition()
+        {
+            if (cbm_username.SelectedItem == null || cbm_usercd.SelectedItem == null || calc_Basicsalary.Text == "0" || calc_Basicsalary.Text == "")
+            {
+                MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
     }
 }
