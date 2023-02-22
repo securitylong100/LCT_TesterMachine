@@ -62,46 +62,46 @@ namespace AdvancedHMICS
             this.btn_clear = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_createnewmodel = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbm_testbarkes = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.txt_cycles = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.txt_ratedspeed = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.txt_loadingtime = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.txt_minspeedfluctuationlimit = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.txt_maxspeedfluctuationlimit = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.txt_minspeedregulationlimit = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.txt_maxspeedregulationlimit = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txt_minbrakingtimelimit = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.txt_maxbrakingtimelimit = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txt_minfrequecy = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txt_maxfrequecy = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txt_mingeneratorvoltagelimit = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txt_maxgenertorvoltagelimit = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txt_mingenratorcurrentlimit = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txt_maxgenratorcurrentlimit = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txt_ratedpower = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_minnoloadspeedlimit = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_maxnoloadspeedlimit = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_newmodel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
@@ -356,46 +356,46 @@ namespace AdvancedHMICS
             this.panel1.Controls.Add(this.btn_clear);
             this.panel1.Controls.Add(this.btn_save);
             this.panel1.Controls.Add(this.btn_createnewmodel);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.cbm_testbarkes);
             this.panel1.Controls.Add(this.label20);
-            this.panel1.Controls.Add(this.textBox21);
+            this.panel1.Controls.Add(this.txt_cycles);
             this.panel1.Controls.Add(this.label21);
-            this.panel1.Controls.Add(this.textBox18);
+            this.panel1.Controls.Add(this.txt_ratedspeed);
             this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.textBox19);
+            this.panel1.Controls.Add(this.txt_loadingtime);
             this.panel1.Controls.Add(this.label19);
-            this.panel1.Controls.Add(this.textBox16);
+            this.panel1.Controls.Add(this.txt_minspeedfluctuationlimit);
             this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.textBox17);
+            this.panel1.Controls.Add(this.txt_maxspeedfluctuationlimit);
             this.panel1.Controls.Add(this.label17);
-            this.panel1.Controls.Add(this.textBox14);
+            this.panel1.Controls.Add(this.txt_minspeedregulationlimit);
             this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.textBox15);
+            this.panel1.Controls.Add(this.txt_maxspeedregulationlimit);
             this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.textBox12);
+            this.panel1.Controls.Add(this.txt_minbrakingtimelimit);
             this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.textBox13);
+            this.panel1.Controls.Add(this.txt_maxbrakingtimelimit);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.textBox10);
+            this.panel1.Controls.Add(this.txt_minfrequecy);
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.textBox11);
+            this.panel1.Controls.Add(this.txt_maxfrequecy);
             this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.txt_mingeneratorvoltagelimit);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox9);
+            this.panel1.Controls.Add(this.txt_maxgenertorvoltagelimit);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.txt_mingenratorcurrentlimit);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.txt_maxgenratorcurrentlimit);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.txt_ratedpower);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.txt_minnoloadspeedlimit);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.txt_maxnoloadspeedlimit);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txt_newmodel);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
@@ -428,6 +428,7 @@ namespace AdvancedHMICS
             this.btn_export.TabIndex = 48;
             this.btn_export.Text = "Export to Excel";
             this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // btn_clear
             // 
@@ -459,17 +460,17 @@ namespace AdvancedHMICS
             this.btn_createnewmodel.UseVisualStyleBackColor = true;
             this.btn_createnewmodel.Click += new System.EventHandler(this.btn_createnewmodel_Click);
             // 
-            // comboBox1
+            // cbm_testbarkes
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbm_testbarkes.FormattingEnabled = true;
+            this.cbm_testbarkes.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.comboBox1.Location = new System.Drawing.Point(149, 123);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(86, 21);
-            this.comboBox1.TabIndex = 44;
-            this.comboBox1.Text = "No";
+            this.cbm_testbarkes.Location = new System.Drawing.Point(149, 123);
+            this.cbm_testbarkes.Name = "cbm_testbarkes";
+            this.cbm_testbarkes.Size = new System.Drawing.Size(86, 21);
+            this.cbm_testbarkes.TabIndex = 44;
+            this.cbm_testbarkes.Text = "No";
             // 
             // label20
             // 
@@ -480,13 +481,13 @@ namespace AdvancedHMICS
             this.label20.TabIndex = 43;
             this.label20.Text = "Test Brakes";
             // 
-            // textBox21
+            // txt_cycles
             // 
-            this.textBox21.Location = new System.Drawing.Point(23, 123);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(86, 20);
-            this.textBox21.TabIndex = 42;
-            this.textBox21.Text = "1";
+            this.txt_cycles.Location = new System.Drawing.Point(23, 123);
+            this.txt_cycles.Name = "txt_cycles";
+            this.txt_cycles.Size = new System.Drawing.Size(86, 20);
+            this.txt_cycles.TabIndex = 42;
+            this.txt_cycles.Text = "1";
             // 
             // label21
             // 
@@ -497,13 +498,14 @@ namespace AdvancedHMICS
             this.label21.TabIndex = 41;
             this.label21.Text = "Cycles";
             // 
-            // textBox18
+            // txt_ratedspeed
             // 
-            this.textBox18.Location = new System.Drawing.Point(912, 169);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(90, 20);
-            this.textBox18.TabIndex = 40;
-            this.textBox18.Text = "3600";
+            this.txt_ratedspeed.Location = new System.Drawing.Point(912, 169);
+            this.txt_ratedspeed.Name = "txt_ratedspeed";
+            this.txt_ratedspeed.Size = new System.Drawing.Size(90, 20);
+            this.txt_ratedspeed.TabIndex = 40;
+            this.txt_ratedspeed.Text = "3600";
+            this.txt_ratedspeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_ratedspeed_KeyPress);
             // 
             // label18
             // 
@@ -514,13 +516,14 @@ namespace AdvancedHMICS
             this.label18.TabIndex = 39;
             this.label18.Text = "Rated speed";
             // 
-            // textBox19
+            // txt_loadingtime
             // 
-            this.textBox19.Location = new System.Drawing.Point(912, 123);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(90, 20);
-            this.textBox19.TabIndex = 38;
-            this.textBox19.Text = "4";
+            this.txt_loadingtime.Location = new System.Drawing.Point(912, 123);
+            this.txt_loadingtime.Name = "txt_loadingtime";
+            this.txt_loadingtime.Size = new System.Drawing.Size(90, 20);
+            this.txt_loadingtime.TabIndex = 38;
+            this.txt_loadingtime.Text = "4";
+            this.txt_loadingtime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_loadingtime_KeyPress);
             // 
             // label19
             // 
@@ -531,13 +534,13 @@ namespace AdvancedHMICS
             this.label19.TabIndex = 37;
             this.label19.Text = "Loading Time";
             // 
-            // textBox16
+            // txt_minspeedfluctuationlimit
             // 
-            this.textBox16.Location = new System.Drawing.Point(711, 169);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(123, 20);
-            this.textBox16.TabIndex = 36;
-            this.textBox16.Text = "-10";
+            this.txt_minspeedfluctuationlimit.Location = new System.Drawing.Point(711, 169);
+            this.txt_minspeedfluctuationlimit.Name = "txt_minspeedfluctuationlimit";
+            this.txt_minspeedfluctuationlimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_minspeedfluctuationlimit.TabIndex = 36;
+            this.txt_minspeedfluctuationlimit.Text = "-10";
             // 
             // label16
             // 
@@ -548,13 +551,14 @@ namespace AdvancedHMICS
             this.label16.TabIndex = 35;
             this.label16.Text = "Min Speed fluctuation  limit";
             // 
-            // textBox17
+            // txt_maxspeedfluctuationlimit
             // 
-            this.textBox17.Location = new System.Drawing.Point(711, 123);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(123, 20);
-            this.textBox17.TabIndex = 34;
-            this.textBox17.Text = "10";
+            this.txt_maxspeedfluctuationlimit.Location = new System.Drawing.Point(711, 123);
+            this.txt_maxspeedfluctuationlimit.Name = "txt_maxspeedfluctuationlimit";
+            this.txt_maxspeedfluctuationlimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_maxspeedfluctuationlimit.TabIndex = 34;
+            this.txt_maxspeedfluctuationlimit.Text = "10";
+            this.txt_maxspeedfluctuationlimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maxspeedfluctuationlimit_KeyPress);
             // 
             // label17
             // 
@@ -565,13 +569,13 @@ namespace AdvancedHMICS
             this.label17.TabIndex = 33;
             this.label17.Text = "Max Speed fluctuation  limit";
             // 
-            // textBox14
+            // txt_minspeedregulationlimit
             // 
-            this.textBox14.Location = new System.Drawing.Point(507, 166);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(123, 20);
-            this.textBox14.TabIndex = 32;
-            this.textBox14.Text = "-5";
+            this.txt_minspeedregulationlimit.Location = new System.Drawing.Point(507, 166);
+            this.txt_minspeedregulationlimit.Name = "txt_minspeedregulationlimit";
+            this.txt_minspeedregulationlimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_minspeedregulationlimit.TabIndex = 32;
+            this.txt_minspeedregulationlimit.Text = "-5";
             // 
             // label14
             // 
@@ -582,13 +586,14 @@ namespace AdvancedHMICS
             this.label14.TabIndex = 31;
             this.label14.Text = "Min Speed regulation  limit";
             // 
-            // textBox15
+            // txt_maxspeedregulationlimit
             // 
-            this.textBox15.Location = new System.Drawing.Point(507, 120);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(123, 20);
-            this.textBox15.TabIndex = 30;
-            this.textBox15.Text = "5";
+            this.txt_maxspeedregulationlimit.Location = new System.Drawing.Point(507, 120);
+            this.txt_maxspeedregulationlimit.Name = "txt_maxspeedregulationlimit";
+            this.txt_maxspeedregulationlimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_maxspeedregulationlimit.TabIndex = 30;
+            this.txt_maxspeedregulationlimit.Text = "5";
+            this.txt_maxspeedregulationlimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maxspeedregulationlimit_KeyPress);
             // 
             // label15
             // 
@@ -599,13 +604,14 @@ namespace AdvancedHMICS
             this.label15.TabIndex = 29;
             this.label15.Text = "Max Speed regulation  limit";
             // 
-            // textBox12
+            // txt_minbrakingtimelimit
             // 
-            this.textBox12.Location = new System.Drawing.Point(307, 166);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(123, 20);
-            this.textBox12.TabIndex = 28;
-            this.textBox12.Text = "0";
+            this.txt_minbrakingtimelimit.Location = new System.Drawing.Point(307, 166);
+            this.txt_minbrakingtimelimit.Name = "txt_minbrakingtimelimit";
+            this.txt_minbrakingtimelimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_minbrakingtimelimit.TabIndex = 28;
+            this.txt_minbrakingtimelimit.Text = "0";
+            this.txt_minbrakingtimelimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_minbrakingtimelimit_KeyPress);
             // 
             // label12
             // 
@@ -616,13 +622,14 @@ namespace AdvancedHMICS
             this.label12.TabIndex = 27;
             this.label12.Text = "Min Braking time limit";
             // 
-            // textBox13
+            // txt_maxbrakingtimelimit
             // 
-            this.textBox13.Location = new System.Drawing.Point(307, 120);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(123, 20);
-            this.textBox13.TabIndex = 26;
-            this.textBox13.Text = "5";
+            this.txt_maxbrakingtimelimit.Location = new System.Drawing.Point(307, 120);
+            this.txt_maxbrakingtimelimit.Name = "txt_maxbrakingtimelimit";
+            this.txt_maxbrakingtimelimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_maxbrakingtimelimit.TabIndex = 26;
+            this.txt_maxbrakingtimelimit.Text = "5";
+            this.txt_maxbrakingtimelimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maxbrakingtimelimit_KeyPress);
             // 
             // label13
             // 
@@ -633,13 +640,14 @@ namespace AdvancedHMICS
             this.label13.TabIndex = 25;
             this.label13.Text = "Max Braking time limit";
             // 
-            // textBox10
+            // txt_minfrequecy
             // 
-            this.textBox10.Location = new System.Drawing.Point(912, 71);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(90, 20);
-            this.textBox10.TabIndex = 24;
-            this.textBox10.Text = "0";
+            this.txt_minfrequecy.Location = new System.Drawing.Point(912, 71);
+            this.txt_minfrequecy.Name = "txt_minfrequecy";
+            this.txt_minfrequecy.Size = new System.Drawing.Size(90, 20);
+            this.txt_minfrequecy.TabIndex = 24;
+            this.txt_minfrequecy.Text = "0";
+            this.txt_minfrequecy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_minfrequecy_KeyPress);
             // 
             // label10
             // 
@@ -650,13 +658,14 @@ namespace AdvancedHMICS
             this.label10.TabIndex = 23;
             this.label10.Text = "Min frequency";
             // 
-            // textBox11
+            // txt_maxfrequecy
             // 
-            this.textBox11.Location = new System.Drawing.Point(912, 25);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(90, 20);
-            this.textBox11.TabIndex = 22;
-            this.textBox11.Text = "69";
+            this.txt_maxfrequecy.Location = new System.Drawing.Point(912, 25);
+            this.txt_maxfrequecy.Name = "txt_maxfrequecy";
+            this.txt_maxfrequecy.Size = new System.Drawing.Size(90, 20);
+            this.txt_maxfrequecy.TabIndex = 22;
+            this.txt_maxfrequecy.Text = "69";
+            this.txt_maxfrequecy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maxfrequecy_KeyPress);
             // 
             // label11
             // 
@@ -667,13 +676,14 @@ namespace AdvancedHMICS
             this.label11.TabIndex = 21;
             this.label11.Text = "Max Frequency";
             // 
-            // textBox8
+            // txt_mingeneratorvoltagelimit
             // 
-            this.textBox8.Location = new System.Drawing.Point(711, 71);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(123, 20);
-            this.textBox8.TabIndex = 20;
-            this.textBox8.Text = "0";
+            this.txt_mingeneratorvoltagelimit.Location = new System.Drawing.Point(711, 71);
+            this.txt_mingeneratorvoltagelimit.Name = "txt_mingeneratorvoltagelimit";
+            this.txt_mingeneratorvoltagelimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_mingeneratorvoltagelimit.TabIndex = 20;
+            this.txt_mingeneratorvoltagelimit.Text = "0";
+            this.txt_mingeneratorvoltagelimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_mingeneratorvoltagelimit_KeyPress);
             // 
             // label8
             // 
@@ -684,13 +694,14 @@ namespace AdvancedHMICS
             this.label8.TabIndex = 19;
             this.label8.Text = "Min Generator voltage limit";
             // 
-            // textBox9
+            // txt_maxgenertorvoltagelimit
             // 
-            this.textBox9.Location = new System.Drawing.Point(711, 25);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(123, 20);
-            this.textBox9.TabIndex = 18;
-            this.textBox9.Text = "240";
+            this.txt_maxgenertorvoltagelimit.Location = new System.Drawing.Point(711, 25);
+            this.txt_maxgenertorvoltagelimit.Name = "txt_maxgenertorvoltagelimit";
+            this.txt_maxgenertorvoltagelimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_maxgenertorvoltagelimit.TabIndex = 18;
+            this.txt_maxgenertorvoltagelimit.Text = "240";
+            this.txt_maxgenertorvoltagelimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maxgenertorvoltagelimit_KeyPress);
             // 
             // label9
             // 
@@ -701,13 +712,14 @@ namespace AdvancedHMICS
             this.label9.TabIndex = 17;
             this.label9.Text = "Max Generator voltage limit";
             // 
-            // textBox6
+            // txt_mingenratorcurrentlimit
             // 
-            this.textBox6.Location = new System.Drawing.Point(507, 71);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(123, 20);
-            this.textBox6.TabIndex = 16;
-            this.textBox6.Text = "0";
+            this.txt_mingenratorcurrentlimit.Location = new System.Drawing.Point(507, 71);
+            this.txt_mingenratorcurrentlimit.Name = "txt_mingenratorcurrentlimit";
+            this.txt_mingenratorcurrentlimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_mingenratorcurrentlimit.TabIndex = 16;
+            this.txt_mingenratorcurrentlimit.Text = "0";
+            this.txt_mingenratorcurrentlimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_mingenratorcurrentlimit_KeyPress);
             // 
             // label6
             // 
@@ -718,13 +730,14 @@ namespace AdvancedHMICS
             this.label6.TabIndex = 15;
             this.label6.Text = "Min Generator current  limit";
             // 
-            // textBox7
+            // txt_maxgenratorcurrentlimit
             // 
-            this.textBox7.Location = new System.Drawing.Point(507, 25);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(123, 20);
-            this.textBox7.TabIndex = 14;
-            this.textBox7.Text = "100";
+            this.txt_maxgenratorcurrentlimit.Location = new System.Drawing.Point(507, 25);
+            this.txt_maxgenratorcurrentlimit.Name = "txt_maxgenratorcurrentlimit";
+            this.txt_maxgenratorcurrentlimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_maxgenratorcurrentlimit.TabIndex = 14;
+            this.txt_maxgenratorcurrentlimit.Text = "100";
+            this.txt_maxgenratorcurrentlimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maxgenratorcurrentlimit_KeyPress);
             // 
             // label7
             // 
@@ -735,13 +748,13 @@ namespace AdvancedHMICS
             this.label7.TabIndex = 13;
             this.label7.Text = "Max Generator current  limit";
             // 
-            // textBox5
+            // txt_ratedpower
             // 
-            this.textBox5.Location = new System.Drawing.Point(149, 71);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(86, 20);
-            this.textBox5.TabIndex = 12;
-            this.textBox5.Text = "3600";
+            this.txt_ratedpower.Location = new System.Drawing.Point(149, 71);
+            this.txt_ratedpower.Name = "txt_ratedpower";
+            this.txt_ratedpower.Size = new System.Drawing.Size(86, 20);
+            this.txt_ratedpower.TabIndex = 12;
+            this.txt_ratedpower.Text = "8";
             // 
             // label5
             // 
@@ -752,13 +765,14 @@ namespace AdvancedHMICS
             this.label5.TabIndex = 11;
             this.label5.Text = "Rated Power";
             // 
-            // textBox4
+            // txt_minnoloadspeedlimit
             // 
-            this.textBox4.Location = new System.Drawing.Point(307, 71);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(123, 20);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.Text = "2900";
+            this.txt_minnoloadspeedlimit.Location = new System.Drawing.Point(307, 71);
+            this.txt_minnoloadspeedlimit.Name = "txt_minnoloadspeedlimit";
+            this.txt_minnoloadspeedlimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_minnoloadspeedlimit.TabIndex = 10;
+            this.txt_minnoloadspeedlimit.Text = "2900";
+            this.txt_minnoloadspeedlimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_minnoloadspeedlimit_KeyPress);
             // 
             // label4
             // 
@@ -769,13 +783,14 @@ namespace AdvancedHMICS
             this.label4.TabIndex = 9;
             this.label4.Text = "Min No-load speed limit";
             // 
-            // textBox3
+            // txt_maxnoloadspeedlimit
             // 
-            this.textBox3.Location = new System.Drawing.Point(307, 25);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(123, 20);
-            this.textBox3.TabIndex = 8;
-            this.textBox3.Text = "3600";
+            this.txt_maxnoloadspeedlimit.Location = new System.Drawing.Point(307, 25);
+            this.txt_maxnoloadspeedlimit.Name = "txt_maxnoloadspeedlimit";
+            this.txt_maxnoloadspeedlimit.Size = new System.Drawing.Size(123, 20);
+            this.txt_maxnoloadspeedlimit.TabIndex = 8;
+            this.txt_maxnoloadspeedlimit.Text = "3600";
+            this.txt_maxnoloadspeedlimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_maxnoloadspeedlimit_KeyPress);
             // 
             // label1
             // 
@@ -795,13 +810,14 @@ namespace AdvancedHMICS
             this.label3.TabIndex = 5;
             this.label3.Text = "Number Steps";
             // 
-            // textBox1
+            // txt_newmodel
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.textBox1.Location = new System.Drawing.Point(23, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 20);
-            this.textBox1.TabIndex = 4;
+            this.txt_newmodel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.txt_newmodel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_newmodel.Location = new System.Drawing.Point(23, 25);
+            this.txt_newmodel.Name = "txt_newmodel";
+            this.txt_newmodel.Size = new System.Drawing.Size(212, 22);
+            this.txt_newmodel.TabIndex = 4;
             // 
             // label2
             // 
@@ -837,52 +853,52 @@ namespace AdvancedHMICS
         private DevExpress.XtraGrid.Views.Grid.GridView gv_main;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txt_maxnoloadspeedlimit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_newmodel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txt_ratedpower;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_minnoloadspeedlimit;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_mingenratorcurrentlimit;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txt_maxgenratorcurrentlimit;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox txt_cycles;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox txt_ratedspeed;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox txt_loadingtime;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox txt_minspeedfluctuationlimit;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox txt_maxspeedfluctuationlimit;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox txt_minspeedregulationlimit;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox txt_maxspeedregulationlimit;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txt_minbrakingtimelimit;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox txt_maxbrakingtimelimit;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txt_minfrequecy;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txt_maxfrequecy;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txt_mingeneratorvoltagelimit;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txt_maxgenertorvoltagelimit;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btn_export;
         private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Button btn_createnewmodel;
         private System.Windows.Forms.NumericUpDown nud_numberofstep;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbm_testbarkes;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
