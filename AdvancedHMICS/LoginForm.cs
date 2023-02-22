@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
+using AdvancedHMICS.Class;
 
 namespace AdvancedHMICS
 {
@@ -29,10 +31,14 @@ namespace AdvancedHMICS
                 MessageBox.Show("Mật Khẩu không được bỏ trống", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            string pass_encryt = Class.De_Encrypt.Encrypt(txt_pass.Text);
-            Class.mysqlconnection con = new Class.mysqlconnection();
-            string sqllogin = "select user_name from m_user where  1=1 and user_pass= '" + pass_encryt + "' and user_cd ='" + txt_user.Text + "'";
-            string username = con.sqlExecuteScalarString(sqllogin);
+            // string pass_encryt = Class.De_Encrypt.Encrypt(txt_pass.Text);
+            // Class.mysqlconnection con = new Class.mysqlconnection();
+            //string sqllogin = "select user_name from m_user where  1=1 and user_pass= '" + pass_encryt + "' and user_cd ='" + txt_user.Text + "'";
+            //string username = con.sqlExecuteScalarString(sqllogin);
+            sqlite sqlite_ = new sqlite();
+            string sql = "select  User  from m_user where User =  '" + txt_user.Text + "' and Pass = '" + txt_pass.Text + "'";
+            string username =  sqlite_.ExecuteScalarString(sql);
+
             if (username.Length > 1)
             {
                 frmMain f = new frmMain();

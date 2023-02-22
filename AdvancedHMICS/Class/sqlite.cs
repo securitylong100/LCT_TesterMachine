@@ -36,6 +36,29 @@ namespace AdvancedHMICS.Class
             }
         }
 
+        public string ExecuteScalarString(string stringQuery)
+        {
+            string response;
+            SQLiteConnection conn = new SQLiteConnection(connectionname);
+            try
+            {
+               
+                conn.Open();
+                var cmd = new SQLiteCommand(stringQuery, conn);
+                cmd.CommandType = CommandType.Text;
+                response = Convert.ToString(cmd.ExecuteScalar());          
+                return response;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SQLite executeschalar method failed." + System.Environment.NewLine + ex.Message
+                                , "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                conn.Close();
+                return String.Empty;
+            }
+        }
+
         //public void InsertData( string staffId, string fullName, int age)
         //{
         //    SQLiteConnection conn = new SQLiteConnection(connectionname);
