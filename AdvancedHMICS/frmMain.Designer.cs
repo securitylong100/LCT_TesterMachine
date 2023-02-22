@@ -63,12 +63,12 @@ namespace AdvancedHMICS
             this.label45 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.analogValueDisplay11 = new AdvancedHMIControls.AnalogValueDisplay();
+            this.avd_machanicalP = new AdvancedHMIControls.AnalogValueDisplay();
             this.modbusRTUCom4 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
-            this.analogValueDisplay12 = new AdvancedHMIControls.AnalogValueDisplay();
+            this.avd_FWcurr = new AdvancedHMIControls.AnalogValueDisplay();
             this.avd_frequency = new AdvancedHMIControls.AnalogValueDisplay();
-            this.analogValueDisplay14 = new AdvancedHMIControls.AnalogValueDisplay();
-            this.analogValueDisplay15 = new AdvancedHMIControls.AnalogValueDisplay();
+            this.avd_rotspdwav = new AdvancedHMIControls.AnalogValueDisplay();
+            this.avd_rotspdmod = new AdvancedHMIControls.AnalogValueDisplay();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -80,8 +80,8 @@ namespace AdvancedHMICS
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.analogValueDisplay6 = new AdvancedHMIControls.AnalogValueDisplay();
-            this.analogValueDisplay7 = new AdvancedHMIControls.AnalogValueDisplay();
+            this.avd_torque = new AdvancedHMIControls.AnalogValueDisplay();
+            this.avd_DCpower = new AdvancedHMIControls.AnalogValueDisplay();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -89,9 +89,9 @@ namespace AdvancedHMICS
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_speedrpm = new System.Windows.Forms.Label();
             this.avd_voltage = new AdvancedHMIControls.AnalogValueDisplay();
-            this.analogValueDisplay3 = new AdvancedHMIControls.AnalogValueDisplay();
-            this.analogValueDisplay4 = new AdvancedHMIControls.AnalogValueDisplay();
-            this.analogValueDisplay2 = new AdvancedHMIControls.AnalogValueDisplay();
+            this.avd_FWVolt = new AdvancedHMIControls.AnalogValueDisplay();
+            this.avd_electricP = new AdvancedHMIControls.AnalogValueDisplay();
+            this.avd_current = new AdvancedHMIControls.AnalogValueDisplay();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -526,11 +526,11 @@ namespace AdvancedHMICS
             // 
             this.panel5.BackColor = System.Drawing.Color.Gray;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.analogValueDisplay11);
-            this.panel5.Controls.Add(this.analogValueDisplay12);
+            this.panel5.Controls.Add(this.avd_machanicalP);
+            this.panel5.Controls.Add(this.avd_FWcurr);
             this.panel5.Controls.Add(this.avd_frequency);
-            this.panel5.Controls.Add(this.analogValueDisplay14);
-            this.panel5.Controls.Add(this.analogValueDisplay15);
+            this.panel5.Controls.Add(this.avd_rotspdwav);
+            this.panel5.Controls.Add(this.avd_rotspdmod);
             this.panel5.Controls.Add(this.label27);
             this.panel5.Controls.Add(this.label28);
             this.panel5.Controls.Add(this.label29);
@@ -547,40 +547,40 @@ namespace AdvancedHMICS
             this.panel5.Size = new System.Drawing.Size(446, 224);
             this.panel5.TabIndex = 73;
             // 
-            // analogValueDisplay11
+            // avd_machanicalP
             // 
-            this.analogValueDisplay11.AutoSize = true;
-            this.analogValueDisplay11.ComComponent = this.modbusRTUCom4;
-            this.analogValueDisplay11.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.analogValueDisplay11.ForeColor = System.Drawing.Color.Yellow;
-            this.analogValueDisplay11.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.analogValueDisplay11.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.analogValueDisplay11.ForeColorUnderLimit = System.Drawing.Color.Yellow;
-            this.analogValueDisplay11.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
-            this.analogValueDisplay11.KeypadMaxValue = 0D;
-            this.analogValueDisplay11.KeypadMinValue = 0D;
-            this.analogValueDisplay11.KeypadPasscode = null;
-            this.analogValueDisplay11.KeypadScaleFactor = 1D;
-            this.analogValueDisplay11.KeypadText = null;
-            this.analogValueDisplay11.KeypadWidth = 300;
-            this.analogValueDisplay11.Location = new System.Drawing.Point(196, 177);
-            this.analogValueDisplay11.Name = "analogValueDisplay11";
-            this.analogValueDisplay11.NumericFormat = null;
-            this.analogValueDisplay11.PLCAddressKeypad = "";
-            this.analogValueDisplay11.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("analogValueDisplay11.PLCAddressValue")));
-            this.analogValueDisplay11.PLCAddressValueLimitLower = null;
-            this.analogValueDisplay11.PLCAddressValueLimitUpper = null;
-            this.analogValueDisplay11.PLCAddressVisible = null;
-            this.analogValueDisplay11.ShowValue = true;
-            this.analogValueDisplay11.Size = new System.Drawing.Size(95, 42);
-            this.analogValueDisplay11.TabIndex = 78;
-            this.analogValueDisplay11.Text = "0.00";
-            this.analogValueDisplay11.Value = "0.00";
-            this.analogValueDisplay11.ValueLimitLower = 2900D;
-            this.analogValueDisplay11.ValueLimitUpper = 3600D;
-            this.analogValueDisplay11.ValuePrefix = null;
-            this.analogValueDisplay11.ValueSuffix = null;
-            this.analogValueDisplay11.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_machanicalP.AutoSize = true;
+            this.avd_machanicalP.ComComponent = this.modbusRTUCom4;
+            this.avd_machanicalP.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avd_machanicalP.ForeColor = System.Drawing.Color.Yellow;
+            this.avd_machanicalP.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_machanicalP.ForeColorOverLimit = System.Drawing.Color.Red;
+            this.avd_machanicalP.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_machanicalP.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
+            this.avd_machanicalP.KeypadMaxValue = 0D;
+            this.avd_machanicalP.KeypadMinValue = 0D;
+            this.avd_machanicalP.KeypadPasscode = null;
+            this.avd_machanicalP.KeypadScaleFactor = 1D;
+            this.avd_machanicalP.KeypadText = null;
+            this.avd_machanicalP.KeypadWidth = 300;
+            this.avd_machanicalP.Location = new System.Drawing.Point(196, 177);
+            this.avd_machanicalP.Name = "avd_machanicalP";
+            this.avd_machanicalP.NumericFormat = null;
+            this.avd_machanicalP.PLCAddressKeypad = "";
+            this.avd_machanicalP.PLCAddressValue = null;
+            this.avd_machanicalP.PLCAddressValueLimitLower = null;
+            this.avd_machanicalP.PLCAddressValueLimitUpper = null;
+            this.avd_machanicalP.PLCAddressVisible = null;
+            this.avd_machanicalP.ShowValue = true;
+            this.avd_machanicalP.Size = new System.Drawing.Size(95, 42);
+            this.avd_machanicalP.TabIndex = 78;
+            this.avd_machanicalP.Text = "0.00";
+            this.avd_machanicalP.Value = "0.00";
+            this.avd_machanicalP.ValueLimitLower = 2900D;
+            this.avd_machanicalP.ValueLimitUpper = 3600D;
+            this.avd_machanicalP.ValuePrefix = null;
+            this.avd_machanicalP.ValueSuffix = null;
+            this.avd_machanicalP.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             // 
             // modbusRTUCom4
             // 
@@ -600,40 +600,41 @@ namespace AdvancedHMICS
             this.modbusRTUCom4.SwapWords = false;
             this.modbusRTUCom4.TimeOut = 1000;
             // 
-            // analogValueDisplay12
+            // avd_FWcurr
             // 
-            this.analogValueDisplay12.AutoSize = true;
-            this.analogValueDisplay12.ComComponent = this.modbusRTUCom4;
-            this.analogValueDisplay12.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.analogValueDisplay12.ForeColor = System.Drawing.Color.Yellow;
-            this.analogValueDisplay12.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.analogValueDisplay12.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.analogValueDisplay12.ForeColorUnderLimit = System.Drawing.Color.Yellow;
-            this.analogValueDisplay12.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
-            this.analogValueDisplay12.KeypadMaxValue = 0D;
-            this.analogValueDisplay12.KeypadMinValue = 0D;
-            this.analogValueDisplay12.KeypadPasscode = null;
-            this.analogValueDisplay12.KeypadScaleFactor = 1D;
-            this.analogValueDisplay12.KeypadText = null;
-            this.analogValueDisplay12.KeypadWidth = 300;
-            this.analogValueDisplay12.Location = new System.Drawing.Point(196, 135);
-            this.analogValueDisplay12.Name = "analogValueDisplay12";
-            this.analogValueDisplay12.NumericFormat = null;
-            this.analogValueDisplay12.PLCAddressKeypad = "";
-            this.analogValueDisplay12.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("analogValueDisplay12.PLCAddressValue")));
-            this.analogValueDisplay12.PLCAddressValueLimitLower = null;
-            this.analogValueDisplay12.PLCAddressValueLimitUpper = null;
-            this.analogValueDisplay12.PLCAddressVisible = null;
-            this.analogValueDisplay12.ShowValue = true;
-            this.analogValueDisplay12.Size = new System.Drawing.Size(95, 42);
-            this.analogValueDisplay12.TabIndex = 77;
-            this.analogValueDisplay12.Text = "0.00";
-            this.analogValueDisplay12.Value = "0.00";
-            this.analogValueDisplay12.ValueLimitLower = 2900D;
-            this.analogValueDisplay12.ValueLimitUpper = 3600D;
-            this.analogValueDisplay12.ValuePrefix = null;
-            this.analogValueDisplay12.ValueSuffix = null;
-            this.analogValueDisplay12.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_FWcurr.AutoSize = true;
+            this.avd_FWcurr.ComComponent = this.modbusRTUCom4;
+            this.avd_FWcurr.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avd_FWcurr.ForeColor = System.Drawing.Color.Yellow;
+            this.avd_FWcurr.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_FWcurr.ForeColorOverLimit = System.Drawing.Color.Red;
+            this.avd_FWcurr.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_FWcurr.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
+            this.avd_FWcurr.KeypadMaxValue = 0D;
+            this.avd_FWcurr.KeypadMinValue = 0D;
+            this.avd_FWcurr.KeypadPasscode = null;
+            this.avd_FWcurr.KeypadScaleFactor = 1D;
+            this.avd_FWcurr.KeypadText = null;
+            this.avd_FWcurr.KeypadWidth = 300;
+            this.avd_FWcurr.Location = new System.Drawing.Point(196, 135);
+            this.avd_FWcurr.Name = "avd_FWcurr";
+            this.avd_FWcurr.NumericFormat = null;
+            this.avd_FWcurr.PLCAddressKeypad = "";
+            this.avd_FWcurr.PLCAddressValue = null;
+            this.avd_FWcurr.PLCAddressValueLimitLower = null;
+            this.avd_FWcurr.PLCAddressValueLimitUpper = null;
+            this.avd_FWcurr.PLCAddressVisible = null;
+            this.avd_FWcurr.ShowValue = true;
+            this.avd_FWcurr.Size = new System.Drawing.Size(95, 42);
+            this.avd_FWcurr.TabIndex = 77;
+            this.avd_FWcurr.Text = "0.00";
+            this.avd_FWcurr.Value = "0.00";
+            this.avd_FWcurr.ValueLimitLower = 2900D;
+            this.avd_FWcurr.ValueLimitUpper = 3600D;
+            this.avd_FWcurr.ValuePrefix = null;
+            this.avd_FWcurr.ValueSuffix = null;
+            this.avd_FWcurr.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_FWcurr.ValueChanged += new System.EventHandler(this.avd_FWcurr_ValueChanged);
             // 
             // avd_frequency
             // 
@@ -671,75 +672,75 @@ namespace AdvancedHMICS
             this.avd_frequency.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             this.avd_frequency.ValueChanged += new System.EventHandler(this.avd_frequency_ValueChanged);
             // 
-            // analogValueDisplay14
+            // avd_rotspdwav
             // 
-            this.analogValueDisplay14.AutoSize = true;
-            this.analogValueDisplay14.ComComponent = this.modbusRTUCom4;
-            this.analogValueDisplay14.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.analogValueDisplay14.ForeColor = System.Drawing.Color.Yellow;
-            this.analogValueDisplay14.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.analogValueDisplay14.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.analogValueDisplay14.ForeColorUnderLimit = System.Drawing.Color.Yellow;
-            this.analogValueDisplay14.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
-            this.analogValueDisplay14.KeypadMaxValue = 0D;
-            this.analogValueDisplay14.KeypadMinValue = 0D;
-            this.analogValueDisplay14.KeypadPasscode = null;
-            this.analogValueDisplay14.KeypadScaleFactor = 1D;
-            this.analogValueDisplay14.KeypadText = null;
-            this.analogValueDisplay14.KeypadWidth = 300;
-            this.analogValueDisplay14.Location = new System.Drawing.Point(196, 47);
-            this.analogValueDisplay14.Name = "analogValueDisplay14";
-            this.analogValueDisplay14.NumericFormat = null;
-            this.analogValueDisplay14.PLCAddressKeypad = "";
-            this.analogValueDisplay14.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("analogValueDisplay14.PLCAddressValue")));
-            this.analogValueDisplay14.PLCAddressValueLimitLower = null;
-            this.analogValueDisplay14.PLCAddressValueLimitUpper = null;
-            this.analogValueDisplay14.PLCAddressVisible = null;
-            this.analogValueDisplay14.ShowValue = true;
-            this.analogValueDisplay14.Size = new System.Drawing.Size(95, 42);
-            this.analogValueDisplay14.TabIndex = 75;
-            this.analogValueDisplay14.Text = "0.00";
-            this.analogValueDisplay14.Value = "0.00";
-            this.analogValueDisplay14.ValueLimitLower = 2900D;
-            this.analogValueDisplay14.ValueLimitUpper = 3600D;
-            this.analogValueDisplay14.ValuePrefix = null;
-            this.analogValueDisplay14.ValueSuffix = null;
-            this.analogValueDisplay14.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_rotspdwav.AutoSize = true;
+            this.avd_rotspdwav.ComComponent = this.modbusRTUCom4;
+            this.avd_rotspdwav.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avd_rotspdwav.ForeColor = System.Drawing.Color.Yellow;
+            this.avd_rotspdwav.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_rotspdwav.ForeColorOverLimit = System.Drawing.Color.Red;
+            this.avd_rotspdwav.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_rotspdwav.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
+            this.avd_rotspdwav.KeypadMaxValue = 0D;
+            this.avd_rotspdwav.KeypadMinValue = 0D;
+            this.avd_rotspdwav.KeypadPasscode = null;
+            this.avd_rotspdwav.KeypadScaleFactor = 1D;
+            this.avd_rotspdwav.KeypadText = null;
+            this.avd_rotspdwav.KeypadWidth = 300;
+            this.avd_rotspdwav.Location = new System.Drawing.Point(196, 47);
+            this.avd_rotspdwav.Name = "avd_rotspdwav";
+            this.avd_rotspdwav.NumericFormat = null;
+            this.avd_rotspdwav.PLCAddressKeypad = "";
+            this.avd_rotspdwav.PLCAddressValue = null;
+            this.avd_rotspdwav.PLCAddressValueLimitLower = null;
+            this.avd_rotspdwav.PLCAddressValueLimitUpper = null;
+            this.avd_rotspdwav.PLCAddressVisible = null;
+            this.avd_rotspdwav.ShowValue = true;
+            this.avd_rotspdwav.Size = new System.Drawing.Size(95, 42);
+            this.avd_rotspdwav.TabIndex = 75;
+            this.avd_rotspdwav.Text = "0.00";
+            this.avd_rotspdwav.Value = "0.00";
+            this.avd_rotspdwav.ValueLimitLower = 2900D;
+            this.avd_rotspdwav.ValueLimitUpper = 3600D;
+            this.avd_rotspdwav.ValuePrefix = null;
+            this.avd_rotspdwav.ValueSuffix = null;
+            this.avd_rotspdwav.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             // 
-            // analogValueDisplay15
+            // avd_rotspdmod
             // 
-            this.analogValueDisplay15.AutoSize = true;
-            this.analogValueDisplay15.ComComponent = this.modbusRTUCom4;
-            this.analogValueDisplay15.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.analogValueDisplay15.ForeColor = System.Drawing.Color.Yellow;
-            this.analogValueDisplay15.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.analogValueDisplay15.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.analogValueDisplay15.ForeColorUnderLimit = System.Drawing.Color.Yellow;
-            this.analogValueDisplay15.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
-            this.analogValueDisplay15.KeypadMaxValue = 0D;
-            this.analogValueDisplay15.KeypadMinValue = 0D;
-            this.analogValueDisplay15.KeypadPasscode = null;
-            this.analogValueDisplay15.KeypadScaleFactor = 1D;
-            this.analogValueDisplay15.KeypadText = null;
-            this.analogValueDisplay15.KeypadWidth = 300;
-            this.analogValueDisplay15.Location = new System.Drawing.Point(196, 3);
-            this.analogValueDisplay15.Name = "analogValueDisplay15";
-            this.analogValueDisplay15.NumericFormat = null;
-            this.analogValueDisplay15.PLCAddressKeypad = "";
-            this.analogValueDisplay15.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("analogValueDisplay15.PLCAddressValue")));
-            this.analogValueDisplay15.PLCAddressValueLimitLower = null;
-            this.analogValueDisplay15.PLCAddressValueLimitUpper = null;
-            this.analogValueDisplay15.PLCAddressVisible = null;
-            this.analogValueDisplay15.ShowValue = true;
-            this.analogValueDisplay15.Size = new System.Drawing.Size(95, 42);
-            this.analogValueDisplay15.TabIndex = 74;
-            this.analogValueDisplay15.Text = "0.00";
-            this.analogValueDisplay15.Value = "0.00";
-            this.analogValueDisplay15.ValueLimitLower = 2900D;
-            this.analogValueDisplay15.ValueLimitUpper = 3600D;
-            this.analogValueDisplay15.ValuePrefix = null;
-            this.analogValueDisplay15.ValueSuffix = null;
-            this.analogValueDisplay15.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_rotspdmod.AutoSize = true;
+            this.avd_rotspdmod.ComComponent = this.modbusRTUCom4;
+            this.avd_rotspdmod.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avd_rotspdmod.ForeColor = System.Drawing.Color.Yellow;
+            this.avd_rotspdmod.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_rotspdmod.ForeColorOverLimit = System.Drawing.Color.Red;
+            this.avd_rotspdmod.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_rotspdmod.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
+            this.avd_rotspdmod.KeypadMaxValue = 0D;
+            this.avd_rotspdmod.KeypadMinValue = 0D;
+            this.avd_rotspdmod.KeypadPasscode = null;
+            this.avd_rotspdmod.KeypadScaleFactor = 1D;
+            this.avd_rotspdmod.KeypadText = null;
+            this.avd_rotspdmod.KeypadWidth = 300;
+            this.avd_rotspdmod.Location = new System.Drawing.Point(196, 3);
+            this.avd_rotspdmod.Name = "avd_rotspdmod";
+            this.avd_rotspdmod.NumericFormat = null;
+            this.avd_rotspdmod.PLCAddressKeypad = "";
+            this.avd_rotspdmod.PLCAddressValue = null;
+            this.avd_rotspdmod.PLCAddressValueLimitLower = null;
+            this.avd_rotspdmod.PLCAddressValueLimitUpper = null;
+            this.avd_rotspdmod.PLCAddressVisible = null;
+            this.avd_rotspdmod.ShowValue = true;
+            this.avd_rotspdmod.Size = new System.Drawing.Size(95, 42);
+            this.avd_rotspdmod.TabIndex = 74;
+            this.avd_rotspdmod.Text = "0.00";
+            this.avd_rotspdmod.Value = "0.00";
+            this.avd_rotspdmod.ValueLimitLower = 2900D;
+            this.avd_rotspdmod.ValueLimitUpper = 3600D;
+            this.avd_rotspdmod.ValuePrefix = null;
+            this.avd_rotspdmod.ValueSuffix = null;
+            this.avd_rotspdmod.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             // 
             // label27
             // 
@@ -794,6 +795,7 @@ namespace AdvancedHMICS
             // label32
             // 
             this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Red;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(8, 192);
             this.label32.Name = "label32";
@@ -804,6 +806,7 @@ namespace AdvancedHMICS
             // label33
             // 
             this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(8, 152);
             this.label33.Name = "label33";
@@ -814,6 +817,7 @@ namespace AdvancedHMICS
             // label34
             // 
             this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Red;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(8, 18);
             this.label34.Name = "label34";
@@ -835,6 +839,7 @@ namespace AdvancedHMICS
             // label36
             // 
             this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Red;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(8, 62);
             this.label36.Name = "label36";
@@ -846,8 +851,8 @@ namespace AdvancedHMICS
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.analogValueDisplay6);
-            this.panel4.Controls.Add(this.analogValueDisplay7);
+            this.panel4.Controls.Add(this.avd_torque);
+            this.panel4.Controls.Add(this.avd_DCpower);
             this.panel4.Controls.Add(this.label17);
             this.panel4.Controls.Add(this.label18);
             this.panel4.Controls.Add(this.label22);
@@ -858,75 +863,75 @@ namespace AdvancedHMICS
             this.panel4.Size = new System.Drawing.Size(394, 224);
             this.panel4.TabIndex = 72;
             // 
-            // analogValueDisplay6
+            // avd_torque
             // 
-            this.analogValueDisplay6.AutoSize = true;
-            this.analogValueDisplay6.ComComponent = this.modbusRTUCom4;
-            this.analogValueDisplay6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.analogValueDisplay6.ForeColor = System.Drawing.Color.Yellow;
-            this.analogValueDisplay6.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.analogValueDisplay6.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.analogValueDisplay6.ForeColorUnderLimit = System.Drawing.Color.Yellow;
-            this.analogValueDisplay6.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
-            this.analogValueDisplay6.KeypadMaxValue = 0D;
-            this.analogValueDisplay6.KeypadMinValue = 0D;
-            this.analogValueDisplay6.KeypadPasscode = null;
-            this.analogValueDisplay6.KeypadScaleFactor = 1D;
-            this.analogValueDisplay6.KeypadText = null;
-            this.analogValueDisplay6.KeypadWidth = 300;
-            this.analogValueDisplay6.Location = new System.Drawing.Point(174, 49);
-            this.analogValueDisplay6.Name = "analogValueDisplay6";
-            this.analogValueDisplay6.NumericFormat = null;
-            this.analogValueDisplay6.PLCAddressKeypad = "";
-            this.analogValueDisplay6.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("analogValueDisplay6.PLCAddressValue")));
-            this.analogValueDisplay6.PLCAddressValueLimitLower = null;
-            this.analogValueDisplay6.PLCAddressValueLimitUpper = null;
-            this.analogValueDisplay6.PLCAddressVisible = null;
-            this.analogValueDisplay6.ShowValue = true;
-            this.analogValueDisplay6.Size = new System.Drawing.Size(95, 42);
-            this.analogValueDisplay6.TabIndex = 78;
-            this.analogValueDisplay6.Text = "0.00";
-            this.analogValueDisplay6.Value = "0.00";
-            this.analogValueDisplay6.ValueLimitLower = 2900D;
-            this.analogValueDisplay6.ValueLimitUpper = 3600D;
-            this.analogValueDisplay6.ValuePrefix = null;
-            this.analogValueDisplay6.ValueSuffix = null;
-            this.analogValueDisplay6.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_torque.AutoSize = true;
+            this.avd_torque.ComComponent = this.modbusRTUCom4;
+            this.avd_torque.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avd_torque.ForeColor = System.Drawing.Color.Yellow;
+            this.avd_torque.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_torque.ForeColorOverLimit = System.Drawing.Color.Red;
+            this.avd_torque.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_torque.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
+            this.avd_torque.KeypadMaxValue = 0D;
+            this.avd_torque.KeypadMinValue = 0D;
+            this.avd_torque.KeypadPasscode = null;
+            this.avd_torque.KeypadScaleFactor = 1D;
+            this.avd_torque.KeypadText = null;
+            this.avd_torque.KeypadWidth = 300;
+            this.avd_torque.Location = new System.Drawing.Point(174, 49);
+            this.avd_torque.Name = "avd_torque";
+            this.avd_torque.NumericFormat = null;
+            this.avd_torque.PLCAddressKeypad = "";
+            this.avd_torque.PLCAddressValue = null;
+            this.avd_torque.PLCAddressValueLimitLower = null;
+            this.avd_torque.PLCAddressValueLimitUpper = null;
+            this.avd_torque.PLCAddressVisible = null;
+            this.avd_torque.ShowValue = true;
+            this.avd_torque.Size = new System.Drawing.Size(95, 42);
+            this.avd_torque.TabIndex = 78;
+            this.avd_torque.Text = "0.00";
+            this.avd_torque.Value = "0.00";
+            this.avd_torque.ValueLimitLower = 2900D;
+            this.avd_torque.ValueLimitUpper = 3600D;
+            this.avd_torque.ValuePrefix = null;
+            this.avd_torque.ValueSuffix = null;
+            this.avd_torque.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             // 
-            // analogValueDisplay7
+            // avd_DCpower
             // 
-            this.analogValueDisplay7.AutoSize = true;
-            this.analogValueDisplay7.ComComponent = this.modbusRTUCom4;
-            this.analogValueDisplay7.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.analogValueDisplay7.ForeColor = System.Drawing.Color.Yellow;
-            this.analogValueDisplay7.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.analogValueDisplay7.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.analogValueDisplay7.ForeColorUnderLimit = System.Drawing.Color.Yellow;
-            this.analogValueDisplay7.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
-            this.analogValueDisplay7.KeypadMaxValue = 0D;
-            this.analogValueDisplay7.KeypadMinValue = 0D;
-            this.analogValueDisplay7.KeypadPasscode = null;
-            this.analogValueDisplay7.KeypadScaleFactor = 1D;
-            this.analogValueDisplay7.KeypadText = null;
-            this.analogValueDisplay7.KeypadWidth = 300;
-            this.analogValueDisplay7.Location = new System.Drawing.Point(174, 1);
-            this.analogValueDisplay7.Name = "analogValueDisplay7";
-            this.analogValueDisplay7.NumericFormat = null;
-            this.analogValueDisplay7.PLCAddressKeypad = "";
-            this.analogValueDisplay7.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("analogValueDisplay7.PLCAddressValue")));
-            this.analogValueDisplay7.PLCAddressValueLimitLower = null;
-            this.analogValueDisplay7.PLCAddressValueLimitUpper = null;
-            this.analogValueDisplay7.PLCAddressVisible = null;
-            this.analogValueDisplay7.ShowValue = true;
-            this.analogValueDisplay7.Size = new System.Drawing.Size(40, 42);
-            this.analogValueDisplay7.TabIndex = 77;
-            this.analogValueDisplay7.Text = "0";
-            this.analogValueDisplay7.Value = "0";
-            this.analogValueDisplay7.ValueLimitLower = 2900D;
-            this.analogValueDisplay7.ValueLimitUpper = 3600D;
-            this.analogValueDisplay7.ValuePrefix = null;
-            this.analogValueDisplay7.ValueSuffix = null;
-            this.analogValueDisplay7.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_DCpower.AutoSize = true;
+            this.avd_DCpower.ComComponent = this.modbusRTUCom4;
+            this.avd_DCpower.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avd_DCpower.ForeColor = System.Drawing.Color.Yellow;
+            this.avd_DCpower.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_DCpower.ForeColorOverLimit = System.Drawing.Color.Red;
+            this.avd_DCpower.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_DCpower.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
+            this.avd_DCpower.KeypadMaxValue = 0D;
+            this.avd_DCpower.KeypadMinValue = 0D;
+            this.avd_DCpower.KeypadPasscode = null;
+            this.avd_DCpower.KeypadScaleFactor = 1D;
+            this.avd_DCpower.KeypadText = null;
+            this.avd_DCpower.KeypadWidth = 300;
+            this.avd_DCpower.Location = new System.Drawing.Point(174, 1);
+            this.avd_DCpower.Name = "avd_DCpower";
+            this.avd_DCpower.NumericFormat = null;
+            this.avd_DCpower.PLCAddressKeypad = "";
+            this.avd_DCpower.PLCAddressValue = null;
+            this.avd_DCpower.PLCAddressValueLimitLower = null;
+            this.avd_DCpower.PLCAddressValueLimitUpper = null;
+            this.avd_DCpower.PLCAddressVisible = null;
+            this.avd_DCpower.ShowValue = true;
+            this.avd_DCpower.Size = new System.Drawing.Size(40, 42);
+            this.avd_DCpower.TabIndex = 77;
+            this.avd_DCpower.Text = "0";
+            this.avd_DCpower.Value = "0";
+            this.avd_DCpower.ValueLimitLower = 2900D;
+            this.avd_DCpower.ValueLimitUpper = 3600D;
+            this.avd_DCpower.ValuePrefix = null;
+            this.avd_DCpower.ValueSuffix = null;
+            this.avd_DCpower.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             // 
             // label17
             // 
@@ -944,13 +949,14 @@ namespace AdvancedHMICS
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(335, 18);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(26, 25);
+            this.label18.Size = new System.Drawing.Size(32, 25);
             this.label18.TabIndex = 72;
-            this.label18.Text = "V";
+            this.label18.Text = "W";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(12, 64);
             this.label22.Name = "label22";
@@ -961,6 +967,7 @@ namespace AdvancedHMICS
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(12, 18);
             this.label23.Name = "label23";
@@ -974,9 +981,9 @@ namespace AdvancedHMICS
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.lbl_speedrpm);
             this.panel2.Controls.Add(this.avd_voltage);
-            this.panel2.Controls.Add(this.analogValueDisplay3);
-            this.panel2.Controls.Add(this.analogValueDisplay4);
-            this.panel2.Controls.Add(this.analogValueDisplay2);
+            this.panel2.Controls.Add(this.avd_FWVolt);
+            this.panel2.Controls.Add(this.avd_electricP);
+            this.panel2.Controls.Add(this.avd_current);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label14);
@@ -1002,6 +1009,7 @@ namespace AdvancedHMICS
             this.lbl_speedrpm.Size = new System.Drawing.Size(95, 42);
             this.lbl_speedrpm.TabIndex = 80;
             this.lbl_speedrpm.Text = "0.00";
+            this.lbl_speedrpm.TextChanged += new System.EventHandler(this.lbl_speedrpm_TextChanged);
             // 
             // avd_voltage
             // 
@@ -1038,110 +1046,111 @@ namespace AdvancedHMICS
             this.avd_voltage.ValueSuffix = null;
             this.avd_voltage.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             // 
-            // analogValueDisplay3
+            // avd_FWVolt
             // 
-            this.analogValueDisplay3.AutoSize = true;
-            this.analogValueDisplay3.ComComponent = this.modbusRTUCom4;
-            this.analogValueDisplay3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.analogValueDisplay3.ForeColor = System.Drawing.Color.Yellow;
-            this.analogValueDisplay3.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.analogValueDisplay3.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.analogValueDisplay3.ForeColorUnderLimit = System.Drawing.Color.Yellow;
-            this.analogValueDisplay3.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
-            this.analogValueDisplay3.KeypadMaxValue = 0D;
-            this.analogValueDisplay3.KeypadMinValue = 0D;
-            this.analogValueDisplay3.KeypadPasscode = null;
-            this.analogValueDisplay3.KeypadScaleFactor = 1D;
-            this.analogValueDisplay3.KeypadText = null;
-            this.analogValueDisplay3.KeypadWidth = 300;
-            this.analogValueDisplay3.Location = new System.Drawing.Point(160, 131);
-            this.analogValueDisplay3.Name = "analogValueDisplay3";
-            this.analogValueDisplay3.NumericFormat = null;
-            this.analogValueDisplay3.PLCAddressKeypad = "";
-            this.analogValueDisplay3.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("analogValueDisplay3.PLCAddressValue")));
-            this.analogValueDisplay3.PLCAddressValueLimitLower = null;
-            this.analogValueDisplay3.PLCAddressValueLimitUpper = null;
-            this.analogValueDisplay3.PLCAddressVisible = null;
-            this.analogValueDisplay3.ShowValue = true;
-            this.analogValueDisplay3.Size = new System.Drawing.Size(95, 42);
-            this.analogValueDisplay3.TabIndex = 77;
-            this.analogValueDisplay3.Text = "0.00";
-            this.analogValueDisplay3.Value = "0.00";
-            this.analogValueDisplay3.ValueLimitLower = 2900D;
-            this.analogValueDisplay3.ValueLimitUpper = 3600D;
-            this.analogValueDisplay3.ValuePrefix = null;
-            this.analogValueDisplay3.ValueSuffix = null;
-            this.analogValueDisplay3.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_FWVolt.AutoSize = true;
+            this.avd_FWVolt.ComComponent = this.modbusRTUCom4;
+            this.avd_FWVolt.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avd_FWVolt.ForeColor = System.Drawing.Color.Yellow;
+            this.avd_FWVolt.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_FWVolt.ForeColorOverLimit = System.Drawing.Color.Red;
+            this.avd_FWVolt.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_FWVolt.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
+            this.avd_FWVolt.KeypadMaxValue = 0D;
+            this.avd_FWVolt.KeypadMinValue = 0D;
+            this.avd_FWVolt.KeypadPasscode = null;
+            this.avd_FWVolt.KeypadScaleFactor = 1D;
+            this.avd_FWVolt.KeypadText = null;
+            this.avd_FWVolt.KeypadWidth = 300;
+            this.avd_FWVolt.Location = new System.Drawing.Point(160, 131);
+            this.avd_FWVolt.Name = "avd_FWVolt";
+            this.avd_FWVolt.NumericFormat = null;
+            this.avd_FWVolt.PLCAddressKeypad = "";
+            this.avd_FWVolt.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("avd_FWVolt.PLCAddressValue")));
+            this.avd_FWVolt.PLCAddressValueLimitLower = null;
+            this.avd_FWVolt.PLCAddressValueLimitUpper = null;
+            this.avd_FWVolt.PLCAddressVisible = null;
+            this.avd_FWVolt.ShowValue = true;
+            this.avd_FWVolt.Size = new System.Drawing.Size(95, 42);
+            this.avd_FWVolt.TabIndex = 77;
+            this.avd_FWVolt.Text = "0.00";
+            this.avd_FWVolt.Value = "0.00";
+            this.avd_FWVolt.ValueLimitLower = 2900D;
+            this.avd_FWVolt.ValueLimitUpper = 3600D;
+            this.avd_FWVolt.ValuePrefix = null;
+            this.avd_FWVolt.ValueSuffix = null;
+            this.avd_FWVolt.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_FWVolt.ValueChanged += new System.EventHandler(this.avd_FWVolt_ValueChanged);
             // 
-            // analogValueDisplay4
+            // avd_electricP
             // 
-            this.analogValueDisplay4.AutoSize = true;
-            this.analogValueDisplay4.ComComponent = this.modbusRTUCom4;
-            this.analogValueDisplay4.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.analogValueDisplay4.ForeColor = System.Drawing.Color.Yellow;
-            this.analogValueDisplay4.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.analogValueDisplay4.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.analogValueDisplay4.ForeColorUnderLimit = System.Drawing.Color.Yellow;
-            this.analogValueDisplay4.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
-            this.analogValueDisplay4.KeypadMaxValue = 0D;
-            this.analogValueDisplay4.KeypadMinValue = 0D;
-            this.analogValueDisplay4.KeypadPasscode = null;
-            this.analogValueDisplay4.KeypadScaleFactor = 1D;
-            this.analogValueDisplay4.KeypadText = null;
-            this.analogValueDisplay4.KeypadWidth = 300;
-            this.analogValueDisplay4.Location = new System.Drawing.Point(160, 88);
-            this.analogValueDisplay4.Name = "analogValueDisplay4";
-            this.analogValueDisplay4.NumericFormat = null;
-            this.analogValueDisplay4.PLCAddressKeypad = "";
-            this.analogValueDisplay4.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("analogValueDisplay4.PLCAddressValue")));
-            this.analogValueDisplay4.PLCAddressValueLimitLower = null;
-            this.analogValueDisplay4.PLCAddressValueLimitUpper = null;
-            this.analogValueDisplay4.PLCAddressVisible = null;
-            this.analogValueDisplay4.ShowValue = true;
-            this.analogValueDisplay4.Size = new System.Drawing.Size(95, 42);
-            this.analogValueDisplay4.TabIndex = 76;
-            this.analogValueDisplay4.Text = "0.00";
-            this.analogValueDisplay4.Value = "0.00";
-            this.analogValueDisplay4.ValueLimitLower = 2900D;
-            this.analogValueDisplay4.ValueLimitUpper = 3600D;
-            this.analogValueDisplay4.ValuePrefix = null;
-            this.analogValueDisplay4.ValueSuffix = null;
-            this.analogValueDisplay4.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_electricP.AutoSize = true;
+            this.avd_electricP.ComComponent = this.modbusRTUCom4;
+            this.avd_electricP.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avd_electricP.ForeColor = System.Drawing.Color.Yellow;
+            this.avd_electricP.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_electricP.ForeColorOverLimit = System.Drawing.Color.Red;
+            this.avd_electricP.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_electricP.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
+            this.avd_electricP.KeypadMaxValue = 0D;
+            this.avd_electricP.KeypadMinValue = 0D;
+            this.avd_electricP.KeypadPasscode = null;
+            this.avd_electricP.KeypadScaleFactor = 1D;
+            this.avd_electricP.KeypadText = null;
+            this.avd_electricP.KeypadWidth = 300;
+            this.avd_electricP.Location = new System.Drawing.Point(160, 88);
+            this.avd_electricP.Name = "avd_electricP";
+            this.avd_electricP.NumericFormat = null;
+            this.avd_electricP.PLCAddressKeypad = "";
+            this.avd_electricP.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("avd_electricP.PLCAddressValue")));
+            this.avd_electricP.PLCAddressValueLimitLower = null;
+            this.avd_electricP.PLCAddressValueLimitUpper = null;
+            this.avd_electricP.PLCAddressVisible = null;
+            this.avd_electricP.ShowValue = true;
+            this.avd_electricP.Size = new System.Drawing.Size(95, 42);
+            this.avd_electricP.TabIndex = 76;
+            this.avd_electricP.Text = "0.00";
+            this.avd_electricP.Value = "0.00";
+            this.avd_electricP.ValueLimitLower = 2900D;
+            this.avd_electricP.ValueLimitUpper = 3600D;
+            this.avd_electricP.ValuePrefix = null;
+            this.avd_electricP.ValueSuffix = null;
+            this.avd_electricP.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             // 
-            // analogValueDisplay2
+            // avd_current
             // 
-            this.analogValueDisplay2.AutoSize = true;
-            this.analogValueDisplay2.ComComponent = this.modbusRTUCom4;
-            this.analogValueDisplay2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.analogValueDisplay2.ForeColor = System.Drawing.Color.Yellow;
-            this.analogValueDisplay2.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.analogValueDisplay2.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.analogValueDisplay2.ForeColorUnderLimit = System.Drawing.Color.Yellow;
-            this.analogValueDisplay2.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
-            this.analogValueDisplay2.KeypadMaxValue = 0D;
-            this.analogValueDisplay2.KeypadMinValue = 0D;
-            this.analogValueDisplay2.KeypadPasscode = null;
-            this.analogValueDisplay2.KeypadScaleFactor = 1D;
-            this.analogValueDisplay2.KeypadText = null;
-            this.analogValueDisplay2.KeypadWidth = 300;
-            this.analogValueDisplay2.Location = new System.Drawing.Point(160, 45);
-            this.analogValueDisplay2.Name = "analogValueDisplay2";
-            this.analogValueDisplay2.NumericFormat = null;
-            this.analogValueDisplay2.PLCAddressKeypad = "";
-            this.analogValueDisplay2.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("analogValueDisplay2.PLCAddressValue")));
-            this.analogValueDisplay2.PLCAddressValueLimitLower = null;
-            this.analogValueDisplay2.PLCAddressValueLimitUpper = null;
-            this.analogValueDisplay2.PLCAddressVisible = null;
-            this.analogValueDisplay2.ShowValue = true;
-            this.analogValueDisplay2.Size = new System.Drawing.Size(95, 42);
-            this.analogValueDisplay2.TabIndex = 75;
-            this.analogValueDisplay2.Text = "0.00";
-            this.analogValueDisplay2.Value = "0.00";
-            this.analogValueDisplay2.ValueLimitLower = 2900D;
-            this.analogValueDisplay2.ValueLimitUpper = 3600D;
-            this.analogValueDisplay2.ValuePrefix = null;
-            this.analogValueDisplay2.ValueSuffix = null;
-            this.analogValueDisplay2.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_current.AutoSize = true;
+            this.avd_current.ComComponent = this.modbusRTUCom4;
+            this.avd_current.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avd_current.ForeColor = System.Drawing.Color.Yellow;
+            this.avd_current.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_current.ForeColorOverLimit = System.Drawing.Color.Red;
+            this.avd_current.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_current.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
+            this.avd_current.KeypadMaxValue = 0D;
+            this.avd_current.KeypadMinValue = 0D;
+            this.avd_current.KeypadPasscode = null;
+            this.avd_current.KeypadScaleFactor = 1D;
+            this.avd_current.KeypadText = null;
+            this.avd_current.KeypadWidth = 300;
+            this.avd_current.Location = new System.Drawing.Point(160, 45);
+            this.avd_current.Name = "avd_current";
+            this.avd_current.NumericFormat = null;
+            this.avd_current.PLCAddressKeypad = "";
+            this.avd_current.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("avd_current.PLCAddressValue")));
+            this.avd_current.PLCAddressValueLimitLower = null;
+            this.avd_current.PLCAddressValueLimitUpper = null;
+            this.avd_current.PLCAddressVisible = null;
+            this.avd_current.ShowValue = true;
+            this.avd_current.Size = new System.Drawing.Size(95, 42);
+            this.avd_current.TabIndex = 75;
+            this.avd_current.Text = "0.00";
+            this.avd_current.Value = "0.00";
+            this.avd_current.ValueLimitLower = 2900D;
+            this.avd_current.ValueLimitUpper = 3600D;
+            this.avd_current.ValuePrefix = null;
+            this.avd_current.ValueSuffix = null;
+            this.avd_current.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             // 
             // label12
             // 
@@ -1196,7 +1205,7 @@ namespace AdvancedHMICS
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(8, 188);
             this.label6.Name = "label6";
@@ -1207,6 +1216,7 @@ namespace AdvancedHMICS
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Yellow;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(8, 148);
             this.label5.Name = "label5";
@@ -1229,6 +1239,7 @@ namespace AdvancedHMICS
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Yellow;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(8, 103);
             this.label4.Name = "label4";
@@ -1701,11 +1712,11 @@ namespace AdvancedHMICS
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel5;
-        private AdvancedHMIControls.AnalogValueDisplay analogValueDisplay11;
-        private AdvancedHMIControls.AnalogValueDisplay analogValueDisplay12;
+        private AdvancedHMIControls.AnalogValueDisplay avd_machanicalP;
+        private AdvancedHMIControls.AnalogValueDisplay avd_FWcurr;
         private AdvancedHMIControls.AnalogValueDisplay avd_frequency;
-        private AdvancedHMIControls.AnalogValueDisplay analogValueDisplay14;
-        private AdvancedHMIControls.AnalogValueDisplay analogValueDisplay15;
+        private AdvancedHMIControls.AnalogValueDisplay avd_rotspdwav;
+        private AdvancedHMIControls.AnalogValueDisplay avd_rotspdmod;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
@@ -1717,16 +1728,16 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Panel panel4;
-        private AdvancedHMIControls.AnalogValueDisplay analogValueDisplay6;
-        private AdvancedHMIControls.AnalogValueDisplay analogValueDisplay7;
+        private AdvancedHMIControls.AnalogValueDisplay avd_torque;
+        private AdvancedHMIControls.AnalogValueDisplay avd_DCpower;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Panel panel2;
-        private AdvancedHMIControls.AnalogValueDisplay analogValueDisplay3;
-        private AdvancedHMIControls.AnalogValueDisplay analogValueDisplay4;
-        private AdvancedHMIControls.AnalogValueDisplay analogValueDisplay2;
+        private AdvancedHMIControls.AnalogValueDisplay avd_FWVolt;
+        private AdvancedHMIControls.AnalogValueDisplay avd_electricP;
+        private AdvancedHMIControls.AnalogValueDisplay avd_current;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
