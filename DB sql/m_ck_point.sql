@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS m_ck_point
 (
+ID int IDENTITY(1,1) NOT NULL,
 ck_serial int  DEFAULT 1,
 ck_Max_Noloadlimitspeed  int DEFAULT 3600,
 ck_Min_Noloadlimitspeed int DEFAULT 2900,

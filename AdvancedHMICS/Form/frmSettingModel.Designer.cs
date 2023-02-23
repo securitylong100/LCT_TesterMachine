@@ -32,6 +32,7 @@ namespace AdvancedHMICS
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettingModel));
             this.gc_main = new DevExpress.XtraGrid.GridControl();
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -103,6 +104,8 @@ namespace AdvancedHMICS
             this.label3 = new System.Windows.Forms.Label();
             this.txt_newmodel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_loaddata = new System.Windows.Forms.Button();
+            this.btn_deletemodel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -124,6 +127,7 @@ namespace AdvancedHMICS
             // gv_main
             // 
             this.gv_main.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn24,
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
@@ -150,13 +154,21 @@ namespace AdvancedHMICS
             this.gv_main.GridControl = this.gc_main;
             this.gv_main.Name = "gv_main";
             // 
+            // gridColumn24
+            // 
+            this.gridColumn24.Caption = "ID";
+            this.gridColumn24.FieldName = "ID";
+            this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.Visible = true;
+            this.gridColumn24.VisibleIndex = 0;
+            // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Steps";
             this.gridColumn1.FieldName = "ck_serial";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.gridColumn1.VisibleIndex = 1;
             // 
             // gridColumn2
             // 
@@ -164,7 +176,7 @@ namespace AdvancedHMICS
             this.gridColumn2.FieldName = "ck_Max_Noloadlimitspeed";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.VisibleIndex = 2;
             // 
             // gridColumn3
             // 
@@ -172,7 +184,7 @@ namespace AdvancedHMICS
             this.gridColumn3.FieldName = "ck_Min_Noloadlimitspeed";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.VisibleIndex = 3;
             // 
             // gridColumn4
             // 
@@ -180,7 +192,7 @@ namespace AdvancedHMICS
             this.gridColumn4.FieldName = "ck_Steppower";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 4;
             // 
             // gridColumn5
             // 
@@ -188,7 +200,7 @@ namespace AdvancedHMICS
             this.gridColumn5.FieldName = "ck_power";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.VisibleIndex = 5;
             // 
             // gridColumn6
             // 
@@ -196,7 +208,7 @@ namespace AdvancedHMICS
             this.gridColumn6.FieldName = "ck_Steppercentage";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
+            this.gridColumn6.VisibleIndex = 6;
             // 
             // gridColumn7
             // 
@@ -204,7 +216,7 @@ namespace AdvancedHMICS
             this.gridColumn7.FieldName = "ck_Max_Generator";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
+            this.gridColumn7.VisibleIndex = 7;
             // 
             // gridColumn8
             // 
@@ -212,7 +224,7 @@ namespace AdvancedHMICS
             this.gridColumn8.FieldName = "ck_Min_Generator";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.VisibleIndex = 8;
             // 
             // gridColumn9
             // 
@@ -220,7 +232,7 @@ namespace AdvancedHMICS
             this.gridColumn9.FieldName = "ck_Max_VolGenerator";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
+            this.gridColumn9.VisibleIndex = 9;
             // 
             // gridColumn10
             // 
@@ -228,7 +240,7 @@ namespace AdvancedHMICS
             this.gridColumn10.FieldName = "ck_Min_VolGenerator";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 9;
+            this.gridColumn10.VisibleIndex = 10;
             // 
             // gridColumn11
             // 
@@ -236,7 +248,7 @@ namespace AdvancedHMICS
             this.gridColumn11.FieldName = "ck_Max_frequency";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 10;
+            this.gridColumn11.VisibleIndex = 11;
             // 
             // gridColumn12
             // 
@@ -244,7 +256,7 @@ namespace AdvancedHMICS
             this.gridColumn12.FieldName = "ck_Min_frequency";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 11;
+            this.gridColumn12.VisibleIndex = 12;
             // 
             // gridColumn13
             // 
@@ -252,7 +264,7 @@ namespace AdvancedHMICS
             this.gridColumn13.FieldName = "ck_Max_braketime";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 12;
+            this.gridColumn13.VisibleIndex = 13;
             // 
             // gridColumn14
             // 
@@ -260,7 +272,7 @@ namespace AdvancedHMICS
             this.gridColumn14.FieldName = "ck_Min_braketime";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 13;
+            this.gridColumn14.VisibleIndex = 14;
             // 
             // gridColumn15
             // 
@@ -268,7 +280,7 @@ namespace AdvancedHMICS
             this.gridColumn15.FieldName = "ck_Max_regulationspeed";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
-            this.gridColumn15.VisibleIndex = 14;
+            this.gridColumn15.VisibleIndex = 15;
             // 
             // gridColumn16
             // 
@@ -276,7 +288,7 @@ namespace AdvancedHMICS
             this.gridColumn16.FieldName = "ck_Min_regulationSpeed";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
-            this.gridColumn16.VisibleIndex = 15;
+            this.gridColumn16.VisibleIndex = 16;
             // 
             // gridColumn17
             // 
@@ -284,7 +296,7 @@ namespace AdvancedHMICS
             this.gridColumn17.FieldName = "ck_Max_fluctuationspeed";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 16;
+            this.gridColumn17.VisibleIndex = 17;
             // 
             // gridColumn18
             // 
@@ -292,7 +304,7 @@ namespace AdvancedHMICS
             this.gridColumn18.FieldName = "ck_Min_fluctuationspeed";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 17;
+            this.gridColumn18.VisibleIndex = 18;
             // 
             // gridColumn19
             // 
@@ -300,7 +312,7 @@ namespace AdvancedHMICS
             this.gridColumn19.FieldName = "ck_LoadTime";
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 18;
+            this.gridColumn19.VisibleIndex = 19;
             // 
             // gridColumn20
             // 
@@ -308,7 +320,7 @@ namespace AdvancedHMICS
             this.gridColumn20.FieldName = "ck_speed";
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 19;
+            this.gridColumn20.VisibleIndex = 20;
             // 
             // gridColumn21
             // 
@@ -316,7 +328,7 @@ namespace AdvancedHMICS
             this.gridColumn21.FieldName = "ck_cycles";
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 20;
+            this.gridColumn21.VisibleIndex = 21;
             // 
             // gridColumn22
             // 
@@ -324,7 +336,7 @@ namespace AdvancedHMICS
             this.gridColumn22.FieldName = "ck_model";
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 21;
+            this.gridColumn22.VisibleIndex = 22;
             // 
             // gridColumn23
             // 
@@ -332,7 +344,7 @@ namespace AdvancedHMICS
             this.gridColumn23.FieldName = "ck_testbrakes";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 22;
+            this.gridColumn23.VisibleIndex = 23;
             // 
             // tableLayoutPanel1
             // 
@@ -351,6 +363,8 @@ namespace AdvancedHMICS
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_deletemodel);
+            this.panel1.Controls.Add(this.btn_loaddata);
             this.panel1.Controls.Add(this.nud_numberofstep);
             this.panel1.Controls.Add(this.btn_export);
             this.panel1.Controls.Add(this.btn_clear);
@@ -422,7 +436,7 @@ namespace AdvancedHMICS
             // 
             // btn_export
             // 
-            this.btn_export.Location = new System.Drawing.Point(451, 212);
+            this.btn_export.Location = new System.Drawing.Point(788, 207);
             this.btn_export.Name = "btn_export";
             this.btn_export.Size = new System.Drawing.Size(107, 34);
             this.btn_export.TabIndex = 48;
@@ -432,7 +446,7 @@ namespace AdvancedHMICS
             // 
             // btn_clear
             // 
-            this.btn_clear.Location = new System.Drawing.Point(307, 212);
+            this.btn_clear.Location = new System.Drawing.Point(644, 207);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(107, 34);
             this.btn_clear.TabIndex = 47;
@@ -442,17 +456,17 @@ namespace AdvancedHMICS
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(163, 212);
+            this.btn_save.Location = new System.Drawing.Point(322, 207);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(107, 34);
+            this.btn_save.Size = new System.Drawing.Size(132, 34);
             this.btn_save.TabIndex = 46;
-            this.btn_save.Text = "Save";
+            this.btn_save.Text = "Update Edit";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // btn_createnewmodel
             // 
-            this.btn_createnewmodel.Location = new System.Drawing.Point(23, 212);
+            this.btn_createnewmodel.Location = new System.Drawing.Point(172, 207);
             this.btn_createnewmodel.Name = "btn_createnewmodel";
             this.btn_createnewmodel.Size = new System.Drawing.Size(107, 34);
             this.btn_createnewmodel.TabIndex = 45;
@@ -828,6 +842,26 @@ namespace AdvancedHMICS
             this.label2.TabIndex = 3;
             this.label2.Text = "New Model:";
             // 
+            // btn_loaddata
+            // 
+            this.btn_loaddata.Location = new System.Drawing.Point(23, 207);
+            this.btn_loaddata.Name = "btn_loaddata";
+            this.btn_loaddata.Size = new System.Drawing.Size(107, 34);
+            this.btn_loaddata.TabIndex = 50;
+            this.btn_loaddata.Text = "Load Data";
+            this.btn_loaddata.UseVisualStyleBackColor = true;
+            this.btn_loaddata.Click += new System.EventHandler(this.btn_loaddata_Click);
+            // 
+            // btn_deletemodel
+            // 
+            this.btn_deletemodel.Location = new System.Drawing.Point(496, 207);
+            this.btn_deletemodel.Name = "btn_deletemodel";
+            this.btn_deletemodel.Size = new System.Drawing.Size(107, 34);
+            this.btn_deletemodel.TabIndex = 51;
+            this.btn_deletemodel.Text = "Delete Model";
+            this.btn_deletemodel.UseVisualStyleBackColor = true;
+            this.btn_deletemodel.Click += new System.EventHandler(this.btn_deletemodel_Click);
+            // 
             // frmSettingModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -837,6 +871,7 @@ namespace AdvancedHMICS
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSettingModel";
             this.Text = "frmSettingModel";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSettingModel_FormClosing);
             this.Load += new System.EventHandler(this.frmSettingModel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).EndInit();
@@ -922,5 +957,8 @@ namespace AdvancedHMICS
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private System.Windows.Forms.Button btn_loaddata;
+        private System.Windows.Forms.Button btn_deletemodel;
     }
 }

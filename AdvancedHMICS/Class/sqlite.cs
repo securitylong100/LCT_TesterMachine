@@ -85,11 +85,6 @@ namespace AdvancedHMICS.Class
 
         public void exeNonQuery(string stringQuery)
         {
-            //stringQuery = "CREATE TABLE IF NOT EXISTS Staffs(" +
-            //       "StaffId VARCHAR(20) PRIMARY KEY," +
-            //       "FullName VARCHAR(50)," +
-            //       "Age INT DEFAULT 0" +
-            //       ")";
             SQLiteConnection conn = new SQLiteConnection(connectionname);
             try
             {
@@ -97,6 +92,26 @@ namespace AdvancedHMICS.Class
                 var cmd = new SQLiteCommand(stringQuery, conn);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Query Successful", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public void exeNonQuery_auto(string stringQuery)
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectionname);
+            try
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(stringQuery, conn);
+                cmd.ExecuteNonQuery();
+               // MessageBox.Show("Query Successful", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)

@@ -326,7 +326,7 @@ namespace AdvancedHMICS
             // 
             // btn_modelSetting
             // 
-            this.btn_modelSetting.BackColor = System.Drawing.Color.Yellow;
+            this.btn_modelSetting.BackColor = System.Drawing.Color.Green;
             this.btn_modelSetting.Location = new System.Drawing.Point(230, 41);
             this.btn_modelSetting.Name = "btn_modelSetting";
             this.btn_modelSetting.Size = new System.Drawing.Size(97, 25);

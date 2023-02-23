@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AdvancedHMICS.Class;
+using DevExpress.XtraEditors.Repository;
 
 namespace AdvancedHMICS
 {
@@ -16,6 +18,7 @@ namespace AdvancedHMICS
         public frmSettingModel()
         {
             InitializeComponent();
+            AcceptButton = btn_loaddata;
         }
         DataTable dt;
         private void frmSettingModel_Load(object sender, EventArgs e)
@@ -28,31 +31,62 @@ namespace AdvancedHMICS
         {
             StringBuilder sql = new StringBuilder();
             sql.Append("select * from m_ck_point where 1=1 ");
-            if(txt_newmodel.Text =="")
+            if(txt_newmodel.Text !="")
             {
                 sql.Append(" and ck_model ='" + txt_newmodel.Text + "'");
             }    
             sqlite sqlite = new sqlite();
             sqlite.SelectData(sql.ToString(), ref dt);
             gc_main.DataSource = dt;
+            GetComboxIntoGrid(cbm_testbarkes, "ck_testbrakes");
 
         }
-
+        private void btn_loaddata_Click(object sender, EventArgs e)
+        {
+            LoadData(txt_newmodel.Text);
+        }
         private void btn_clear_Click(object sender, EventArgs e)
         {
+            txt_newmodel.Text = "";
+        }
+        private void btn_deletemodel_Click(object sender, EventArgs e)
+        {
+            dt.AcceptChanges();
+            if (dt.Rows.Count == 0) return;
+            if (txt_newmodel.Text == "") return;
+            sqlite sqlite_ = new sqlite();
+            string sqldelte = "delete from m_ck_point where ck_model ='"+txt_newmodel.Text+"'";
+            sqlite_.exeNonQuery_auto(sqldelte);
+            MessageBox.Show("Model: "+txt_newmodel.Text+" deleted", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadData(txt_newmodel.Text);
 
         }
-
         private void btn_save_Click(object sender, EventArgs e)
         {
-
+             savedb();
         }
         private void btn_export_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string path = "output.xlsx";
+                gc_main.ExportToXlsx(path);
+                Process.Start(path);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
         }
         private void btn_createnewmodel_Click(object sender, EventArgs e)
         {
+            //gv_main.RefreshData();
+            //gc_main.RefreshDataSource();
+            //gc_main.DataSource = null;
+            //gv_main.Columns.Clear();
+            //dt = new DataTable();
+            // LoadData(txt_newmodel.Text);
+            LoadData(txt_newmodel.Text);
             try
             {
                 double maxvalues = int.Parse(txt_ratedpower.Text);
@@ -96,12 +130,96 @@ namespace AdvancedHMICS
                         cal_steppercentage = cal_steppercentage + steppercentage;
                     }
                     gc_main.DataSource = dt;
+                    savedb();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
+            LoadData(txt_newmodel.Text);
+        }
+        void savedb()
+        {
+            dt.AcceptChanges();
+            if (dt.Rows.Count == 0) return;
+            sqlite sqlite_ = new sqlite();
+            int id_current =int.Parse( sqlite_.ExecuteScalarString("select ifnull(max(id),0) as ID_current  from m_ck_point"));
+            foreach (DataRow rowdt in dt.Rows)
+            {
+                if (rowdt["ID"].ToString() == "")
+                {
+                    id_current = id_current+1;
+                    StringBuilder sqlinsert = new StringBuilder();
+                    sqlinsert.Append(@"INSERT INTO m_ck_point
+                                    (ID, ck_serial, ck_Max_Noloadlimitspeed,ck_Min_Noloadlimitspeed,ck_Steppower,ck_power,ck_Steppercentage,ck_Max_Generator,ck_Min_Generator,
+                                    ck_Max_VolGenerator ,ck_Min_VolGenerator ,ck_Max_frequency ,ck_Min_frequency ,
+                                    ck_Max_braketime ,ck_Min_braketime, ck_Max_regulationspeed, ck_Min_regulationSpeed ,
+                                    ck_Max_fluctuationspeed ,ck_Min_fluctuationspeed ,ck_LoadTime ,ck_speed ,ck_cycles,ck_model,ck_testbrakes )
+                                    VALUES("
+                                    );
+                    sqlinsert.Append("'" + id_current+ "',");
+                    sqlinsert.Append("'" + rowdt["ck_serial"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Max_Noloadlimitspeed"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Min_Noloadlimitspeed"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Steppower"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_power"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Steppercentage"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Max_Generator"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Min_Generator"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Max_VolGenerator"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Min_VolGenerator"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Max_frequency"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Min_frequency"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Max_braketime"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Min_braketime"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Max_regulationspeed"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Min_regulationSpeed"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Max_fluctuationspeed"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_Min_fluctuationspeed"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_LoadTime"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_speed"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_cycles"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_model"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_testbrakes"].ToString() + "'");
+                    sqlinsert.Append(")");
+                    sqlite_.exeNonQuery_auto(sqlinsert.ToString());
+
+                }
+                else
+                {
+                    StringBuilder sqlupdate = new StringBuilder();
+                    sqlupdate.Append(@"UPDATE m_ck_point set ");
+                    sqlupdate.Append("ck_serial = '" + rowdt["ck_serial"].ToString() + "',");
+                    sqlupdate.Append("ck_Max_Noloadlimitspeed = '" + rowdt["ck_Max_Noloadlimitspeed"].ToString() + "',");
+                    sqlupdate.Append("ck_Min_Noloadlimitspeed = '" + rowdt["ck_Min_Noloadlimitspeed"].ToString() + "',");
+                    sqlupdate.Append("ck_Steppower = '" + rowdt["ck_Steppower"].ToString() + "',");
+                    sqlupdate.Append("ck_power = '" + rowdt["ck_power"].ToString() + "',");
+                    sqlupdate.Append("ck_Steppercentage = '" + rowdt["ck_Steppercentage"].ToString() + "',");
+                    sqlupdate.Append("ck_Max_Generator = '" + rowdt["ck_Max_Generator"].ToString() + "',");
+                    sqlupdate.Append("ck_Min_Generator = '" + rowdt["ck_Min_Generator"].ToString() + "',");
+                    sqlupdate.Append("ck_Max_VolGenerator = '" + rowdt["ck_Max_VolGenerator"].ToString() + "',");
+                    sqlupdate.Append("ck_Min_VolGenerator = '" + rowdt["ck_Min_VolGenerator"].ToString() + "',");
+                    sqlupdate.Append("ck_Max_frequency = '" + rowdt["ck_Max_frequency"].ToString() + "',");
+                    sqlupdate.Append("ck_Min_frequency = '" + rowdt["ck_Min_frequency"].ToString() + "',");
+                    sqlupdate.Append("ck_Max_braketime = '" + rowdt["ck_Max_braketime"].ToString() + "',");
+                    sqlupdate.Append("ck_Min_braketime = '" + rowdt["ck_Min_braketime"].ToString() + "',");
+                    sqlupdate.Append("ck_Max_regulationspeed = '" + rowdt["ck_Max_regulationspeed"].ToString() + "',");
+                    sqlupdate.Append("ck_Min_regulationSpeed = '" + rowdt["ck_Min_regulationSpeed"].ToString() + "',");
+                    sqlupdate.Append("ck_Max_fluctuationspeed = '" + rowdt["ck_Max_fluctuationspeed"].ToString() + "',");
+                    sqlupdate.Append("ck_Min_fluctuationspeed = '" + rowdt["ck_Min_fluctuationspeed"].ToString() + "',");
+                    sqlupdate.Append("ck_LoadTime = '" + rowdt["ck_LoadTime"].ToString() + "',");
+
+                    sqlupdate.Append("ck_speed = '" + rowdt["ck_speed"].ToString() + "',");
+                    sqlupdate.Append("ck_cycles = '" + rowdt["ck_cycles"].ToString() + "',");
+                    sqlupdate.Append("ck_model = '" + rowdt["ck_model"].ToString() + "',");
+                    sqlupdate.Append("ck_testbrakes = '" + rowdt["ck_testbrakes"].ToString() + "'");
+                    sqlupdate.Append(" where 1=1 and ID = " + rowdt["ID"].ToString() + "");
+                    sqlite_.exeNonQuery_auto(sqlupdate.ToString());
+                }
+            }
+            MessageBox.Show("Action Successful", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LoadData(txt_newmodel.Text);
         }
         bool checkcondition()
         {
@@ -144,16 +262,30 @@ namespace AdvancedHMICS
         bool checkmodelDB()
         {
             sqlite sqlite_ = new sqlite();
-            string sql = "select  ck_model  from m_ck_point where ck_model =  '" + txt_newmodel.Text + "'";
-            string model_ = sqlite_.ExecuteScalarString(sql);
-            if(model_.Length >0)
+            string sql = "select  count(*)  from m_ck_point where ck_model =  '" + txt_newmodel.Text + "'";
+            int model_ = int.Parse(sqlite_.ExecuteScalarString(sql));
+            if(model_ >0)
             {
                 MessageBox.Show("Model " + txt_newmodel.Text + " Đã có trên hệ thống, hãy thực hiện chỉnh sữa, đừng thêm mới", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 LoadData(txt_newmodel.Text);
                 return false;   
-            }    
-         
+            }         
             return true;
+        }
+        void GetComboxIntoGrid(System.Windows.Forms.ComboBox cbm, string colHeader)
+        {
+            try
+            {
+                var arr = cbm.Items.Cast<Object>().Select(item => item.ToString()).ToArray();
+                RepositoryItemComboBox riComboBox = new RepositoryItemComboBox();
+                riComboBox.Items.AddRange(arr);
+                gc_main.RepositoryItems.Add(riComboBox);
+                gv_main.Columns[colHeader].ColumnEdit = riComboBox;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
         }
         void keypress(object sender, KeyPressEventArgs e)
         {
@@ -226,5 +358,13 @@ namespace AdvancedHMICS
             keypress(sender, e);
         }
         #endregion
+
+        private void frmSettingModel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            int f = 0;
+            //call save function
+        }
+
+       
     }
 }
