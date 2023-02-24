@@ -12,7 +12,30 @@ namespace AdvancedHMICS.Class
     public class sqlite
     {
         static string connectionname = "Data Source=Data.db";
-
+        public void getComboBoxData(string stringQuery, ref System.Windows.Forms.ComboBox cmb)
+        {
+            SQLiteConnection conn = new SQLiteConnection(connectionname);          
+            DataSet ds = new DataSet();
+            try
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand(stringQuery, conn);
+                cmd.CommandType = CommandType.Text;
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                da.Fill(ds);
+                cmb.Items.Clear();
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    cmb.Items.Add(row[0].ToString());
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                conn.Close();
+            }
+        }
         public void SelectData(string stringQuery, ref DataTable dt)
         {
             SQLiteConnection conn = new SQLiteConnection(connectionname);
