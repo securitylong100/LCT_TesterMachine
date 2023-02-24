@@ -46,7 +46,7 @@ namespace AdvancedHMICS
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+           
         }
         private void btn_modelSetting_Click(object sender, EventArgs e)
         {

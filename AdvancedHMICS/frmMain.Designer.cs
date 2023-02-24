@@ -366,12 +366,13 @@ namespace AdvancedHMICS
             // 
             // button16
             // 
+            this.button16.BackColor = System.Drawing.Color.Yellow;
             this.button16.Location = new System.Drawing.Point(230, 101);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(97, 25);
             this.button16.TabIndex = 9;
             this.button16.Text = "Cap Status";
-            this.button16.UseVisualStyleBackColor = true;
+            this.button16.UseVisualStyleBackColor = false;
             // 
             // btn_DBSetting
             // 
@@ -385,12 +386,13 @@ namespace AdvancedHMICS
             // 
             // button14
             // 
+            this.button14.BackColor = System.Drawing.Color.Yellow;
             this.button14.Location = new System.Drawing.Point(116, 102);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(97, 25);
             this.button14.TabIndex = 7;
             this.button14.Text = "Com Status";
-            this.button14.UseVisualStyleBackColor = true;
+            this.button14.UseVisualStyleBackColor = false;
             // 
             // btn_user
             // 
@@ -422,12 +424,13 @@ namespace AdvancedHMICS
             // 
             // button10
             // 
+            this.button10.BackColor = System.Drawing.Color.Yellow;
             this.button10.Location = new System.Drawing.Point(3, 102);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(97, 25);
             this.button10.TabIndex = 3;
             this.button10.Text = "PLC Status";
-            this.button10.UseVisualStyleBackColor = true;
+            this.button10.UseVisualStyleBackColor = false;
             // 
             // button9
             // 
