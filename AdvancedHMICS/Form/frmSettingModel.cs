@@ -266,7 +266,7 @@ namespace AdvancedHMICS
             int model_ = int.Parse(sqlite_.ExecuteScalarString(sql));
             if(model_ >0)
             {
-                MessageBox.Show("Model " + txt_newmodel.Text + " Đã có trên hệ thống, hãy thực hiện chỉnh sữa, đừng thêm mới", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Model " + txt_newmodel.Text + " Đã có trên hệ thống, hãy thực hiện chỉnh sửa, đừng thêm mới", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 LoadData(txt_newmodel.Text);
                 return false;   
             }         

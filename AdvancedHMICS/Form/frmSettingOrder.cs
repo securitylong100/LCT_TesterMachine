@@ -164,14 +164,14 @@ namespace AdvancedHMICS
             }
             return true;
         }
-        bool c()
+        bool checkmodelDB()
         {
             sqlite sqlite_ = new sqlite();
             string sql = "select  count(*)  from m_orderid where orderid =  '" + txt_orderid.Text + "'";
             int orderid_ = int.Parse(sqlite_.ExecuteScalarString(sql));
             if (orderid_> 0)
             {
-                MessageBox.Show("Order ID  " + txt_orderid.Text + " Đã có trên hệ thống, hãy thực hiện chỉnh sữa, đừng thêm mới", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Order ID  " + txt_orderid.Text + " Đã có trên hệ thống, hãy thực hiện chỉnh sửa, đừng thêm mới", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 LoadData();
                 return false;
             }
