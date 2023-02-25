@@ -110,7 +110,7 @@ namespace AdvancedHMICS
         {
             try
             {
-                string path = "output.xlsx";
+                string path = "m_orderid.xlsx";
                 gc_main.ExportToXlsx(path);
                 Process.Start(path);
             }

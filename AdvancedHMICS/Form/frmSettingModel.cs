@@ -69,7 +69,7 @@ namespace AdvancedHMICS
         {
             try
             {
-                string path = "output.xlsx";
+                string path = "m_ck_point.xlsx";
                 gc_main.ExportToXlsx(path);
                 Process.Start(path);
             }

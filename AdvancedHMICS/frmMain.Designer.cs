@@ -306,7 +306,7 @@ namespace AdvancedHMICS
             // 
             // btn_settingorder
             // 
-            this.btn_settingorder.BackColor = System.Drawing.Color.Yellow;
+            this.btn_settingorder.BackColor = System.Drawing.Color.Green;
             this.btn_settingorder.Location = new System.Drawing.Point(341, 41);
             this.btn_settingorder.Name = "btn_settingorder";
             this.btn_settingorder.Size = new System.Drawing.Size(97, 25);
