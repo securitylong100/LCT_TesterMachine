@@ -51,14 +51,14 @@ namespace AdvancedHMICS
             this.btn_user = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btn_plcstatus = new System.Windows.Forms.Button();
+            this.btn_start = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_barcode = new System.Windows.Forms.TextBox();
+            this.txt_Model = new System.Windows.Forms.TextBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
@@ -133,9 +133,9 @@ namespace AdvancedHMICS
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btn_0 = new System.Windows.Forms.Button();
+            this.gc_main = new DevExpress.XtraGrid.GridControl();
+            this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).BeginInit();
@@ -157,8 +157,8 @@ namespace AdvancedHMICS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
             this.SuspendLayout();
             // 
             // modbusRTUCom1
@@ -267,7 +267,7 @@ namespace AdvancedHMICS
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel6, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.gridControl1, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.gc_main, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -294,8 +294,8 @@ namespace AdvancedHMICS
             this.panel7.Controls.Add(this.btn_user);
             this.panel7.Controls.Add(this.button12);
             this.panel7.Controls.Add(this.button11);
-            this.panel7.Controls.Add(this.button10);
-            this.panel7.Controls.Add(this.button9);
+            this.panel7.Controls.Add(this.btn_plcstatus);
+            this.panel7.Controls.Add(this.btn_start);
             this.panel7.Controls.Add(this.button8);
             this.panel7.Controls.Add(this.button7);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -422,24 +422,27 @@ namespace AdvancedHMICS
             this.button11.Text = "Delete";
             this.button11.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btn_plcstatus
             // 
-            this.button10.BackColor = System.Drawing.Color.Yellow;
-            this.button10.Location = new System.Drawing.Point(3, 102);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(97, 25);
-            this.button10.TabIndex = 3;
-            this.button10.Text = "PLC Status";
-            this.button10.UseVisualStyleBackColor = false;
+            this.btn_plcstatus.BackColor = System.Drawing.Color.Yellow;
+            this.btn_plcstatus.Enabled = false;
+            this.btn_plcstatus.Location = new System.Drawing.Point(3, 102);
+            this.btn_plcstatus.Name = "btn_plcstatus";
+            this.btn_plcstatus.Size = new System.Drawing.Size(97, 25);
+            this.btn_plcstatus.TabIndex = 3;
+            this.btn_plcstatus.Text = "PLC Status";
+            this.btn_plcstatus.UseVisualStyleBackColor = false;
+            this.btn_plcstatus.Click += new System.EventHandler(this.btn_plcstatus_Click);
             // 
-            // button9
+            // btn_start
             // 
-            this.button9.Location = new System.Drawing.Point(3, 73);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(97, 25);
-            this.button9.TabIndex = 2;
-            this.button9.Text = "Start/Run";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btn_start.Location = new System.Drawing.Point(3, 73);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(97, 25);
+            this.btn_start.TabIndex = 2;
+            this.btn_start.Text = "Start/Run";
+            this.btn_start.UseVisualStyleBackColor = true;
+            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
             // 
             // button8
             // 
@@ -463,8 +466,8 @@ namespace AdvancedHMICS
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.textBox3);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.txt_barcode);
+            this.panel3.Controls.Add(this.txt_Model);
             this.panel3.Controls.Add(this.label46);
             this.panel3.Controls.Add(this.label45);
             this.panel3.Controls.Add(this.label63);
@@ -481,19 +484,19 @@ namespace AdvancedHMICS
             this.textBox3.Size = new System.Drawing.Size(211, 20);
             this.textBox3.TabIndex = 66;
             // 
-            // textBox2
+            // txt_barcode
             // 
-            this.textBox2.Location = new System.Drawing.Point(147, 47);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(211, 20);
-            this.textBox2.TabIndex = 65;
+            this.txt_barcode.Location = new System.Drawing.Point(147, 47);
+            this.txt_barcode.Name = "txt_barcode";
+            this.txt_barcode.Size = new System.Drawing.Size(211, 20);
+            this.txt_barcode.TabIndex = 65;
             // 
-            // textBox1
+            // txt_Model
             // 
-            this.textBox1.Location = new System.Drawing.Point(147, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(211, 20);
-            this.textBox1.TabIndex = 64;
+            this.txt_Model.Location = new System.Drawing.Point(147, 15);
+            this.txt_Model.Name = "txt_Model";
+            this.txt_Model.Size = new System.Drawing.Size(211, 20);
+            this.txt_Model.TabIndex = 64;
             // 
             // label46
             // 
@@ -1052,7 +1055,7 @@ namespace AdvancedHMICS
             // avd_FWVolt
             // 
             this.avd_FWVolt.AutoSize = true;
-            this.avd_FWVolt.ComComponent = this.modbusRTUCom4;
+            this.avd_FWVolt.ComComponent = null;
             this.avd_FWVolt.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_FWVolt.ForeColor = System.Drawing.Color.Yellow;
             this.avd_FWVolt.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1069,7 +1072,7 @@ namespace AdvancedHMICS
             this.avd_FWVolt.Name = "avd_FWVolt";
             this.avd_FWVolt.NumericFormat = null;
             this.avd_FWVolt.PLCAddressKeypad = "";
-            this.avd_FWVolt.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("avd_FWVolt.PLCAddressValue")));
+            this.avd_FWVolt.PLCAddressValue = null;
             this.avd_FWVolt.PLCAddressValueLimitLower = null;
             this.avd_FWVolt.PLCAddressValueLimitUpper = null;
             this.avd_FWVolt.PLCAddressVisible = null;
@@ -1088,7 +1091,7 @@ namespace AdvancedHMICS
             // avd_electricP
             // 
             this.avd_electricP.AutoSize = true;
-            this.avd_electricP.ComComponent = this.modbusRTUCom4;
+            this.avd_electricP.ComComponent = null;
             this.avd_electricP.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_electricP.ForeColor = System.Drawing.Color.Yellow;
             this.avd_electricP.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1105,7 +1108,7 @@ namespace AdvancedHMICS
             this.avd_electricP.Name = "avd_electricP";
             this.avd_electricP.NumericFormat = null;
             this.avd_electricP.PLCAddressKeypad = "";
-            this.avd_electricP.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("avd_electricP.PLCAddressValue")));
+            this.avd_electricP.PLCAddressValue = null;
             this.avd_electricP.PLCAddressValueLimitLower = null;
             this.avd_electricP.PLCAddressValueLimitUpper = null;
             this.avd_electricP.PLCAddressVisible = null;
@@ -1505,7 +1508,7 @@ namespace AdvancedHMICS
             this.tableLayoutPanel3.Controls.Add(this.pictureBox3, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.button2, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_0, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 457);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -1621,33 +1624,34 @@ namespace AdvancedHMICS
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // button1
+            // btn_0
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(6, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 42);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "0%";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_0.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_0.Location = new System.Drawing.Point(6, 6);
+            this.btn_0.Name = "btn_0";
+            this.btn_0.Size = new System.Drawing.Size(108, 42);
+            this.btn_0.TabIndex = 1;
+            this.btn_0.Text = "0%";
+            this.btn_0.UseVisualStyleBackColor = true;
+            this.btn_0.Click += new System.EventHandler(this.btn_0_Click);
             // 
-            // gridControl1
+            // gc_main
             // 
-            this.tableLayoutPanel2.SetColumnSpan(this.gridControl1, 3);
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(3, 233);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1297, 218);
-            this.gridControl1.TabIndex = 80;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.tableLayoutPanel2.SetColumnSpan(this.gc_main, 3);
+            this.gc_main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gc_main.Location = new System.Drawing.Point(3, 233);
+            this.gc_main.MainView = this.gv_main;
+            this.gc_main.Name = "gc_main";
+            this.gc_main.Size = new System.Drawing.Size(1297, 218);
+            this.gc_main.TabIndex = 80;
+            this.gc_main.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gv_main});
             // 
-            // gridView1
+            // gv_main
             // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
+            this.gv_main.GridControl = this.gc_main;
+            this.gv_main.Name = "gv_main";
             // 
             // label1
             // 
@@ -1671,6 +1675,7 @@ namespace AdvancedHMICS
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";
             this.Text = "Tester Machine v1.0.0";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).EndInit();
@@ -1698,8 +1703,8 @@ namespace AdvancedHMICS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_main)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1764,7 +1769,7 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_0;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label37;
@@ -1785,8 +1790,8 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_barcode;
+        private System.Windows.Forms.TextBox txt_Model;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label63;
@@ -1799,8 +1804,8 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Button btn_user;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btn_plcstatus;
+        private System.Windows.Forms.Button btn_start;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btn_settingorder;
@@ -1809,7 +1814,7 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Button button22;
         private AdvancedHMIControls.AnalogValueDisplay avd_voltage;
         private System.Windows.Forms.Label lbl_speedrpm;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gc_main;
+        private DevExpress.XtraGrid.Views.Grid.GridView gv_main;
     }
 }
