@@ -38,7 +38,7 @@ namespace AdvancedHMICS
                 //insert into gridcontroll
                 Class.DataFuction data_ = new Class.DataFuction();
                 string nvalue = "";// data_.ToBinary(output_[0]);
-                for (int n = 0; n < 7; n++)
+                for (int n = 0; n < 8; n++)
                 {
                     nvalue = data_.ToBinary(output_[n]);
                     DataRow row = dt.NewRow();

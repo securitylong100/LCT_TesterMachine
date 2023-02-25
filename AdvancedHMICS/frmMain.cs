@@ -114,29 +114,24 @@ namespace AdvancedHMICS
         {
 
         }
-
         private void btn_user_Click(object sender, EventArgs e)
         {
 
         }
-
         private void btn_querysqlite_Click(object sender, EventArgs e)
         {
             frmQuerySQLite f = new frmQuerySQLite();
             f.ShowDialog();
         }
-
         private void btn_settingorder_Click(object sender, EventArgs e)
         {
             frmSettingOrder f = new frmSettingOrder();
             f.ShowDialog();
         }
-
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             plc.Close();
         }
-
         private void btn_0_Click(object sender, EventArgs e)
         {
 

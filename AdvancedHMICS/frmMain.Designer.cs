@@ -424,7 +424,7 @@ namespace AdvancedHMICS
             // 
             // btn_plcstatus
             // 
-            this.btn_plcstatus.BackColor = System.Drawing.Color.Yellow;
+            this.btn_plcstatus.BackColor = System.Drawing.Color.Green;
             this.btn_plcstatus.Enabled = false;
             this.btn_plcstatus.Location = new System.Drawing.Point(3, 102);
             this.btn_plcstatus.Name = "btn_plcstatus";
@@ -1055,7 +1055,7 @@ namespace AdvancedHMICS
             // avd_FWVolt
             // 
             this.avd_FWVolt.AutoSize = true;
-            this.avd_FWVolt.ComComponent = null;
+            this.avd_FWVolt.ComComponent = this.modbusRTUCom1;
             this.avd_FWVolt.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_FWVolt.ForeColor = System.Drawing.Color.Yellow;
             this.avd_FWVolt.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1091,7 +1091,7 @@ namespace AdvancedHMICS
             // avd_electricP
             // 
             this.avd_electricP.AutoSize = true;
-            this.avd_electricP.ComComponent = null;
+            this.avd_electricP.ComComponent = this.modbusRTUCom1;
             this.avd_electricP.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_electricP.ForeColor = System.Drawing.Color.Yellow;
             this.avd_electricP.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
