@@ -233,7 +233,7 @@ namespace AdvancedHMICS
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSettingOrder";
-            this.Text = "ifmSettingOrder";
+            this.Text = "Setting Order Form";
             this.Load += new System.EventHandler(this.frmSettingOrder_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

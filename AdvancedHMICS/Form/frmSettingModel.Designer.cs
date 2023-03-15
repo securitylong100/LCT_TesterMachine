@@ -58,6 +58,8 @@ namespace AdvancedHMICS
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_deletemodel = new System.Windows.Forms.Button();
+            this.btn_loaddata = new System.Windows.Forms.Button();
             this.nud_numberofstep = new System.Windows.Forms.NumericUpDown();
             this.btn_export = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
@@ -104,8 +106,6 @@ namespace AdvancedHMICS
             this.label3 = new System.Windows.Forms.Label();
             this.txt_newmodel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_loaddata = new System.Windows.Forms.Button();
-            this.btn_deletemodel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -416,6 +416,26 @@ namespace AdvancedHMICS
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1122, 254);
             this.panel1.TabIndex = 3;
+            // 
+            // btn_deletemodel
+            // 
+            this.btn_deletemodel.Location = new System.Drawing.Point(496, 207);
+            this.btn_deletemodel.Name = "btn_deletemodel";
+            this.btn_deletemodel.Size = new System.Drawing.Size(107, 34);
+            this.btn_deletemodel.TabIndex = 51;
+            this.btn_deletemodel.Text = "Delete Model";
+            this.btn_deletemodel.UseVisualStyleBackColor = true;
+            this.btn_deletemodel.Click += new System.EventHandler(this.btn_deletemodel_Click);
+            // 
+            // btn_loaddata
+            // 
+            this.btn_loaddata.Location = new System.Drawing.Point(23, 207);
+            this.btn_loaddata.Name = "btn_loaddata";
+            this.btn_loaddata.Size = new System.Drawing.Size(107, 34);
+            this.btn_loaddata.TabIndex = 50;
+            this.btn_loaddata.Text = "Load Data";
+            this.btn_loaddata.UseVisualStyleBackColor = true;
+            this.btn_loaddata.Click += new System.EventHandler(this.btn_loaddata_Click);
             // 
             // nud_numberofstep
             // 
@@ -842,26 +862,6 @@ namespace AdvancedHMICS
             this.label2.TabIndex = 3;
             this.label2.Text = "New Model:";
             // 
-            // btn_loaddata
-            // 
-            this.btn_loaddata.Location = new System.Drawing.Point(23, 207);
-            this.btn_loaddata.Name = "btn_loaddata";
-            this.btn_loaddata.Size = new System.Drawing.Size(107, 34);
-            this.btn_loaddata.TabIndex = 50;
-            this.btn_loaddata.Text = "Load Data";
-            this.btn_loaddata.UseVisualStyleBackColor = true;
-            this.btn_loaddata.Click += new System.EventHandler(this.btn_loaddata_Click);
-            // 
-            // btn_deletemodel
-            // 
-            this.btn_deletemodel.Location = new System.Drawing.Point(496, 207);
-            this.btn_deletemodel.Name = "btn_deletemodel";
-            this.btn_deletemodel.Size = new System.Drawing.Size(107, 34);
-            this.btn_deletemodel.TabIndex = 51;
-            this.btn_deletemodel.Text = "Delete Model";
-            this.btn_deletemodel.UseVisualStyleBackColor = true;
-            this.btn_deletemodel.Click += new System.EventHandler(this.btn_deletemodel_Click);
-            // 
             // frmSettingModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -870,7 +870,7 @@ namespace AdvancedHMICS
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSettingModel";
-            this.Text = "frmSettingModel";
+            this.Text = "Setting Model Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSettingModel_FormClosing);
             this.Load += new System.EventHandler(this.frmSettingModel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).EndInit();

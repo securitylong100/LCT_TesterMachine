@@ -120,14 +120,20 @@
   <metadata name="modbusRTUCom1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="modbusRTUCom1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="modbusRTUCom2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>168, 17</value>
+  </metadata>
   <metadata name="modbusRTUCom2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>168, 17</value>
   </metadata>
   <assembly alias="MfgControl.AdvancedHMI.Drivers" name="MfgControl.AdvancedHMI.Drivers, Version=3.99.19.2, Culture=neutral, PublicKeyToken=null" />
-  <data name="keyboardInput1.PLCAddressWriteValue" type="MfgControl.AdvancedHMI.Drivers.PLCAddressItem, MfgControl.AdvancedHMI.Drivers">
-    <value>44001</value>
-  </data>
   <data name="analogValueDisplay1.PLCAddressValue" type="MfgControl.AdvancedHMI.Drivers.PLCAddressItem, MfgControl.AdvancedHMI.Drivers">
     <value>00001</value>
+  </data>
+  <data name="keyboardInput1.PLCAddressWriteValue" type="MfgControl.AdvancedHMI.Drivers.PLCAddressItem, MfgControl.AdvancedHMI.Drivers">
+    <value>44001</value>
   </data>
 </root>

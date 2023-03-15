@@ -50,6 +50,13 @@ namespace AdvancedHMICS
             catch
             { }
         }
+        private void avd_current_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            { avd_electricP.Value = Math.Round(float.Parse(avd_FWVolt.Value) * float.Parse(avd_current.Value)/1000, 2).ToString(); }
+            catch
+            { }
+        }
         private void avd_FWcurr_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -116,7 +123,8 @@ namespace AdvancedHMICS
         }
         private void btn_user_Click(object sender, EventArgs e)
         {
-
+            frmUser fd = new frmUser();
+            fd.ShowDialog();
         }
         private void btn_querysqlite_Click(object sender, EventArgs e)
         {
@@ -137,19 +145,21 @@ namespace AdvancedHMICS
 
         }
         private void btn_plcstatus_Click(object sender, EventArgs e)
-        {      
-            int[] D_input = { 0, 1, 2, 3, 4, 5, 6, 7 };
-            int[] D_output = new int[8];
-            foreach(int i in D_input)
-            {
-                {
-                    plc.GetDevice("D" + i, out D_output[i]);
-                }                 
-            }         
-            frmPLCValueRealtime frmplc = new frmPLCValueRealtime(D_output);
+        {
+            //int[] D_input = { 0, 1, 2, 3, 4, 5, 6, 7 };
+            // int[] D_output = new int[8];
+            //foreach(int i in D_input)
+            //{
+            //    {
+            //        plc.GetDevice("D" + i, out D_output[i]);
+            //    }                 
+            //}         
+            frmPLCValueRealtime frmplc = new frmPLCValueRealtime();
             frmplc.ShowDialog();
-          
+
         }
-       
+        private void btn_loadStatus_Click(object sender, EventArgs e)
+        {         
+        }
     }
 }

@@ -29,6 +29,8 @@ namespace AdvancedHMICS
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPLCValueRealtime));
             this.gc_main = new DevExpress.XtraGrid.GridControl();
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,8 +50,8 @@ namespace AdvancedHMICS
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btn_reload = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -58,10 +60,11 @@ namespace AdvancedHMICS
             // gc_main
             // 
             this.gc_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gc_main.Location = new System.Drawing.Point(3, 43);
+            this.gc_main.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gc_main.Location = new System.Drawing.Point(3, 13);
             this.gc_main.MainView = this.gv_main;
             this.gc_main.Name = "gc_main";
-            this.gc_main.Size = new System.Drawing.Size(794, 404);
+            this.gc_main.Size = new System.Drawing.Size(794, 434);
             this.gc_main.TabIndex = 0;
             this.gc_main.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_main});
@@ -88,10 +91,13 @@ namespace AdvancedHMICS
             this.gridColumn16});
             this.gv_main.GridControl = this.gc_main;
             this.gv_main.Name = "gv_main";
+            this.gv_main.RowHeight = 32;
+            this.gv_main.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gv_main_CustomDrawCell);
+            this.gv_main.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gv_main_RowCellStyle);
             // 
             // gridColumn17
             // 
-            this.gridColumn17.Caption = "Adress ";
+            this.gridColumn17.Caption = "Address ";
             this.gridColumn17.FieldName = "address_";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
@@ -225,31 +231,23 @@ namespace AdvancedHMICS
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 16;
             // 
-            // btn_reload
-            // 
-            this.btn_reload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_reload.Location = new System.Drawing.Point(3, 3);
-            this.btn_reload.Name = "btn_reload";
-            this.btn_reload.Size = new System.Drawing.Size(794, 34);
-            this.btn_reload.TabIndex = 1;
-            this.btn_reload.Text = "Reload";
-            this.btn_reload.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.gc_main, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.btn_reload, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 450);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // frmPLCValueRealtime
             // 
@@ -257,8 +255,10 @@ namespace AdvancedHMICS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPLCValueRealtime";
-            this.Text = "PLCValueRealtimeForm";
+            this.Text = "PLC Value Realtime Form";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPLCValueRealtime_FormClosed);
             this.Load += new System.EventHandler(this.frmPLCValueRealtime_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).EndInit();
@@ -288,7 +288,7 @@ namespace AdvancedHMICS
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
-        private System.Windows.Forms.Button btn_reload;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

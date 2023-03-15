@@ -30,6 +30,7 @@ namespace AdvancedHMICS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.modbusRTUCom1 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.modbusRTUCom2 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
@@ -40,21 +41,21 @@ namespace AdvancedHMICS
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btn_settingorder = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
+            this.btn_export = new System.Windows.Forms.Button();
             this.btn_modelSetting = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.btn_querysqlite = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
+            this.btn_manualload = new System.Windows.Forms.Button();
+            this.btn_loadStatus = new System.Windows.Forms.Button();
             this.btn_DBSetting = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.btn_user = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btn_auto_manual = new System.Windows.Forms.Button();
+            this.btn_deleterow = new System.Windows.Forms.Button();
             this.btn_plcstatus = new System.Windows.Forms.Button();
             this.btn_start = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btn_data = new System.Windows.Forms.Button();
+            this.btn_record = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.txt_barcode = new System.Windows.Forms.TextBox();
@@ -64,7 +65,6 @@ namespace AdvancedHMICS
             this.label63 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.avd_machanicalP = new AdvancedHMIControls.AnalogValueDisplay();
-            this.modbusRTUCom4 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.avd_FWcurr = new AdvancedHMIControls.AnalogValueDisplay();
             this.avd_frequency = new AdvancedHMIControls.AnalogValueDisplay();
             this.avd_rotspdwav = new AdvancedHMIControls.AnalogValueDisplay();
@@ -103,40 +103,41 @@ namespace AdvancedHMICS
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.label44 = new System.Windows.Forms.Label();
+            this.lbl_status_automanual = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.lbl_pidStop = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
+            this.lbl_steadyT = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
+            this.lbl_pcStep = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.lbl_actualP = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lbl_targetP = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbl_rated_P = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_90 = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btn_100 = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_75 = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_50 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_25 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btn_0 = new System.Windows.Forms.Button();
             this.gc_main = new DevExpress.XtraGrid.GridControl();
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label1 = new System.Windows.Forms.Label();
+            modbusRTUCom4 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom3)).BeginInit();
@@ -147,7 +148,7 @@ namespace AdvancedHMICS
             this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(modbusRTUCom4)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -283,21 +284,21 @@ namespace AdvancedHMICS
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel7.Controls.Add(this.btn_settingorder);
-            this.panel7.Controls.Add(this.button20);
+            this.panel7.Controls.Add(this.btn_export);
             this.panel7.Controls.Add(this.btn_modelSetting);
-            this.panel7.Controls.Add(this.button22);
+            this.panel7.Controls.Add(this.btn_clear);
             this.panel7.Controls.Add(this.btn_querysqlite);
-            this.panel7.Controls.Add(this.button18);
-            this.panel7.Controls.Add(this.button16);
+            this.panel7.Controls.Add(this.btn_manualload);
+            this.panel7.Controls.Add(this.btn_loadStatus);
             this.panel7.Controls.Add(this.btn_DBSetting);
             this.panel7.Controls.Add(this.button14);
             this.panel7.Controls.Add(this.btn_user);
-            this.panel7.Controls.Add(this.button12);
-            this.panel7.Controls.Add(this.button11);
+            this.panel7.Controls.Add(this.btn_auto_manual);
+            this.panel7.Controls.Add(this.btn_deleterow);
             this.panel7.Controls.Add(this.btn_plcstatus);
             this.panel7.Controls.Add(this.btn_start);
-            this.panel7.Controls.Add(this.button8);
-            this.panel7.Controls.Add(this.button7);
+            this.panel7.Controls.Add(this.btn_data);
+            this.panel7.Controls.Add(this.btn_record);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(854, 517);
             this.panel7.Name = "panel7";
@@ -315,14 +316,14 @@ namespace AdvancedHMICS
             this.btn_settingorder.UseVisualStyleBackColor = false;
             this.btn_settingorder.Click += new System.EventHandler(this.btn_settingorder_Click);
             // 
-            // button20
+            // btn_export
             // 
-            this.button20.Location = new System.Drawing.Point(341, 11);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(97, 25);
-            this.button20.TabIndex = 14;
-            this.button20.Text = "Export";
-            this.button20.UseVisualStyleBackColor = true;
+            this.btn_export.Location = new System.Drawing.Point(341, 11);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(97, 25);
+            this.btn_export.TabIndex = 14;
+            this.btn_export.Text = "Export";
+            this.btn_export.UseVisualStyleBackColor = true;
             // 
             // btn_modelSetting
             // 
@@ -335,14 +336,14 @@ namespace AdvancedHMICS
             this.btn_modelSetting.UseVisualStyleBackColor = false;
             this.btn_modelSetting.Click += new System.EventHandler(this.btn_modelSetting_Click);
             // 
-            // button22
+            // btn_clear
             // 
-            this.button22.Location = new System.Drawing.Point(230, 11);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(97, 25);
-            this.button22.TabIndex = 12;
-            this.button22.Text = "Clear";
-            this.button22.UseVisualStyleBackColor = true;
+            this.btn_clear.Location = new System.Drawing.Point(230, 11);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(97, 25);
+            this.btn_clear.TabIndex = 12;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = true;
             // 
             // btn_querysqlite
             // 
@@ -355,24 +356,25 @@ namespace AdvancedHMICS
             this.btn_querysqlite.UseVisualStyleBackColor = false;
             this.btn_querysqlite.Click += new System.EventHandler(this.btn_querysqlite_Click);
             // 
-            // button18
+            // btn_manualload
             // 
-            this.button18.Location = new System.Drawing.Point(341, 73);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(97, 25);
-            this.button18.TabIndex = 10;
-            this.button18.Text = "Setting Machine";
-            this.button18.UseVisualStyleBackColor = true;
+            this.btn_manualload.Location = new System.Drawing.Point(341, 73);
+            this.btn_manualload.Name = "btn_manualload";
+            this.btn_manualload.Size = new System.Drawing.Size(97, 25);
+            this.btn_manualload.TabIndex = 10;
+            this.btn_manualload.Text = "ManualLoad";
+            this.btn_manualload.UseVisualStyleBackColor = true;
             // 
-            // button16
+            // btn_loadStatus
             // 
-            this.button16.BackColor = System.Drawing.Color.Yellow;
-            this.button16.Location = new System.Drawing.Point(230, 101);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(97, 25);
-            this.button16.TabIndex = 9;
-            this.button16.Text = "Cap Status";
-            this.button16.UseVisualStyleBackColor = false;
+            this.btn_loadStatus.BackColor = System.Drawing.Color.Yellow;
+            this.btn_loadStatus.Location = new System.Drawing.Point(230, 101);
+            this.btn_loadStatus.Name = "btn_loadStatus";
+            this.btn_loadStatus.Size = new System.Drawing.Size(97, 25);
+            this.btn_loadStatus.TabIndex = 9;
+            this.btn_loadStatus.Text = "Load Status";
+            this.btn_loadStatus.UseVisualStyleBackColor = false;
+            this.btn_loadStatus.Click += new System.EventHandler(this.btn_loadStatus_Click);
             // 
             // btn_DBSetting
             // 
@@ -396,31 +398,32 @@ namespace AdvancedHMICS
             // 
             // btn_user
             // 
+            this.btn_user.BackColor = System.Drawing.Color.Green;
             this.btn_user.Location = new System.Drawing.Point(116, 73);
             this.btn_user.Name = "btn_user";
             this.btn_user.Size = new System.Drawing.Size(97, 25);
             this.btn_user.TabIndex = 6;
             this.btn_user.Text = "User";
-            this.btn_user.UseVisualStyleBackColor = true;
+            this.btn_user.UseVisualStyleBackColor = false;
             this.btn_user.Click += new System.EventHandler(this.btn_user_Click);
             // 
-            // button12
+            // btn_auto_manual
             // 
-            this.button12.Location = new System.Drawing.Point(116, 42);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(97, 25);
-            this.button12.TabIndex = 5;
-            this.button12.Text = "Auto/Manual";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btn_auto_manual.Location = new System.Drawing.Point(116, 42);
+            this.btn_auto_manual.Name = "btn_auto_manual";
+            this.btn_auto_manual.Size = new System.Drawing.Size(97, 25);
+            this.btn_auto_manual.TabIndex = 5;
+            this.btn_auto_manual.Text = "Auto/Manual";
+            this.btn_auto_manual.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btn_deleterow
             // 
-            this.button11.Location = new System.Drawing.Point(116, 11);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(97, 25);
-            this.button11.TabIndex = 4;
-            this.button11.Text = "Delete";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btn_deleterow.Location = new System.Drawing.Point(116, 11);
+            this.btn_deleterow.Name = "btn_deleterow";
+            this.btn_deleterow.Size = new System.Drawing.Size(97, 25);
+            this.btn_deleterow.TabIndex = 4;
+            this.btn_deleterow.Text = "Delete";
+            this.btn_deleterow.UseVisualStyleBackColor = true;
             // 
             // btn_plcstatus
             // 
@@ -444,23 +447,23 @@ namespace AdvancedHMICS
             this.btn_start.UseVisualStyleBackColor = true;
             this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
             // 
-            // button8
+            // btn_data
             // 
-            this.button8.Location = new System.Drawing.Point(3, 42);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(97, 25);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "Data";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btn_data.Location = new System.Drawing.Point(3, 42);
+            this.btn_data.Name = "btn_data";
+            this.btn_data.Size = new System.Drawing.Size(97, 25);
+            this.btn_data.TabIndex = 1;
+            this.btn_data.Text = "Data";
+            this.btn_data.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btn_record
             // 
-            this.button7.Location = new System.Drawing.Point(3, 11);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(97, 25);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Record";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btn_record.Location = new System.Drawing.Point(3, 11);
+            this.btn_record.Name = "btn_record";
+            this.btn_record.Size = new System.Drawing.Size(97, 25);
+            this.btn_record.TabIndex = 0;
+            this.btn_record.Text = "Record";
+            this.btn_record.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -556,7 +559,7 @@ namespace AdvancedHMICS
             // avd_machanicalP
             // 
             this.avd_machanicalP.AutoSize = true;
-            this.avd_machanicalP.ComComponent = this.modbusRTUCom4;
+            this.avd_machanicalP.ComComponent = modbusRTUCom4;
             this.avd_machanicalP.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_machanicalP.ForeColor = System.Drawing.Color.Yellow;
             this.avd_machanicalP.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -590,26 +593,26 @@ namespace AdvancedHMICS
             // 
             // modbusRTUCom4
             // 
-            this.modbusRTUCom4.BaudRate = 9600;
-            this.modbusRTUCom4.DataBits = 8;
-            this.modbusRTUCom4.DisableSubscriptions = false;
-            this.modbusRTUCom4.EnableLogging = false;
-            this.modbusRTUCom4.IniFileName = "";
-            this.modbusRTUCom4.IniFileSection = null;
-            this.modbusRTUCom4.MaxReadGroupSize = 32;
-            this.modbusRTUCom4.Parity = System.IO.Ports.Parity.None;
-            this.modbusRTUCom4.PollRateOverride = 100;
-            this.modbusRTUCom4.PortName = "COM4";
-            this.modbusRTUCom4.StationAddress = ((byte)(1));
-            this.modbusRTUCom4.StopBits = System.IO.Ports.StopBits.One;
-            this.modbusRTUCom4.SwapBytes = true;
-            this.modbusRTUCom4.SwapWords = false;
-            this.modbusRTUCom4.TimeOut = 1000;
+            modbusRTUCom4.BaudRate = 9600;
+            modbusRTUCom4.DataBits = 8;
+            modbusRTUCom4.DisableSubscriptions = false;
+            modbusRTUCom4.EnableLogging = false;
+            modbusRTUCom4.IniFileName = "";
+            modbusRTUCom4.IniFileSection = null;
+            modbusRTUCom4.MaxReadGroupSize = 32;
+            modbusRTUCom4.Parity = System.IO.Ports.Parity.None;
+            modbusRTUCom4.PollRateOverride = 100;
+            modbusRTUCom4.PortName = "COM4";
+            modbusRTUCom4.StationAddress = ((byte)(1));
+            modbusRTUCom4.StopBits = System.IO.Ports.StopBits.Two;
+            modbusRTUCom4.SwapBytes = true;
+            modbusRTUCom4.SwapWords = false;
+            modbusRTUCom4.TimeOut = 1000;
             // 
             // avd_FWcurr
             // 
             this.avd_FWcurr.AutoSize = true;
-            this.avd_FWcurr.ComComponent = this.modbusRTUCom4;
+            this.avd_FWcurr.ComComponent = modbusRTUCom4;
             this.avd_FWcurr.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_FWcurr.ForeColor = System.Drawing.Color.Yellow;
             this.avd_FWcurr.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -645,7 +648,7 @@ namespace AdvancedHMICS
             // avd_frequency
             // 
             this.avd_frequency.AutoSize = true;
-            this.avd_frequency.ComComponent = this.modbusRTUCom4;
+            this.avd_frequency.ComComponent = modbusRTUCom4;
             this.avd_frequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_frequency.ForeColor = System.Drawing.Color.Yellow;
             this.avd_frequency.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -681,7 +684,7 @@ namespace AdvancedHMICS
             // avd_rotspdwav
             // 
             this.avd_rotspdwav.AutoSize = true;
-            this.avd_rotspdwav.ComComponent = this.modbusRTUCom4;
+            this.avd_rotspdwav.ComComponent = modbusRTUCom4;
             this.avd_rotspdwav.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_rotspdwav.ForeColor = System.Drawing.Color.Yellow;
             this.avd_rotspdwav.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -716,7 +719,7 @@ namespace AdvancedHMICS
             // avd_rotspdmod
             // 
             this.avd_rotspdmod.AutoSize = true;
-            this.avd_rotspdmod.ComComponent = this.modbusRTUCom4;
+            this.avd_rotspdmod.ComComponent = modbusRTUCom4;
             this.avd_rotspdmod.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_rotspdmod.ForeColor = System.Drawing.Color.Yellow;
             this.avd_rotspdmod.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -872,7 +875,7 @@ namespace AdvancedHMICS
             // avd_torque
             // 
             this.avd_torque.AutoSize = true;
-            this.avd_torque.ComComponent = this.modbusRTUCom4;
+            this.avd_torque.ComComponent = modbusRTUCom4;
             this.avd_torque.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_torque.ForeColor = System.Drawing.Color.Yellow;
             this.avd_torque.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -907,7 +910,7 @@ namespace AdvancedHMICS
             // avd_DCpower
             // 
             this.avd_DCpower.AutoSize = true;
-            this.avd_DCpower.ComComponent = this.modbusRTUCom4;
+            this.avd_DCpower.ComComponent = modbusRTUCom4;
             this.avd_DCpower.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_DCpower.ForeColor = System.Drawing.Color.Yellow;
             this.avd_DCpower.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1020,7 +1023,7 @@ namespace AdvancedHMICS
             // avd_voltage
             // 
             this.avd_voltage.AutoSize = true;
-            this.avd_voltage.ComComponent = this.modbusRTUCom4;
+            this.avd_voltage.ComComponent = modbusRTUCom4;
             this.avd_voltage.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_voltage.ForeColor = System.Drawing.Color.Yellow;
             this.avd_voltage.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1126,7 +1129,7 @@ namespace AdvancedHMICS
             // avd_current
             // 
             this.avd_current.AutoSize = true;
-            this.avd_current.ComComponent = this.modbusRTUCom4;
+            this.avd_current.ComComponent = modbusRTUCom4;
             this.avd_current.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_current.ForeColor = System.Drawing.Color.Yellow;
             this.avd_current.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1157,6 +1160,7 @@ namespace AdvancedHMICS
             this.avd_current.ValuePrefix = null;
             this.avd_current.ValueSuffix = null;
             this.avd_current.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_current.ValueChanged += new System.EventHandler(this.avd_current_ValueChanged);
             // 
             // label12
             // 
@@ -1267,24 +1271,24 @@ namespace AdvancedHMICS
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel6.Controls.Add(this.label44);
+            this.panel6.Controls.Add(this.lbl_status_automanual);
             this.panel6.Controls.Add(this.label41);
             this.panel6.Controls.Add(this.label24);
-            this.panel6.Controls.Add(this.label26);
+            this.panel6.Controls.Add(this.lbl_pidStop);
             this.panel6.Controls.Add(this.label37);
             this.panel6.Controls.Add(this.label38);
-            this.panel6.Controls.Add(this.label39);
+            this.panel6.Controls.Add(this.lbl_steadyT);
             this.panel6.Controls.Add(this.label40);
-            this.panel6.Controls.Add(this.label42);
+            this.panel6.Controls.Add(this.lbl_pcStep);
             this.panel6.Controls.Add(this.label43);
             this.panel6.Controls.Add(this.label19);
-            this.panel6.Controls.Add(this.label20);
+            this.panel6.Controls.Add(this.lbl_actualP);
             this.panel6.Controls.Add(this.label21);
             this.panel6.Controls.Add(this.label9);
-            this.panel6.Controls.Add(this.label10);
+            this.panel6.Controls.Add(this.lbl_targetP);
             this.panel6.Controls.Add(this.label11);
             this.panel6.Controls.Add(this.label8);
-            this.panel6.Controls.Add(this.label7);
+            this.panel6.Controls.Add(this.lbl_rated_P);
             this.panel6.Controls.Add(this.label25);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 517);
@@ -1292,15 +1296,15 @@ namespace AdvancedHMICS
             this.panel6.Size = new System.Drawing.Size(445, 134);
             this.panel6.TabIndex = 75;
             // 
-            // label44
+            // lbl_status_automanual
             // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(83, 105);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(99, 20);
-            this.label44.TabIndex = 84;
-            this.label44.Text = "Auto/Manual";
+            this.lbl_status_automanual.AutoSize = true;
+            this.lbl_status_automanual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_status_automanual.Location = new System.Drawing.Point(83, 105);
+            this.lbl_status_automanual.Name = "lbl_status_automanual";
+            this.lbl_status_automanual.Size = new System.Drawing.Size(99, 20);
+            this.lbl_status_automanual.TabIndex = 84;
+            this.lbl_status_automanual.Text = "Auto/Manual";
             // 
             // label41
             // 
@@ -1322,15 +1326,15 @@ namespace AdvancedHMICS
             this.label24.TabIndex = 82;
             this.label24.Text = "%";
             // 
-            // label26
+            // lbl_pidStop
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(298, 76);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(40, 20);
-            this.label26.TabIndex = 81;
-            this.label26.Text = "0.00";
+            this.lbl_pidStop.AutoSize = true;
+            this.lbl_pidStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pidStop.Location = new System.Drawing.Point(298, 76);
+            this.lbl_pidStop.Name = "lbl_pidStop";
+            this.lbl_pidStop.Size = new System.Drawing.Size(40, 20);
+            this.lbl_pidStop.TabIndex = 81;
+            this.lbl_pidStop.Text = "0.00";
             // 
             // label37
             // 
@@ -1352,15 +1356,15 @@ namespace AdvancedHMICS
             this.label38.TabIndex = 79;
             this.label38.Text = "s";
             // 
-            // label39
+            // lbl_steadyT
             // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(298, 45);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(18, 20);
-            this.label39.TabIndex = 78;
-            this.label39.Text = "0";
+            this.lbl_steadyT.AutoSize = true;
+            this.lbl_steadyT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_steadyT.Location = new System.Drawing.Point(298, 45);
+            this.lbl_steadyT.Name = "lbl_steadyT";
+            this.lbl_steadyT.Size = new System.Drawing.Size(18, 20);
+            this.lbl_steadyT.TabIndex = 78;
+            this.lbl_steadyT.Text = "0";
             // 
             // label40
             // 
@@ -1372,15 +1376,15 @@ namespace AdvancedHMICS
             this.label40.TabIndex = 77;
             this.label40.Text = "Steady T:";
             // 
-            // label42
+            // lbl_pcStep
             // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(298, 15);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(32, 20);
-            this.label42.TabIndex = 75;
-            this.label42.Text = "0-5";
+            this.lbl_pcStep.AutoSize = true;
+            this.lbl_pcStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pcStep.Location = new System.Drawing.Point(298, 15);
+            this.lbl_pcStep.Name = "lbl_pcStep";
+            this.lbl_pcStep.Size = new System.Drawing.Size(32, 20);
+            this.lbl_pcStep.TabIndex = 75;
+            this.lbl_pcStep.Text = "0-5";
             // 
             // label43
             // 
@@ -1402,15 +1406,15 @@ namespace AdvancedHMICS
             this.label19.TabIndex = 73;
             this.label19.Text = "kW";
             // 
-            // label20
+            // lbl_actualP
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(83, 76);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(49, 20);
-            this.label20.TabIndex = 72;
-            this.label20.Text = "0.000";
+            this.lbl_actualP.AutoSize = true;
+            this.lbl_actualP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_actualP.Location = new System.Drawing.Point(83, 76);
+            this.lbl_actualP.Name = "lbl_actualP";
+            this.lbl_actualP.Size = new System.Drawing.Size(49, 20);
+            this.lbl_actualP.TabIndex = 72;
+            this.lbl_actualP.Text = "0.000";
             // 
             // label21
             // 
@@ -1418,9 +1422,9 @@ namespace AdvancedHMICS
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(7, 76);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 20);
+            this.label21.Size = new System.Drawing.Size(68, 20);
             this.label21.TabIndex = 71;
-            this.label21.Text = "Rated P:";
+            this.label21.Text = "Actual P";
             // 
             // label9
             // 
@@ -1432,15 +1436,15 @@ namespace AdvancedHMICS
             this.label9.TabIndex = 70;
             this.label9.Text = "kW";
             // 
-            // label10
+            // lbl_targetP
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(83, 45);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 20);
-            this.label10.TabIndex = 69;
-            this.label10.Text = "0.000";
+            this.lbl_targetP.AutoSize = true;
+            this.lbl_targetP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_targetP.Location = new System.Drawing.Point(83, 45);
+            this.lbl_targetP.Name = "lbl_targetP";
+            this.lbl_targetP.Size = new System.Drawing.Size(49, 20);
+            this.lbl_targetP.TabIndex = 69;
+            this.lbl_targetP.Text = "0.000";
             // 
             // label11
             // 
@@ -1448,9 +1452,9 @@ namespace AdvancedHMICS
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(7, 45);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 20);
+            this.label11.Size = new System.Drawing.Size(69, 20);
             this.label11.TabIndex = 68;
-            this.label11.Text = "Rated P:";
+            this.label11.Text = "Target P";
             // 
             // label8
             // 
@@ -1462,15 +1466,15 @@ namespace AdvancedHMICS
             this.label8.TabIndex = 67;
             this.label8.Text = "kW";
             // 
-            // label7
+            // lbl_rated_P
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(83, 15);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(49, 20);
-            this.label7.TabIndex = 66;
-            this.label7.Text = "0.000";
+            this.lbl_rated_P.AutoSize = true;
+            this.lbl_rated_P.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_rated_P.Location = new System.Drawing.Point(83, 15);
+            this.lbl_rated_P.Name = "lbl_rated_P";
+            this.lbl_rated_P.Size = new System.Drawing.Size(49, 20);
+            this.lbl_rated_P.TabIndex = 66;
+            this.lbl_rated_P.Text = "0.000";
             // 
             // label25
             // 
@@ -1498,15 +1502,15 @@ namespace AdvancedHMICS
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
-            this.tableLayoutPanel3.Controls.Add(this.button6, 10, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_90, 10, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox6, 9, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button5, 8, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_100, 8, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox5, 7, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button4, 6, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_75, 6, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox4, 5, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button3, 4, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_50, 4, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox3, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button2, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btn_25, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_0, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1517,16 +1521,16 @@ namespace AdvancedHMICS
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1297, 54);
             this.tableLayoutPanel3.TabIndex = 76;
             // 
-            // button6
+            // btn_90
             // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(1176, 6);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(115, 42);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "90% NA";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btn_90.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_90.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_90.Location = new System.Drawing.Point(1176, 6);
+            this.btn_90.Name = "btn_90";
+            this.btn_90.Size = new System.Drawing.Size(115, 42);
+            this.btn_90.TabIndex = 10;
+            this.btn_90.Text = "90% NA";
+            this.btn_90.UseVisualStyleBackColor = true;
             // 
             // pictureBox6
             // 
@@ -1538,16 +1542,16 @@ namespace AdvancedHMICS
             this.pictureBox6.TabIndex = 9;
             this.pictureBox6.TabStop = false;
             // 
-            // button5
+            // btn_100
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(942, 6);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(108, 42);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "100%";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btn_100.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_100.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_100.Location = new System.Drawing.Point(942, 6);
+            this.btn_100.Name = "btn_100";
+            this.btn_100.Size = new System.Drawing.Size(108, 42);
+            this.btn_100.TabIndex = 8;
+            this.btn_100.Text = "100%";
+            this.btn_100.UseVisualStyleBackColor = true;
             // 
             // pictureBox5
             // 
@@ -1559,16 +1563,16 @@ namespace AdvancedHMICS
             this.pictureBox5.TabIndex = 7;
             this.pictureBox5.TabStop = false;
             // 
-            // button4
+            // btn_75
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(708, 6);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(108, 42);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "75%";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_75.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_75.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_75.Location = new System.Drawing.Point(708, 6);
+            this.btn_75.Name = "btn_75";
+            this.btn_75.Size = new System.Drawing.Size(108, 42);
+            this.btn_75.TabIndex = 6;
+            this.btn_75.Text = "75%";
+            this.btn_75.UseVisualStyleBackColor = true;
             // 
             // pictureBox4
             // 
@@ -1580,16 +1584,16 @@ namespace AdvancedHMICS
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
             // 
-            // button3
+            // btn_50
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(474, 6);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 42);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "50%";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_50.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_50.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_50.Location = new System.Drawing.Point(474, 6);
+            this.btn_50.Name = "btn_50";
+            this.btn_50.Size = new System.Drawing.Size(108, 42);
+            this.btn_50.TabIndex = 4;
+            this.btn_50.Text = "50%";
+            this.btn_50.UseVisualStyleBackColor = true;
             // 
             // pictureBox3
             // 
@@ -1601,16 +1605,16 @@ namespace AdvancedHMICS
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             // 
-            // button2
+            // btn_25
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(240, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 42);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "25%";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_25.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_25.Location = new System.Drawing.Point(240, 6);
+            this.btn_25.Name = "btn_25";
+            this.btn_25.Size = new System.Drawing.Size(108, 42);
+            this.btn_25.TabIndex = 2;
+            this.btn_25.Text = "25%";
+            this.btn_25.UseVisualStyleBackColor = true;
             // 
             // pictureBox2
             // 
@@ -1690,7 +1694,7 @@ namespace AdvancedHMICS
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(modbusRTUCom4)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1716,7 +1720,6 @@ namespace AdvancedHMICS
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel5;
@@ -1760,33 +1763,33 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btn_90;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btn_100;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_75;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_50;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_25;
         private System.Windows.Forms.Button btn_0;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lbl_pidStop;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label lbl_steadyT;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label lbl_pcStep;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lbl_actualP;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbl_targetP;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label lbl_rated_P;
+        private System.Windows.Forms.Label lbl_status_automanual;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox textBox3;
@@ -1797,21 +1800,21 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btn_querysqlite;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button btn_manualload;
+        private System.Windows.Forms.Button btn_loadStatus;
         private System.Windows.Forms.Button btn_DBSetting;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btn_user;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btn_auto_manual;
+        private System.Windows.Forms.Button btn_deleterow;
         private System.Windows.Forms.Button btn_plcstatus;
         private System.Windows.Forms.Button btn_start;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btn_data;
+        private System.Windows.Forms.Button btn_record;
         private System.Windows.Forms.Button btn_settingorder;
-        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button btn_export;
         private System.Windows.Forms.Button btn_modelSetting;
-        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button btn_clear;
         private AdvancedHMIControls.AnalogValueDisplay avd_voltage;
         private System.Windows.Forms.Label lbl_speedrpm;
         private DevExpress.XtraGrid.GridControl gc_main;
