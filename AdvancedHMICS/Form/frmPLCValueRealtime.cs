@@ -31,7 +31,11 @@ namespace AdvancedHMICS
         {
             try
             {
-                plc_sub1.ActLogicalStationNumber = 1;
+                //worksstation main
+                  plc_sub1.ActLogicalStationNumber = 1;
+
+                //workstation test
+                //plc_sub1.ActLogicalStationNumber = 3;
                 plc_sub1.Open();
 
                 int[] D_input = { 0, 1, 2, 3, 4, 5, 6, 7 };
@@ -75,15 +79,8 @@ namespace AdvancedHMICS
         {
             splitdata();
         }
-
-       
-       
-
         private void gv_main_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
         {
-
-
-
         }
 
         private void gv_main_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)

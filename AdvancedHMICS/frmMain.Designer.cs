@@ -30,11 +30,7 @@ namespace AdvancedHMICS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom4;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.modbusRTUCom1 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
-            this.modbusRTUCom2 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
-            this.modbusRTUCom3 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -137,10 +133,7 @@ namespace AdvancedHMICS
             this.gc_main = new DevExpress.XtraGrid.GridControl();
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label1 = new System.Windows.Forms.Label();
-            modbusRTUCom4 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom3)).BeginInit();
+            this.modbusRTUCom1 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -148,7 +141,6 @@ namespace AdvancedHMICS
             this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(modbusRTUCom4)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -160,61 +152,8 @@ namespace AdvancedHMICS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // modbusRTUCom1
-            // 
-            this.modbusRTUCom1.BaudRate = 9600;
-            this.modbusRTUCom1.DataBits = 8;
-            this.modbusRTUCom1.DisableSubscriptions = false;
-            this.modbusRTUCom1.EnableLogging = false;
-            this.modbusRTUCom1.IniFileName = "";
-            this.modbusRTUCom1.IniFileSection = null;
-            this.modbusRTUCom1.MaxReadGroupSize = 20;
-            this.modbusRTUCom1.Parity = System.IO.Ports.Parity.None;
-            this.modbusRTUCom1.PollRateOverride = 500;
-            this.modbusRTUCom1.PortName = "COM4";
-            this.modbusRTUCom1.StationAddress = ((byte)(1));
-            this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.One;
-            this.modbusRTUCom1.SwapBytes = true;
-            this.modbusRTUCom1.SwapWords = false;
-            this.modbusRTUCom1.TimeOut = 3000;
-            // 
-            // modbusRTUCom2
-            // 
-            this.modbusRTUCom2.BaudRate = 19200;
-            this.modbusRTUCom2.DataBits = 8;
-            this.modbusRTUCom2.DisableSubscriptions = false;
-            this.modbusRTUCom2.EnableLogging = false;
-            this.modbusRTUCom2.IniFileName = "";
-            this.modbusRTUCom2.IniFileSection = null;
-            this.modbusRTUCom2.MaxReadGroupSize = 20;
-            this.modbusRTUCom2.Parity = System.IO.Ports.Parity.None;
-            this.modbusRTUCom2.PollRateOverride = 500;
-            this.modbusRTUCom2.PortName = "COM1";
-            this.modbusRTUCom2.StationAddress = ((byte)(1));
-            this.modbusRTUCom2.StopBits = System.IO.Ports.StopBits.One;
-            this.modbusRTUCom2.SwapBytes = true;
-            this.modbusRTUCom2.SwapWords = false;
-            this.modbusRTUCom2.TimeOut = 3000;
-            // 
-            // modbusRTUCom3
-            // 
-            this.modbusRTUCom3.BaudRate = 19200;
-            this.modbusRTUCom3.DataBits = 8;
-            this.modbusRTUCom3.DisableSubscriptions = false;
-            this.modbusRTUCom3.EnableLogging = false;
-            this.modbusRTUCom3.IniFileName = "";
-            this.modbusRTUCom3.IniFileSection = null;
-            this.modbusRTUCom3.MaxReadGroupSize = 20;
-            this.modbusRTUCom3.Parity = System.IO.Ports.Parity.None;
-            this.modbusRTUCom3.PollRateOverride = 500;
-            this.modbusRTUCom3.PortName = "COM1";
-            this.modbusRTUCom3.StationAddress = ((byte)(1));
-            this.modbusRTUCom3.StopBits = System.IO.Ports.StopBits.One;
-            this.modbusRTUCom3.SwapBytes = true;
-            this.modbusRTUCom3.SwapWords = false;
-            this.modbusRTUCom3.TimeOut = 3000;
             // 
             // tableLayoutPanel1
             // 
@@ -559,7 +498,6 @@ namespace AdvancedHMICS
             // avd_machanicalP
             // 
             this.avd_machanicalP.AutoSize = true;
-            this.avd_machanicalP.ComComponent = modbusRTUCom4;
             this.avd_machanicalP.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_machanicalP.ForeColor = System.Drawing.Color.Yellow;
             this.avd_machanicalP.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -591,28 +529,9 @@ namespace AdvancedHMICS
             this.avd_machanicalP.ValueSuffix = null;
             this.avd_machanicalP.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
             // 
-            // modbusRTUCom4
-            // 
-            modbusRTUCom4.BaudRate = 9600;
-            modbusRTUCom4.DataBits = 8;
-            modbusRTUCom4.DisableSubscriptions = false;
-            modbusRTUCom4.EnableLogging = false;
-            modbusRTUCom4.IniFileName = "";
-            modbusRTUCom4.IniFileSection = null;
-            modbusRTUCom4.MaxReadGroupSize = 32;
-            modbusRTUCom4.Parity = System.IO.Ports.Parity.None;
-            modbusRTUCom4.PollRateOverride = 100;
-            modbusRTUCom4.PortName = "COM4";
-            modbusRTUCom4.StationAddress = ((byte)(1));
-            modbusRTUCom4.StopBits = System.IO.Ports.StopBits.Two;
-            modbusRTUCom4.SwapBytes = true;
-            modbusRTUCom4.SwapWords = false;
-            modbusRTUCom4.TimeOut = 1000;
-            // 
             // avd_FWcurr
             // 
             this.avd_FWcurr.AutoSize = true;
-            this.avd_FWcurr.ComComponent = modbusRTUCom4;
             this.avd_FWcurr.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_FWcurr.ForeColor = System.Drawing.Color.Yellow;
             this.avd_FWcurr.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -648,7 +567,7 @@ namespace AdvancedHMICS
             // avd_frequency
             // 
             this.avd_frequency.AutoSize = true;
-            this.avd_frequency.ComComponent = modbusRTUCom4;
+            this.avd_frequency.ComComponent = this.modbusRTUCom1;
             this.avd_frequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_frequency.ForeColor = System.Drawing.Color.Yellow;
             this.avd_frequency.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -684,7 +603,6 @@ namespace AdvancedHMICS
             // avd_rotspdwav
             // 
             this.avd_rotspdwav.AutoSize = true;
-            this.avd_rotspdwav.ComComponent = modbusRTUCom4;
             this.avd_rotspdwav.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_rotspdwav.ForeColor = System.Drawing.Color.Yellow;
             this.avd_rotspdwav.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -719,7 +637,6 @@ namespace AdvancedHMICS
             // avd_rotspdmod
             // 
             this.avd_rotspdmod.AutoSize = true;
-            this.avd_rotspdmod.ComComponent = modbusRTUCom4;
             this.avd_rotspdmod.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_rotspdmod.ForeColor = System.Drawing.Color.Yellow;
             this.avd_rotspdmod.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -875,7 +792,6 @@ namespace AdvancedHMICS
             // avd_torque
             // 
             this.avd_torque.AutoSize = true;
-            this.avd_torque.ComComponent = modbusRTUCom4;
             this.avd_torque.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_torque.ForeColor = System.Drawing.Color.Yellow;
             this.avd_torque.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -910,7 +826,6 @@ namespace AdvancedHMICS
             // avd_DCpower
             // 
             this.avd_DCpower.AutoSize = true;
-            this.avd_DCpower.ComComponent = modbusRTUCom4;
             this.avd_DCpower.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_DCpower.ForeColor = System.Drawing.Color.Yellow;
             this.avd_DCpower.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1023,7 +938,7 @@ namespace AdvancedHMICS
             // avd_voltage
             // 
             this.avd_voltage.AutoSize = true;
-            this.avd_voltage.ComComponent = modbusRTUCom4;
+            this.avd_voltage.ComComponent = this.modbusRTUCom1;
             this.avd_voltage.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_voltage.ForeColor = System.Drawing.Color.Yellow;
             this.avd_voltage.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1058,7 +973,6 @@ namespace AdvancedHMICS
             // avd_FWVolt
             // 
             this.avd_FWVolt.AutoSize = true;
-            this.avd_FWVolt.ComComponent = this.modbusRTUCom1;
             this.avd_FWVolt.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_FWVolt.ForeColor = System.Drawing.Color.Yellow;
             this.avd_FWVolt.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1094,7 +1008,6 @@ namespace AdvancedHMICS
             // avd_electricP
             // 
             this.avd_electricP.AutoSize = true;
-            this.avd_electricP.ComComponent = this.modbusRTUCom1;
             this.avd_electricP.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_electricP.ForeColor = System.Drawing.Color.Yellow;
             this.avd_electricP.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1129,7 +1042,7 @@ namespace AdvancedHMICS
             // avd_current
             // 
             this.avd_current.AutoSize = true;
-            this.avd_current.ComComponent = modbusRTUCom4;
+            this.avd_current.ComComponent = this.modbusRTUCom1;
             this.avd_current.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.avd_current.ForeColor = System.Drawing.Color.Yellow;
             this.avd_current.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
@@ -1670,6 +1583,24 @@ namespace AdvancedHMICS
             this.label1.Text = "General Dynamics Intelligent Test System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // modbusRTUCom1
+            // 
+            this.modbusRTUCom1.BaudRate = 19200;
+            this.modbusRTUCom1.DataBits = 8;
+            this.modbusRTUCom1.DisableSubscriptions = false;
+            this.modbusRTUCom1.EnableLogging = false;
+            this.modbusRTUCom1.IniFileName = "";
+            this.modbusRTUCom1.IniFileSection = null;
+            this.modbusRTUCom1.MaxReadGroupSize = 20;
+            this.modbusRTUCom1.Parity = System.IO.Ports.Parity.None;
+            this.modbusRTUCom1.PollRateOverride = 500;
+            this.modbusRTUCom1.PortName = "COM4";
+            this.modbusRTUCom1.StationAddress = ((byte)(1));
+            this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.One;
+            this.modbusRTUCom1.SwapBytes = true;
+            this.modbusRTUCom1.SwapWords = false;
+            this.modbusRTUCom1.TimeOut = 3000;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1681,9 +1612,6 @@ namespace AdvancedHMICS
             this.Text = "Tester Machine v1.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom3)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1694,7 +1622,6 @@ namespace AdvancedHMICS
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(modbusRTUCom4)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1709,14 +1636,12 @@ namespace AdvancedHMICS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom1;
-        private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom2;
-        private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
@@ -1819,5 +1744,6 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Label lbl_speedrpm;
         private DevExpress.XtraGrid.GridControl gc_main;
         private DevExpress.XtraGrid.Views.Grid.GridView gv_main;
+        private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom1;
     }
 }

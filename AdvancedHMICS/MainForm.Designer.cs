@@ -174,7 +174,7 @@
             // analogValueDisplay1
             // 
             this.analogValueDisplay1.AutoSize = true;
-            this.analogValueDisplay1.ComComponent = this.modbusRTUCom2;
+            this.analogValueDisplay1.ComComponent = null;
             this.analogValueDisplay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.analogValueDisplay1.ForeColor = System.Drawing.Color.White;
             this.analogValueDisplay1.ForeColorInLimits = System.Drawing.Color.White;
@@ -211,7 +211,7 @@
             this.basicLabel1.AutoSize = true;
             this.basicLabel1.BackColor = System.Drawing.Color.Black;
             this.basicLabel1.BooleanDisplay = AdvancedHMIControls.BasicLabel.BooleanDisplayOption.TrueFalse;
-            this.basicLabel1.ComComponent = this.modbusRTUCom2;
+            this.basicLabel1.ComComponent = null;
             this.basicLabel1.DisplayAsTime = false;
             this.basicLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.basicLabel1.ForeColor = System.Drawing.Color.White;
@@ -323,7 +323,7 @@
             // digitalPanelMeter1
             // 
             this.digitalPanelMeter1.BackColor = System.Drawing.Color.Transparent;
-            this.digitalPanelMeter1.ComComponent = this.modbusRTUCom1;
+            this.digitalPanelMeter1.ComComponent = this.modbusRTUCom2;
             this.digitalPanelMeter1.DecimalPosition = 0;
             this.digitalPanelMeter1.ForeColor = System.Drawing.Color.LightGray;
             this.digitalPanelMeter1.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
