@@ -28,7 +28,7 @@ namespace AdvancedHMICS
         }
         void GetCombox()
         {
-            string sqlmodel = "select distinct ck_model from m_ck_point order by ck_model";
+            string sqlmodel = "select distinct(ck_model) from m_ck_point order by ck_model";
             try
             {
                 sqlite sqlite_ = new sqlite();
