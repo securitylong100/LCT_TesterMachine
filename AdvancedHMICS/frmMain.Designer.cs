@@ -1503,6 +1503,7 @@ namespace AdvancedHMICS
             this.btn_100.TabIndex = 8;
             this.btn_100.Text = "100%";
             this.btn_100.UseVisualStyleBackColor = true;
+            this.btn_100.Click += new System.EventHandler(this.btn_100_Click);
             // 
             // pictureBox5
             // 
@@ -1524,6 +1525,7 @@ namespace AdvancedHMICS
             this.btn_75.TabIndex = 6;
             this.btn_75.Text = "75%";
             this.btn_75.UseVisualStyleBackColor = true;
+            this.btn_75.Click += new System.EventHandler(this.btn_75_Click);
             // 
             // pictureBox4
             // 
@@ -1545,6 +1547,7 @@ namespace AdvancedHMICS
             this.btn_50.TabIndex = 4;
             this.btn_50.Text = "50%";
             this.btn_50.UseVisualStyleBackColor = true;
+            this.btn_50.Click += new System.EventHandler(this.btn_50_Click);
             // 
             // pictureBox3
             // 
@@ -1566,6 +1569,7 @@ namespace AdvancedHMICS
             this.btn_25.TabIndex = 2;
             this.btn_25.Text = "25%";
             this.btn_25.UseVisualStyleBackColor = true;
+            this.btn_25.Click += new System.EventHandler(this.btn_25_Click);
             // 
             // pictureBox2
             // 
@@ -1664,6 +1668,7 @@ namespace AdvancedHMICS
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 70;
+            this.textBox1.Text = "00016";
             // 
             // frmMain
             // 

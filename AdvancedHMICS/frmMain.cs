@@ -62,7 +62,7 @@ namespace AdvancedHMICS
             {
                 avd_electricP.Value = Math.Round(float.Parse(avd_FWVolt.Value) * float.Parse(avd_current.Value) / 1000, 2).ToString();
                 lbl_actualP.Text = avd_electricP.Value;
-               // lbl_pidStop.Text = 
+                // lbl_pidStop.Text = 
             }
             catch
             { }
@@ -217,8 +217,30 @@ namespace AdvancedHMICS
         }
         private void btn_0_Click(object sender, EventArgs e)
         {
+            steptest(btn_0, 1);
+        }
+        private void btn_25_Click(object sender, EventArgs e)
+        {
+            steptest(btn_25, 2);
+        }
+        private void btn_50_Click(object sender, EventArgs e)
+        {
+            steptest(btn_50, 3);
+        }
+
+        private void btn_75_Click(object sender, EventArgs e)
+        {
+            steptest(btn_75, 4);
+        }
+
+        private void btn_100_Click(object sender, EventArgs e)
+        {
+            steptest(btn_100, 5);
+        }
+        private void steptest(Button btn, int step)
+        {
             if (checkinput() == false) return;
-            float step = 1;
+            // step = 1;
             counter = 0;
             lbl_pcStep.Text = step.ToString();
             DataTable dt = new DataTable();
@@ -248,13 +270,26 @@ namespace AdvancedHMICS
                        .Max(row => row["ck_Max_Noloadlimitspeed"])
                        .ToString());
                 //condtion function.,
-                btn_0.BackColor = Color.Green;
-                timerLoad.Enabled = true;
+                if (btn.BackColor == Color.LightGray)
+                { 
+                    btn.BackColor = Color.Green;
+                    timerLoad.Enabled = true;
+                }
+                else
+                {
+                    timerLoad.Enabled = false;
+                    btn.BackColor = Color.LightGray;
+                }            
+                //if (minrpm <= int.Parse(lbl_speedrpm.Text) && float.Parse(lbl_actualP.Text) >= float.Parse(lbl_rated_P.Text) * 0.85)
+                //{
+                //    timerLoad.Enabled = true;
+                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
+
         }
         private void timerLoad_Tick(object sender, EventArgs e)
         {
@@ -270,24 +305,32 @@ namespace AdvancedHMICS
             }
             else
             {
-                counter = 0;
-                timerLoad.Enabled = false;
-                //return NG
-                result = false;
-                MessageBox.Show("Result NG", "Notice Messenger", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btn_0.BackColor = Color.LightGray;
+                //counter = 0;
+                //timerLoad.Enabled = false;
+                ////return NG
+                //result = false;
+                //MessageBox.Show("Result NG", "Notice Messenger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //btn_0.BackColor = Color.LightGray;
+                //btn_25.BackColor = Color.LightGray;
+                //btn_50.BackColor = Color.LightGray;
+                //btn_75.BackColor = Color.LightGray;
+                btn_100.BackColor = Color.LightGray;
             }
             if (counter <= steadyT)
             {
                 lbl_steadyT.Text = (steadyT - counter).ToString();
             }
             else
-            {     
+            {
                 timerLoad.Enabled = false;
                 //return ok
                 result = true;
                 MessageBox.Show("Result OK", "Notice Messenger", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btn_0.BackColor = Color.LightGray;
+                btn_25.BackColor = Color.LightGray;
+                btn_50.BackColor = Color.LightGray;
+                btn_75.BackColor = Color.LightGray;
+                btn_100.BackColor = Color.LightGray;
             }
         }
         private void btn_plcstatus_Click(object sender, EventArgs e)
@@ -323,5 +366,7 @@ namespace AdvancedHMICS
         {
             keyboardInput1.PLCAddressWriteValue.PLCAddress = textBox1.Text;
         }
+
+
     }
 }
