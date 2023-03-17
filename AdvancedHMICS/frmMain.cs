@@ -62,6 +62,7 @@ namespace AdvancedHMICS
             {
                 avd_electricP.Value = Math.Round(float.Parse(avd_FWVolt.Value) * float.Parse(avd_current.Value) / 1000, 2).ToString();
                 lbl_actualP.Text = avd_electricP.Value;
+               // lbl_pidStop.Text = 
             }
             catch
             { }
@@ -218,6 +219,7 @@ namespace AdvancedHMICS
         {
             if (checkinput() == false) return;
             float step = 1;
+            counter = 0;
             lbl_pcStep.Text = step.ToString();
             DataTable dt = new DataTable();
             string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
@@ -245,7 +247,8 @@ namespace AdvancedHMICS
                        .Where(row => row["ck_serial"].ToString() == step.ToString())
                        .Max(row => row["ck_Max_Noloadlimitspeed"])
                        .ToString());
-                //condtion function.,              
+                //condtion function.,
+                btn_0.BackColor = Color.Green;
                 timerLoad.Enabled = true;
             }
             catch (Exception ex)
@@ -271,9 +274,10 @@ namespace AdvancedHMICS
                 timerLoad.Enabled = false;
                 //return NG
                 result = false;
-                MessageBox.Show("NG", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Result NG", "Notice Messenger", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_0.BackColor = Color.LightGray;
             }
-            if (counter < steadyT)
+            if (counter <= steadyT)
             {
                 lbl_steadyT.Text = (steadyT - counter).ToString();
             }
@@ -282,7 +286,8 @@ namespace AdvancedHMICS
                 timerLoad.Enabled = false;
                 //return ok
                 result = true;
-                MessageBox.Show("OK", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Result OK", "Notice Messenger", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btn_0.BackColor = Color.LightGray;
             }
         }
         private void btn_plcstatus_Click(object sender, EventArgs e)
