@@ -46,7 +46,7 @@ namespace AdvancedHMICS
             this.btn_DBSetting = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.btn_user = new System.Windows.Forms.Button();
-            this.btn_auto_manual = new System.Windows.Forms.Button();
+            this.btn_autoload = new System.Windows.Forms.Button();
             this.btn_deleterow = new System.Windows.Forms.Button();
             this.btn_plcstatus = new System.Windows.Forms.Button();
             this.btn_start = new System.Windows.Forms.Button();
@@ -135,6 +135,7 @@ namespace AdvancedHMICS
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label1 = new System.Windows.Forms.Label();
             this.modbusRTUCom2 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
+            this.timerLoad = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -234,7 +235,7 @@ namespace AdvancedHMICS
             this.panel7.Controls.Add(this.btn_DBSetting);
             this.panel7.Controls.Add(this.button14);
             this.panel7.Controls.Add(this.btn_user);
-            this.panel7.Controls.Add(this.btn_auto_manual);
+            this.panel7.Controls.Add(this.btn_autoload);
             this.panel7.Controls.Add(this.btn_deleterow);
             this.panel7.Controls.Add(this.btn_plcstatus);
             this.panel7.Controls.Add(this.btn_start);
@@ -348,14 +349,15 @@ namespace AdvancedHMICS
             this.btn_user.UseVisualStyleBackColor = false;
             this.btn_user.Click += new System.EventHandler(this.btn_user_Click);
             // 
-            // btn_auto_manual
+            // btn_autoload
             // 
-            this.btn_auto_manual.Location = new System.Drawing.Point(116, 42);
-            this.btn_auto_manual.Name = "btn_auto_manual";
-            this.btn_auto_manual.Size = new System.Drawing.Size(97, 25);
-            this.btn_auto_manual.TabIndex = 5;
-            this.btn_auto_manual.Text = "Auto/Manual";
-            this.btn_auto_manual.UseVisualStyleBackColor = true;
+            this.btn_autoload.Location = new System.Drawing.Point(116, 42);
+            this.btn_autoload.Name = "btn_autoload";
+            this.btn_autoload.Size = new System.Drawing.Size(97, 25);
+            this.btn_autoload.TabIndex = 5;
+            this.btn_autoload.Text = "AutoLoad";
+            this.btn_autoload.UseVisualStyleBackColor = true;
+            this.btn_autoload.Click += new System.EventHandler(this.btn_autoload_Click);
             // 
             // btn_deleterow
             // 
@@ -428,7 +430,6 @@ namespace AdvancedHMICS
             this.cbm_orderid.Name = "cbm_orderid";
             this.cbm_orderid.Size = new System.Drawing.Size(210, 21);
             this.cbm_orderid.TabIndex = 68;
-            this.cbm_orderid.Text = "001";
             // 
             // cbm_model
             // 
@@ -437,7 +438,6 @@ namespace AdvancedHMICS
             this.cbm_model.Name = "cbm_model";
             this.cbm_model.Size = new System.Drawing.Size(210, 21);
             this.cbm_model.TabIndex = 67;
-            this.cbm_model.Text = "long";
             this.cbm_model.SelectedIndexChanged += new System.EventHandler(this.cbm_model_SelectedIndexChanged);
             // 
             // txt_barcode
@@ -1331,7 +1331,7 @@ namespace AdvancedHMICS
             this.lbl_pcStep.Name = "lbl_pcStep";
             this.lbl_pcStep.Size = new System.Drawing.Size(32, 20);
             this.lbl_pcStep.TabIndex = 75;
-            this.lbl_pcStep.Text = "0-5";
+            this.lbl_pcStep.Text = "1-5";
             // 
             // label43
             // 
@@ -1635,6 +1635,11 @@ namespace AdvancedHMICS
             this.modbusRTUCom2.SwapWords = false;
             this.modbusRTUCom2.TimeOut = 3000;
             // 
+            // timerLoad
+            // 
+            this.timerLoad.Interval = 1000;
+            this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1763,7 +1768,7 @@ namespace AdvancedHMICS
         private System.Windows.Forms.Button btn_DBSetting;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button btn_user;
-        private System.Windows.Forms.Button btn_auto_manual;
+        private System.Windows.Forms.Button btn_autoload;
         private System.Windows.Forms.Button btn_deleterow;
         private System.Windows.Forms.Button btn_plcstatus;
         private System.Windows.Forms.Button btn_start;
@@ -1781,5 +1786,6 @@ namespace AdvancedHMICS
         private System.Windows.Forms.ComboBox cbm_orderid;
         private System.Windows.Forms.ComboBox cbm_model;
         private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom2;
+        private System.Windows.Forms.Timer timerLoad;
     }
 }

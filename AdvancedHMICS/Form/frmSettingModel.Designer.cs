@@ -153,6 +153,7 @@ namespace AdvancedHMICS
             this.gridColumn23});
             this.gv_main.GridControl = this.gc_main;
             this.gv_main.Name = "gv_main";
+            this.gv_main.OptionsView.ColumnAutoWidth = false;
             // 
             // gridColumn24
             // 

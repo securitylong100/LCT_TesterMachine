@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\createDBsqlite.cs" />
+    <Compile Include="Class\DataFuction.cs" />
     <Compile Include="Class\De_Encrypt.cs" />
     <Compile Include="Class\mysqlconnection.cs" />
     <Compile Include="Class\sqlite.cs" />
@@ -117,6 +118,12 @@
     <Compile Include="Form\frmSettingOrder.Designer.cs">
       <DependentUpon>frmSettingOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +136,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\frmPLCValueRealtime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmPLCValueRealtime.Designer.cs">
+      <DependentUpon>frmPLCValueRealtime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Form\frmQuerySQLite.cs">
@@ -137,11 +150,17 @@
     <Compile Include="Form\frmQuerySQLite.Designer.cs">
       <DependentUpon>frmQuerySQLite.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\frmPLCValueRealtime.resx">
+      <DependentUpon>frmPLCValueRealtime.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\frmQuerySQLite.resx">
       <DependentUpon>frmQuerySQLite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmSettingModel.resx">
       <DependentUpon>frmSettingModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -203,6 +222,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\nexticon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ActUtlTypeLib">
+      <Guid>{D217E54E-4A26-4A76-B0AB-57166B90F9AF}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

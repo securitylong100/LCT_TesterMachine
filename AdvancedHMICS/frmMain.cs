@@ -21,6 +21,12 @@ namespace AdvancedHMICS
         }
         //khai báo điện trở fix
         int R = 500;
+        //kết quả test 
+        bool result = false;
+        int minrpm = 0;
+        int maxrpm = 0;
+        int steadyT = 4;
+        int counter = 0;
         //khai báo kết nối PLC
         public ActUtlType plc = new ActUtlType();
 
@@ -28,7 +34,7 @@ namespace AdvancedHMICS
         {
             try
             {
-                lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Value), 2).ToString();
+                lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Value), 0).ToString();
                 //read vaule
                 if (btn_start.Text == "Running")
                 {
@@ -144,9 +150,9 @@ namespace AdvancedHMICS
         }
         private void btn_start_Click(object sender, EventArgs e) //this ok.
         {
-            if (checkinput() ==false) return;
+            if (checkinput() == false) return;
             try
-            {              
+            {
                 // btn_start.Text = "Start/Run";       
                 if (btn_start.Text == "Start/Run")
                 {
@@ -159,6 +165,7 @@ namespace AdvancedHMICS
                     txt_barcode.ReadOnly = true;
                     cbm_model.Enabled = false;
                     cbm_orderid.Enabled = false;
+                    btn_autoload.Enabled = true;
                 }
                 else if (btn_start.Text == "Running")
                 {
@@ -170,14 +177,19 @@ namespace AdvancedHMICS
                     btn_plcstatus.Enabled = false;
                     txt_barcode.ReadOnly = false;
                     cbm_model.Enabled = true;
+                    cbm_orderid.Enabled = true;
+                    btn_autoload.Enabled = false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
-
-
+        }
+        private void btn_autoload_Click(object sender, EventArgs e)
+        {
+            lbl_status_automanual.Text = "AutoLoad";
+            lbl_status_automanual.BackColor = Color.Green;
         }
         private void btn_DBSetting_Click(object sender, EventArgs e)
         {
@@ -204,7 +216,74 @@ namespace AdvancedHMICS
         }
         private void btn_0_Click(object sender, EventArgs e)
         {
-
+            if (checkinput() == false) return;
+            float step = 1;
+            lbl_pcStep.Text = step.ToString();
+            DataTable dt = new DataTable();
+            string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
+            try
+            {
+                sqlite sqlite_ = new sqlite();
+                sqlite_.SelectData(sqlmodel, ref dt);
+                //timerlable
+                steadyT = int.Parse(dt.AsEnumerable()
+                       .Where(row => row["ck_serial"].ToString() == step.ToString())
+                       .Max(row => row["ck_LoadTime"])
+                       .ToString());
+                lbl_steadyT.Text = steadyT.ToString();
+                //ratedP step
+                lbl_rated_P.Text = dt.AsEnumerable()
+                      .Where(row => row["ck_serial"].ToString() == step.ToString())
+                      .Max(row => row["ck_Steppower"])
+                      .ToString();
+                //get min max
+                minrpm = int.Parse(dt.AsEnumerable()
+                         .Where(row => row["ck_serial"].ToString() == step.ToString())
+                         .Max(row => row["ck_Min_Noloadlimitspeed"])
+                         .ToString());
+                maxrpm = int.Parse(dt.AsEnumerable()
+                       .Where(row => row["ck_serial"].ToString() == step.ToString())
+                       .Max(row => row["ck_Max_Noloadlimitspeed"])
+                       .ToString());
+                //condtion function.,              
+                timerLoad.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+        private void timerLoad_Tick(object sender, EventArgs e)
+        {
+            //int minrpm = 0;
+            //int maxrpm = 0;
+            //int counter = 0;
+            //counter
+            // lbl_actualP = the same 90% of  lbl_rated_P
+            // lbl_speedrpm into spec of minrpm -- maxrpm
+            if (minrpm <= int.Parse(lbl_speedrpm.Text) && maxrpm >= int.Parse(lbl_speedrpm.Text) && float.Parse(lbl_actualP.Text) >= float.Parse(lbl_rated_P.Text) * 0.9 && float.Parse(lbl_actualP.Text) <= float.Parse(lbl_rated_P.Text) * 1.1)
+            {
+                counter = counter + 1;
+            }
+            else
+            {
+                counter = 0;
+                timerLoad.Enabled = false;
+                //return NG
+                result = false;
+                MessageBox.Show("NG", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (counter < steadyT)
+            {
+                lbl_steadyT.Text = (steadyT - counter).ToString();
+            }
+            else
+            {     
+                timerLoad.Enabled = false;
+                //return ok
+                result = true;
+                MessageBox.Show("OK", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private void btn_plcstatus_Click(object sender, EventArgs e)
         {
@@ -234,6 +313,7 @@ namespace AdvancedHMICS
             }
             return true;
         }
+
 
     }
 }

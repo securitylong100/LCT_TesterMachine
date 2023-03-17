@@ -306,8 +306,14 @@ E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.Office.v20.1.Core.resources.dll
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.Office.v20.1.Core.resources.dll
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.AssemblyReference.cache
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\Interop.ActUtlTypeLib.dll
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.ResolveComReference.cache
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmPLCValueRealtime.resources
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmQuerySQLite.resources
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmSettingModel.resources
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmUser.resources
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmMain.resources
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmSettingOrder.resources
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.LoginForm.resources
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.MainForm.resources
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.Properties.Resources.resources
@@ -317,5 +323,3 @@ E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.exe
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.pdb
-E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmSettingModel.resources
-E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmSettingOrder.resources
