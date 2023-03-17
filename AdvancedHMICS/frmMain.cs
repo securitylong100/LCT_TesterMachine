@@ -319,6 +319,9 @@ namespace AdvancedHMICS
             return true;
         }
 
-
+        private void keyboardInput1_TextChanged(object sender, EventArgs e)
+        {
+            keyboardInput1.PLCAddressWriteValue.PLCAddress = textBox1.Text;
+        }
     }
 }

@@ -136,6 +136,8 @@ namespace AdvancedHMICS
             this.label1 = new System.Windows.Forms.Label();
             this.modbusRTUCom2 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.timerLoad = new System.Windows.Forms.Timer(this.components);
+            this.keyboardInput1 = new AdvancedHMIControls.KeyboardInput();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -411,6 +413,8 @@ namespace AdvancedHMICS
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.keyboardInput1);
             this.panel3.Controls.Add(this.cbm_orderid);
             this.panel3.Controls.Add(this.cbm_model);
             this.panel3.Controls.Add(this.txt_barcode);
@@ -1619,7 +1623,7 @@ namespace AdvancedHMICS
             // 
             // modbusRTUCom2
             // 
-            this.modbusRTUCom2.BaudRate = 19200;
+            this.modbusRTUCom2.BaudRate = 9600;
             this.modbusRTUCom2.DataBits = 8;
             this.modbusRTUCom2.DisableSubscriptions = false;
             this.modbusRTUCom2.EnableLogging = false;
@@ -1628,8 +1632,8 @@ namespace AdvancedHMICS
             this.modbusRTUCom2.MaxReadGroupSize = 20;
             this.modbusRTUCom2.Parity = System.IO.Ports.Parity.None;
             this.modbusRTUCom2.PollRateOverride = 500;
-            this.modbusRTUCom2.PortName = "COM1";
-            this.modbusRTUCom2.StationAddress = ((byte)(1));
+            this.modbusRTUCom2.PortName = "COM10";
+            this.modbusRTUCom2.StationAddress = ((byte)(3));
             this.modbusRTUCom2.StopBits = System.IO.Ports.StopBits.One;
             this.modbusRTUCom2.SwapBytes = true;
             this.modbusRTUCom2.SwapWords = false;
@@ -1639,6 +1643,27 @@ namespace AdvancedHMICS
             // 
             this.timerLoad.Interval = 1000;
             this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
+            // 
+            // keyboardInput1
+            // 
+            this.keyboardInput1.ClearAfterEnterKey = true;
+            this.keyboardInput1.ComComponent = this.modbusRTUCom2;
+            this.keyboardInput1.GetFocusMatchValue = 1;
+            this.keyboardInput1.GetFocusValue = 0;
+            this.keyboardInput1.Location = new System.Drawing.Point(148, 105);
+            this.keyboardInput1.Name = "keyboardInput1";
+            this.keyboardInput1.PLCAddressGetFocusValue = null;
+            this.keyboardInput1.PLCAddressWriteValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("keyboardInput1.PLCAddressWriteValue")));
+            this.keyboardInput1.Size = new System.Drawing.Size(100, 20);
+            this.keyboardInput1.TabIndex = 69;
+            this.keyboardInput1.TextChanged += new System.EventHandler(this.keyboardInput1_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(21, 104);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 70;
             // 
             // frmMain
             // 
@@ -1787,5 +1812,7 @@ namespace AdvancedHMICS
         private System.Windows.Forms.ComboBox cbm_model;
         private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom2;
         private System.Windows.Forms.Timer timerLoad;
+        private AdvancedHMIControls.KeyboardInput keyboardInput1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
