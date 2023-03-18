@@ -287,6 +287,7 @@ namespace AdvancedHMICS
             }
             catch (Exception ex)
             {
+                timerLoad.Enabled = false;
                 MessageBox.Show("Error :" + ex.Message);
             }
 
@@ -367,6 +368,6 @@ namespace AdvancedHMICS
             keyboardInput1.PLCAddressWriteValue.PLCAddress = textBox1.Text;
         }
 
-
+        
     }
 }
