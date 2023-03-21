@@ -37,6 +37,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ActUtlTypeLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=627cb188e78f967a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\MELSEC\Act\Control\ActUtlTypeLib.dll</HintPath>
+    </Reference>
     <Reference Include="AdvancedHMIDrivers">
       <HintPath>..\AdvancedHMIDrivers\bin\Debug\AdvancedHMIDrivers.dll</HintPath>
     </Reference>
@@ -222,17 +227,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\nexticon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="ActUtlTypeLib">
-      <Guid>{D217E54E-4A26-4A76-B0AB-57166B90F9AF}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
