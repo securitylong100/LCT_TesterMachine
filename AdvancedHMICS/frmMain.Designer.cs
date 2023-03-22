@@ -175,7 +175,7 @@ namespace AdvancedHMICS
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1165, 516);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1250, 690);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -196,7 +196,7 @@ namespace AdvancedHMICS
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 45);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1159, 468);
+            this.panel1.Size = new System.Drawing.Size(1244, 642);
             this.panel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -221,7 +221,7 @@ namespace AdvancedHMICS
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1159, 468);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1244, 642);
             this.tableLayoutPanel2.TabIndex = 71;
             // 
             // panel7
@@ -244,9 +244,9 @@ namespace AdvancedHMICS
             this.panel7.Controls.Add(this.btn_data);
             this.panel7.Controls.Add(this.btn_record);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(782, 331);
+            this.panel7.Location = new System.Drawing.Point(824, 505);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(374, 134);
+            this.panel7.Size = new System.Drawing.Size(417, 134);
             this.panel7.TabIndex = 79;
             // 
             // btn_settingorder
@@ -288,6 +288,7 @@ namespace AdvancedHMICS
             this.btn_clear.TabIndex = 12;
             this.btn_clear.Text = "Clear";
             this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // btn_querysqlite
             // 
@@ -369,6 +370,7 @@ namespace AdvancedHMICS
             this.btn_deleterow.TabIndex = 4;
             this.btn_deleterow.Text = "Delete";
             this.btn_deleterow.UseVisualStyleBackColor = true;
+            this.btn_deleterow.Click += new System.EventHandler(this.btn_deleterow_Click);
             // 
             // btn_plcstatus
             // 
@@ -409,6 +411,7 @@ namespace AdvancedHMICS
             this.btn_record.TabIndex = 0;
             this.btn_record.Text = "Record";
             this.btn_record.UseVisualStyleBackColor = true;
+            this.btn_record.Click += new System.EventHandler(this.btn_record_Click);
             // 
             // panel3
             // 
@@ -422,7 +425,7 @@ namespace AdvancedHMICS
             this.panel3.Controls.Add(this.label45);
             this.panel3.Controls.Add(this.label63);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(382, 331);
+            this.panel3.Location = new System.Drawing.Point(424, 505);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(394, 134);
             this.panel3.TabIndex = 78;
@@ -542,9 +545,9 @@ namespace AdvancedHMICS
             this.panel5.Controls.Add(this.label35);
             this.panel5.Controls.Add(this.label36);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(782, 3);
+            this.panel5.Location = new System.Drawing.Point(824, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(374, 224);
+            this.panel5.Size = new System.Drawing.Size(417, 224);
             this.panel5.TabIndex = 73;
             // 
             // avd_machanicalP
@@ -858,7 +861,7 @@ namespace AdvancedHMICS
             this.panel4.Controls.Add(this.label22);
             this.panel4.Controls.Add(this.label23);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(382, 3);
+            this.panel4.Location = new System.Drawing.Point(424, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(394, 224);
             this.panel4.TabIndex = 72;
@@ -997,7 +1000,7 @@ namespace AdvancedHMICS
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(373, 224);
+            this.panel2.Size = new System.Drawing.Size(415, 224);
             this.panel2.TabIndex = 69;
             // 
             // lbl_speedrpm
@@ -1282,9 +1285,9 @@ namespace AdvancedHMICS
             this.panel6.Controls.Add(this.lbl_rated_P);
             this.panel6.Controls.Add(this.label25);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 331);
+            this.panel6.Location = new System.Drawing.Point(3, 505);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(373, 134);
+            this.panel6.Size = new System.Drawing.Size(415, 134);
             this.panel6.TabIndex = 75;
             // 
             // lbl_status_automanual
@@ -1505,20 +1508,20 @@ namespace AdvancedHMICS
             this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btn_0, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 271);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 445);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1153, 54);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1238, 54);
             this.tableLayoutPanel3.TabIndex = 76;
             // 
             // btn_90
             // 
             this.btn_90.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_90.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_90.Location = new System.Drawing.Point(1046, 6);
+            this.btn_90.Location = new System.Drawing.Point(1126, 6);
             this.btn_90.Name = "btn_90";
-            this.btn_90.Size = new System.Drawing.Size(101, 42);
+            this.btn_90.Size = new System.Drawing.Size(106, 42);
             this.btn_90.TabIndex = 10;
             this.btn_90.Text = "90% NA";
             this.btn_90.UseVisualStyleBackColor = true;
@@ -1527,9 +1530,9 @@ namespace AdvancedHMICS
             // 
             this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox6.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox6.Location = new System.Drawing.Point(942, 6);
+            this.pictureBox6.Location = new System.Drawing.Point(1014, 6);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(95, 42);
+            this.pictureBox6.Size = new System.Drawing.Size(103, 42);
             this.pictureBox6.TabIndex = 9;
             this.pictureBox6.TabStop = false;
             // 
@@ -1537,9 +1540,9 @@ namespace AdvancedHMICS
             // 
             this.btn_100.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_100.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_100.Location = new System.Drawing.Point(838, 6);
+            this.btn_100.Location = new System.Drawing.Point(902, 6);
             this.btn_100.Name = "btn_100";
-            this.btn_100.Size = new System.Drawing.Size(95, 42);
+            this.btn_100.Size = new System.Drawing.Size(103, 42);
             this.btn_100.TabIndex = 8;
             this.btn_100.Tag = "5";
             this.btn_100.Text = "100%";
@@ -1550,9 +1553,9 @@ namespace AdvancedHMICS
             // 
             this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox5.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox5.Location = new System.Drawing.Point(734, 6);
+            this.pictureBox5.Location = new System.Drawing.Point(790, 6);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(95, 42);
+            this.pictureBox5.Size = new System.Drawing.Size(103, 42);
             this.pictureBox5.TabIndex = 7;
             this.pictureBox5.TabStop = false;
             // 
@@ -1560,9 +1563,9 @@ namespace AdvancedHMICS
             // 
             this.btn_75.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_75.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_75.Location = new System.Drawing.Point(630, 6);
+            this.btn_75.Location = new System.Drawing.Point(678, 6);
             this.btn_75.Name = "btn_75";
-            this.btn_75.Size = new System.Drawing.Size(95, 42);
+            this.btn_75.Size = new System.Drawing.Size(103, 42);
             this.btn_75.TabIndex = 6;
             this.btn_75.Tag = "4";
             this.btn_75.Text = "75%";
@@ -1573,9 +1576,9 @@ namespace AdvancedHMICS
             // 
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox4.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox4.Location = new System.Drawing.Point(526, 6);
+            this.pictureBox4.Location = new System.Drawing.Point(566, 6);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(95, 42);
+            this.pictureBox4.Size = new System.Drawing.Size(103, 42);
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
             // 
@@ -1583,9 +1586,9 @@ namespace AdvancedHMICS
             // 
             this.btn_50.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_50.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_50.Location = new System.Drawing.Point(422, 6);
+            this.btn_50.Location = new System.Drawing.Point(454, 6);
             this.btn_50.Name = "btn_50";
-            this.btn_50.Size = new System.Drawing.Size(95, 42);
+            this.btn_50.Size = new System.Drawing.Size(103, 42);
             this.btn_50.TabIndex = 4;
             this.btn_50.Tag = "3";
             this.btn_50.Text = "50%";
@@ -1596,9 +1599,9 @@ namespace AdvancedHMICS
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox3.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox3.Location = new System.Drawing.Point(318, 6);
+            this.pictureBox3.Location = new System.Drawing.Point(342, 6);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(95, 42);
+            this.pictureBox3.Size = new System.Drawing.Size(103, 42);
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             // 
@@ -1606,9 +1609,9 @@ namespace AdvancedHMICS
             // 
             this.btn_25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_25.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_25.Location = new System.Drawing.Point(214, 6);
+            this.btn_25.Location = new System.Drawing.Point(230, 6);
             this.btn_25.Name = "btn_25";
-            this.btn_25.Size = new System.Drawing.Size(95, 42);
+            this.btn_25.Size = new System.Drawing.Size(103, 42);
             this.btn_25.TabIndex = 2;
             this.btn_25.Tag = "2";
             this.btn_25.Text = "25%";
@@ -1621,9 +1624,9 @@ namespace AdvancedHMICS
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox2.Location = new System.Drawing.Point(110, 6);
+            this.pictureBox2.Location = new System.Drawing.Point(118, 6);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(95, 42);
+            this.pictureBox2.Size = new System.Drawing.Size(103, 42);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
@@ -1633,7 +1636,7 @@ namespace AdvancedHMICS
             this.btn_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_0.Location = new System.Drawing.Point(6, 6);
             this.btn_0.Name = "btn_0";
-            this.btn_0.Size = new System.Drawing.Size(95, 42);
+            this.btn_0.Size = new System.Drawing.Size(103, 42);
             this.btn_0.TabIndex = 1;
             this.btn_0.Tag = "1";
             this.btn_0.Text = "0%";
@@ -1647,7 +1650,7 @@ namespace AdvancedHMICS
             this.gc_main.Location = new System.Drawing.Point(3, 233);
             this.gc_main.MainView = this.gv_main;
             this.gc_main.Name = "gc_main";
-            this.gc_main.Size = new System.Drawing.Size(1153, 32);
+            this.gc_main.Size = new System.Drawing.Size(1238, 206);
             this.gc_main.TabIndex = 80;
             this.gc_main.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_main});
@@ -1665,7 +1668,7 @@ namespace AdvancedHMICS
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.label1.Location = new System.Drawing.Point(153, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1009, 42);
+            this.label1.Size = new System.Drawing.Size(1094, 42);
             this.label1.TabIndex = 2;
             this.label1.Text = "General Dynamics Intelligent Test System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1679,7 +1682,7 @@ namespace AdvancedHMICS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1165, 516);
+            this.ClientSize = new System.Drawing.Size(1250, 690);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMain";

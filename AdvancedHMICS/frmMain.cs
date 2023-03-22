@@ -1,5 +1,7 @@
 ﻿using ActUtlTypeLib;
 using AdvancedHMICS.Class;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Data;
 using System.Drawing;
@@ -24,12 +26,15 @@ namespace AdvancedHMICS
         private bool result = false;
         private bool _isTest = false;
         private bool _isAutoTest = false;
+        private DataRow _drStepData;
+        private DataTable _dtResult = new DataTable();
         // Khai báo kết nối PLC
         public ActUtlType plc = new ActUtlType();
 
         public frmMain()
         {
             InitializeComponent();
+            gv_main.CustomDrawCell += Gv_main_CustomDrawCell; ;
         }
 
         /// <summary>
@@ -39,9 +44,10 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
-            string sqlmodel = "select distinct(ck_model) from m_ck_point order by ck_model";
             try
             {
+                DefineResultTable();
+                string sqlmodel = "select distinct(ck_model) from m_ck_point order by ck_model";
                 sqlite sqlite_ = new sqlite();
                 sqlite_.getComboBoxData(sqlmodel, ref cbm_model);
             }
@@ -49,8 +55,6 @@ namespace AdvancedHMICS
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
-
-
         }
 
         private void timerLoad_Tick(object sender, EventArgs e)
@@ -194,7 +198,7 @@ namespace AdvancedHMICS
             {
                 lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Value), 0).ToString();
                 //read vaule
-                if (_isTest || _isAutoTest)
+                if (btn_start.Text == "Running" || _isAutoTest)
                 {
                     short shortvalue;
                     plc.GetDevice2("D10", out shortvalue); // đọc lên giá trị từ miền nhớ
@@ -273,6 +277,16 @@ namespace AdvancedHMICS
             plc.Close();
         }
 
+        private void Gv_main_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            GridView View = sender as GridView;
+            if (e.RowHandle >= 0)
+            {
+                string result = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ck_result"]);
+                e.Appearance.BackColor = result == "1" ? Color.Green : Color.Red;
+            }
+        }
+
         /// <summary>
         /// Chạy step test
         /// </summary>
@@ -300,6 +314,8 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void btn_start_Click(object sender, EventArgs e) //this ok.
         {
+            _isAutoTest = false;
+            _dtResult.Rows.Clear();
             if (Checkinput() == false) return;
             try
             {
@@ -324,7 +340,6 @@ namespace AdvancedHMICS
                     btn_start.BackColor = Color.Red;
                     btn_plcstatus.BackColor = Color.DarkGray;
                     btn_plcstatus.Enabled = false;
-                    btn_plcstatus.Enabled = false;
                     txt_barcode.ReadOnly = false;
                     cbm_model.Enabled = true;
                     cbm_orderid.Enabled = true;
@@ -337,6 +352,43 @@ namespace AdvancedHMICS
             }
         }
 
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            _dtResult.Rows.Clear();
+        }
+
+        private void btn_record_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_dtResult.Rows.Count < 1)
+                {
+                    return;
+                }
+                sqlite sqlite_ = new sqlite();
+                string columns = string.Join(",", _dtResult.Columns.Cast<DataColumn>().Select(c => c.ColumnName));
+                foreach (DataRow dr in _dtResult.Rows)
+                {
+                    string values = "'" + string.Join("','", dr.ItemArray.Select(x => x?.ToString())) + "'";
+                    string sql = $"INSERT INTO m_ck_point_data ({columns}) VALUES ({values})";
+                    sqlite_.exeNonQuery_auto(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                timerLoad.Enabled = false;
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+
+        private void btn_deleterow_Click(object sender, EventArgs e)
+        {
+            if (_dtResult.Rows.Count > 0)
+            {
+                _dtResult.Rows.RemoveAt(_dtResult.Rows.Count - 1);
+            }
+        }
+
         /// <summary>
         /// Chạy chế độ auto
         /// </summary>
@@ -344,6 +396,7 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void btn_autoload_Click(object sender, EventArgs e)
         {
+            _dtResult.Rows.Clear();
             if (Checkinput() == false) return;
             try
             {
@@ -370,7 +423,6 @@ namespace AdvancedHMICS
                     btn_autoload.Text = "AutoLoad";
                     btn_autoload.BackColor = Color.Red;
                     btn_plcstatus.BackColor = Color.DarkGray;
-                    btn_plcstatus.Enabled = false;
                     btn_plcstatus.Enabled = false;
                     txt_barcode.ReadOnly = false;
                     cbm_model.Enabled = true;
@@ -431,8 +483,11 @@ namespace AdvancedHMICS
             f.ShowDialog();
         }
 
-        //condition
-        bool Checkinput()
+        /// <summary>
+        /// Kiểm tra đã chọn model hay chưa
+        /// </summary>
+        /// <returns></returns>
+        private bool Checkinput()
         {
             if (cbm_model.SelectedItem == null || cbm_orderid.SelectedItem == null || txt_barcode.Text == "")
             {
@@ -457,8 +512,29 @@ namespace AdvancedHMICS
             btn_75.BackColor = Color.LightGray;
             btn_90.BackColor = Color.LightGray;
             btn_100.BackColor = Color.LightGray;
-
-            if (_isAutoTest)
+            if (_drStepData != null)
+            {
+                var dr = _dtResult.NewRow();
+                foreach (DataColumn col in _dtResult.Columns)
+                {
+                    if (_drStepData.Table.Columns.Contains(col.ColumnName))
+                    {
+                        dr[col.ColumnName] = _drStepData[col.ColumnName];
+                    }
+                    dr["ck_time"] = DateTime.Now;
+                    dr["ck_barcode"] = txt_barcode.Text;
+                    dr["ck_actual_power"] = lbl_actualP.Text;
+                    dr["ck_pid_stop"] = lbl_pidStop.Text;
+                    dr["ck_rot_speed"] = lbl_speedrpm.Text;
+                    dr["ck_fw_volt"] = avd_FWVolt.Text;
+                    dr["ck_volt"] = avd_voltage.Text;
+                    dr["ck_current"] = avd_current.Text;
+                    dr["ck_result"] = isOk ? 1 : 0;
+                }
+                _dtResult.Rows.Add(dr);
+                _drStepData = null;
+            }
+            if (_isAutoTest && isOk)
             {
                 _currStep++;
                 Steptest(btn_90, _currStep);
@@ -474,12 +550,84 @@ namespace AdvancedHMICS
                 btn_autoload.BackColor = Color.Red;
                 btn_plcstatus.BackColor = Color.DarkGray;
                 btn_plcstatus.Enabled = false;
-                btn_plcstatus.Enabled = false;
                 txt_barcode.ReadOnly = false;
                 cbm_model.Enabled = true;
                 cbm_orderid.Enabled = true;
                 btn_start.Enabled = true;
             }
+        }
+
+        private void DefineResultTable()
+        {
+            _dtResult = new DataTable();
+            _dtResult.Columns.Add("ck_serial");
+            _dtResult.Columns.Add("ck_Max_Noloadlimitspeed");
+            _dtResult.Columns.Add("ck_Min_Noloadlimitspeed");
+            _dtResult.Columns.Add("ck_Steppower");
+            _dtResult.Columns.Add("ck_power");
+            _dtResult.Columns.Add("ck_Steppercentage");
+            _dtResult.Columns.Add("ck_Max_Generator");
+            _dtResult.Columns.Add("ck_Min_Generator");
+            _dtResult.Columns.Add("ck_Max_VolGenerator");
+            _dtResult.Columns.Add("ck_Min_VolGenerator");
+            _dtResult.Columns.Add("ck_Max_frequency");
+            _dtResult.Columns.Add("ck_Min_frequency");
+            _dtResult.Columns.Add("ck_Max_braketime");
+            _dtResult.Columns.Add("ck_Min_braketime");
+            _dtResult.Columns.Add("ck_Max_regulationspeed");
+            _dtResult.Columns.Add("ck_Min_regulationSpeed");
+            _dtResult.Columns.Add("ck_Max_fluctuationspeed");
+            _dtResult.Columns.Add("ck_Min_fluctuationspeed");
+            _dtResult.Columns.Add("ck_LoadTime");
+            _dtResult.Columns.Add("ck_speed");
+            _dtResult.Columns.Add("ck_cycles");
+            _dtResult.Columns.Add("ck_model");
+            _dtResult.Columns.Add("ck_testbrakes");
+            _dtResult.Columns.Add("ck_time");
+            _dtResult.Columns.Add("ck_barcode");
+            _dtResult.Columns.Add("ck_actual_power");
+            _dtResult.Columns.Add("ck_pid_stop");
+            _dtResult.Columns.Add("ck_rot_speed");
+            _dtResult.Columns.Add("ck_fw_volt");
+            _dtResult.Columns.Add("ck_volt");
+            _dtResult.Columns.Add("ck_current");
+            _dtResult.Columns.Add("ck_result");
+            gc_main.DataSource = _dtResult;
+
+            gv_main.Columns["ck_Max_Noloadlimitspeed"].Visible = false;
+            gv_main.Columns["ck_Min_Noloadlimitspeed"].Visible = false;
+            gv_main.Columns["ck_Max_Generator"].Visible = false;
+            gv_main.Columns["ck_Min_Generator"].Visible = false;
+            gv_main.Columns["ck_Max_VolGenerator"].Visible = false;
+            gv_main.Columns["ck_Min_VolGenerator"].Visible = false;
+            gv_main.Columns["ck_Max_frequency"].Visible = false;
+            gv_main.Columns["ck_Min_frequency"].Visible = false;
+            gv_main.Columns["ck_Max_braketime"].Visible = false;
+            gv_main.Columns["ck_Min_braketime"].Visible = false;
+            gv_main.Columns["ck_Max_regulationspeed"].Visible = false;
+            gv_main.Columns["ck_Min_regulationSpeed"].Visible = false;
+            gv_main.Columns["ck_Max_fluctuationspeed"].Visible = false;
+            gv_main.Columns["ck_Min_fluctuationspeed"].Visible = false;
+            gv_main.Columns["ck_LoadTime"].Visible = false;
+            gv_main.Columns["ck_speed"].Visible = false;
+            gv_main.Columns["ck_cycles"].Visible = false;
+            gv_main.Columns["ck_model"].Visible = false;
+            gv_main.Columns["ck_testbrakes"].Visible = false;
+
+            gv_main.Columns["ck_serial"].Caption = "Step";
+            gv_main.Columns["ck_Steppower"].Caption = "Step Power";
+            gv_main.Columns["ck_power"].Caption = "Total Power";
+            gv_main.Columns["ck_Steppercentage"].Caption = "Percentage";
+            gv_main.Columns["ck_Steppercentage"].DisplayFormat.FormatString = "{0:P2}";
+            gv_main.Columns["ck_time"].Caption = "Time";
+            gv_main.Columns["ck_barcode"].Caption = "Barcode";
+            gv_main.Columns["ck_actual_power"].Caption = "Actual Power";
+            gv_main.Columns["ck_pid_stop"].Caption = "PID Stop";
+            gv_main.Columns["ck_rot_speed"].Caption = "ROT Speed";
+            gv_main.Columns["ck_fw_volt"].Caption = "FW Voltage";
+            gv_main.Columns["ck_volt"].Caption = "Voltage";
+            gv_main.Columns["ck_current"].Caption = "Current";
+            gv_main.Columns["ck_result"].Caption = "Result";
         }
 
         /// <summary>
@@ -516,17 +664,17 @@ namespace AdvancedHMICS
                 string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
                 sqlite sqlite_ = new sqlite();
                 sqlite_.SelectData(sqlmodel, ref dt);
-                var rows = dt.AsEnumerable().Where(row => row["ck_serial"].ToString() == step.ToString());
+                _drStepData = dt.AsEnumerable().FirstOrDefault(row => row["ck_serial"].ToString() == step.ToString());
                 //timerlable
-                steadyT = int.Parse(rows.Max(row => row["ck_LoadTime"]).ToString());
+                steadyT = int.Parse(_drStepData["ck_LoadTime"]?.ToString());
                 lbl_steadyT.Text = steadyT.ToString();
                 //ratedP step
-                lbl_rated_P.Text = rows.Max(row => row["ck_Steppower"]).ToString();
+                lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
                 //get min max
-                minrpm = int.Parse(rows.Max(row => row["ck_Min_Noloadlimitspeed"]).ToString());
-                maxrpm = int.Parse(rows.Max(row => row["ck_Max_Noloadlimitspeed"]).ToString());
+                minrpm = int.Parse(_drStepData["ck_Min_Noloadlimitspeed"]?.ToString());
+                maxrpm = int.Parse(_drStepData["ck_Max_Noloadlimitspeed"]?.ToString());
 
-                btn_90.Text = $"{rows.Max(row => row["ck_Steppercentage"])}%";
+                btn_90.Text = $"{_drStepData["ck_Steppercentage"]}%";
 
                 //condtion function.,
                 //if (btn.BackColor == Color.LightGray)
