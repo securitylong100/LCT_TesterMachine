@@ -13,12 +13,14 @@ namespace AdvancedHMICS
 {
     public partial class frmMain : Form
     {
+        private const int TIME_OUT = 20;
         // Khai báo điện trở fix
         private int R = 500;
         private int minrpm = 0;
         private int maxrpm = 0;
         private int steadyT = 4;
         private int counter = 0;
+        private int _timeOut = 0;
         private int _currStep = 0;
         private int _numberOfTest = 3;
         private int _numberOfSteps = 5;
@@ -88,8 +90,12 @@ namespace AdvancedHMICS
                     counter--;
                     if (actualP < min)
                     {
-                        _numberOfTest--;
-                        counter = steadyT;
+                        _timeOut--;
+                        if (_timeOut < 1)
+                        {
+                            _numberOfTest--;
+                            counter = steadyT;
+                        }
                     }
                     if (actualP > max || _numberOfTest < 0)
                     {
@@ -328,10 +334,10 @@ namespace AdvancedHMICS
                     btn_start.BackColor = Color.Green;
                     btn_plcstatus.BackColor = Color.Green;
                     btn_plcstatus.Enabled = true;
+                    btn_autoload.Enabled = true;
                     txt_barcode.ReadOnly = true;
-                    cbm_model.Enabled = false;
                     cbm_orderid.Enabled = false;
-                    btn_autoload.Enabled = false;
+                    cbm_model.Enabled = false;
                 }
                 else if (btn_start.Text == "Running")
                 {
@@ -341,9 +347,9 @@ namespace AdvancedHMICS
                     btn_plcstatus.BackColor = Color.DarkGray;
                     btn_plcstatus.Enabled = false;
                     txt_barcode.ReadOnly = false;
-                    cbm_model.Enabled = true;
+                    btn_autoload.Enabled = false;
                     cbm_orderid.Enabled = true;
-                    btn_autoload.Enabled = true;
+                    cbm_model.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -383,9 +389,13 @@ namespace AdvancedHMICS
 
         private void btn_deleterow_Click(object sender, EventArgs e)
         {
-            if (_dtResult.Rows.Count > 0)
+            int[] rows = gv_main.GetSelectedRows();
+            if (rows != null && rows.Length > 0)
             {
-                _dtResult.Rows.RemoveAt(_dtResult.Rows.Count - 1);
+                foreach (var row in rows)
+                {
+                    _dtResult.Rows.RemoveAt(row);
+                }
             }
         }
 
@@ -404,31 +414,31 @@ namespace AdvancedHMICS
                 lbl_status_automanual.BackColor = Color.Green;
 
                 // btn_start.Text = "Start/Run";       
-                if (btn_autoload.Text == "AutoLoad")
-                {
-                    plc.ActLogicalStationNumber = 1;
-                    plc.Open();
-                    btn_autoload.Text = "Running";
-                    btn_autoload.BackColor = Color.Green;
-                    btn_plcstatus.BackColor = Color.Green;
-                    btn_plcstatus.Enabled = true;
-                    txt_barcode.ReadOnly = true;
-                    cbm_model.Enabled = false;
-                    cbm_orderid.Enabled = false;
-                    btn_start.Enabled = false;
-                }
-                else if (btn_autoload.Text == "Running")
-                {
-                    plc.Close();
-                    btn_autoload.Text = "AutoLoad";
-                    btn_autoload.BackColor = Color.Red;
-                    btn_plcstatus.BackColor = Color.DarkGray;
-                    btn_plcstatus.Enabled = false;
-                    txt_barcode.ReadOnly = false;
-                    cbm_model.Enabled = true;
-                    cbm_orderid.Enabled = true;
-                    btn_start.Enabled = true;
-                }
+                //if (btn_autoload.Text == "AutoLoad")
+                //{
+                //    plc.ActLogicalStationNumber = 1;
+                //    plc.Open();
+                //    btn_autoload.Text = "Running";
+                //    btn_autoload.BackColor = Color.Green;
+                //    btn_plcstatus.BackColor = Color.Green;
+                //    btn_plcstatus.Enabled = true;
+                //    txt_barcode.ReadOnly = true;
+                //    cbm_model.Enabled = false;
+                //    cbm_orderid.Enabled = false;
+                //    btn_start.Enabled = false;
+                //}
+                //else if (btn_autoload.Text == "Running")
+                //{
+                //    plc.Close();
+                //    btn_autoload.Text = "AutoLoad";
+                //    btn_autoload.BackColor = Color.Red;
+                //    btn_plcstatus.BackColor = Color.DarkGray;
+                //    btn_plcstatus.Enabled = false;
+                //    txt_barcode.ReadOnly = false;
+                //    cbm_model.Enabled = true;
+                //    cbm_orderid.Enabled = true;
+                //    btn_start.Enabled = true;
+                //}
                 string sql = "select max(ck_serial) as ck_serial from m_ck_point where ck_model = '" + cbm_model.Text + "'";
                 sqlite sqlite_ = new sqlite();
                 string maxStep = sqlite_.ExecuteScalarString(sql);
@@ -653,12 +663,12 @@ namespace AdvancedHMICS
                 }
                 _isTest = true;
                 _currStep = step;
-                timerLoad.Enabled = true;
                 btn.BackColor = Color.Green;
 
                 // step = 1;
                 counter = steadyT;
                 _numberOfTest = 3;
+                _timeOut = TIME_OUT;
                 lbl_pcStep.Text = step.ToString();
                 DataTable dt = new DataTable();
                 string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
@@ -696,6 +706,10 @@ namespace AdvancedHMICS
             {
                 timerLoad.Enabled = false;
                 MessageBox.Show("Error :" + ex.Message);
+            }
+            finally
+            {
+                timerLoad.Enabled = true;
             }
         }
     }
