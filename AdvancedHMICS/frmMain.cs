@@ -13,32 +13,191 @@ namespace AdvancedHMICS
 {
     public partial class frmMain : Form
     {
+        private const int STEPS = 5;
+        private const int MAX_NG = 3;
         private const int TIME_OUT = 20;
-        // Khai báo điện trở fix
-        private int R = 500;
-        private int minrpm = 0;
-        private int maxrpm = 0;
-        private int steadyT = 4;
-        private int counter = 0;
-        private int _timeOut = 0;
-        private int _currStep = 0;
-        private int _numberOfTest = 3;
-        private int _numberOfSteps = 5;
-        // Kết quả test 
-        private bool result = false;
-        private bool _isTest = false;
-        private bool _isAutoTest = false;
+        private const int FIXED_RES = 500;
+
+        private enum RunMode
+        {
+            Manual = 0,
+            Auto = 1
+        }
+        private RunMode _eRunMode = RunMode.Manual;
+
+        private int _iMinRPM = 0;
+        private int _iMaxRPM = 0;
+        private int _iTimeOut = 0;
+        private int _iCounter = 0;
+        private int _iLoadTime = 0;
+        private int _iCurrStep = 0;
+        private int _iSteps = STEPS;
+        private int _iMaxNG = MAX_NG;
+
+        private bool _bIsRun = false;
+        private bool _bIsPlcConnected = false;
+
         private DataRow _drStepData;
-        private DataTable _dtResult = new DataTable();
+        private DataTable _dtResult;
+
         // Khai báo kết nối PLC
-        public ActUtlType plc = new ActUtlType();
+        public ActUtlType _plc = new ActUtlType();
 
         public frmMain()
         {
             InitializeComponent();
-            gv_main.CustomDrawCell += Gv_main_CustomDrawCell; ;
+            gv_main.OptionsBehavior.ReadOnly = true;
+            gv_main.OptionsBehavior.Editable = false;
+            gv_main.OptionsSelection.MultiSelect = true;
+            gv_main.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
+            gv_main.CustomDrawCell += Gv_main_CustomDrawCell;
         }
 
+        #region --- TRẠNG THÁI ---
+        /// <summary>
+        /// Tính Torque khi ROT speed thay đổi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lbl_speedrpm_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lbl_speedrpm.Text != "0")
+                {
+                    avd_torque.Value = Math.Round(
+                        float.Parse(avd_voltage.Value)
+                        * float.Parse(avd_current.Value)
+                        * 0.95
+                        / float.Parse(lbl_speedrpm.Text),
+                        3).ToString();
+                }
+                else
+                {
+                    avd_torque.Value = "0";
+                }
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Tính DC power khi FW curr thay đổi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void avd_FWcurr_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                avd_DCpower.Value = Math.Round(
+                    float.Parse(avd_FWVolt.Value)
+                    * float.Parse(avd_FWcurr.Value)
+                    ).ToString();
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Tính FW curr khi FW Volt thay đổi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void avd_FWVolt_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                avd_FWcurr.Value = Math.Round(
+                    float.Parse(avd_FWVolt.Value)
+                    / FIXED_RES,
+                    2).ToString();
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Tính Actual P khi current thay đổi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void avd_current_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                avd_electricP.Value = Math.Round(
+                    float.Parse(avd_FWVolt.Value)
+                    * float.Parse(avd_current.Value) / 1000,
+                    2).ToString();
+                lbl_actualP.Text = avd_electricP.Value;
+            }
+            catch
+            { }
+        }
+
+        /// <summary>
+        /// Tính ROT speed khi Frequency thay đổi
+        /// Nếu đang chạy thì đọc giá trị FW Volt từ PLC D10
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void avd_frequency_ValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Value), 0).ToString();
+                //read vaule
+                if (_bIsPlcConnected)
+                {
+                    _plc.GetDevice2("D10", out short shortvalue); // đọc lên giá trị từ miền nhớ
+                    avd_FWVolt.Value = shortvalue.ToString();
+                }
+                else
+                {
+                    avd_FWVolt.Value = "0";
+                }
+            }
+            catch { }
+        }
+
+        /// <summary>
+        /// Thay đổi giá trị relay
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void keyboardInput1_TextChanged(object sender, EventArgs e)
+        {
+            keyboardInput1.PLCAddressWriteValue.PLCAddress = textBox1.Text;
+        }
+
+        /// <summary>
+        /// Xem trạng thái thanh ghi PLC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_plcstatus_Click(object sender, EventArgs e)
+        {
+            //int[] D_input = { 0, 1, 2, 3, 4, 5, 6, 7 };
+            // int[] D_output = new int[8];
+            //foreach(int i in D_input)
+            //{
+            //    {
+            //        plc.GetDevice("D" + i, out D_output[i]);
+            //    }                 
+            //}         
+            frmPLCValueRealtime frmplc = new frmPLCValueRealtime();
+            frmplc.ShowDialog();
+
+        }
+
+        /// <summary>
+        /// Xem trạng thái thanh ghi tải
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_loadStatus_Click(object sender, EventArgs e)
+        {
+        }
+        #endregion
+        #region --- GIAO DIỆN ---
         /// <summary>
         /// Cập nhật danh sách models
         /// </summary>
@@ -59,14 +218,205 @@ namespace AdvancedHMICS
             }
         }
 
+        /// <summary>
+        /// Đóng form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _plc.Close();
+        }
+        #endregion
+        #region --- CẤU HÌNH ---
+        private void btn_user_Click(object sender, EventArgs e)
+        {
+            frmUser fd = new frmUser();
+            fd.ShowDialog();
+        }
+
+        private void btn_DBSetting_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Mở cửa sổ setting model
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_modelSetting_Click(object sender, EventArgs e)
+        {
+            frmSettingModel fr = new frmSettingModel();
+            fr.ShowDialog();
+        }
+
+        /// <summary>
+        /// Mở cửa sổ setting order
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_settingorder_Click(object sender, EventArgs e)
+        {
+            frmSettingOrder f = new frmSettingOrder();
+            f.ShowDialog();
+        }
+
+        /// <summary>
+        /// Vẽ cell
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Gv_main_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
+        {
+            GridView View = sender as GridView;
+            if (e.RowHandle >= 0)
+            {
+                string result = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ck_result"]);
+                e.Appearance.BackColor = result == "1" ? Color.Green : Color.Red;
+                e.Appearance.ForeColor = Color.Yellow;
+            }
+        }
+        #endregion
+        #region --- CHẾ ĐỘ TEST ---
+        /// <summary>
+        /// Mở kết nối PLC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_start_Click(object sender, EventArgs e) //this ok.
+        {
+            _dtResult.Rows.Clear();
+            if (Checkinput() == false) return;
+            try
+            {
+                _bIsPlcConnected = !_bIsPlcConnected;
+                btn_plcstatus.Enabled = _bIsPlcConnected;
+                btn_autoload.Enabled = _bIsPlcConnected;
+                btn_record.Enabled = _bIsPlcConnected;
+                btn_clear.Enabled = _bIsPlcConnected;
+                btn_export.Enabled = _bIsPlcConnected;
+                btn_deleterow.Enabled = _bIsPlcConnected;
+                txt_barcode.ReadOnly = _bIsPlcConnected;
+                cbm_model.Enabled = !_bIsPlcConnected;
+                cbm_orderid.Enabled = !_bIsPlcConnected;
+
+                if (_bIsPlcConnected)
+                {
+                    _plc.ActLogicalStationNumber = 1;
+                    _plc.Open();
+                    btn_start.Text = "Running";
+                    btn_start.BackColor = Color.Green;
+                    btn_plcstatus.BackColor = Color.Green;
+                }
+                else
+                {
+                    _plc.Close();
+                    btn_start.Text = "Start/Run";
+                    btn_start.BackColor = Color.Red;
+                    btn_plcstatus.BackColor = Color.DarkGray;
+                }
+
+
+
+                //if (btn_start.Text == "Start/Run")
+                //{
+                //    plc.ActLogicalStationNumber = 1;
+                //    plc.Open();
+                //    btn_start.Text = "Running";
+                //    btn_start.BackColor = Color.Green;
+                //    btn_plcstatus.BackColor = Color.Green;
+                //    btn_plcstatus.Enabled = true;
+                //    btn_autoload.Enabled = true;
+                //    txt_barcode.ReadOnly = true;
+                //    cbm_orderid.Enabled = false;
+                //    cbm_model.Enabled = false;
+                //}
+                //else if (btn_start.Text == "Running")
+                //{
+                //    plc.Close();
+                //    btn_start.Text = "Start/Run";
+                //    btn_start.BackColor = Color.Red;
+                //    btn_plcstatus.BackColor = Color.DarkGray;
+                //    btn_plcstatus.Enabled = false;
+                //    txt_barcode.ReadOnly = false;
+                //    btn_autoload.Enabled = false;
+                //    cbm_orderid.Enabled = true;
+                //    cbm_model.Enabled = true;
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Chạy chế độ manual
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_step_Click(object sender, EventArgs e)
+        {
+            if (_eRunMode == RunMode.Manual)
+            {
+                var btn = (Button)sender;
+                if (int.TryParse(btn.Tag?.ToString(), out int step))
+                {
+                    if (_bIsRun)
+                    {
+                        if (step == _iCurrStep)
+                        {
+                            _bIsRun = false;
+                            timerLoad.Enabled = false;
+                            lbl_status_automanual.Text = "Manual";
+                            btn_autoload.BackColor = Color.LightGray;
+                            lbl_status_automanual.BackColor = Color.LightGray;
+                        }
+                        return;
+                    }
+                    StartTest(step);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Chạy chế độ auto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_autoload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_bIsRun)
+                {
+                    if (_eRunMode == RunMode.Auto)
+                    {
+                        _bIsRun = false;
+                        _eRunMode = RunMode.Manual;
+                        timerLoad.Enabled = false;
+                        lbl_status_automanual.Text = "Manual";
+                        btn_autoload.BackColor = Color.LightGray;
+                        lbl_status_automanual.BackColor = Color.LightGray;
+                    }
+                    return;
+                }
+                _dtResult.Rows.Clear();
+                _eRunMode = RunMode.Auto;
+                lbl_status_automanual.Text = "AutoLoad";
+                lbl_status_automanual.BackColor = Color.Green;
+                _iSteps = GetTestSteps();
+                StartTest(1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+
         private void timerLoad_Tick(object sender, EventArgs e)
         {
-            //int minrpm = 0;
-            //int maxrpm = 0;
-            //int counter = 0;
-            //counter
-            // lbl_actualP = the same 90% of  lbl_rated_P
-            // lbl_speedrpm into spec of minrpm -- maxrpm
             try
             {
                 if (!int.TryParse(lbl_speedrpm.Text, out int speedrpm))
@@ -84,25 +434,32 @@ namespace AdvancedHMICS
                 double min = reatedP * 0.9;
                 double max = reatedP * 1.1;
                 double pidStop = reatedP == 0 ? 0 : (actualP / reatedP) * 100;
-                lbl_pidStop.Text = $"{pidStop:0.##}";
-                if (minrpm <= speedrpm && maxrpm >= speedrpm)
+                if (actualP == reatedP)
                 {
-                    counter--;
+                    pidStop = 100;
+                }
+
+                lbl_pidStop.Text = $"{pidStop:0.##}";
+
+                if (_iMinRPM <= speedrpm && _iMaxRPM >= speedrpm)
+                {
+                    _iCounter--;
                     if (actualP < min)
                     {
-                        _timeOut--;
-                        if (_timeOut < 1)
+                        // Đếm 20s trước khi xác định lại số lần test
+                        _iTimeOut--;
+                        _iCounter = _iLoadTime;
+                        if (_iTimeOut < 1)
                         {
-                            _numberOfTest--;
-                            counter = steadyT;
+                            _iMaxNG--;
                         }
                     }
-                    if (actualP > max || _numberOfTest < 0)
+                    if (actualP > max || _iMaxNG < 0)
                     {
                         EndTest(false);
                         return;
                     }
-                    if (counter < 1)
+                    if (_iCounter < 1)
                     {
                         EndTest(true);
                     }
@@ -110,122 +467,212 @@ namespace AdvancedHMICS
             }
             finally
             {
-                lbl_steadyT.Text = counter.ToString();
+                lbl_steadyT.Text = _iCounter.ToString();
             }
-            //else
-            //{
-            //counter = 0;
-            //timerLoad.Enabled = false;
-            ////return NG
-            //result = false;
-            //MessageBox.Show("Result NG", "Notice Messenger", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //btn_0.BackColor = Color.LightGray;
-            //btn_25.BackColor = Color.LightGray;
-            //btn_50.BackColor = Color.LightGray;
-            //btn_75.BackColor = Color.LightGray;
-            //btn_100.BackColor = Color.LightGray;
-            //}
         }
 
         /// <summary>
-        /// Tính Torque khi ROT speed thay đổi
+        /// Kiểm tra đã chọn model hay chưa
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void lbl_speedrpm_TextChanged(object sender, EventArgs e)
+        /// <returns></returns>
+        private bool Checkinput()
+        {
+            if (cbm_model.SelectedItem == null || cbm_orderid.SelectedItem == null || txt_barcode.Text == "")
+            {
+                MessageBox.Show("Chưa chọn đầy đủ Thông Tin Mã Hàng ", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Bắt đầu step theo step
+        /// </summary>
+        /// <param name="step"></param>
+        private void StartTest(int step)
         {
             try
             {
-                if (lbl_speedrpm.Text != "0")
+                if (Checkinput() == false) return;
+                _drStepData = GetMasterStep(step);
+                if (!int.TryParse(_drStepData["ck_LoadTime"]?.ToString(), out int loadTime))
                 {
-                    avd_torque.Value = Math.Round(float.Parse(avd_voltage.Value) * float.Parse(avd_current.Value) * 0.95 / float.Parse(lbl_speedrpm.Text), 3).ToString();
+                    loadTime = 0;
                 }
-                else
+                if (!int.TryParse(_drStepData["ck_Min_Noloadlimitspeed"]?.ToString(), out int minRPM))
                 {
-                    avd_torque.Value = "0";
+                    minRPM = 0;
                 }
+                if (!int.TryParse(_drStepData["ck_Max_Noloadlimitspeed"]?.ToString(), out int maxRPM))
+                {
+                    maxRPM = 0;
+                }
+
+                _bIsRun = true;
+                _iMaxNG = MAX_NG;
+                _iMinRPM = minRPM;
+                _iMaxRPM = maxRPM;
+                _iCurrStep = step;
+                _iTimeOut = TIME_OUT;
+                _iLoadTime = loadTime;
+                _iCounter = _iLoadTime;
+
+                switch (step)
+                {
+                    case 1:
+                        btn_0.BackColor = Color.Green;
+                        break;
+                    case 2:
+                        btn_25.BackColor = Color.Green;
+                        break;
+                    case 3:
+                        btn_50.BackColor = Color.Green;
+                        break;
+                    case 4:
+                        btn_75.BackColor = Color.Green;
+                        break;
+                    case 5:
+                        btn_100.BackColor = Color.Green;
+                        break;
+                    default:
+                        break;
+                }
+                lbl_pcStep.Text = step.ToString();
+                lbl_steadyT.Text = _iLoadTime.ToString();
+                lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
+
+                switch (_eRunMode)
+                {
+                    case RunMode.Auto:
+                        break;
+                    case RunMode.Manual:
+                    default:
+                        break;
+                }
+                timerLoad.Enabled = true;
             }
-            catch { }
+            catch (Exception ex)
+            {
+                timerLoad.Enabled = false;
+                MessageBox.Show("Error :" + ex.Message);
+            }
         }
 
         /// <summary>
-        /// Tính DC power khi FW curr thay đổi
+        /// Kết thúc test
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void avd_FWcurr_ValueChanged(object sender, EventArgs e)
+        /// <param name="isOk"></param>
+        private void EndTest(bool isOk)
+        {
+            _bIsRun = false;
+            timerLoad.Enabled = false;
+            btn_0.BackColor = Color.LightGray;
+            btn_25.BackColor = Color.LightGray;
+            btn_50.BackColor = Color.LightGray;
+            btn_75.BackColor = Color.LightGray;
+            btn_90.BackColor = Color.LightGray;
+            btn_100.BackColor = Color.LightGray;
+
+            // Hiển thị dữ liệu lên grid
+            if (_drStepData != null)
+            {
+                var dr = _dtResult.NewRow();
+                foreach (DataColumn col in _dtResult.Columns)
+                {
+                    if (_drStepData.Table.Columns.Contains(col.ColumnName))
+                    {
+                        dr[col.ColumnName] = _drStepData[col.ColumnName];
+                    }
+                    dr["ck_time"] = DateTime.Now;
+                    dr["ck_barcode"] = txt_barcode.Text;
+                    dr["ck_actual_power"] = lbl_actualP.Text;
+                    dr["ck_pid_stop"] = lbl_pidStop.Text;
+                    dr["ck_rot_speed"] = lbl_speedrpm.Text;
+                    dr["ck_fw_volt"] = avd_FWVolt.Text;
+                    dr["ck_volt"] = avd_voltage.Text;
+                    dr["ck_current"] = avd_current.Text;
+                    dr["ck_result"] = isOk ? 1 : 0;
+                }
+                _dtResult.Rows.Add(dr);
+                _drStepData = null;
+            }
+            // Chuyển sang step kế khi chạy auto
+            if (isOk && _eRunMode == RunMode.Auto && _iCurrStep < _iSteps)
+            {
+                _iCurrStep++;
+                StartTest(_iCurrStep);
+                _bIsRun = _iCurrStep <= _iSteps;
+            }
+            // Kết thúc kiểm tra
+            if (!_bIsRun)
+            {
+                _eRunMode = RunMode.Manual;
+
+                timerLoad.Enabled = false;
+                lbl_status_automanual.Text = "Manual";
+                btn_autoload.BackColor = Color.LightGray;
+                lbl_status_automanual.BackColor = Color.LightGray;
+                string result = isOk ? "OK" : "NG";
+                if (MessageBox.Show($"Test complete!\nResult: {result}\nDo you want record data?",
+                    "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    btn_record_Click(this, null);
+                }
+            }
+        }
+        #endregion
+        #region --- XỬ LÝ DỮ LIỆU ---
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            _dtResult.Rows.Clear();
+        }
+
+        private void btn_record_Click(object sender, EventArgs e)
         {
             try
             {
-                avd_DCpower.Value = Math.Round(float.Parse(avd_FWVolt.Value) * float.Parse(avd_FWcurr.Value)).ToString();
-            }
-            catch { }
-        }
-
-        /// <summary>
-        /// Tính FW curr khi FW Volt thay đổi
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void avd_FWVolt_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            { avd_FWcurr.Value = Math.Round(float.Parse(avd_FWVolt.Value) / R, 2).ToString(); }
-            catch
-            { }
-        }
-
-        /// <summary>
-        /// Tính Actual P khi current thay đổi
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void avd_current_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                avd_electricP.Value = Math.Round(float.Parse(avd_FWVolt.Value) * float.Parse(avd_current.Value) / 1000, 2).ToString();
-                lbl_actualP.Text = avd_electricP.Value;
-                // lbl_pidStop.Text = 
-            }
-            catch
-            { }
-        }
-
-        /// <summary>
-        /// Tính ROT speed khi Frequency thay đổi
-        /// Nếu đang chạy thì đọc giá trị FW Volt từ PLC D10
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void avd_frequency_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Value), 0).ToString();
-                //read vaule
-                if (btn_start.Text == "Running" || _isAutoTest)
+                if (_dtResult.Rows.Count < 1)
                 {
-                    short shortvalue;
-                    plc.GetDevice2("D10", out shortvalue); // đọc lên giá trị từ miền nhớ
-                    avd_FWVolt.Value = shortvalue.ToString();
+                    return;
                 }
-                else
+                sqlite sqlite_ = new sqlite();
+                string columns = string.Join(",", _dtResult.Columns.Cast<DataColumn>().Select(c => c.ColumnName));
+                foreach (DataRow dr in _dtResult.Rows)
                 {
-                    avd_FWVolt.Value = "0";
+                    string values = "'" + string.Join("','", dr.ItemArray.Select(x => x?.ToString())) + "'";
+                    string sql = $"INSERT INTO m_ck_point_data ({columns}) VALUES ({values})";
+                    sqlite_.exeNonQuery_auto(sql);
+                }
+                _dtResult.Rows.Clear();
+            }
+            catch (Exception ex)
+            {
+                timerLoad.Enabled = false;
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+
+        private void btn_deleterow_Click(object sender, EventArgs e)
+        {
+            int[] rows = gv_main.GetSelectedRows();
+            if (rows != null && rows.Length > 0)
+            {
+                foreach (var row in rows)
+                {
+                    _dtResult.Rows.RemoveAt(row);
                 }
             }
-            catch { }
         }
 
         /// <summary>
-        /// Thay đổi giá trị relay
+        /// Truy vấn SQL lite
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void keyboardInput1_TextChanged(object sender, EventArgs e)
+        private void btn_querysqlite_Click(object sender, EventArgs e)
         {
-            keyboardInput1.PLCAddressWriteValue.PLCAddress = textBox1.Text;
+            frmQuerySQLite f = new frmQuerySQLite();
+            f.ShowDialog();
         }
 
         /// <summary>
@@ -273,300 +720,21 @@ namespace AdvancedHMICS
 
         }
 
-        /// <summary>
-        /// Đóng form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        private int GetTestSteps()
         {
-            plc.Close();
-        }
-
-        private void Gv_main_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
-        {
-            GridView View = sender as GridView;
-            if (e.RowHandle >= 0)
+            string sql = "select max(ck_serial) as ck_serial from m_ck_point where ck_model = '" + cbm_model.Text + "'";
+            sqlite sqlite_ = new sqlite();
+            string strMaxStep = sqlite_.ExecuteScalarString(sql);
+            if (!int.TryParse(strMaxStep, out int maxStep))
             {
-                string result = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ck_result"]);
-                e.Appearance.BackColor = result == "1" ? Color.Green : Color.Red;
+                maxStep = STEPS;
             }
+            return maxStep;
         }
 
         /// <summary>
-        /// Chạy step test
+        /// Định nghĩa bảng kết quả kiểm tra
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_step_Click(object sender, EventArgs e)
-        {
-            var btn = (Button)sender;
-            if (int.TryParse(btn.Tag?.ToString(), out int step))
-            {
-                Steptest(btn, step);
-            }
-        }
-
-        private void btn_user_Click(object sender, EventArgs e)
-        {
-            frmUser fd = new frmUser();
-            fd.ShowDialog();
-        }
-
-        /// <summary>
-        /// Chạy chế độ manual
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_start_Click(object sender, EventArgs e) //this ok.
-        {
-            _isAutoTest = false;
-            _dtResult.Rows.Clear();
-            if (Checkinput() == false) return;
-            try
-            {
-                // btn_start.Text = "Start/Run";       
-                if (btn_start.Text == "Start/Run")
-                {
-                    plc.ActLogicalStationNumber = 1;
-                    plc.Open();
-                    btn_start.Text = "Running";
-                    btn_start.BackColor = Color.Green;
-                    btn_plcstatus.BackColor = Color.Green;
-                    btn_plcstatus.Enabled = true;
-                    btn_autoload.Enabled = true;
-                    txt_barcode.ReadOnly = true;
-                    cbm_orderid.Enabled = false;
-                    cbm_model.Enabled = false;
-                }
-                else if (btn_start.Text == "Running")
-                {
-                    plc.Close();
-                    btn_start.Text = "Start/Run";
-                    btn_start.BackColor = Color.Red;
-                    btn_plcstatus.BackColor = Color.DarkGray;
-                    btn_plcstatus.Enabled = false;
-                    txt_barcode.ReadOnly = false;
-                    btn_autoload.Enabled = false;
-                    cbm_orderid.Enabled = true;
-                    cbm_model.Enabled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex.Message);
-            }
-        }
-
-        private void btn_clear_Click(object sender, EventArgs e)
-        {
-            _dtResult.Rows.Clear();
-        }
-
-        private void btn_record_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_dtResult.Rows.Count < 1)
-                {
-                    return;
-                }
-                sqlite sqlite_ = new sqlite();
-                string columns = string.Join(",", _dtResult.Columns.Cast<DataColumn>().Select(c => c.ColumnName));
-                foreach (DataRow dr in _dtResult.Rows)
-                {
-                    string values = "'" + string.Join("','", dr.ItemArray.Select(x => x?.ToString())) + "'";
-                    string sql = $"INSERT INTO m_ck_point_data ({columns}) VALUES ({values})";
-                    sqlite_.exeNonQuery_auto(sql);
-                }
-            }
-            catch (Exception ex)
-            {
-                timerLoad.Enabled = false;
-                MessageBox.Show("Error :" + ex.Message);
-            }
-        }
-
-        private void btn_deleterow_Click(object sender, EventArgs e)
-        {
-            int[] rows = gv_main.GetSelectedRows();
-            if (rows != null && rows.Length > 0)
-            {
-                foreach (var row in rows)
-                {
-                    _dtResult.Rows.RemoveAt(row);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Chạy chế độ auto
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_autoload_Click(object sender, EventArgs e)
-        {
-            _dtResult.Rows.Clear();
-            if (Checkinput() == false) return;
-            try
-            {
-                lbl_status_automanual.Text = "AutoLoad";
-                lbl_status_automanual.BackColor = Color.Green;
-
-                // btn_start.Text = "Start/Run";       
-                //if (btn_autoload.Text == "AutoLoad")
-                //{
-                //    plc.ActLogicalStationNumber = 1;
-                //    plc.Open();
-                //    btn_autoload.Text = "Running";
-                //    btn_autoload.BackColor = Color.Green;
-                //    btn_plcstatus.BackColor = Color.Green;
-                //    btn_plcstatus.Enabled = true;
-                //    txt_barcode.ReadOnly = true;
-                //    cbm_model.Enabled = false;
-                //    cbm_orderid.Enabled = false;
-                //    btn_start.Enabled = false;
-                //}
-                //else if (btn_autoload.Text == "Running")
-                //{
-                //    plc.Close();
-                //    btn_autoload.Text = "AutoLoad";
-                //    btn_autoload.BackColor = Color.Red;
-                //    btn_plcstatus.BackColor = Color.DarkGray;
-                //    btn_plcstatus.Enabled = false;
-                //    txt_barcode.ReadOnly = false;
-                //    cbm_model.Enabled = true;
-                //    cbm_orderid.Enabled = true;
-                //    btn_start.Enabled = true;
-                //}
-                string sql = "select max(ck_serial) as ck_serial from m_ck_point where ck_model = '" + cbm_model.Text + "'";
-                sqlite sqlite_ = new sqlite();
-                string maxStep = sqlite_.ExecuteScalarString(sql);
-                if (int.TryParse(maxStep, out int steps))
-                {
-                    _numberOfSteps = steps;
-                }
-                _isAutoTest = true;
-                Steptest(btn_90, 1);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex.Message);
-            }
-        }
-
-        private void btn_DBSetting_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_plcstatus_Click(object sender, EventArgs e)
-        {
-            //int[] D_input = { 0, 1, 2, 3, 4, 5, 6, 7 };
-            // int[] D_output = new int[8];
-            //foreach(int i in D_input)
-            //{
-            //    {
-            //        plc.GetDevice("D" + i, out D_output[i]);
-            //    }                 
-            //}         
-            frmPLCValueRealtime frmplc = new frmPLCValueRealtime();
-            frmplc.ShowDialog();
-
-        }
-        private void btn_loadStatus_Click(object sender, EventArgs e)
-        {
-        }
-        private void btn_querysqlite_Click(object sender, EventArgs e)
-        {
-            frmQuerySQLite f = new frmQuerySQLite();
-            f.ShowDialog();
-        }
-        private void btn_modelSetting_Click(object sender, EventArgs e)
-        {
-            frmSettingModel fr = new frmSettingModel();
-            fr.ShowDialog();
-        }
-        private void btn_settingorder_Click(object sender, EventArgs e)
-        {
-            frmSettingOrder f = new frmSettingOrder();
-            f.ShowDialog();
-        }
-
-        /// <summary>
-        /// Kiểm tra đã chọn model hay chưa
-        /// </summary>
-        /// <returns></returns>
-        private bool Checkinput()
-        {
-            if (cbm_model.SelectedItem == null || cbm_orderid.SelectedItem == null || txt_barcode.Text == "")
-            {
-                MessageBox.Show("Chưa chọn đầy đủ Thông Tin Mã Hàng ", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// Kết thúc test
-        /// </summary>
-        /// <param name="isOk"></param>
-        private void EndTest(bool isOk)
-        {
-            result = isOk;
-            _isTest = false;
-            timerLoad.Enabled = false;
-            btn_0.BackColor = Color.LightGray;
-            btn_25.BackColor = Color.LightGray;
-            btn_50.BackColor = Color.LightGray;
-            btn_75.BackColor = Color.LightGray;
-            btn_90.BackColor = Color.LightGray;
-            btn_100.BackColor = Color.LightGray;
-            if (_drStepData != null)
-            {
-                var dr = _dtResult.NewRow();
-                foreach (DataColumn col in _dtResult.Columns)
-                {
-                    if (_drStepData.Table.Columns.Contains(col.ColumnName))
-                    {
-                        dr[col.ColumnName] = _drStepData[col.ColumnName];
-                    }
-                    dr["ck_time"] = DateTime.Now;
-                    dr["ck_barcode"] = txt_barcode.Text;
-                    dr["ck_actual_power"] = lbl_actualP.Text;
-                    dr["ck_pid_stop"] = lbl_pidStop.Text;
-                    dr["ck_rot_speed"] = lbl_speedrpm.Text;
-                    dr["ck_fw_volt"] = avd_FWVolt.Text;
-                    dr["ck_volt"] = avd_voltage.Text;
-                    dr["ck_current"] = avd_current.Text;
-                    dr["ck_result"] = isOk ? 1 : 0;
-                }
-                _dtResult.Rows.Add(dr);
-                _drStepData = null;
-            }
-            if (_isAutoTest && isOk)
-            {
-                _currStep++;
-                Steptest(btn_90, _currStep);
-                _isAutoTest = _currStep < _numberOfSteps;
-            }
-            else
-            {
-                if (btn_start.Text == "Start/Run")
-                {
-                    plc.Close();
-                }
-                btn_autoload.Text = "AutoLoad";
-                btn_autoload.BackColor = Color.Red;
-                btn_plcstatus.BackColor = Color.DarkGray;
-                btn_plcstatus.Enabled = false;
-                txt_barcode.ReadOnly = false;
-                cbm_model.Enabled = true;
-                cbm_orderid.Enabled = true;
-                btn_start.Enabled = true;
-            }
-        }
-
         private void DefineResultTable()
         {
             _dtResult = new DataTable();
@@ -640,77 +808,99 @@ namespace AdvancedHMICS
             gv_main.Columns["ck_result"].Caption = "Result";
         }
 
+        private DataRow GetMasterStep(int step)
+        {
+            DataTable dt = new DataTable();
+            string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
+            sqlite sqlite_ = new sqlite();
+            sqlite_.SelectData(sqlmodel, ref dt);
+            return dt.AsEnumerable().FirstOrDefault(row => row["ck_serial"].ToString() == step.ToString());
+        }
+        #endregion
+        #region --- OLD ---
+        // Khai báo điện trở fix
+        //private int R = 500;
+        //private int minrpm = 0;
+        //private int maxrpm = 0;
+        //private int steadyT = 4;
+        //private int counter = 0;
+
+        // Kết quả test 
+        //private bool result = false;
+        //private bool _isTest = false;
+
         /// <summary>
         /// Chạy test
         /// </summary>
         /// <param name="btn"></param>
         /// <param name="step"></param>
-        private void Steptest(Button btn, int step)
-        {
-            try
-            {
-                if (Checkinput() == false) return;
-                // Nếu đang chạy thì ngừng lại
-                if (_isTest)
-                {
-                    if (_currStep == step)
-                    {
-                        _isTest = false;
-                        timerLoad.Enabled = false;
-                        btn.BackColor = Color.LightGray;
-                    }
-                    return;
-                }
-                _isTest = true;
-                _currStep = step;
-                btn.BackColor = Color.Green;
+        //private void Steptest(Button btn, int step)
+        //{
+        //    try
+        //    {
+        //        if (Checkinput() == false) return;
+        //        // Nếu đang chạy thì ngừng lại
+        //        if (_isTest)
+        //        {
+        //            if (_iCurrStep == step)
+        //            {
+        //                _isTest = false;
+        //                timerLoad.Enabled = false;
+        //                btn.BackColor = Color.LightGray;
+        //            }
+        //            return;
+        //        }
+        //        _isTest = true;
+        //        _iCurrStep = step;
+        //        btn.BackColor = Color.Green;
 
-                // step = 1;
-                counter = steadyT;
-                _numberOfTest = 3;
-                _timeOut = TIME_OUT;
-                lbl_pcStep.Text = step.ToString();
-                DataTable dt = new DataTable();
-                string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
-                sqlite sqlite_ = new sqlite();
-                sqlite_.SelectData(sqlmodel, ref dt);
-                _drStepData = dt.AsEnumerable().FirstOrDefault(row => row["ck_serial"].ToString() == step.ToString());
-                //timerlable
-                steadyT = int.Parse(_drStepData["ck_LoadTime"]?.ToString());
-                lbl_steadyT.Text = steadyT.ToString();
-                //ratedP step
-                lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
-                //get min max
-                minrpm = int.Parse(_drStepData["ck_Min_Noloadlimitspeed"]?.ToString());
-                maxrpm = int.Parse(_drStepData["ck_Max_Noloadlimitspeed"]?.ToString());
+        //        // step = 1;
+        //        counter = steadyT;
+        //        _iMaxNG = 3;
+        //        _iTimeOut = TIME_OUT;
+        //        lbl_pcStep.Text = step.ToString();
+        //        DataTable dt = new DataTable();
+        //        string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
+        //        sqlite sqlite_ = new sqlite();
+        //        sqlite_.SelectData(sqlmodel, ref dt);
+        //        _drStepData = dt.AsEnumerable().FirstOrDefault(row => row["ck_serial"].ToString() == step.ToString());
+        //        //timerlable
+        //        steadyT = int.Parse(_drStepData["ck_LoadTime"]?.ToString());
+        //        lbl_steadyT.Text = steadyT.ToString();
+        //        //ratedP step
+        //        lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
+        //        //get min max
+        //        minrpm = int.Parse(_drStepData["ck_Min_Noloadlimitspeed"]?.ToString());
+        //        maxrpm = int.Parse(_drStepData["ck_Max_Noloadlimitspeed"]?.ToString());
 
-                btn_90.Text = $"{_drStepData["ck_Steppercentage"]}%";
+        //        btn_90.Text = $"{_drStepData["ck_Steppercentage"]}%";
 
-                //condtion function.,
-                //if (btn.BackColor == Color.LightGray)
-                //{
-                //    btn.BackColor = Color.Green;
-                //    timerLoad.Enabled = true;
-                //}
-                //else
-                //{
-                //    timerLoad.Enabled = false;
-                //    btn.BackColor = Color.LightGray;
-                //}
-                //if (minrpm <= int.Parse(lbl_speedrpm.Text) && float.Parse(lbl_actualP.Text) >= float.Parse(lbl_rated_P.Text) * 0.85)
-                //{
-                //    timerLoad.Enabled = true;
-                //}
-            }
-            catch (Exception ex)
-            {
-                timerLoad.Enabled = false;
-                MessageBox.Show("Error :" + ex.Message);
-            }
-            finally
-            {
-                timerLoad.Enabled = true;
-            }
-        }
+        //        //condtion function.,
+        //        //if (btn.BackColor == Color.LightGray)
+        //        //{
+        //        //    btn.BackColor = Color.Green;
+        //        //    timerLoad.Enabled = true;
+        //        //}
+        //        //else
+        //        //{
+        //        //    timerLoad.Enabled = false;
+        //        //    btn.BackColor = Color.LightGray;
+        //        //}
+        //        //if (minrpm <= int.Parse(lbl_speedrpm.Text) && float.Parse(lbl_actualP.Text) >= float.Parse(lbl_rated_P.Text) * 0.85)
+        //        //{
+        //        //    timerLoad.Enabled = true;
+        //        //}
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        timerLoad.Enabled = false;
+        //        MessageBox.Show("Error :" + ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        timerLoad.Enabled = true;
+        //    }
+        //}
+        #endregion
     }
 }

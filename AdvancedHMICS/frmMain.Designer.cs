@@ -262,6 +262,7 @@ namespace AdvancedHMICS
             // 
             // btn_export
             // 
+            this.btn_export.Enabled = false;
             this.btn_export.Location = new System.Drawing.Point(341, 11);
             this.btn_export.Name = "btn_export";
             this.btn_export.Size = new System.Drawing.Size(97, 25);
@@ -282,6 +283,7 @@ namespace AdvancedHMICS
             // 
             // btn_clear
             // 
+            this.btn_clear.Enabled = false;
             this.btn_clear.Location = new System.Drawing.Point(230, 11);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(97, 25);
@@ -354,6 +356,7 @@ namespace AdvancedHMICS
             // 
             // btn_autoload
             // 
+            this.btn_autoload.Enabled = false;
             this.btn_autoload.Location = new System.Drawing.Point(116, 42);
             this.btn_autoload.Name = "btn_autoload";
             this.btn_autoload.Size = new System.Drawing.Size(97, 25);
@@ -364,6 +367,7 @@ namespace AdvancedHMICS
             // 
             // btn_deleterow
             // 
+            this.btn_deleterow.Enabled = false;
             this.btn_deleterow.Location = new System.Drawing.Point(116, 11);
             this.btn_deleterow.Name = "btn_deleterow";
             this.btn_deleterow.Size = new System.Drawing.Size(97, 25);
@@ -405,6 +409,7 @@ namespace AdvancedHMICS
             // 
             // btn_record
             // 
+            this.btn_record.Enabled = false;
             this.btn_record.Location = new System.Drawing.Point(3, 11);
             this.btn_record.Name = "btn_record";
             this.btn_record.Size = new System.Drawing.Size(97, 25);
