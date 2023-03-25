@@ -96,7 +96,7 @@
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 3;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpMain.Size = new System.Drawing.Size(800, 450);
             this.tlpMain.TabIndex = 0;
@@ -108,7 +108,7 @@
             this.grLoadList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grLoadList.Location = new System.Drawing.Point(3, 3);
             this.grLoadList.Name = "grLoadList";
-            this.grLoadList.Size = new System.Drawing.Size(794, 194);
+            this.grLoadList.Size = new System.Drawing.Size(794, 189);
             this.grLoadList.TabIndex = 1;
             this.grLoadList.TabStop = false;
             this.grLoadList.Text = "Load list";
@@ -144,7 +144,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(788, 173);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(788, 168);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // cbLoad1
@@ -153,7 +153,7 @@
             this.cbLoad1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbLoad1.Location = new System.Drawing.Point(3, 3);
             this.cbLoad1.Name = "cbLoad1";
-            this.cbLoad1.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad1.Size = new System.Drawing.Size(191, 36);
             this.cbLoad1.TabIndex = 1;
             this.cbLoad1.Tag = "load1";
             this.cbLoad1.Text = "Load1 = 5 W";
@@ -164,9 +164,9 @@
             // 
             this.cbLoad16.AutoSize = true;
             this.cbLoad16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad16.Location = new System.Drawing.Point(594, 132);
+            this.cbLoad16.Location = new System.Drawing.Point(594, 129);
             this.cbLoad16.Name = "cbLoad16";
-            this.cbLoad16.Size = new System.Drawing.Size(191, 38);
+            this.cbLoad16.Size = new System.Drawing.Size(191, 36);
             this.cbLoad16.TabIndex = 15;
             this.cbLoad16.Tag = "load16";
             this.cbLoad16.Text = "Load16 = 0 W";
@@ -179,7 +179,7 @@
             this.cbLoad2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbLoad2.Location = new System.Drawing.Point(200, 3);
             this.cbLoad2.Name = "cbLoad2";
-            this.cbLoad2.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad2.Size = new System.Drawing.Size(191, 36);
             this.cbLoad2.TabIndex = 0;
             this.cbLoad2.Tag = "load2";
             this.cbLoad2.Text = "Load2 = 10 W";
@@ -190,9 +190,9 @@
             // 
             this.cbLoad15.AutoSize = true;
             this.cbLoad15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad15.Location = new System.Drawing.Point(397, 132);
+            this.cbLoad15.Location = new System.Drawing.Point(397, 129);
             this.cbLoad15.Name = "cbLoad15";
-            this.cbLoad15.Size = new System.Drawing.Size(191, 38);
+            this.cbLoad15.Size = new System.Drawing.Size(191, 36);
             this.cbLoad15.TabIndex = 14;
             this.cbLoad15.Tag = "load15";
             this.cbLoad15.Text = "Load15 = 0 W";
@@ -205,7 +205,7 @@
             this.cbLoad3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbLoad3.Location = new System.Drawing.Point(397, 3);
             this.cbLoad3.Name = "cbLoad3";
-            this.cbLoad3.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad3.Size = new System.Drawing.Size(191, 36);
             this.cbLoad3.TabIndex = 2;
             this.cbLoad3.Tag = "load3";
             this.cbLoad3.Text = "Load3 = 20 W";
@@ -216,9 +216,9 @@
             // 
             this.cbLoad14.AutoSize = true;
             this.cbLoad14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad14.Location = new System.Drawing.Point(200, 132);
+            this.cbLoad14.Location = new System.Drawing.Point(200, 129);
             this.cbLoad14.Name = "cbLoad14";
-            this.cbLoad14.Size = new System.Drawing.Size(191, 38);
+            this.cbLoad14.Size = new System.Drawing.Size(191, 36);
             this.cbLoad14.TabIndex = 12;
             this.cbLoad14.Tag = "load14";
             this.cbLoad14.Text = "Load14 = 4000 W";
@@ -229,9 +229,9 @@
             // 
             this.cbLoad13.AutoSize = true;
             this.cbLoad13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad13.Location = new System.Drawing.Point(3, 132);
+            this.cbLoad13.Location = new System.Drawing.Point(3, 129);
             this.cbLoad13.Name = "cbLoad13";
-            this.cbLoad13.Size = new System.Drawing.Size(191, 38);
+            this.cbLoad13.Size = new System.Drawing.Size(191, 36);
             this.cbLoad13.TabIndex = 13;
             this.cbLoad13.Tag = "load13";
             this.cbLoad13.Text = "Load13 = 4000 W";
@@ -244,7 +244,7 @@
             this.cbLoad4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbLoad4.Location = new System.Drawing.Point(594, 3);
             this.cbLoad4.Name = "cbLoad4";
-            this.cbLoad4.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad4.Size = new System.Drawing.Size(191, 36);
             this.cbLoad4.TabIndex = 3;
             this.cbLoad4.Tag = "load4";
             this.cbLoad4.Text = "Load4 = 40 W";
@@ -255,9 +255,9 @@
             // 
             this.cbLoad5.AutoSize = true;
             this.cbLoad5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad5.Location = new System.Drawing.Point(3, 46);
+            this.cbLoad5.Location = new System.Drawing.Point(3, 45);
             this.cbLoad5.Name = "cbLoad5";
-            this.cbLoad5.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad5.Size = new System.Drawing.Size(191, 36);
             this.cbLoad5.TabIndex = 4;
             this.cbLoad5.Tag = "load5";
             this.cbLoad5.Text = "Load5 = 80 W";
@@ -268,9 +268,9 @@
             // 
             this.cbLoad12.AutoSize = true;
             this.cbLoad12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad12.Location = new System.Drawing.Point(594, 89);
+            this.cbLoad12.Location = new System.Drawing.Point(594, 87);
             this.cbLoad12.Name = "cbLoad12";
-            this.cbLoad12.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad12.Size = new System.Drawing.Size(191, 36);
             this.cbLoad12.TabIndex = 11;
             this.cbLoad12.Tag = "load12";
             this.cbLoad12.Text = "Load12 = 4000 W";
@@ -281,9 +281,9 @@
             // 
             this.cbLoad6.AutoSize = true;
             this.cbLoad6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad6.Location = new System.Drawing.Point(200, 46);
+            this.cbLoad6.Location = new System.Drawing.Point(200, 45);
             this.cbLoad6.Name = "cbLoad6";
-            this.cbLoad6.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad6.Size = new System.Drawing.Size(191, 36);
             this.cbLoad6.TabIndex = 5;
             this.cbLoad6.Tag = "load6";
             this.cbLoad6.Text = "Load6 = 160 W";
@@ -294,9 +294,9 @@
             // 
             this.cbLoad11.AutoSize = true;
             this.cbLoad11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad11.Location = new System.Drawing.Point(397, 89);
+            this.cbLoad11.Location = new System.Drawing.Point(397, 87);
             this.cbLoad11.Name = "cbLoad11";
-            this.cbLoad11.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad11.Size = new System.Drawing.Size(191, 36);
             this.cbLoad11.TabIndex = 10;
             this.cbLoad11.Tag = "load11";
             this.cbLoad11.Text = "Load11 = 4000 W";
@@ -307,9 +307,9 @@
             // 
             this.cbLoad7.AutoSize = true;
             this.cbLoad7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad7.Location = new System.Drawing.Point(397, 46);
+            this.cbLoad7.Location = new System.Drawing.Point(397, 45);
             this.cbLoad7.Name = "cbLoad7";
-            this.cbLoad7.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad7.Size = new System.Drawing.Size(191, 36);
             this.cbLoad7.TabIndex = 6;
             this.cbLoad7.Tag = "load7";
             this.cbLoad7.Text = "Load7 = 320 W";
@@ -320,9 +320,9 @@
             // 
             this.cbLoad10.AutoSize = true;
             this.cbLoad10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad10.Location = new System.Drawing.Point(200, 89);
+            this.cbLoad10.Location = new System.Drawing.Point(200, 87);
             this.cbLoad10.Name = "cbLoad10";
-            this.cbLoad10.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad10.Size = new System.Drawing.Size(191, 36);
             this.cbLoad10.TabIndex = 9;
             this.cbLoad10.Tag = "load10";
             this.cbLoad10.Text = "Load10 = 2000 W";
@@ -333,9 +333,9 @@
             // 
             this.cbLoad8.AutoSize = true;
             this.cbLoad8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad8.Location = new System.Drawing.Point(594, 46);
+            this.cbLoad8.Location = new System.Drawing.Point(594, 45);
             this.cbLoad8.Name = "cbLoad8";
-            this.cbLoad8.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad8.Size = new System.Drawing.Size(191, 36);
             this.cbLoad8.TabIndex = 7;
             this.cbLoad8.Tag = "load8";
             this.cbLoad8.Text = "Load8 = 640 W";
@@ -346,9 +346,9 @@
             // 
             this.cbLoad9.AutoSize = true;
             this.cbLoad9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbLoad9.Location = new System.Drawing.Point(3, 89);
+            this.cbLoad9.Location = new System.Drawing.Point(3, 87);
             this.cbLoad9.Name = "cbLoad9";
-            this.cbLoad9.Size = new System.Drawing.Size(191, 37);
+            this.cbLoad9.Size = new System.Drawing.Size(191, 36);
             this.cbLoad9.TabIndex = 8;
             this.cbLoad9.Tag = "load9";
             this.cbLoad9.Text = "Load9 = 1280 W";
@@ -360,9 +360,9 @@
             this.grLoadSelfList.Controls.Add(this.tableLayoutPanel2);
             this.grLoadSelfList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grLoadSelfList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grLoadSelfList.Location = new System.Drawing.Point(3, 253);
+            this.grLoadSelfList.Location = new System.Drawing.Point(3, 258);
             this.grLoadSelfList.Name = "grLoadSelfList";
-            this.grLoadSelfList.Size = new System.Drawing.Size(794, 194);
+            this.grLoadSelfList.Size = new System.Drawing.Size(794, 189);
             this.grLoadSelfList.TabIndex = 2;
             this.grLoadSelfList.TabStop = false;
             this.grLoadSelfList.Text = "Load self-check list";
@@ -398,7 +398,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(788, 173);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(788, 168);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // cbR16
@@ -406,13 +406,13 @@
             this.cbR16.AutoSize = true;
             this.cbR16.ComComponent = this.modbusRTUCom1;
             this.cbR16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR16.Location = new System.Drawing.Point(594, 132);
+            this.cbR16.Location = new System.Drawing.Point(594, 129);
             this.cbR16.Name = "cbR16";
             this.cbR16.PLCAddressCheckChanged = "";
             this.cbR16.PLCAddressChecked = "";
             this.cbR16.PLCAddressText = "";
             this.cbR16.PLCAddressVisible = "";
-            this.cbR16.Size = new System.Drawing.Size(191, 38);
+            this.cbR16.Size = new System.Drawing.Size(191, 36);
             this.cbR16.TabIndex = 15;
             this.cbR16.Text = "R16";
             this.cbR16.UseVisualStyleBackColor = true;
@@ -441,13 +441,13 @@
             this.cbR15.AutoSize = true;
             this.cbR15.ComComponent = this.modbusRTUCom1;
             this.cbR15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR15.Location = new System.Drawing.Point(397, 132);
+            this.cbR15.Location = new System.Drawing.Point(397, 129);
             this.cbR15.Name = "cbR15";
             this.cbR15.PLCAddressCheckChanged = "";
             this.cbR15.PLCAddressChecked = "";
             this.cbR15.PLCAddressText = "";
             this.cbR15.PLCAddressVisible = "";
-            this.cbR15.Size = new System.Drawing.Size(191, 38);
+            this.cbR15.Size = new System.Drawing.Size(191, 36);
             this.cbR15.TabIndex = 14;
             this.cbR15.Text = "R15";
             this.cbR15.UseVisualStyleBackColor = true;
@@ -458,13 +458,13 @@
             this.cbR14.AutoSize = true;
             this.cbR14.ComComponent = this.modbusRTUCom1;
             this.cbR14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR14.Location = new System.Drawing.Point(200, 132);
+            this.cbR14.Location = new System.Drawing.Point(200, 129);
             this.cbR14.Name = "cbR14";
             this.cbR14.PLCAddressCheckChanged = "";
             this.cbR14.PLCAddressChecked = "";
             this.cbR14.PLCAddressText = "";
             this.cbR14.PLCAddressVisible = "";
-            this.cbR14.Size = new System.Drawing.Size(191, 38);
+            this.cbR14.Size = new System.Drawing.Size(191, 36);
             this.cbR14.TabIndex = 13;
             this.cbR14.Text = "R14";
             this.cbR14.UseVisualStyleBackColor = true;
@@ -475,13 +475,13 @@
             this.cbR13.AutoSize = true;
             this.cbR13.ComComponent = this.modbusRTUCom1;
             this.cbR13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR13.Location = new System.Drawing.Point(3, 132);
+            this.cbR13.Location = new System.Drawing.Point(3, 129);
             this.cbR13.Name = "cbR13";
             this.cbR13.PLCAddressCheckChanged = "";
             this.cbR13.PLCAddressChecked = "";
             this.cbR13.PLCAddressText = "";
             this.cbR13.PLCAddressVisible = "";
-            this.cbR13.Size = new System.Drawing.Size(191, 38);
+            this.cbR13.Size = new System.Drawing.Size(191, 36);
             this.cbR13.TabIndex = 12;
             this.cbR13.Text = "R13";
             this.cbR13.UseVisualStyleBackColor = true;
@@ -492,13 +492,13 @@
             this.cbR12.AutoSize = true;
             this.cbR12.ComComponent = this.modbusRTUCom1;
             this.cbR12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR12.Location = new System.Drawing.Point(594, 89);
+            this.cbR12.Location = new System.Drawing.Point(594, 87);
             this.cbR12.Name = "cbR12";
             this.cbR12.PLCAddressCheckChanged = "";
             this.cbR12.PLCAddressChecked = "";
             this.cbR12.PLCAddressText = "";
             this.cbR12.PLCAddressVisible = "";
-            this.cbR12.Size = new System.Drawing.Size(191, 37);
+            this.cbR12.Size = new System.Drawing.Size(191, 36);
             this.cbR12.TabIndex = 11;
             this.cbR12.Text = "R12";
             this.cbR12.UseVisualStyleBackColor = true;
@@ -509,13 +509,13 @@
             this.cbR11.AutoSize = true;
             this.cbR11.ComComponent = this.modbusRTUCom1;
             this.cbR11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR11.Location = new System.Drawing.Point(397, 89);
+            this.cbR11.Location = new System.Drawing.Point(397, 87);
             this.cbR11.Name = "cbR11";
             this.cbR11.PLCAddressCheckChanged = "";
             this.cbR11.PLCAddressChecked = "";
             this.cbR11.PLCAddressText = "";
             this.cbR11.PLCAddressVisible = "";
-            this.cbR11.Size = new System.Drawing.Size(191, 37);
+            this.cbR11.Size = new System.Drawing.Size(191, 36);
             this.cbR11.TabIndex = 10;
             this.cbR11.Text = "R11";
             this.cbR11.UseVisualStyleBackColor = true;
@@ -526,13 +526,13 @@
             this.cbR10.AutoSize = true;
             this.cbR10.ComComponent = this.modbusRTUCom1;
             this.cbR10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR10.Location = new System.Drawing.Point(200, 89);
+            this.cbR10.Location = new System.Drawing.Point(200, 87);
             this.cbR10.Name = "cbR10";
             this.cbR10.PLCAddressCheckChanged = "";
             this.cbR10.PLCAddressChecked = "";
             this.cbR10.PLCAddressText = "";
             this.cbR10.PLCAddressVisible = "";
-            this.cbR10.Size = new System.Drawing.Size(191, 37);
+            this.cbR10.Size = new System.Drawing.Size(191, 36);
             this.cbR10.TabIndex = 9;
             this.cbR10.Text = "R10";
             this.cbR10.UseVisualStyleBackColor = true;
@@ -543,13 +543,13 @@
             this.cbR9.AutoSize = true;
             this.cbR9.ComComponent = this.modbusRTUCom1;
             this.cbR9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR9.Location = new System.Drawing.Point(3, 89);
+            this.cbR9.Location = new System.Drawing.Point(3, 87);
             this.cbR9.Name = "cbR9";
             this.cbR9.PLCAddressCheckChanged = "";
             this.cbR9.PLCAddressChecked = "";
             this.cbR9.PLCAddressText = "";
             this.cbR9.PLCAddressVisible = "";
-            this.cbR9.Size = new System.Drawing.Size(191, 37);
+            this.cbR9.Size = new System.Drawing.Size(191, 36);
             this.cbR9.TabIndex = 8;
             this.cbR9.Text = "R9";
             this.cbR9.UseVisualStyleBackColor = true;
@@ -560,13 +560,13 @@
             this.cbR8.AutoSize = true;
             this.cbR8.ComComponent = this.modbusRTUCom1;
             this.cbR8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR8.Location = new System.Drawing.Point(594, 46);
+            this.cbR8.Location = new System.Drawing.Point(594, 45);
             this.cbR8.Name = "cbR8";
             this.cbR8.PLCAddressCheckChanged = "";
             this.cbR8.PLCAddressChecked = "";
             this.cbR8.PLCAddressText = "";
             this.cbR8.PLCAddressVisible = "";
-            this.cbR8.Size = new System.Drawing.Size(191, 37);
+            this.cbR8.Size = new System.Drawing.Size(191, 36);
             this.cbR8.TabIndex = 7;
             this.cbR8.Text = "R8";
             this.cbR8.UseVisualStyleBackColor = true;
@@ -577,13 +577,13 @@
             this.cbR7.AutoSize = true;
             this.cbR7.ComComponent = this.modbusRTUCom1;
             this.cbR7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR7.Location = new System.Drawing.Point(397, 46);
+            this.cbR7.Location = new System.Drawing.Point(397, 45);
             this.cbR7.Name = "cbR7";
             this.cbR7.PLCAddressCheckChanged = "";
             this.cbR7.PLCAddressChecked = "";
             this.cbR7.PLCAddressText = "";
             this.cbR7.PLCAddressVisible = "";
-            this.cbR7.Size = new System.Drawing.Size(191, 37);
+            this.cbR7.Size = new System.Drawing.Size(191, 36);
             this.cbR7.TabIndex = 6;
             this.cbR7.Text = "R7";
             this.cbR7.UseVisualStyleBackColor = true;
@@ -594,13 +594,13 @@
             this.cbR6.AutoSize = true;
             this.cbR6.ComComponent = this.modbusRTUCom1;
             this.cbR6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR6.Location = new System.Drawing.Point(200, 46);
+            this.cbR6.Location = new System.Drawing.Point(200, 45);
             this.cbR6.Name = "cbR6";
             this.cbR6.PLCAddressCheckChanged = "";
             this.cbR6.PLCAddressChecked = "";
             this.cbR6.PLCAddressText = "";
             this.cbR6.PLCAddressVisible = "";
-            this.cbR6.Size = new System.Drawing.Size(191, 37);
+            this.cbR6.Size = new System.Drawing.Size(191, 36);
             this.cbR6.TabIndex = 5;
             this.cbR6.Text = "R6";
             this.cbR6.UseVisualStyleBackColor = true;
@@ -611,13 +611,13 @@
             this.cbR5.AutoSize = true;
             this.cbR5.ComComponent = this.modbusRTUCom1;
             this.cbR5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbR5.Location = new System.Drawing.Point(3, 46);
+            this.cbR5.Location = new System.Drawing.Point(3, 45);
             this.cbR5.Name = "cbR5";
             this.cbR5.PLCAddressCheckChanged = "";
             this.cbR5.PLCAddressChecked = "";
             this.cbR5.PLCAddressText = "";
             this.cbR5.PLCAddressVisible = "";
-            this.cbR5.Size = new System.Drawing.Size(191, 37);
+            this.cbR5.Size = new System.Drawing.Size(191, 36);
             this.cbR5.TabIndex = 4;
             this.cbR5.Text = "R5";
             this.cbR5.UseVisualStyleBackColor = true;
@@ -634,7 +634,7 @@
             this.cbR4.PLCAddressChecked = "";
             this.cbR4.PLCAddressText = "";
             this.cbR4.PLCAddressVisible = "";
-            this.cbR4.Size = new System.Drawing.Size(191, 37);
+            this.cbR4.Size = new System.Drawing.Size(191, 36);
             this.cbR4.TabIndex = 3;
             this.cbR4.Text = "R4";
             this.cbR4.UseVisualStyleBackColor = true;
@@ -651,7 +651,7 @@
             this.cbR3.PLCAddressChecked = "";
             this.cbR3.PLCAddressText = "";
             this.cbR3.PLCAddressVisible = "";
-            this.cbR3.Size = new System.Drawing.Size(191, 37);
+            this.cbR3.Size = new System.Drawing.Size(191, 36);
             this.cbR3.TabIndex = 2;
             this.cbR3.Text = "R3";
             this.cbR3.UseVisualStyleBackColor = true;
@@ -668,7 +668,7 @@
             this.cbR2.PLCAddressChecked = "";
             this.cbR2.PLCAddressText = "";
             this.cbR2.PLCAddressVisible = "";
-            this.cbR2.Size = new System.Drawing.Size(191, 37);
+            this.cbR2.Size = new System.Drawing.Size(191, 36);
             this.cbR2.TabIndex = 1;
             this.cbR2.Text = "R2";
             this.cbR2.UseVisualStyleBackColor = true;
@@ -685,7 +685,7 @@
             this.cbR1.PLCAddressChecked = "";
             this.cbR1.PLCAddressText = "";
             this.cbR1.PLCAddressVisible = "";
-            this.cbR1.Size = new System.Drawing.Size(191, 37);
+            this.cbR1.Size = new System.Drawing.Size(191, 36);
             this.cbR1.TabIndex = 0;
             this.cbR1.Text = "R1";
             this.cbR1.UseVisualStyleBackColor = true;
@@ -709,11 +709,11 @@
             this.tlpButtons.Controls.Add(this.lblStatus, 0, 0);
             this.tlpButtons.Controls.Add(this.btnSave, 1, 0);
             this.tlpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpButtons.Location = new System.Drawing.Point(3, 203);
+            this.tlpButtons.Location = new System.Drawing.Point(3, 198);
             this.tlpButtons.Name = "tlpButtons";
             this.tlpButtons.RowCount = 1;
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpButtons.Size = new System.Drawing.Size(794, 44);
+            this.tlpButtons.Size = new System.Drawing.Size(794, 54);
             this.tlpButtons.TabIndex = 3;
             // 
             // btnClose

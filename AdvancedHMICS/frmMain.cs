@@ -543,6 +543,7 @@ namespace AdvancedHMICS
                         break;
                 }
 
+                btn_start.Enabled = false;
                 lbl_pcStep.Text = step.ToString();
                 lbl_steadyT.Text = _iLoadTime.ToString();
                 lbl_status_automanual.BackColor = Color.Green;
@@ -609,6 +610,7 @@ namespace AdvancedHMICS
             {
                 _eRunMode = RunMode.Manual;
 
+                btn_start.Enabled = true;
                 timerLoad.Enabled = false;
                 lbl_status_automanual.Text = "Manual";
                 btn_autoload.BackColor = Color.LightGray;
