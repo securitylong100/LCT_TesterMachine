@@ -1,0 +1,5 @@
+CREATE TABLE m_loads (
+	load_cd varchar(24),
+	load_bits varchar(16) DEFAULT ('000000000000000'),
+	primary key(load_cd)
+);

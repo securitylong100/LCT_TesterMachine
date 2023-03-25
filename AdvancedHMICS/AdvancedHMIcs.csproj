@@ -105,6 +105,12 @@
     <Compile Include="Class\De_Encrypt.cs" />
     <Compile Include="Class\mysqlconnection.cs" />
     <Compile Include="Class\sqlite.cs" />
+    <Compile Include="Form\frmLoadStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmLoadStatus.Designer.cs">
+      <DependentUpon>frmLoadStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     <Compile Include="Form\frmQuerySQLite.Designer.cs">
       <DependentUpon>frmQuerySQLite.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\frmLoadStatus.resx">
+      <DependentUpon>frmLoadStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\frmPLCValueRealtime.resx">
       <DependentUpon>frmPLCValueRealtime.cs</DependentUpon>
     </EmbeddedResource>

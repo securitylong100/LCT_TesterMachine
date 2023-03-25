@@ -39,6 +39,7 @@ namespace AdvancedHMICS
 
         private DataRow _drStepData;
         private DataTable _dtResult;
+        private frmLoadStatus _frmLoad;
 
         // Khai báo kết nối PLC
         public ActUtlType _plc = new ActUtlType();
@@ -195,6 +196,7 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void btn_loadStatus_Click(object sender, EventArgs e)
         {
+            _frmLoad.Show();
         }
         #endregion
         #region --- GIAO DIỆN ---
@@ -216,6 +218,8 @@ namespace AdvancedHMICS
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
+
+            _frmLoad = new frmLoadStatus();
         }
 
         /// <summary>
@@ -369,6 +373,7 @@ namespace AdvancedHMICS
                         {
                             _bIsRun = false;
                             timerLoad.Enabled = false;
+                            btn.BackColor = Color.LightGray;
                             lbl_status_automanual.Text = "Manual";
                             btn_autoload.BackColor = Color.LightGray;
                             lbl_status_automanual.BackColor = Color.LightGray;
@@ -537,18 +542,14 @@ namespace AdvancedHMICS
                     default:
                         break;
                 }
+
                 lbl_pcStep.Text = step.ToString();
                 lbl_steadyT.Text = _iLoadTime.ToString();
+                lbl_status_automanual.BackColor = Color.Green;
                 lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
 
-                switch (_eRunMode)
-                {
-                    case RunMode.Auto:
-                        break;
-                    case RunMode.Manual:
-                    default:
-                        break;
-                }
+                _frmLoad.SetLoad(_drStepData["ck_load"]?.ToString());
+
                 timerLoad.Enabled = true;
             }
             catch (Exception ex)
