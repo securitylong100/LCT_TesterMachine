@@ -274,7 +274,8 @@ namespace AdvancedHMICS
         #region --- CHẾ ĐỘ TEST ---
         private void btn_data_Click(object sender, EventArgs e)
         {
-
+            frmData frmData = new frmData();
+            frmData.Show();
         }
 
         private void btn_start_Click(object sender, EventArgs e)

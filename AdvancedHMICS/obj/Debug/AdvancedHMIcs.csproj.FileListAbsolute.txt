@@ -366,3 +366,4 @@ G:\01.Github\LCT\AdvancedHMICS\bin\Debug\OpcNetApi.xml
 G:\01.Github\LCT\AdvancedHMICS\bin\Debug\OpcNetApi.Com.xml
 G:\01.Github\LCT\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
 G:\01.Github\LCT\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmLoadStatus.resources
+G:\01.Github\LCT\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmData.resources
