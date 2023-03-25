@@ -18,13 +18,6 @@ namespace AdvancedHMICS
         private const int TIME_OUT = 20;
         private const int FIXED_RES = 500;
 
-        private enum RunMode
-        {
-            Manual = 0,
-            Auto = 1
-        }
-        private RunMode _eRunMode = RunMode.Manual;
-
         private int _iMinRPM = 0;
         private int _iMaxRPM = 0;
         private int _iTimeOut = 0;
@@ -35,6 +28,7 @@ namespace AdvancedHMICS
         private int _iMaxNG = MAX_NG;
 
         private bool _bIsRun = false;
+        private bool _bIsAuto = false;
         private bool _bIsPlcConnected = false;
 
         private DataRow _drStepData;
@@ -283,71 +277,21 @@ namespace AdvancedHMICS
         }
         #endregion
         #region --- CHẾ ĐỘ TEST ---
-        /// <summary>
-        /// Mở kết nối PLC
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_start_Click(object sender, EventArgs e) //this ok.
+        private void btn_start_Click(object sender, EventArgs e)
         {
-            _dtResult.Rows.Clear();
-            if (Checkinput() == false) return;
             try
             {
-                _bIsPlcConnected = !_bIsPlcConnected;
-                btn_plcstatus.Enabled = _bIsPlcConnected;
-                btn_autoload.Enabled = _bIsPlcConnected;
-                btn_record.Enabled = _bIsPlcConnected;
-                btn_clear.Enabled = _bIsPlcConnected;
-                btn_export.Enabled = _bIsPlcConnected;
-                btn_deleterow.Enabled = _bIsPlcConnected;
-                txt_barcode.ReadOnly = _bIsPlcConnected;
-                cbm_model.Enabled = !_bIsPlcConnected;
-                cbm_orderid.Enabled = !_bIsPlcConnected;
-
+                _dtResult.Rows.Clear();
+                if (Checkinput() == false) return;
+                SetPLCStatus(!_bIsPlcConnected);
                 if (_bIsPlcConnected)
                 {
                     _plc.ActLogicalStationNumber = 1;
                     _plc.Open();
-                    btn_start.Text = "Running";
-                    btn_start.BackColor = Color.Green;
-                    btn_plcstatus.BackColor = Color.Green;
+                    return;
                 }
-                else
-                {
-                    _plc.Close();
-                    btn_start.Text = "Start/Run";
-                    btn_start.BackColor = Color.Red;
-                    btn_plcstatus.BackColor = Color.DarkGray;
-                }
-
-
-
-                //if (btn_start.Text == "Start/Run")
-                //{
-                //    plc.ActLogicalStationNumber = 1;
-                //    plc.Open();
-                //    btn_start.Text = "Running";
-                //    btn_start.BackColor = Color.Green;
-                //    btn_plcstatus.BackColor = Color.Green;
-                //    btn_plcstatus.Enabled = true;
-                //    btn_autoload.Enabled = true;
-                //    txt_barcode.ReadOnly = true;
-                //    cbm_orderid.Enabled = false;
-                //    cbm_model.Enabled = false;
-                //}
-                //else if (btn_start.Text == "Running")
-                //{
-                //    plc.Close();
-                //    btn_start.Text = "Start/Run";
-                //    btn_start.BackColor = Color.Red;
-                //    btn_plcstatus.BackColor = Color.DarkGray;
-                //    btn_plcstatus.Enabled = false;
-                //    txt_barcode.ReadOnly = false;
-                //    btn_autoload.Enabled = false;
-                //    cbm_orderid.Enabled = true;
-                //    cbm_model.Enabled = true;
-                //}
+                SetTestStatus(false);
+                _plc.Close();
             }
             catch (Exception ex)
             {
@@ -355,29 +299,16 @@ namespace AdvancedHMICS
             }
         }
 
-        /// <summary>
-        /// Chạy chế độ manual
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_step_Click(object sender, EventArgs e)
+        private void btn_manual_Click(object sender, EventArgs e)
         {
-            if (_eRunMode == RunMode.Manual)
+            if (!_bIsAuto)
             {
                 var btn = (Button)sender;
                 if (int.TryParse(btn.Tag?.ToString(), out int step))
                 {
                     if (_bIsRun)
                     {
-                        if (step == _iCurrStep)
-                        {
-                            _bIsRun = false;
-                            timerLoad.Enabled = false;
-                            btn.BackColor = Color.LightGray;
-                            lbl_status_automanual.Text = "Manual";
-                            btn_autoload.BackColor = Color.LightGray;
-                            lbl_status_automanual.BackColor = Color.LightGray;
-                        }
+                        if (step == _iCurrStep) SetTestStatus(false);
                         return;
                     }
                     StartTest(step);
@@ -385,32 +316,21 @@ namespace AdvancedHMICS
             }
         }
 
-        /// <summary>
-        /// Chạy chế độ auto
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btn_autoload_Click(object sender, EventArgs e)
         {
             try
             {
                 if (_bIsRun)
                 {
-                    if (_eRunMode == RunMode.Auto)
+                    if (_bIsAuto)
                     {
-                        _bIsRun = false;
-                        _eRunMode = RunMode.Manual;
-                        timerLoad.Enabled = false;
-                        lbl_status_automanual.Text = "Manual";
-                        btn_autoload.BackColor = Color.LightGray;
-                        lbl_status_automanual.BackColor = Color.LightGray;
+                        _bIsAuto = false;
+                        SetTestStatus(false);
                     }
                     return;
                 }
+                _bIsAuto = true;
                 _dtResult.Rows.Clear();
-                _eRunMode = RunMode.Auto;
-                lbl_status_automanual.Text = "AutoLoad";
-                lbl_status_automanual.BackColor = Color.Green;
                 _iSteps = GetTestSteps();
                 StartTest(1);
             }
@@ -476,6 +396,73 @@ namespace AdvancedHMICS
             }
         }
 
+        private void SetPLCStatus(bool isConnect)
+        {
+            _bIsPlcConnected = isConnect;
+            btn_clear.Enabled = isConnect;
+            btn_record.Enabled = isConnect;
+            btn_export.Enabled = isConnect;
+            cbm_model.Enabled = !isConnect;
+            cbm_orderid.Enabled = !isConnect;
+            txt_barcode.ReadOnly = isConnect;
+            btn_autoload.Enabled = isConnect;
+            btn_plcstatus.Enabled = isConnect;
+            btn_deleterow.Enabled = isConnect;
+            btn_loadStatus.Enabled = isConnect;
+            btn_start.Text = isConnect ? "Running" : "Start/Run";
+            btn_start.BackColor = isConnect ? Color.Green : Color.Red;
+            btn_autoload.BackColor = isConnect ? Color.Red : Color.LightGray;
+            btn_plcstatus.BackColor = isConnect ? Color.Green : Color.LightGray;
+            btn_loadStatus.BackColor = isConnect ? Color.Green : Color.LightGray;
+        }
+
+        private void SetTestStatus(bool isRun)
+        {
+            _bIsRun = isRun;
+            btn_start.Enabled = !isRun;
+            if (isRun)
+            {
+                switch (_iCurrStep)
+                {
+                    case 1:
+                        btn_0.BackColor = Color.Green;
+                        break;
+                    case 2:
+                        btn_25.BackColor = Color.Green;
+                        break;
+                    case 3:
+                        btn_50.BackColor = Color.Green;
+                        break;
+                    case 4:
+                        btn_75.BackColor = Color.Green;
+                        break;
+                    case 5:
+                        btn_100.BackColor = Color.Green;
+                        break;
+                    default:
+                        break;
+                }
+                timerLoad.Enabled = true;
+                lbl_pcStep.Text = _iCurrStep.ToString();
+                lbl_steadyT.Text = _iLoadTime.ToString();
+                lbl_status_automanual.BackColor = Color.Green;
+                lbl_status_automanual.Text = _bIsAuto ? "AutoLoad" : "Manual";
+                lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
+                return;
+            }
+            _frmLoad.CheckBits(frmLoadStatus.OFF_BITS);
+            timerLoad.Enabled = false;
+            btn_0.BackColor = Color.LightGray;
+            btn_25.BackColor = Color.LightGray;
+            btn_50.BackColor = Color.LightGray;
+            btn_75.BackColor = Color.LightGray;
+            btn_90.BackColor = Color.LightGray;
+            btn_100.BackColor = Color.LightGray;
+            btn_autoload.BackColor = Color.Red;
+            lbl_status_automanual.Text = "Manual";
+            lbl_status_automanual.BackColor = Color.LightGray;
+        }
+
         /// <summary>
         /// Kiểm tra đã chọn model hay chưa
         /// </summary>
@@ -513,7 +500,6 @@ namespace AdvancedHMICS
                     maxRPM = 0;
                 }
 
-                _bIsRun = true;
                 _iMaxNG = MAX_NG;
                 _iMinRPM = minRPM;
                 _iMaxRPM = maxRPM;
@@ -521,41 +507,12 @@ namespace AdvancedHMICS
                 _iTimeOut = TIME_OUT;
                 _iLoadTime = loadTime;
                 _iCounter = _iLoadTime;
-
-                switch (step)
-                {
-                    case 1:
-                        btn_0.BackColor = Color.Green;
-                        break;
-                    case 2:
-                        btn_25.BackColor = Color.Green;
-                        break;
-                    case 3:
-                        btn_50.BackColor = Color.Green;
-                        break;
-                    case 4:
-                        btn_75.BackColor = Color.Green;
-                        break;
-                    case 5:
-                        btn_100.BackColor = Color.Green;
-                        break;
-                    default:
-                        break;
-                }
-
-                btn_start.Enabled = false;
-                lbl_pcStep.Text = step.ToString();
-                lbl_steadyT.Text = _iLoadTime.ToString();
-                lbl_status_automanual.BackColor = Color.Green;
-                lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
-
-                _frmLoad.SetLoad(_drStepData["ck_load"]?.ToString());
-
-                timerLoad.Enabled = true;
+                _frmLoad.CheckBits(_drStepData["ck_load"]?.ToString());
+                SetTestStatus(true);
             }
             catch (Exception ex)
             {
-                timerLoad.Enabled = false;
+                SetTestStatus(false);
                 MessageBox.Show("Error :" + ex.Message);
             }
         }
@@ -566,15 +523,7 @@ namespace AdvancedHMICS
         /// <param name="isOk"></param>
         private void EndTest(bool isOk)
         {
-            _bIsRun = false;
-            timerLoad.Enabled = false;
-            btn_0.BackColor = Color.LightGray;
-            btn_25.BackColor = Color.LightGray;
-            btn_50.BackColor = Color.LightGray;
-            btn_75.BackColor = Color.LightGray;
-            btn_90.BackColor = Color.LightGray;
-            btn_100.BackColor = Color.LightGray;
-
+            SetTestStatus(false);
             // Hiển thị dữ liệu lên grid
             if (_drStepData != null)
             {
@@ -599,7 +548,7 @@ namespace AdvancedHMICS
                 _drStepData = null;
             }
             // Chuyển sang step kế khi chạy auto
-            if (isOk && _eRunMode == RunMode.Auto && _iCurrStep < _iSteps)
+            if (isOk && _bIsAuto && _iCurrStep < _iSteps)
             {
                 _iCurrStep++;
                 StartTest(_iCurrStep);
@@ -608,13 +557,8 @@ namespace AdvancedHMICS
             // Kết thúc kiểm tra
             if (!_bIsRun)
             {
-                _eRunMode = RunMode.Manual;
-
-                btn_start.Enabled = true;
-                timerLoad.Enabled = false;
-                lbl_status_automanual.Text = "Manual";
-                btn_autoload.BackColor = Color.LightGray;
-                lbl_status_automanual.BackColor = Color.LightGray;
+                _bIsAuto = false;
+                SetTestStatus(false);
                 string result = isOk ? "OK" : "NG";
                 if (MessageBox.Show($"Test complete!\nResult: {result}\nDo you want record data?",
                     "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -735,9 +679,6 @@ namespace AdvancedHMICS
             return maxStep;
         }
 
-        /// <summary>
-        /// Định nghĩa bảng kết quả kiểm tra
-        /// </summary>
         private void DefineResultTable()
         {
             _dtResult = new DataTable();

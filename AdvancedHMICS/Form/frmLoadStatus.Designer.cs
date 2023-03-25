@@ -155,7 +155,7 @@
             this.cbLoad1.Name = "cbLoad1";
             this.cbLoad1.Size = new System.Drawing.Size(191, 36);
             this.cbLoad1.TabIndex = 1;
-            this.cbLoad1.Tag = "load1";
+            this.cbLoad1.Tag = "5";
             this.cbLoad1.Text = "Load1 = 5 W";
             this.cbLoad1.UseVisualStyleBackColor = true;
             this.cbLoad1.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -167,8 +167,8 @@
             this.cbLoad16.Location = new System.Drawing.Point(594, 129);
             this.cbLoad16.Name = "cbLoad16";
             this.cbLoad16.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad16.TabIndex = 15;
-            this.cbLoad16.Tag = "load16";
+            this.cbLoad16.TabIndex = 16;
+            this.cbLoad16.Tag = "0";
             this.cbLoad16.Text = "Load16 = 0 W";
             this.cbLoad16.UseVisualStyleBackColor = true;
             this.cbLoad16.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -180,8 +180,8 @@
             this.cbLoad2.Location = new System.Drawing.Point(200, 3);
             this.cbLoad2.Name = "cbLoad2";
             this.cbLoad2.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad2.TabIndex = 0;
-            this.cbLoad2.Tag = "load2";
+            this.cbLoad2.TabIndex = 2;
+            this.cbLoad2.Tag = "10";
             this.cbLoad2.Text = "Load2 = 10 W";
             this.cbLoad2.UseVisualStyleBackColor = true;
             this.cbLoad2.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -193,8 +193,8 @@
             this.cbLoad15.Location = new System.Drawing.Point(397, 129);
             this.cbLoad15.Name = "cbLoad15";
             this.cbLoad15.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad15.TabIndex = 14;
-            this.cbLoad15.Tag = "load15";
+            this.cbLoad15.TabIndex = 15;
+            this.cbLoad15.Tag = "0";
             this.cbLoad15.Text = "Load15 = 0 W";
             this.cbLoad15.UseVisualStyleBackColor = true;
             this.cbLoad15.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -206,8 +206,8 @@
             this.cbLoad3.Location = new System.Drawing.Point(397, 3);
             this.cbLoad3.Name = "cbLoad3";
             this.cbLoad3.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad3.TabIndex = 2;
-            this.cbLoad3.Tag = "load3";
+            this.cbLoad3.TabIndex = 3;
+            this.cbLoad3.Tag = "20";
             this.cbLoad3.Text = "Load3 = 20 W";
             this.cbLoad3.UseVisualStyleBackColor = true;
             this.cbLoad3.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -219,8 +219,8 @@
             this.cbLoad14.Location = new System.Drawing.Point(200, 129);
             this.cbLoad14.Name = "cbLoad14";
             this.cbLoad14.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad14.TabIndex = 12;
-            this.cbLoad14.Tag = "load14";
+            this.cbLoad14.TabIndex = 14;
+            this.cbLoad14.Tag = "4000";
             this.cbLoad14.Text = "Load14 = 4000 W";
             this.cbLoad14.UseVisualStyleBackColor = true;
             this.cbLoad14.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -233,7 +233,7 @@
             this.cbLoad13.Name = "cbLoad13";
             this.cbLoad13.Size = new System.Drawing.Size(191, 36);
             this.cbLoad13.TabIndex = 13;
-            this.cbLoad13.Tag = "load13";
+            this.cbLoad13.Tag = "4000";
             this.cbLoad13.Text = "Load13 = 4000 W";
             this.cbLoad13.UseVisualStyleBackColor = true;
             this.cbLoad13.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -245,8 +245,8 @@
             this.cbLoad4.Location = new System.Drawing.Point(594, 3);
             this.cbLoad4.Name = "cbLoad4";
             this.cbLoad4.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad4.TabIndex = 3;
-            this.cbLoad4.Tag = "load4";
+            this.cbLoad4.TabIndex = 4;
+            this.cbLoad4.Tag = "40";
             this.cbLoad4.Text = "Load4 = 40 W";
             this.cbLoad4.UseVisualStyleBackColor = true;
             this.cbLoad4.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -258,8 +258,8 @@
             this.cbLoad5.Location = new System.Drawing.Point(3, 45);
             this.cbLoad5.Name = "cbLoad5";
             this.cbLoad5.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad5.TabIndex = 4;
-            this.cbLoad5.Tag = "load5";
+            this.cbLoad5.TabIndex = 5;
+            this.cbLoad5.Tag = "80";
             this.cbLoad5.Text = "Load5 = 80 W";
             this.cbLoad5.UseVisualStyleBackColor = true;
             this.cbLoad5.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -271,8 +271,8 @@
             this.cbLoad12.Location = new System.Drawing.Point(594, 87);
             this.cbLoad12.Name = "cbLoad12";
             this.cbLoad12.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad12.TabIndex = 11;
-            this.cbLoad12.Tag = "load12";
+            this.cbLoad12.TabIndex = 12;
+            this.cbLoad12.Tag = "4000";
             this.cbLoad12.Text = "Load12 = 4000 W";
             this.cbLoad12.UseVisualStyleBackColor = true;
             this.cbLoad12.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -284,8 +284,8 @@
             this.cbLoad6.Location = new System.Drawing.Point(200, 45);
             this.cbLoad6.Name = "cbLoad6";
             this.cbLoad6.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad6.TabIndex = 5;
-            this.cbLoad6.Tag = "load6";
+            this.cbLoad6.TabIndex = 6;
+            this.cbLoad6.Tag = "160";
             this.cbLoad6.Text = "Load6 = 160 W";
             this.cbLoad6.UseVisualStyleBackColor = true;
             this.cbLoad6.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -297,8 +297,8 @@
             this.cbLoad11.Location = new System.Drawing.Point(397, 87);
             this.cbLoad11.Name = "cbLoad11";
             this.cbLoad11.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad11.TabIndex = 10;
-            this.cbLoad11.Tag = "load11";
+            this.cbLoad11.TabIndex = 11;
+            this.cbLoad11.Tag = "4000";
             this.cbLoad11.Text = "Load11 = 4000 W";
             this.cbLoad11.UseVisualStyleBackColor = true;
             this.cbLoad11.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -310,8 +310,8 @@
             this.cbLoad7.Location = new System.Drawing.Point(397, 45);
             this.cbLoad7.Name = "cbLoad7";
             this.cbLoad7.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad7.TabIndex = 6;
-            this.cbLoad7.Tag = "load7";
+            this.cbLoad7.TabIndex = 7;
+            this.cbLoad7.Tag = "320";
             this.cbLoad7.Text = "Load7 = 320 W";
             this.cbLoad7.UseVisualStyleBackColor = true;
             this.cbLoad7.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -323,8 +323,8 @@
             this.cbLoad10.Location = new System.Drawing.Point(200, 87);
             this.cbLoad10.Name = "cbLoad10";
             this.cbLoad10.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad10.TabIndex = 9;
-            this.cbLoad10.Tag = "load10";
+            this.cbLoad10.TabIndex = 10;
+            this.cbLoad10.Tag = "2000";
             this.cbLoad10.Text = "Load10 = 2000 W";
             this.cbLoad10.UseVisualStyleBackColor = true;
             this.cbLoad10.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -336,8 +336,8 @@
             this.cbLoad8.Location = new System.Drawing.Point(594, 45);
             this.cbLoad8.Name = "cbLoad8";
             this.cbLoad8.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad8.TabIndex = 7;
-            this.cbLoad8.Tag = "load8";
+            this.cbLoad8.TabIndex = 8;
+            this.cbLoad8.Tag = "640";
             this.cbLoad8.Text = "Load8 = 640 W";
             this.cbLoad8.UseVisualStyleBackColor = true;
             this.cbLoad8.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -349,8 +349,8 @@
             this.cbLoad9.Location = new System.Drawing.Point(3, 87);
             this.cbLoad9.Name = "cbLoad9";
             this.cbLoad9.Size = new System.Drawing.Size(191, 36);
-            this.cbLoad9.TabIndex = 8;
-            this.cbLoad9.Tag = "load9";
+            this.cbLoad9.TabIndex = 9;
+            this.cbLoad9.Tag = "1280";
             this.cbLoad9.Text = "Load9 = 1280 W";
             this.cbLoad9.UseVisualStyleBackColor = true;
             this.cbLoad9.CheckedChanged += new System.EventHandler(this.LoadChanged);
@@ -408,19 +408,20 @@
             this.cbR16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR16.Location = new System.Drawing.Point(594, 129);
             this.cbR16.Name = "cbR16";
-            this.cbR16.PLCAddressCheckChanged = "";
+            this.cbR16.PLCAddressCheckChanged = "00016";
             this.cbR16.PLCAddressChecked = "";
             this.cbR16.PLCAddressText = "";
             this.cbR16.PLCAddressVisible = "";
             this.cbR16.Size = new System.Drawing.Size(191, 36);
-            this.cbR16.TabIndex = 15;
-            this.cbR16.Text = "R16";
+            this.cbR16.TabIndex = 16;
+            this.cbR16.Tag = "0";
+            this.cbR16.Text = "R16 = 000 W";
             this.cbR16.UseVisualStyleBackColor = true;
             this.cbR16.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
             // modbusRTUCom1
             // 
-            this.modbusRTUCom1.BaudRate = 19200;
+            this.modbusRTUCom1.BaudRate = 9600;
             this.modbusRTUCom1.DataBits = 8;
             this.modbusRTUCom1.DisableSubscriptions = false;
             this.modbusRTUCom1.EnableLogging = false;
@@ -443,13 +444,14 @@
             this.cbR15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR15.Location = new System.Drawing.Point(397, 129);
             this.cbR15.Name = "cbR15";
-            this.cbR15.PLCAddressCheckChanged = "";
+            this.cbR15.PLCAddressCheckChanged = "00015";
             this.cbR15.PLCAddressChecked = "";
             this.cbR15.PLCAddressText = "";
             this.cbR15.PLCAddressVisible = "";
             this.cbR15.Size = new System.Drawing.Size(191, 36);
-            this.cbR15.TabIndex = 14;
-            this.cbR15.Text = "R15";
+            this.cbR15.TabIndex = 15;
+            this.cbR15.Tag = "0";
+            this.cbR15.Text = "R15 = 000 W";
             this.cbR15.UseVisualStyleBackColor = true;
             this.cbR15.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -460,13 +462,14 @@
             this.cbR14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR14.Location = new System.Drawing.Point(200, 129);
             this.cbR14.Name = "cbR14";
-            this.cbR14.PLCAddressCheckChanged = "";
+            this.cbR14.PLCAddressCheckChanged = "00014";
             this.cbR14.PLCAddressChecked = "";
             this.cbR14.PLCAddressText = "";
             this.cbR14.PLCAddressVisible = "";
             this.cbR14.Size = new System.Drawing.Size(191, 36);
-            this.cbR14.TabIndex = 13;
-            this.cbR14.Text = "R14";
+            this.cbR14.TabIndex = 14;
+            this.cbR14.Tag = "0";
+            this.cbR14.Text = "R14 = 000 W";
             this.cbR14.UseVisualStyleBackColor = true;
             this.cbR14.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -477,13 +480,14 @@
             this.cbR13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR13.Location = new System.Drawing.Point(3, 129);
             this.cbR13.Name = "cbR13";
-            this.cbR13.PLCAddressCheckChanged = "";
+            this.cbR13.PLCAddressCheckChanged = "00013";
             this.cbR13.PLCAddressChecked = "";
             this.cbR13.PLCAddressText = "";
             this.cbR13.PLCAddressVisible = "";
             this.cbR13.Size = new System.Drawing.Size(191, 36);
-            this.cbR13.TabIndex = 12;
-            this.cbR13.Text = "R13";
+            this.cbR13.TabIndex = 13;
+            this.cbR13.Tag = "0";
+            this.cbR13.Text = "R13 = 000 W";
             this.cbR13.UseVisualStyleBackColor = true;
             this.cbR13.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -494,13 +498,14 @@
             this.cbR12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR12.Location = new System.Drawing.Point(594, 87);
             this.cbR12.Name = "cbR12";
-            this.cbR12.PLCAddressCheckChanged = "";
+            this.cbR12.PLCAddressCheckChanged = "00012";
             this.cbR12.PLCAddressChecked = "";
             this.cbR12.PLCAddressText = "";
             this.cbR12.PLCAddressVisible = "";
             this.cbR12.Size = new System.Drawing.Size(191, 36);
-            this.cbR12.TabIndex = 11;
-            this.cbR12.Text = "R12";
+            this.cbR12.TabIndex = 12;
+            this.cbR12.Tag = "0";
+            this.cbR12.Text = "R12 = 000 W";
             this.cbR12.UseVisualStyleBackColor = true;
             this.cbR12.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -511,13 +516,14 @@
             this.cbR11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR11.Location = new System.Drawing.Point(397, 87);
             this.cbR11.Name = "cbR11";
-            this.cbR11.PLCAddressCheckChanged = "";
+            this.cbR11.PLCAddressCheckChanged = "00011";
             this.cbR11.PLCAddressChecked = "";
             this.cbR11.PLCAddressText = "";
             this.cbR11.PLCAddressVisible = "";
             this.cbR11.Size = new System.Drawing.Size(191, 36);
-            this.cbR11.TabIndex = 10;
-            this.cbR11.Text = "R11";
+            this.cbR11.TabIndex = 11;
+            this.cbR11.Tag = "0";
+            this.cbR11.Text = "R11 = 000 W";
             this.cbR11.UseVisualStyleBackColor = true;
             this.cbR11.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -528,13 +534,14 @@
             this.cbR10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR10.Location = new System.Drawing.Point(200, 87);
             this.cbR10.Name = "cbR10";
-            this.cbR10.PLCAddressCheckChanged = "";
+            this.cbR10.PLCAddressCheckChanged = "00010";
             this.cbR10.PLCAddressChecked = "";
             this.cbR10.PLCAddressText = "";
             this.cbR10.PLCAddressVisible = "";
             this.cbR10.Size = new System.Drawing.Size(191, 36);
-            this.cbR10.TabIndex = 9;
-            this.cbR10.Text = "R10";
+            this.cbR10.TabIndex = 10;
+            this.cbR10.Tag = "0";
+            this.cbR10.Text = "R10 = 000 W";
             this.cbR10.UseVisualStyleBackColor = true;
             this.cbR10.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -545,13 +552,14 @@
             this.cbR9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR9.Location = new System.Drawing.Point(3, 87);
             this.cbR9.Name = "cbR9";
-            this.cbR9.PLCAddressCheckChanged = "";
+            this.cbR9.PLCAddressCheckChanged = "00009";
             this.cbR9.PLCAddressChecked = "";
             this.cbR9.PLCAddressText = "";
             this.cbR9.PLCAddressVisible = "";
             this.cbR9.Size = new System.Drawing.Size(191, 36);
-            this.cbR9.TabIndex = 8;
-            this.cbR9.Text = "R9";
+            this.cbR9.TabIndex = 9;
+            this.cbR9.Tag = "0";
+            this.cbR9.Text = "R9 = 000 W";
             this.cbR9.UseVisualStyleBackColor = true;
             this.cbR9.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -562,13 +570,14 @@
             this.cbR8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR8.Location = new System.Drawing.Point(594, 45);
             this.cbR8.Name = "cbR8";
-            this.cbR8.PLCAddressCheckChanged = "";
+            this.cbR8.PLCAddressCheckChanged = "00008";
             this.cbR8.PLCAddressChecked = "";
             this.cbR8.PLCAddressText = "";
             this.cbR8.PLCAddressVisible = "";
             this.cbR8.Size = new System.Drawing.Size(191, 36);
-            this.cbR8.TabIndex = 7;
-            this.cbR8.Text = "R8";
+            this.cbR8.TabIndex = 8;
+            this.cbR8.Tag = "0";
+            this.cbR8.Text = "R8 = 000 W";
             this.cbR8.UseVisualStyleBackColor = true;
             this.cbR8.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -579,13 +588,14 @@
             this.cbR7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR7.Location = new System.Drawing.Point(397, 45);
             this.cbR7.Name = "cbR7";
-            this.cbR7.PLCAddressCheckChanged = "";
+            this.cbR7.PLCAddressCheckChanged = "00007";
             this.cbR7.PLCAddressChecked = "";
             this.cbR7.PLCAddressText = "";
             this.cbR7.PLCAddressVisible = "";
             this.cbR7.Size = new System.Drawing.Size(191, 36);
-            this.cbR7.TabIndex = 6;
-            this.cbR7.Text = "R7";
+            this.cbR7.TabIndex = 7;
+            this.cbR7.Tag = "0";
+            this.cbR7.Text = "R7 = 000 W";
             this.cbR7.UseVisualStyleBackColor = true;
             this.cbR7.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -596,13 +606,14 @@
             this.cbR6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR6.Location = new System.Drawing.Point(200, 45);
             this.cbR6.Name = "cbR6";
-            this.cbR6.PLCAddressCheckChanged = "";
+            this.cbR6.PLCAddressCheckChanged = "00006";
             this.cbR6.PLCAddressChecked = "";
             this.cbR6.PLCAddressText = "";
             this.cbR6.PLCAddressVisible = "";
             this.cbR6.Size = new System.Drawing.Size(191, 36);
-            this.cbR6.TabIndex = 5;
-            this.cbR6.Text = "R6";
+            this.cbR6.TabIndex = 6;
+            this.cbR6.Tag = "0";
+            this.cbR6.Text = "R6 = 000 W";
             this.cbR6.UseVisualStyleBackColor = true;
             this.cbR6.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -613,13 +624,14 @@
             this.cbR5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR5.Location = new System.Drawing.Point(3, 45);
             this.cbR5.Name = "cbR5";
-            this.cbR5.PLCAddressCheckChanged = "";
+            this.cbR5.PLCAddressCheckChanged = "00005";
             this.cbR5.PLCAddressChecked = "";
             this.cbR5.PLCAddressText = "";
             this.cbR5.PLCAddressVisible = "";
             this.cbR5.Size = new System.Drawing.Size(191, 36);
-            this.cbR5.TabIndex = 4;
-            this.cbR5.Text = "R5";
+            this.cbR5.TabIndex = 5;
+            this.cbR5.Tag = "0";
+            this.cbR5.Text = "R5 = 000 W";
             this.cbR5.UseVisualStyleBackColor = true;
             this.cbR5.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -630,13 +642,14 @@
             this.cbR4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR4.Location = new System.Drawing.Point(594, 3);
             this.cbR4.Name = "cbR4";
-            this.cbR4.PLCAddressCheckChanged = "";
+            this.cbR4.PLCAddressCheckChanged = "00004";
             this.cbR4.PLCAddressChecked = "";
             this.cbR4.PLCAddressText = "";
             this.cbR4.PLCAddressVisible = "";
             this.cbR4.Size = new System.Drawing.Size(191, 36);
-            this.cbR4.TabIndex = 3;
-            this.cbR4.Text = "R4";
+            this.cbR4.TabIndex = 4;
+            this.cbR4.Tag = "0";
+            this.cbR4.Text = "R4 = 000 W";
             this.cbR4.UseVisualStyleBackColor = true;
             this.cbR4.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -647,13 +660,14 @@
             this.cbR3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR3.Location = new System.Drawing.Point(397, 3);
             this.cbR3.Name = "cbR3";
-            this.cbR3.PLCAddressCheckChanged = "";
+            this.cbR3.PLCAddressCheckChanged = "00003";
             this.cbR3.PLCAddressChecked = "";
             this.cbR3.PLCAddressText = "";
             this.cbR3.PLCAddressVisible = "";
             this.cbR3.Size = new System.Drawing.Size(191, 36);
-            this.cbR3.TabIndex = 2;
-            this.cbR3.Text = "R3";
+            this.cbR3.TabIndex = 3;
+            this.cbR3.Tag = "0";
+            this.cbR3.Text = "R3 = 000 W";
             this.cbR3.UseVisualStyleBackColor = true;
             this.cbR3.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -664,13 +678,14 @@
             this.cbR2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR2.Location = new System.Drawing.Point(200, 3);
             this.cbR2.Name = "cbR2";
-            this.cbR2.PLCAddressCheckChanged = "";
+            this.cbR2.PLCAddressCheckChanged = "00002";
             this.cbR2.PLCAddressChecked = "";
             this.cbR2.PLCAddressText = "";
             this.cbR2.PLCAddressVisible = "";
             this.cbR2.Size = new System.Drawing.Size(191, 36);
-            this.cbR2.TabIndex = 1;
-            this.cbR2.Text = "R2";
+            this.cbR2.TabIndex = 2;
+            this.cbR2.Tag = "0";
+            this.cbR2.Text = "R2 = 000 W";
             this.cbR2.UseVisualStyleBackColor = true;
             this.cbR2.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -681,13 +696,14 @@
             this.cbR1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR1.Location = new System.Drawing.Point(3, 3);
             this.cbR1.Name = "cbR1";
-            this.cbR1.PLCAddressCheckChanged = "";
+            this.cbR1.PLCAddressCheckChanged = "00001";
             this.cbR1.PLCAddressChecked = "";
             this.cbR1.PLCAddressText = "";
             this.cbR1.PLCAddressVisible = "";
             this.cbR1.Size = new System.Drawing.Size(191, 36);
-            this.cbR1.TabIndex = 0;
-            this.cbR1.Text = "R1";
+            this.cbR1.TabIndex = 1;
+            this.cbR1.Tag = "0";
+            this.cbR1.Text = "R1 = 000 W";
             this.cbR1.UseVisualStyleBackColor = true;
             this.cbR1.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
@@ -724,7 +740,7 @@
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(698, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(93, 38);
+            this.btnClose.Size = new System.Drawing.Size(93, 48);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -737,7 +753,7 @@
             this.btnKills.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKills.Location = new System.Drawing.Point(599, 3);
             this.btnKills.Name = "btnKills";
-            this.btnKills.Size = new System.Drawing.Size(93, 38);
+            this.btnKills.Size = new System.Drawing.Size(93, 48);
             this.btnKills.TabIndex = 3;
             this.btnKills.Text = "All kill";
             this.btnKills.UseVisualStyleBackColor = true;
@@ -750,7 +766,7 @@
             this.btnAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAll.Location = new System.Drawing.Point(500, 3);
             this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(93, 38);
+            this.btnAll.Size = new System.Drawing.Size(93, 48);
             this.btnAll.TabIndex = 2;
             this.btnAll.Text = "All bright";
             this.btnAll.UseVisualStyleBackColor = true;
@@ -763,7 +779,7 @@
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.Location = new System.Drawing.Point(302, 3);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(93, 38);
+            this.btnClear.Size = new System.Drawing.Size(93, 48);
             this.btnClear.TabIndex = 0;
             this.btnClear.Text = "Clear s-test";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -776,7 +792,7 @@
             this.btnSelfTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelfTest.Location = new System.Drawing.Point(401, 3);
             this.btnSelfTest.Name = "btnSelfTest";
-            this.btnSelfTest.Size = new System.Drawing.Size(93, 38);
+            this.btnSelfTest.Size = new System.Drawing.Size(93, 48);
             this.btnSelfTest.TabIndex = 1;
             this.btnSelfTest.Text = "Self-test";
             this.btnSelfTest.UseVisualStyleBackColor = true;
@@ -788,9 +804,9 @@
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.Location = new System.Drawing.Point(3, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(194, 44);
+            this.lblStatus.Size = new System.Drawing.Size(194, 54);
             this.lblStatus.TabIndex = 5;
-            this.lblStatus.Text = "Buff: 0\r\nRec: 0000000000000000";
+            this.lblStatus.Text = "L POWER: 0 W\r\nR POWER: 0 W";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnSave
@@ -801,7 +817,7 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(203, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(93, 38);
+            this.btnSave.Size = new System.Drawing.Size(93, 48);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;

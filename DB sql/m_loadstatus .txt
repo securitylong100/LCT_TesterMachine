@@ -1,0 +1,6 @@
+CREATE TABLE m_loadstatus (
+	l_bits VARCHAR(20) not null default '0000 0000 0000 0000',
+	r_bits VARCHAR(20) not null default '0000 0000 0000 0000',
+	l_power VARCHAR(20),
+	primary key(l_bits)
+);
