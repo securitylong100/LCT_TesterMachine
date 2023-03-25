@@ -233,11 +233,6 @@ namespace AdvancedHMICS
             fd.ShowDialog();
         }
 
-        private void btn_DBSetting_Click(object sender, EventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// Mở cửa sổ setting model
         /// </summary>
@@ -277,6 +272,11 @@ namespace AdvancedHMICS
         }
         #endregion
         #region --- CHẾ ĐỘ TEST ---
+        private void btn_data_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btn_start_Click(object sender, EventArgs e)
         {
             try
@@ -761,6 +761,7 @@ namespace AdvancedHMICS
             return dt.AsEnumerable().FirstOrDefault(row => row["ck_serial"].ToString() == step.ToString());
         }
         #endregion
+
         #region --- OLD ---
         // Khai báo điện trở fix
         //private int R = 500;

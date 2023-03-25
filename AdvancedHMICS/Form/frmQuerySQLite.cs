@@ -37,7 +37,6 @@ namespace AdvancedHMICS
         }
         private void btn_SelectData_Click(object sender, EventArgs e)
         {
-           
             gv_main.RefreshData();
             gc_main.RefreshDataSource();
             gc_main.DataSource = null;

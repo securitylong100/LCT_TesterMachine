@@ -7,7 +7,7 @@ namespace AdvancedHMICS.Class
 {
     public class sqlite
     {
-        static string connectionname = "Data Source=Data.db";
+        static string connectionname = "Data Source=Data.db;datetimeformat=CurrentCulture";
         public void getComboBoxData(string stringQuery, ref System.Windows.Forms.ComboBox cmb)
         {
             SQLiteConnection conn = new SQLiteConnection(connectionname);          

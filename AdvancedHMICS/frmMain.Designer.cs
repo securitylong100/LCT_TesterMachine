@@ -36,30 +36,32 @@ namespace AdvancedHMICS
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.btn_settingorder = new System.Windows.Forms.Button();
-            this.btn_export = new System.Windows.Forms.Button();
-            this.btn_modelSetting = new System.Windows.Forms.Button();
-            this.btn_clear = new System.Windows.Forms.Button();
-            this.btn_querysqlite = new System.Windows.Forms.Button();
-            this.btn_manualload = new System.Windows.Forms.Button();
-            this.btn_loadStatus = new System.Windows.Forms.Button();
-            this.btn_user = new System.Windows.Forms.Button();
-            this.btn_autoload = new System.Windows.Forms.Button();
-            this.btn_deleterow = new System.Windows.Forms.Button();
-            this.btn_plcstatus = new System.Windows.Forms.Button();
-            this.btn_start = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_data = new System.Windows.Forms.Button();
+            this.btn_settingorder = new System.Windows.Forms.Button();
+            this.btn_deleterow = new System.Windows.Forms.Button();
+            this.btn_export = new System.Windows.Forms.Button();
+            this.btn_autoload = new System.Windows.Forms.Button();
+            this.btn_manualload = new System.Windows.Forms.Button();
+            this.btn_querysqlite = new System.Windows.Forms.Button();
+            this.btn_modelSetting = new System.Windows.Forms.Button();
+            this.btn_start = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
+            this.btn_plcstatus = new System.Windows.Forms.Button();
+            this.btn_loadStatus = new System.Windows.Forms.Button();
             this.btn_record = new System.Windows.Forms.Button();
+            this.btn_user = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.label63 = new System.Windows.Forms.Label();
             this.keyboardInput1 = new AdvancedHMIControls.KeyboardInput();
             this.modbusRTUCom2 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
             this.cbm_orderid = new System.Windows.Forms.ComboBox();
             this.cbm_model = new System.Windows.Forms.ComboBox();
             this.txt_barcode = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.avd_machanicalP = new AdvancedHMIControls.AnalogValueDisplay();
             this.modbusRTUCom1 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
@@ -101,25 +103,26 @@ namespace AdvancedHMICS
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.lbl_status_automanual = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lbl_rated_P = new System.Windows.Forms.Label();
+            this.lbl_targetP = new System.Windows.Forms.Label();
+            this.lbl_actualP = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.lbl_pidStop = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             this.lbl_steadyT = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
             this.lbl_pcStep = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.lbl_actualP = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lbl_targetP = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lbl_rated_P = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_90 = new System.Windows.Forms.Button();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -136,21 +139,21 @@ namespace AdvancedHMICS
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label1 = new System.Windows.Forms.Label();
             this.timerLoad = new System.Windows.Forms.Timer(this.components);
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -159,9 +162,6 @@ namespace AdvancedHMICS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -238,6 +238,50 @@ namespace AdvancedHMICS
             this.panel7.Size = new System.Drawing.Size(399, 134);
             this.panel7.TabIndex = 79;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.Controls.Add(this.btn_data, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btn_settingorder, 3, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btn_deleterow, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btn_export, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btn_autoload, 1, 2);
+            this.tableLayoutPanel4.Controls.Add(this.btn_manualload, 2, 3);
+            this.tableLayoutPanel4.Controls.Add(this.btn_querysqlite, 2, 2);
+            this.tableLayoutPanel4.Controls.Add(this.btn_modelSetting, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btn_start, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.btn_clear, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btn_plcstatus, 0, 3);
+            this.tableLayoutPanel4.Controls.Add(this.btn_loadStatus, 1, 3);
+            this.tableLayoutPanel4.Controls.Add(this.btn_record, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.btn_user, 1, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 4;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(395, 130);
+            this.tableLayoutPanel4.TabIndex = 16;
+            // 
+            // btn_data
+            // 
+            this.btn_data.BackColor = System.Drawing.Color.LightGray;
+            this.btn_data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_data.Location = new System.Drawing.Point(3, 35);
+            this.btn_data.Name = "btn_data";
+            this.btn_data.Size = new System.Drawing.Size(92, 26);
+            this.btn_data.TabIndex = 1;
+            this.btn_data.Text = "Data";
+            this.btn_data.UseVisualStyleBackColor = false;
+            this.btn_data.Click += new System.EventHandler(this.btn_data_Click);
+            // 
             // btn_settingorder
             // 
             this.btn_settingorder.BackColor = System.Drawing.Color.LightGray;
@@ -249,104 +293,6 @@ namespace AdvancedHMICS
             this.btn_settingorder.Text = "Setting Order";
             this.btn_settingorder.UseVisualStyleBackColor = false;
             this.btn_settingorder.Click += new System.EventHandler(this.btn_settingorder_Click);
-            // 
-            // btn_export
-            // 
-            this.btn_export.BackColor = System.Drawing.Color.LightGray;
-            this.btn_export.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_export.Enabled = false;
-            this.btn_export.Location = new System.Drawing.Point(297, 3);
-            this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(95, 26);
-            this.btn_export.TabIndex = 14;
-            this.btn_export.Text = "Export";
-            this.btn_export.UseVisualStyleBackColor = false;
-            // 
-            // btn_modelSetting
-            // 
-            this.btn_modelSetting.BackColor = System.Drawing.Color.LightGray;
-            this.btn_modelSetting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_modelSetting.Location = new System.Drawing.Point(199, 35);
-            this.btn_modelSetting.Name = "btn_modelSetting";
-            this.btn_modelSetting.Size = new System.Drawing.Size(92, 26);
-            this.btn_modelSetting.TabIndex = 13;
-            this.btn_modelSetting.Text = "Setting Model";
-            this.btn_modelSetting.UseVisualStyleBackColor = false;
-            this.btn_modelSetting.Click += new System.EventHandler(this.btn_modelSetting_Click);
-            // 
-            // btn_clear
-            // 
-            this.btn_clear.BackColor = System.Drawing.Color.LightGray;
-            this.btn_clear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_clear.Enabled = false;
-            this.btn_clear.Location = new System.Drawing.Point(199, 3);
-            this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(92, 26);
-            this.btn_clear.TabIndex = 12;
-            this.btn_clear.Text = "Clear";
-            this.btn_clear.UseVisualStyleBackColor = false;
-            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
-            // 
-            // btn_querysqlite
-            // 
-            this.btn_querysqlite.BackColor = System.Drawing.Color.LightGray;
-            this.btn_querysqlite.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_querysqlite.Location = new System.Drawing.Point(199, 67);
-            this.btn_querysqlite.Name = "btn_querysqlite";
-            this.btn_querysqlite.Size = new System.Drawing.Size(92, 26);
-            this.btn_querysqlite.TabIndex = 11;
-            this.btn_querysqlite.Text = "QuerySQLite";
-            this.btn_querysqlite.UseVisualStyleBackColor = false;
-            this.btn_querysqlite.Click += new System.EventHandler(this.btn_querysqlite_Click);
-            // 
-            // btn_manualload
-            // 
-            this.btn_manualload.BackColor = System.Drawing.Color.LightGray;
-            this.btn_manualload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_manualload.Location = new System.Drawing.Point(199, 99);
-            this.btn_manualload.Name = "btn_manualload";
-            this.btn_manualload.Size = new System.Drawing.Size(92, 28);
-            this.btn_manualload.TabIndex = 10;
-            this.btn_manualload.Text = "ManualLoad";
-            this.btn_manualload.UseVisualStyleBackColor = false;
-            // 
-            // btn_loadStatus
-            // 
-            this.btn_loadStatus.BackColor = System.Drawing.Color.LightGray;
-            this.btn_loadStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_loadStatus.Enabled = false;
-            this.btn_loadStatus.Location = new System.Drawing.Point(101, 99);
-            this.btn_loadStatus.Name = "btn_loadStatus";
-            this.btn_loadStatus.Size = new System.Drawing.Size(92, 28);
-            this.btn_loadStatus.TabIndex = 9;
-            this.btn_loadStatus.Text = "Load Status";
-            this.btn_loadStatus.UseVisualStyleBackColor = false;
-            this.btn_loadStatus.Click += new System.EventHandler(this.btn_loadStatus_Click);
-            // 
-            // btn_user
-            // 
-            this.btn_user.BackColor = System.Drawing.Color.LightGray;
-            this.btn_user.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_user.Location = new System.Drawing.Point(101, 35);
-            this.btn_user.Name = "btn_user";
-            this.btn_user.Size = new System.Drawing.Size(92, 26);
-            this.btn_user.TabIndex = 6;
-            this.btn_user.Text = "User";
-            this.btn_user.UseVisualStyleBackColor = false;
-            this.btn_user.Click += new System.EventHandler(this.btn_user_Click);
-            // 
-            // btn_autoload
-            // 
-            this.btn_autoload.BackColor = System.Drawing.Color.LightGray;
-            this.btn_autoload.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_autoload.Enabled = false;
-            this.btn_autoload.Location = new System.Drawing.Point(101, 67);
-            this.btn_autoload.Name = "btn_autoload";
-            this.btn_autoload.Size = new System.Drawing.Size(92, 26);
-            this.btn_autoload.TabIndex = 5;
-            this.btn_autoload.Text = "AutoLoad";
-            this.btn_autoload.UseVisualStyleBackColor = false;
-            this.btn_autoload.Click += new System.EventHandler(this.btn_autoload_Click);
             // 
             // btn_deleterow
             // 
@@ -361,18 +307,65 @@ namespace AdvancedHMICS
             this.btn_deleterow.UseVisualStyleBackColor = false;
             this.btn_deleterow.Click += new System.EventHandler(this.btn_deleterow_Click);
             // 
-            // btn_plcstatus
+            // btn_export
             // 
-            this.btn_plcstatus.BackColor = System.Drawing.Color.LightGray;
-            this.btn_plcstatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_plcstatus.Enabled = false;
-            this.btn_plcstatus.Location = new System.Drawing.Point(3, 99);
-            this.btn_plcstatus.Name = "btn_plcstatus";
-            this.btn_plcstatus.Size = new System.Drawing.Size(92, 28);
-            this.btn_plcstatus.TabIndex = 3;
-            this.btn_plcstatus.Text = "PLC Status";
-            this.btn_plcstatus.UseVisualStyleBackColor = false;
-            this.btn_plcstatus.Click += new System.EventHandler(this.btn_plcstatus_Click);
+            this.btn_export.BackColor = System.Drawing.Color.LightGray;
+            this.btn_export.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_export.Enabled = false;
+            this.btn_export.Location = new System.Drawing.Point(297, 3);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(95, 26);
+            this.btn_export.TabIndex = 14;
+            this.btn_export.Text = "Export";
+            this.btn_export.UseVisualStyleBackColor = false;
+            // 
+            // btn_autoload
+            // 
+            this.btn_autoload.BackColor = System.Drawing.Color.LightGray;
+            this.btn_autoload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_autoload.Enabled = false;
+            this.btn_autoload.Location = new System.Drawing.Point(101, 67);
+            this.btn_autoload.Name = "btn_autoload";
+            this.btn_autoload.Size = new System.Drawing.Size(92, 26);
+            this.btn_autoload.TabIndex = 5;
+            this.btn_autoload.Text = "AutoLoad";
+            this.btn_autoload.UseVisualStyleBackColor = false;
+            this.btn_autoload.Click += new System.EventHandler(this.btn_autoload_Click);
+            // 
+            // btn_manualload
+            // 
+            this.btn_manualload.BackColor = System.Drawing.Color.LightGray;
+            this.btn_manualload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_manualload.Location = new System.Drawing.Point(199, 99);
+            this.btn_manualload.Name = "btn_manualload";
+            this.btn_manualload.Size = new System.Drawing.Size(92, 28);
+            this.btn_manualload.TabIndex = 10;
+            this.btn_manualload.Text = "ManualLoad";
+            this.btn_manualload.UseVisualStyleBackColor = false;
+            // 
+            // btn_querysqlite
+            // 
+            this.btn_querysqlite.BackColor = System.Drawing.Color.LightGray;
+            this.btn_querysqlite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_querysqlite.Location = new System.Drawing.Point(199, 67);
+            this.btn_querysqlite.Name = "btn_querysqlite";
+            this.btn_querysqlite.Size = new System.Drawing.Size(92, 26);
+            this.btn_querysqlite.TabIndex = 11;
+            this.btn_querysqlite.Text = "QuerySQLite";
+            this.btn_querysqlite.UseVisualStyleBackColor = false;
+            this.btn_querysqlite.Click += new System.EventHandler(this.btn_querysqlite_Click);
+            // 
+            // btn_modelSetting
+            // 
+            this.btn_modelSetting.BackColor = System.Drawing.Color.LightGray;
+            this.btn_modelSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_modelSetting.Location = new System.Drawing.Point(199, 35);
+            this.btn_modelSetting.Name = "btn_modelSetting";
+            this.btn_modelSetting.Size = new System.Drawing.Size(92, 26);
+            this.btn_modelSetting.TabIndex = 13;
+            this.btn_modelSetting.Text = "Setting Model";
+            this.btn_modelSetting.UseVisualStyleBackColor = false;
+            this.btn_modelSetting.Click += new System.EventHandler(this.btn_modelSetting_Click);
             // 
             // btn_start
             // 
@@ -386,16 +379,44 @@ namespace AdvancedHMICS
             this.btn_start.UseVisualStyleBackColor = false;
             this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
             // 
-            // btn_data
+            // btn_clear
             // 
-            this.btn_data.BackColor = System.Drawing.Color.LightGray;
-            this.btn_data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_data.Location = new System.Drawing.Point(3, 35);
-            this.btn_data.Name = "btn_data";
-            this.btn_data.Size = new System.Drawing.Size(92, 26);
-            this.btn_data.TabIndex = 1;
-            this.btn_data.Text = "Data";
-            this.btn_data.UseVisualStyleBackColor = false;
+            this.btn_clear.BackColor = System.Drawing.Color.LightGray;
+            this.btn_clear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_clear.Enabled = false;
+            this.btn_clear.Location = new System.Drawing.Point(199, 3);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(92, 26);
+            this.btn_clear.TabIndex = 12;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
+            // btn_plcstatus
+            // 
+            this.btn_plcstatus.BackColor = System.Drawing.Color.LightGray;
+            this.btn_plcstatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_plcstatus.Enabled = false;
+            this.btn_plcstatus.Location = new System.Drawing.Point(3, 99);
+            this.btn_plcstatus.Name = "btn_plcstatus";
+            this.btn_plcstatus.Size = new System.Drawing.Size(92, 28);
+            this.btn_plcstatus.TabIndex = 3;
+            this.btn_plcstatus.Text = "PLC Status";
+            this.btn_plcstatus.UseVisualStyleBackColor = false;
+            this.btn_plcstatus.Click += new System.EventHandler(this.btn_plcstatus_Click);
+            // 
+            // btn_loadStatus
+            // 
+            this.btn_loadStatus.BackColor = System.Drawing.Color.LightGray;
+            this.btn_loadStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_loadStatus.Enabled = false;
+            this.btn_loadStatus.Location = new System.Drawing.Point(101, 99);
+            this.btn_loadStatus.Name = "btn_loadStatus";
+            this.btn_loadStatus.Size = new System.Drawing.Size(92, 28);
+            this.btn_loadStatus.TabIndex = 9;
+            this.btn_loadStatus.Text = "Load Status";
+            this.btn_loadStatus.UseVisualStyleBackColor = false;
+            this.btn_loadStatus.Click += new System.EventHandler(this.btn_loadStatus_Click);
             // 
             // btn_record
             // 
@@ -410,6 +431,18 @@ namespace AdvancedHMICS
             this.btn_record.UseVisualStyleBackColor = false;
             this.btn_record.Click += new System.EventHandler(this.btn_record_Click);
             // 
+            // btn_user
+            // 
+            this.btn_user.BackColor = System.Drawing.Color.LightGray;
+            this.btn_user.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_user.Location = new System.Drawing.Point(101, 35);
+            this.btn_user.Name = "btn_user";
+            this.btn_user.Size = new System.Drawing.Size(92, 26);
+            this.btn_user.TabIndex = 6;
+            this.btn_user.Text = "User";
+            this.btn_user.UseVisualStyleBackColor = false;
+            this.btn_user.Click += new System.EventHandler(this.btn_user_Click);
+            // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -420,14 +453,41 @@ namespace AdvancedHMICS
             this.panel3.Size = new System.Drawing.Size(394, 134);
             this.panel3.TabIndex = 78;
             // 
-            // textBox1
+            // tableLayoutPanel6
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 99);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
-            this.textBox1.TabIndex = 70;
-            this.textBox1.Text = "00016";
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Controls.Add(this.label63, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.keyboardInput1, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.textBox1, 0, 3);
+            this.tableLayoutPanel6.Controls.Add(this.label45, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.label46, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.cbm_orderid, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.cbm_model, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.txt_barcode, 1, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 4;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(390, 130);
+            this.tableLayoutPanel6.TabIndex = 71;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label63.Location = new System.Drawing.Point(3, 0);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(110, 32);
+            this.label63.TabIndex = 61;
+            this.label63.Text = "Test Standard";
+            this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // keyboardInput1
             // 
@@ -462,6 +522,39 @@ namespace AdvancedHMICS
             this.modbusRTUCom2.SwapWords = false;
             this.modbusRTUCom2.TimeOut = 3000;
             // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(3, 99);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(110, 20);
+            this.textBox1.TabIndex = 70;
+            this.textBox1.Text = "00016";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(3, 32);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(110, 32);
+            this.label45.TabIndex = 62;
+            this.label45.Text = "Barcode";
+            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(3, 64);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(110, 32);
+            this.label46.TabIndex = 63;
+            this.label46.Text = "Order ID";
+            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // cbm_orderid
             // 
             this.cbm_orderid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -492,42 +585,6 @@ namespace AdvancedHMICS
             this.txt_barcode.Size = new System.Drawing.Size(268, 22);
             this.txt_barcode.TabIndex = 65;
             this.txt_barcode.Text = "barcodetest";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(3, 64);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(110, 32);
-            this.label46.TabIndex = 63;
-            this.label46.Text = "Order ID";
-            this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(3, 32);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(110, 32);
-            this.label45.TabIndex = 62;
-            this.label45.Text = "Barcode";
-            this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(3, 0);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(110, 32);
-            this.label63.TabIndex = 61;
-            this.label63.Text = "Test Standard";
-            this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel5
             // 
@@ -1276,6 +1333,46 @@ namespace AdvancedHMICS
             this.panel6.Size = new System.Drawing.Size(397, 134);
             this.panel6.TabIndex = 75;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 7;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.Controls.Add(this.lbl_status_automanual, 1, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label25, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label41, 0, 3);
+            this.tableLayoutPanel5.Controls.Add(this.label11, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label21, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.lbl_rated_P, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.lbl_targetP, 1, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lbl_actualP, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label8, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label9, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label19, 2, 2);
+            this.tableLayoutPanel5.Controls.Add(this.label38, 6, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label24, 6, 2);
+            this.tableLayoutPanel5.Controls.Add(this.lbl_pidStop, 5, 2);
+            this.tableLayoutPanel5.Controls.Add(this.lbl_steadyT, 5, 1);
+            this.tableLayoutPanel5.Controls.Add(this.lbl_pcStep, 5, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label43, 4, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label40, 4, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label37, 4, 2);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 4;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 130);
+            this.tableLayoutPanel5.TabIndex = 71;
+            // 
             // lbl_status_automanual
             // 
             this.lbl_status_automanual.AutoSize = true;
@@ -1288,6 +1385,18 @@ namespace AdvancedHMICS
             this.lbl_status_automanual.Text = "Manual";
             this.lbl_status_automanual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(3, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(71, 32);
+            this.label25.TabIndex = 61;
+            this.label25.Text = "Rated P:";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // label41
             // 
             this.label41.AutoSize = true;
@@ -1299,6 +1408,114 @@ namespace AdvancedHMICS
             this.label41.TabIndex = 83;
             this.label41.Text = "Status:";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 32);
+            this.label11.TabIndex = 68;
+            this.label11.Text = "Target P";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(3, 64);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(71, 32);
+            this.label21.TabIndex = 71;
+            this.label21.Text = "Actual P";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbl_rated_P
+            // 
+            this.lbl_rated_P.AutoSize = true;
+            this.lbl_rated_P.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_rated_P.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_rated_P.Location = new System.Drawing.Point(80, 0);
+            this.lbl_rated_P.Name = "lbl_rated_P";
+            this.lbl_rated_P.Size = new System.Drawing.Size(61, 32);
+            this.lbl_rated_P.TabIndex = 66;
+            this.lbl_rated_P.Text = "0.000";
+            this.lbl_rated_P.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbl_targetP
+            // 
+            this.lbl_targetP.AutoSize = true;
+            this.lbl_targetP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_targetP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_targetP.Location = new System.Drawing.Point(80, 32);
+            this.lbl_targetP.Name = "lbl_targetP";
+            this.lbl_targetP.Size = new System.Drawing.Size(61, 32);
+            this.lbl_targetP.TabIndex = 69;
+            this.lbl_targetP.Text = "0.000";
+            this.lbl_targetP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbl_actualP
+            // 
+            this.lbl_actualP.AutoSize = true;
+            this.lbl_actualP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_actualP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_actualP.Location = new System.Drawing.Point(80, 64);
+            this.lbl_actualP.Name = "lbl_actualP";
+            this.lbl_actualP.Size = new System.Drawing.Size(61, 32);
+            this.lbl_actualP.TabIndex = 72;
+            this.lbl_actualP.Text = "0.000";
+            this.lbl_actualP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(147, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 32);
+            this.label8.TabIndex = 67;
+            this.label8.Text = "kW";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(147, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(32, 32);
+            this.label9.TabIndex = 70;
+            this.label9.Text = "kW";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(147, 64);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(32, 32);
+            this.label19.TabIndex = 73;
+            this.label19.Text = "kW";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(367, 32);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(23, 32);
+            this.label38.TabIndex = 79;
+            this.label38.Text = "s";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label24
             // 
@@ -1324,30 +1541,6 @@ namespace AdvancedHMICS
             this.lbl_pidStop.Text = "0.00";
             this.lbl_pidStop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(237, 64);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(78, 32);
-            this.label37.TabIndex = 80;
-            this.label37.Text = "PID Stop:";
-            this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(367, 32);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(23, 32);
-            this.label38.TabIndex = 79;
-            this.label38.Text = "s";
-            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // lbl_steadyT
             // 
             this.lbl_steadyT.AutoSize = true;
@@ -1359,18 +1552,6 @@ namespace AdvancedHMICS
             this.lbl_steadyT.TabIndex = 78;
             this.lbl_steadyT.Text = "0";
             this.lbl_steadyT.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(237, 32);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(78, 32);
-            this.label40.TabIndex = 77;
-            this.label40.Text = "Steady T:";
-            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl_pcStep
             // 
@@ -1396,113 +1577,29 @@ namespace AdvancedHMICS
             this.label43.Text = "PC Step: ";
             this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label19
+            // label40
             // 
-            this.label19.AutoSize = true;
-            this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(147, 64);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(32, 32);
-            this.label19.TabIndex = 73;
-            this.label19.Text = "kW";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label40.AutoSize = true;
+            this.label40.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(237, 32);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(78, 32);
+            this.label40.TabIndex = 77;
+            this.label40.Text = "Steady T:";
+            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lbl_actualP
+            // label37
             // 
-            this.lbl_actualP.AutoSize = true;
-            this.lbl_actualP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_actualP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_actualP.Location = new System.Drawing.Point(80, 64);
-            this.lbl_actualP.Name = "lbl_actualP";
-            this.lbl_actualP.Size = new System.Drawing.Size(61, 32);
-            this.lbl_actualP.TabIndex = 72;
-            this.lbl_actualP.Text = "0.000";
-            this.lbl_actualP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(3, 64);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 32);
-            this.label21.TabIndex = 71;
-            this.label21.Text = "Actual P";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(147, 32);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 32);
-            this.label9.TabIndex = 70;
-            this.label9.Text = "kW";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl_targetP
-            // 
-            this.lbl_targetP.AutoSize = true;
-            this.lbl_targetP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_targetP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_targetP.Location = new System.Drawing.Point(80, 32);
-            this.lbl_targetP.Name = "lbl_targetP";
-            this.lbl_targetP.Size = new System.Drawing.Size(61, 32);
-            this.lbl_targetP.TabIndex = 69;
-            this.lbl_targetP.Text = "0.000";
-            this.lbl_targetP.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 32);
-            this.label11.TabIndex = 68;
-            this.label11.Text = "Target P";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(147, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 32);
-            this.label8.TabIndex = 67;
-            this.label8.Text = "kW";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl_rated_P
-            // 
-            this.lbl_rated_P.AutoSize = true;
-            this.lbl_rated_P.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_rated_P.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_rated_P.Location = new System.Drawing.Point(80, 0);
-            this.lbl_rated_P.Name = "lbl_rated_P";
-            this.lbl_rated_P.Size = new System.Drawing.Size(61, 32);
-            this.lbl_rated_P.TabIndex = 66;
-            this.lbl_rated_P.Text = "0.000";
-            this.lbl_rated_P.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(3, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(71, 32);
-            this.label25.TabIndex = 61;
-            this.label25.Text = "Rated P:";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label37.AutoSize = true;
+            this.label37.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(237, 64);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(78, 32);
+            this.label37.TabIndex = 80;
+            this.label37.Text = "PID Stop:";
+            this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanel3
             // 
@@ -1702,102 +1799,6 @@ namespace AdvancedHMICS
             this.timerLoad.Interval = 1000;
             this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 4;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.Controls.Add(this.btn_data, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.btn_settingorder, 3, 1);
-            this.tableLayoutPanel4.Controls.Add(this.btn_deleterow, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btn_export, 3, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btn_autoload, 1, 2);
-            this.tableLayoutPanel4.Controls.Add(this.btn_manualload, 2, 3);
-            this.tableLayoutPanel4.Controls.Add(this.btn_querysqlite, 2, 2);
-            this.tableLayoutPanel4.Controls.Add(this.btn_modelSetting, 2, 1);
-            this.tableLayoutPanel4.Controls.Add(this.btn_start, 0, 2);
-            this.tableLayoutPanel4.Controls.Add(this.btn_clear, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btn_plcstatus, 0, 3);
-            this.tableLayoutPanel4.Controls.Add(this.btn_loadStatus, 1, 3);
-            this.tableLayoutPanel4.Controls.Add(this.btn_record, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.btn_user, 1, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 4;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(395, 130);
-            this.tableLayoutPanel4.TabIndex = 16;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.ColumnCount = 7;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel5.Controls.Add(this.lbl_status_automanual, 1, 3);
-            this.tableLayoutPanel5.Controls.Add(this.label25, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label41, 0, 3);
-            this.tableLayoutPanel5.Controls.Add(this.label11, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label21, 0, 2);
-            this.tableLayoutPanel5.Controls.Add(this.lbl_rated_P, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.lbl_targetP, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.lbl_actualP, 1, 2);
-            this.tableLayoutPanel5.Controls.Add(this.label8, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label9, 2, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label19, 2, 2);
-            this.tableLayoutPanel5.Controls.Add(this.label38, 6, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label24, 6, 2);
-            this.tableLayoutPanel5.Controls.Add(this.lbl_pidStop, 5, 2);
-            this.tableLayoutPanel5.Controls.Add(this.lbl_steadyT, 5, 1);
-            this.tableLayoutPanel5.Controls.Add(this.lbl_pcStep, 5, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label43, 4, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label40, 4, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label37, 4, 2);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 4;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(393, 130);
-            this.tableLayoutPanel5.TabIndex = 71;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Controls.Add(this.label63, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.keyboardInput1, 1, 3);
-            this.tableLayoutPanel6.Controls.Add(this.textBox1, 0, 3);
-            this.tableLayoutPanel6.Controls.Add(this.label45, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.label46, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.cbm_orderid, 1, 2);
-            this.tableLayoutPanel6.Controls.Add(this.cbm_model, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.txt_barcode, 1, 1);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 4;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(390, 130);
-            this.tableLayoutPanel6.TabIndex = 71;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1815,7 +1816,10 @@ namespace AdvancedHMICS
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -1825,6 +1829,8 @@ namespace AdvancedHMICS
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel6.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -1833,11 +1839,6 @@ namespace AdvancedHMICS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel5.ResumeLayout(false);
-            this.tableLayoutPanel5.PerformLayout();
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
