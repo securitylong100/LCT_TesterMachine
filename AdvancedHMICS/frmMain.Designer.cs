@@ -32,6 +32,7 @@ namespace AdvancedHMICS
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -53,9 +54,6 @@ namespace AdvancedHMICS
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label63 = new System.Windows.Forms.Label();
-            this.keyboardInput1 = new AdvancedHMIControls.KeyboardInput();
-            this.modbusRTUCom2 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.cbm_orderid = new System.Windows.Forms.ComboBox();
@@ -124,29 +122,29 @@ namespace AdvancedHMICS
             this.label37 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btn_90 = new System.Windows.Forms.Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btn_100 = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btn_75 = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btn_50 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btn_25 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btn_0 = new System.Windows.Forms.Button();
             this.gc_main = new DevExpress.XtraGrid.GridControl();
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.modbusRTUCom2 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.timerLoad = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel7.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).BeginInit();
             this.panel4.SuspendLayout();
@@ -154,14 +152,14 @@ namespace AdvancedHMICS
             this.panel6.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -181,6 +179,16 @@ namespace AdvancedHMICS
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1214, 578);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::AdvancedHMICS.Properties.Resources.ifmbigsize;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(144, 36);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -449,8 +457,6 @@ namespace AdvancedHMICS
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.label63, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.keyboardInput1, 1, 3);
-            this.tableLayoutPanel6.Controls.Add(this.textBox1, 0, 3);
             this.tableLayoutPanel6.Controls.Add(this.label45, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.label46, 0, 2);
             this.tableLayoutPanel6.Controls.Add(this.cbm_orderid, 1, 2);
@@ -478,48 +484,6 @@ namespace AdvancedHMICS
             this.label63.TabIndex = 61;
             this.label63.Text = "Test Standard";
             this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // keyboardInput1
-            // 
-            this.keyboardInput1.ClearAfterEnterKey = true;
-            this.keyboardInput1.ComComponent = this.modbusRTUCom2;
-            this.keyboardInput1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.keyboardInput1.GetFocusMatchValue = 1;
-            this.keyboardInput1.GetFocusValue = 0;
-            this.keyboardInput1.Location = new System.Drawing.Point(119, 99);
-            this.keyboardInput1.Name = "keyboardInput1";
-            this.keyboardInput1.PLCAddressGetFocusValue = null;
-            this.keyboardInput1.PLCAddressWriteValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("keyboardInput1.PLCAddressWriteValue")));
-            this.keyboardInput1.Size = new System.Drawing.Size(268, 20);
-            this.keyboardInput1.TabIndex = 69;
-            this.keyboardInput1.TextChanged += new System.EventHandler(this.keyboardInput1_TextChanged);
-            // 
-            // modbusRTUCom2
-            // 
-            this.modbusRTUCom2.BaudRate = 9600;
-            this.modbusRTUCom2.DataBits = 8;
-            this.modbusRTUCom2.DisableSubscriptions = false;
-            this.modbusRTUCom2.EnableLogging = false;
-            this.modbusRTUCom2.IniFileName = "";
-            this.modbusRTUCom2.IniFileSection = null;
-            this.modbusRTUCom2.MaxReadGroupSize = 20;
-            this.modbusRTUCom2.Parity = System.IO.Ports.Parity.None;
-            this.modbusRTUCom2.PollRateOverride = 500;
-            this.modbusRTUCom2.PortName = "COM10";
-            this.modbusRTUCom2.StationAddress = ((byte)(3));
-            this.modbusRTUCom2.StopBits = System.IO.Ports.StopBits.One;
-            this.modbusRTUCom2.SwapBytes = true;
-            this.modbusRTUCom2.SwapWords = false;
-            this.modbusRTUCom2.TimeOut = 3000;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 99);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
-            this.textBox1.TabIndex = 70;
-            this.textBox1.Text = "00016";
             // 
             // label45
             // 
@@ -849,7 +813,7 @@ namespace AdvancedHMICS
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.Red;
+            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(8, 192);
             this.label32.Name = "label32";
@@ -860,7 +824,7 @@ namespace AdvancedHMICS
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(8, 152);
             this.label33.Name = "label33";
@@ -871,7 +835,7 @@ namespace AdvancedHMICS
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.Red;
+            this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(8, 18);
             this.label34.Name = "label34";
@@ -882,7 +846,7 @@ namespace AdvancedHMICS
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(8, 106);
             this.label35.Name = "label35";
@@ -893,7 +857,7 @@ namespace AdvancedHMICS
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.Red;
+            this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(8, 62);
             this.label36.Name = "label36";
@@ -1010,7 +974,7 @@ namespace AdvancedHMICS
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(12, 64);
             this.label22.Name = "label22";
@@ -1021,7 +985,7 @@ namespace AdvancedHMICS
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(12, 18);
             this.label23.Name = "label23";
@@ -1260,7 +1224,7 @@ namespace AdvancedHMICS
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(8, 188);
             this.label6.Name = "label6";
@@ -1271,7 +1235,7 @@ namespace AdvancedHMICS
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Yellow;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(8, 148);
             this.label5.Name = "label5";
@@ -1282,7 +1246,7 @@ namespace AdvancedHMICS
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(8, 19);
@@ -1294,7 +1258,7 @@ namespace AdvancedHMICS
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Yellow;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(8, 103);
             this.label4.Name = "label4";
@@ -1305,7 +1269,7 @@ namespace AdvancedHMICS
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(8, 60);
             this.label3.Name = "label3";
@@ -1637,6 +1601,16 @@ namespace AdvancedHMICS
             this.btn_90.Text = "90% NA";
             this.btn_90.UseVisualStyleBackColor = true;
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox6.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
+            this.pictureBox6.Location = new System.Drawing.Point(978, 6);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(99, 42);
+            this.pictureBox6.TabIndex = 9;
+            this.pictureBox6.TabStop = false;
+            // 
             // btn_100
             // 
             this.btn_100.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1649,6 +1623,16 @@ namespace AdvancedHMICS
             this.btn_100.Text = "100%";
             this.btn_100.UseVisualStyleBackColor = true;
             this.btn_100.Click += new System.EventHandler(this.btn_manual_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox5.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
+            this.pictureBox5.Location = new System.Drawing.Point(762, 6);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(99, 42);
+            this.pictureBox5.TabIndex = 7;
+            this.pictureBox5.TabStop = false;
             // 
             // btn_75
             // 
@@ -1663,6 +1647,16 @@ namespace AdvancedHMICS
             this.btn_75.UseVisualStyleBackColor = true;
             this.btn_75.Click += new System.EventHandler(this.btn_manual_Click);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox4.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
+            this.pictureBox4.Location = new System.Drawing.Point(546, 6);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(99, 42);
+            this.pictureBox4.TabIndex = 5;
+            this.pictureBox4.TabStop = false;
+            // 
             // btn_50
             // 
             this.btn_50.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1676,6 +1670,16 @@ namespace AdvancedHMICS
             this.btn_50.UseVisualStyleBackColor = true;
             this.btn_50.Click += new System.EventHandler(this.btn_manual_Click);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox3.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
+            this.pictureBox3.Location = new System.Drawing.Point(330, 6);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(99, 42);
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            // 
             // btn_25
             // 
             this.btn_25.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1688,6 +1692,18 @@ namespace AdvancedHMICS
             this.btn_25.Text = "25%";
             this.btn_25.UseVisualStyleBackColor = true;
             this.btn_25.Click += new System.EventHandler(this.btn_manual_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
+            this.pictureBox2.Location = new System.Drawing.Point(114, 6);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(99, 42);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // btn_0
             // 
@@ -1732,72 +1748,28 @@ namespace AdvancedHMICS
             this.label1.Text = "General Dynamics Intelligent Test System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // modbusRTUCom2
+            // 
+            this.modbusRTUCom2.BaudRate = 9600;
+            this.modbusRTUCom2.DataBits = 8;
+            this.modbusRTUCom2.DisableSubscriptions = false;
+            this.modbusRTUCom2.EnableLogging = false;
+            this.modbusRTUCom2.IniFileName = "";
+            this.modbusRTUCom2.IniFileSection = null;
+            this.modbusRTUCom2.MaxReadGroupSize = 20;
+            this.modbusRTUCom2.Parity = System.IO.Ports.Parity.None;
+            this.modbusRTUCom2.PollRateOverride = 500;
+            this.modbusRTUCom2.PortName = "COM10";
+            this.modbusRTUCom2.StationAddress = ((byte)(3));
+            this.modbusRTUCom2.StopBits = System.IO.Ports.StopBits.One;
+            this.modbusRTUCom2.SwapBytes = true;
+            this.modbusRTUCom2.SwapWords = false;
+            this.modbusRTUCom2.TimeOut = 3000;
+            // 
             // timerLoad
             // 
             this.timerLoad.Interval = 1000;
             this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::AdvancedHMICS.Properties.Resources.ifmbigsize;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(144, 36);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox6.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox6.Location = new System.Drawing.Point(978, 6);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(99, 42);
-            this.pictureBox6.TabIndex = 9;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox5.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox5.Location = new System.Drawing.Point(762, 6);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(99, 42);
-            this.pictureBox5.TabIndex = 7;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox4.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox4.Location = new System.Drawing.Point(546, 6);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(99, 42);
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox3.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox3.Location = new System.Drawing.Point(330, 6);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(99, 42);
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox2.Location = new System.Drawing.Point(114, 6);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(99, 42);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
             // 
             // frmMain
             // 
@@ -1812,6 +1784,7 @@ namespace AdvancedHMICS
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
@@ -1819,7 +1792,6 @@ namespace AdvancedHMICS
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).EndInit();
@@ -1831,14 +1803,14 @@ namespace AdvancedHMICS
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gc_main)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_main)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1947,8 +1919,6 @@ namespace AdvancedHMICS
         private System.Windows.Forms.ComboBox cbm_model;
         private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom2;
         private System.Windows.Forms.Timer timerLoad;
-        private AdvancedHMIControls.KeyboardInput keyboardInput1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;

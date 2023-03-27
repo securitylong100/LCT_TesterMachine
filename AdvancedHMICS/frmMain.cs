@@ -16,7 +16,7 @@ namespace AdvancedHMICS
         private const int STEPS = 5;
         private const int MAX_NG = 3;
         private const int TIME_OUT = 20;
-        private const int FIXED_RES = 500;
+        private  double FIXED_RES = 0.23; 
 
         private int _iMinRPM = 0;
         private int _iMaxRPM = 0;
@@ -63,7 +63,7 @@ namespace AdvancedHMICS
                     avd_torque.Value = Math.Round(
                         float.Parse(avd_voltage.Value)
                         * float.Parse(avd_current.Value)
-                        * 0.95
+                        * 9.95
                         / float.Parse(lbl_speedrpm.Text),
                         3).ToString();
                 }
@@ -102,9 +102,7 @@ namespace AdvancedHMICS
             try
             {
                 avd_FWcurr.Value = Math.Round(
-                    float.Parse(avd_FWVolt.Value)
-                    / FIXED_RES,
-                    2).ToString();
+                    double.Parse(avd_FWVolt.Value) /(FIXED_RES), 2).ToString();
             }
             catch { }
         }
@@ -119,7 +117,7 @@ namespace AdvancedHMICS
             try
             {
                 avd_electricP.Value = Math.Round(
-                    float.Parse(avd_FWVolt.Value)
+                    float.Parse(avd_voltage.Value)
                     * float.Parse(avd_current.Value) / 1000,
                     2).ToString();
                 lbl_actualP.Text = avd_electricP.Value;
@@ -158,10 +156,7 @@ namespace AdvancedHMICS
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void keyboardInput1_TextChanged(object sender, EventArgs e)
-        {
-            keyboardInput1.PLCAddressWriteValue.PLCAddress = textBox1.Text;
-        }
+     
 
         /// <summary>
         /// Xem trạng thái thanh ghi PLC
