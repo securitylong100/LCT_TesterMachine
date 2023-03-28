@@ -357,7 +357,7 @@ namespace AdvancedHMICS
 
         private void frmSettingModel_FormClosing(object sender, FormClosingEventArgs e)
         {
-            int f = 0;
+            //int f = 0;
             //call save function
         }
 

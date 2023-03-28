@@ -446,7 +446,7 @@ namespace AdvancedHMICS
                 lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
                 return;
             }
-            _frmLoad.CheckBits(frmLoadStatus.OFF_BITS);
+            _frmLoad.CheckBits("0000000000000000");
             timerLoad.Enabled = false;
             btn_0.BackColor = Color.LightGray;
             btn_25.BackColor = Color.LightGray;

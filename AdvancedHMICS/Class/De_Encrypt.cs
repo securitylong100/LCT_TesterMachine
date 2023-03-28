@@ -69,6 +69,7 @@ namespace AdvancedHMICS.Class
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return "122000";
             }
 

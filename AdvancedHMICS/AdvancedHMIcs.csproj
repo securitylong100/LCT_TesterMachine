@@ -105,17 +105,17 @@
     <Compile Include="Class\De_Encrypt.cs" />
     <Compile Include="Class\mysqlconnection.cs" />
     <Compile Include="Class\sqlite.cs" />
+    <Compile Include="Form\frmData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmData.Designer.cs">
+      <DependentUpon>frmData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\frmLoadStatus.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form\frmLoadStatus.Designer.cs">
       <DependentUpon>frmLoadStatus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmData.Designer.cs">
-      <DependentUpon>frmData.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -167,6 +167,9 @@
     <Compile Include="Form\frmQuerySQLite.Designer.cs">
       <DependentUpon>frmQuerySQLite.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form\frmData.resx">
+      <DependentUpon>frmData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\frmLoadStatus.resx">
       <DependentUpon>frmLoadStatus.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,9 +184,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmData.resx">
-      <DependentUpon>frmData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

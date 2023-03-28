@@ -10,7 +10,7 @@ namespace AdvancedHMICS.Class
         static string connectionname = "Data Source=Data.db;datetimeformat=CurrentCulture";
         public void getComboBoxData(string stringQuery, ref System.Windows.Forms.ComboBox cmb)
         {
-            SQLiteConnection conn = new SQLiteConnection(connectionname);          
+            SQLiteConnection conn = new SQLiteConnection(connectionname);
             DataSet ds = new DataSet();
             try
             {
@@ -61,20 +61,22 @@ namespace AdvancedHMICS.Class
             SQLiteConnection conn = new SQLiteConnection(connectionname);
             try
             {
-               
+
                 conn.Open();
                 var cmd = new SQLiteCommand(stringQuery, conn);
                 cmd.CommandType = CommandType.Text;
-                response = Convert.ToString(cmd.ExecuteScalar());          
+                response = Convert.ToString(cmd.ExecuteScalar());
                 return response;
-                conn.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("SQLite executeschalar method failed." + System.Environment.NewLine + ex.Message
                                 , "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return string.Empty;
+            }
+            finally
+            {
                 conn.Close();
-                return String.Empty;
             }
         }
 
@@ -130,7 +132,7 @@ namespace AdvancedHMICS.Class
                 conn.Open();
                 var cmd = new SQLiteCommand(stringQuery, conn);
                 cmd.ExecuteNonQuery();
-               // MessageBox.Show("Query Successful", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // MessageBox.Show("Query Successful", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
