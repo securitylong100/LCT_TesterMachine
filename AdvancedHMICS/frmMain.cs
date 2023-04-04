@@ -16,7 +16,7 @@ namespace AdvancedHMICS
         private const int STEPS = 5;
         private const int MAX_NG = 3;
         private const int TIME_OUT = 20;
-        private  double FIXED_RES = 0.23; 
+        private  double FIXED_RES = 100; //dơn vị là ôm.
 
         private int _iMinRPM = 0;
         private int _iMaxRPM = 0;
@@ -61,8 +61,8 @@ namespace AdvancedHMICS
                 if (lbl_speedrpm.Text != "0")
                 {
                     avd_torque.Value = Math.Round(
-                        float.Parse(avd_voltage.Value)
-                        * float.Parse(avd_current.Value)
+                        float.Parse(avd_voltage.Text)
+                        * float.Parse(avd_current.Text)
                         * 9.95
                         / float.Parse(lbl_speedrpm.Text),
                         3).ToString();
@@ -84,9 +84,9 @@ namespace AdvancedHMICS
         {
             try
             {
-                avd_DCpower.Value = Math.Round(
-                    float.Parse(avd_FWVolt.Value)
-                    * float.Parse(avd_FWcurr.Value)
+                avd_DCpower.Text = Math.Round(
+                    float.Parse(avd_FWVolt.Text)
+                    * float.Parse(avd_FWcurr.Text)
                     ).ToString();
             }
             catch { }
@@ -116,11 +116,13 @@ namespace AdvancedHMICS
         {
             try
             {
-                avd_electricP.Value = Math.Round(
-                    float.Parse(avd_voltage.Value)
-                    * float.Parse(avd_current.Value) / 1000,
+                //dùng để test
+                avd_current.Text = Math.Round(double.Parse(avd_current.Value) / 100, 2).ToString();
+                avd_electricP.Text = Math.Round(
+                    float.Parse(avd_voltage.Text)
+                    * float.Parse(avd_current.Text) / 1000,
                     2).ToString();
-                lbl_actualP.Text = avd_electricP.Value;
+                lbl_actualP.Text = avd_electricP.Text;
             }
             catch
             { }
@@ -136,12 +138,14 @@ namespace AdvancedHMICS
         {
             try
             {
-                lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Value), 0).ToString();
+                //chi dung cho test
+                avd_frequency.Text = Math.Round(double.Parse(avd_frequency.Value) / 10, 2).ToString();
+                lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Text)/6, 0).ToString();
                 //read vaule
                 if (_bIsPlcConnected)
                 {
                     _plc.GetDevice2("D10", out short shortvalue); // đọc lên giá trị từ miền nhớ
-                    avd_FWVolt.Value = shortvalue.ToString();
+                    avd_FWVolt.Value = (shortvalue/100).ToString();
                 }
                 else
                 {
@@ -843,5 +847,10 @@ namespace AdvancedHMICS
         //    }
         //}
         #endregion
+
+        private void avd_voltage_ValueChanged(object sender, EventArgs e)
+        {
+            avd_voltage.Text = Math.Round(double.Parse(avd_voltage.Value) / 10,2).ToString();
+        }
     }
 }

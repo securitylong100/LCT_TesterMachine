@@ -135,7 +135,6 @@ namespace AdvancedHMICS
             this.gc_main = new DevExpress.XtraGrid.GridControl();
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.modbusRTUCom2 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.timerLoad = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -159,7 +158,6 @@ namespace AdvancedHMICS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -602,7 +600,7 @@ namespace AdvancedHMICS
             // 
             // modbusRTUCom1
             // 
-            this.modbusRTUCom1.BaudRate = 19200;
+            this.modbusRTUCom1.BaudRate = 9600;
             this.modbusRTUCom1.DataBits = 8;
             this.modbusRTUCom1.DisableSubscriptions = false;
             this.modbusRTUCom1.EnableLogging = false;
@@ -616,7 +614,7 @@ namespace AdvancedHMICS
             this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.One;
             this.modbusRTUCom1.SwapBytes = true;
             this.modbusRTUCom1.SwapWords = false;
-            this.modbusRTUCom1.TimeOut = 3000;
+            this.modbusRTUCom1.TimeOut = 1000;
             // 
             // avd_FWcurr
             // 
@@ -1047,7 +1045,7 @@ namespace AdvancedHMICS
             this.avd_voltage.KeypadWidth = 300;
             this.avd_voltage.Location = new System.Drawing.Point(160, 4);
             this.avd_voltage.Name = "avd_voltage";
-            this.avd_voltage.NumericFormat = null;
+            this.avd_voltage.NumericFormat = "0.00";
             this.avd_voltage.PLCAddressKeypad = "";
             this.avd_voltage.PLCAddressValue = ((MfgControl.AdvancedHMI.Drivers.PLCAddressItem)(resources.GetObject("avd_voltage.PLCAddressValue")));
             this.avd_voltage.PLCAddressValueLimitLower = null;
@@ -1063,6 +1061,7 @@ namespace AdvancedHMICS
             this.avd_voltage.ValuePrefix = null;
             this.avd_voltage.ValueSuffix = null;
             this.avd_voltage.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_voltage.ValueChanged += new System.EventHandler(this.avd_voltage_ValueChanged);
             // 
             // avd_FWVolt
             // 
@@ -1748,24 +1747,6 @@ namespace AdvancedHMICS
             this.label1.Text = "General Dynamics Intelligent Test System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // modbusRTUCom2
-            // 
-            this.modbusRTUCom2.BaudRate = 9600;
-            this.modbusRTUCom2.DataBits = 8;
-            this.modbusRTUCom2.DisableSubscriptions = false;
-            this.modbusRTUCom2.EnableLogging = false;
-            this.modbusRTUCom2.IniFileName = "";
-            this.modbusRTUCom2.IniFileSection = null;
-            this.modbusRTUCom2.MaxReadGroupSize = 20;
-            this.modbusRTUCom2.Parity = System.IO.Ports.Parity.None;
-            this.modbusRTUCom2.PollRateOverride = 500;
-            this.modbusRTUCom2.PortName = "COM10";
-            this.modbusRTUCom2.StationAddress = ((byte)(3));
-            this.modbusRTUCom2.StopBits = System.IO.Ports.StopBits.One;
-            this.modbusRTUCom2.SwapBytes = true;
-            this.modbusRTUCom2.SwapWords = false;
-            this.modbusRTUCom2.TimeOut = 3000;
-            // 
             // timerLoad
             // 
             this.timerLoad.Interval = 1000;
@@ -1810,7 +1791,6 @@ namespace AdvancedHMICS
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1917,7 +1897,6 @@ namespace AdvancedHMICS
         private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom1;
         private System.Windows.Forms.ComboBox cbm_orderid;
         private System.Windows.Forms.ComboBox cbm_model;
-        private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom2;
         private System.Windows.Forms.Timer timerLoad;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
