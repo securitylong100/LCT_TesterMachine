@@ -85,7 +85,7 @@ namespace AdvancedHMICS
             LoadData(txt_newmodel.Text);
             try
             {
-                double maxvalues = int.Parse(txt_ratedpower.Text);
+                double maxvalues = double.Parse(txt_ratedpower.Text);
                 double numberofstep = int.Parse(nud_numberofstep.Value.ToString());
                 double steppower = (maxvalues / (numberofstep - 1));
                 double steppercentage = 100 / (numberofstep - 1);
@@ -101,7 +101,7 @@ namespace AdvancedHMICS
                         row["ck_serial"] = i;
                         row["ck_Max_Noloadlimitspeed"] = txt_maxnoloadspeedlimit.Text;
                         row["ck_Min_Noloadlimitspeed"] = txt_minnoloadspeedlimit.Text;
-                        row["ck_Steppower"] = Math.Round(cal_steppower, 1);
+                        row["ck_Steppower"] = Math.Round(cal_steppower, 3);
                         row["ck_power"] = txt_ratedpower.Text;
                         row["ck_Steppercentage"] = Math.Round(cal_steppercentage, 0);
                         row["ck_Max_Generator"] = txt_maxgenratorcurrentlimit.Text;
@@ -121,6 +121,7 @@ namespace AdvancedHMICS
                         row["ck_cycles"] = txt_cycles.Text;
                         row["ck_model"] = txt_newmodel.Text;
                         row["ck_testbrakes"] = cbm_testbarkes.SelectedItem.ToString();
+                        row["ck_load"] = "0000000000000000";
                         dt.Rows.Add(row);
                         cal_steppower = cal_steppower + steppower;
                         cal_steppercentage = cal_steppercentage + steppercentage;
@@ -151,7 +152,7 @@ namespace AdvancedHMICS
                                     (ID, ck_serial, ck_Max_Noloadlimitspeed,ck_Min_Noloadlimitspeed,ck_Steppower,ck_power,ck_Steppercentage,ck_Max_Generator,ck_Min_Generator,
                                     ck_Max_VolGenerator ,ck_Min_VolGenerator ,ck_Max_frequency ,ck_Min_frequency ,
                                     ck_Max_braketime ,ck_Min_braketime, ck_Max_regulationspeed, ck_Min_regulationSpeed ,
-                                    ck_Max_fluctuationspeed ,ck_Min_fluctuationspeed ,ck_LoadTime ,ck_speed ,ck_cycles,ck_model,ck_testbrakes )
+                                    ck_Max_fluctuationspeed ,ck_Min_fluctuationspeed ,ck_LoadTime ,ck_speed ,ck_cycles,ck_model,ck_testbrakes,ck_load )
                                     VALUES("
                                     );
                     sqlinsert.Append("'" + id_current+ "',");
@@ -177,7 +178,8 @@ namespace AdvancedHMICS
                     sqlinsert.Append("'" + rowdt["ck_speed"].ToString() + "',");
                     sqlinsert.Append("'" + rowdt["ck_cycles"].ToString() + "',");
                     sqlinsert.Append("'" + rowdt["ck_model"].ToString() + "',");
-                    sqlinsert.Append("'" + rowdt["ck_testbrakes"].ToString() + "'");
+                    sqlinsert.Append("'" + rowdt["ck_testbrakes"].ToString() + "',");
+                    sqlinsert.Append("'" + rowdt["ck_load"].ToString() + "'");
                     sqlinsert.Append(")");
                     sqlite_.exeNonQuery_auto(sqlinsert.ToString());
 
@@ -209,7 +211,8 @@ namespace AdvancedHMICS
                     sqlupdate.Append("ck_speed = '" + rowdt["ck_speed"].ToString() + "',");
                     sqlupdate.Append("ck_cycles = '" + rowdt["ck_cycles"].ToString() + "',");
                     sqlupdate.Append("ck_model = '" + rowdt["ck_model"].ToString() + "',");
-                    sqlupdate.Append("ck_testbrakes = '" + rowdt["ck_testbrakes"].ToString() + "'");
+                    sqlupdate.Append("ck_testbrakes = '" + rowdt["ck_testbrakes"].ToString() + "',");
+                    sqlupdate.Append("ck_load = '" + rowdt["ck_load"].ToString() + "'");
                     sqlupdate.Append(" where 1=1 and ID = " + rowdt["ID"].ToString() + "");
                     sqlite_.exeNonQuery_auto(sqlupdate.ToString());
                 }

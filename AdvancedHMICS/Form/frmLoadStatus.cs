@@ -125,7 +125,7 @@ namespace AdvancedHMICS
         private void LoadChanged(object sender, EventArgs e)
         {
             var cb = sender as CheckBox;
-            LBits[cb.TabIndex] = cb.Checked ? '1' : '0';
+            LBits[cb.TabIndex-1] = cb.Checked ? '1' : '0';
             LPower = GetPower(LoadList).Sum();
             lblStatus.Text = $"L POWER: {LPower} W\nR POWER: {RPower} W";
         }
@@ -133,8 +133,8 @@ namespace AdvancedHMICS
         private void RChanged(object sender, EventArgs e)
         {
             var cb = sender as AdvancedHMIControls.CheckBox;
-            RBits[cb.TabIndex] = cb.Checked ? '1' : '0';
-            cb.ComComponent.Write(cb.PLCAddressCheckChanged, RBits[cb.TabIndex].ToString());
+            RBits[cb.TabIndex-1] = cb.Checked ? '1' : '0';
+            cb.ComComponent.Write(cb.PLCAddressCheckChanged, RBits[cb.TabIndex-1].ToString());
             RPower = GetPower(RList).Sum();
             lblStatus.Text = $"L POWER: {LPower} W\nR POWER: {RPower} W";
         }

@@ -106,6 +106,7 @@ namespace AdvancedHMICS
             this.label3 = new System.Windows.Forms.Label();
             this.txt_newmodel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gc_main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_main)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -150,7 +151,8 @@ namespace AdvancedHMICS
             this.gridColumn20,
             this.gridColumn21,
             this.gridColumn22,
-            this.gridColumn23});
+            this.gridColumn23,
+            this.gridColumn25});
             this.gv_main.GridControl = this.gc_main;
             this.gv_main.Name = "gv_main";
             this.gv_main.OptionsView.ColumnAutoWidth = false;
@@ -863,6 +865,14 @@ namespace AdvancedHMICS
             this.label2.TabIndex = 3;
             this.label2.Text = "New Model:";
             // 
+            // gridColumn25
+            // 
+            this.gridColumn25.Caption = "gridColumn25";
+            this.gridColumn25.FieldName = "ck_load";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 24;
+            // 
             // frmSettingModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -961,5 +971,6 @@ namespace AdvancedHMICS
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
         private System.Windows.Forms.Button btn_loaddata;
         private System.Windows.Forms.Button btn_deletemodel;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
     }
 }
