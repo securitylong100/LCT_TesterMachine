@@ -394,8 +394,8 @@ namespace AdvancedHMICS
                 _fSpeed = speedrpm;
                 // Điều kiện kiểm tra (nếu không đạt điều kiện thì sẽ đợi)
                 if (_fMinLimitRPM <= _fSpeed && _fMaxLimitRPM >= _fSpeed
-                    && (_iCurrStep > 1 && _fModRPM < _fMaxLimitFluc)
-                    && volt < _fMaxLimitVolt && current < _fMaxLimitCurr && freq < _fMaxLimitFreq)
+                    && (_iCurrStep >= 1 && _fModRPM < _fMaxLimitFluc)
+                    && volt < _fMaxLimitVolt && current <= _fMaxLimitCurr && freq < _fMaxLimitFreq)
                 {
                     _iCounter--;
                     // Với các step > 1 thì tính mod speed
