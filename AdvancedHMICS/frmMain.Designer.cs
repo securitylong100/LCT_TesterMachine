@@ -609,7 +609,7 @@ namespace AdvancedHMICS
             this.modbusRTUCom1.MaxReadGroupSize = 20;
             this.modbusRTUCom1.Parity = System.IO.Ports.Parity.None;
             this.modbusRTUCom1.PollRateOverride = 500;
-            this.modbusRTUCom1.PortName = "COM4";
+            this.modbusRTUCom1.PortName = "COM10";
             this.modbusRTUCom1.StationAddress = ((byte)(1));
             this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.One;
             this.modbusRTUCom1.SwapBytes = true;

@@ -124,7 +124,7 @@ namespace AdvancedHMICS
       
         private void avd_voltage_ValueChanged(object sender, EventArgs e)
         {
-            avd_voltage.Text = Math.Round(double.Parse(avd_voltage.Value) / 10, 2).ToString();
+            avd_voltage.Text = Math.Round(double.Parse(avd_voltage.Value), 2).ToString();
         }
 
         /// <summary>
@@ -137,11 +137,11 @@ namespace AdvancedHMICS
             try
             {
                 //dùng để test
-                avd_current.Text = Math.Round(double.Parse(avd_current.Value) / 100, 2).ToString();
+                avd_current.Text = Math.Round(double.Parse(avd_current.Value) , 3).ToString();
                 avd_electricP.Text = Math.Round(
                     float.Parse(avd_voltage.Text)
                     * float.Parse(avd_current.Text) / 1000,
-                    2).ToString();
+                    3).ToString();
                 lbl_actualP.Text = avd_electricP.Text;
             }
             catch
@@ -159,7 +159,7 @@ namespace AdvancedHMICS
             try
             {
                 //chi dung cho test
-                avd_frequency.Text = Math.Round(double.Parse(avd_frequency.Value) / 10, 2).ToString();
+                avd_frequency.Text = Math.Round(double.Parse(avd_frequency.Value) , 2).ToString();
                 lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Text) / 6, 0).ToString();
                 //read vaule
                 if (_bIsPlcConnected)
