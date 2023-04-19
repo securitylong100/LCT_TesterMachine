@@ -4,8 +4,11 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
@@ -21,7 +24,7 @@ namespace AdvancedHMICS
         private const int MAX_NG = 3;
 
         private const int TIME_OUT = 20;
-        private double FIXED_RES = 100; //dơn vị là ôm.
+        private const double FIXED_RES = 100; //dơn vị là ôm.
 
         private float _fSpeed = 0;
         private float _fModRPM = 0;
@@ -46,6 +49,9 @@ namespace AdvancedHMICS
         private bool _bIsAuto = false;
         private bool _bIsPlcConnected = false;
 
+        private string _logFile;
+        private readonly string _logFolder;
+
         private DataRow _drStepData;
         private DataTable _dtResult;
         private frmLoadStatus _frmLoad;
@@ -61,6 +67,7 @@ namespace AdvancedHMICS
             gv_main.OptionsSelection.MultiSelect = true;
             gv_main.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
             gv_main.CustomDrawCell += Gv_main_CustomDrawCell;
+            _logFolder = Path.Combine(Environment.CurrentDirectory, "logs");
         }
 
         #region --- TRẠNG THÁI ---
@@ -121,7 +128,7 @@ namespace AdvancedHMICS
             }
             catch { }
         }
-      
+
         private void avd_voltage_ValueChanged(object sender, EventArgs e)
         {
             avd_voltage.Text = Math.Round(double.Parse(avd_voltage.Value), 2).ToString();
@@ -137,7 +144,7 @@ namespace AdvancedHMICS
             try
             {
                 //dùng để test
-                avd_current.Text = Math.Round(double.Parse(avd_current.Value) , 3).ToString();
+                avd_current.Text = Math.Round(double.Parse(avd_current.Value), 3).ToString();
                 avd_electricP.Text = Math.Round(
                     float.Parse(avd_voltage.Text)
                     * float.Parse(avd_current.Text) / 1000,
@@ -159,7 +166,7 @@ namespace AdvancedHMICS
             try
             {
                 //chi dung cho test
-                avd_frequency.Text = Math.Round(double.Parse(avd_frequency.Value) , 2).ToString();
+                avd_frequency.Text = Math.Round(double.Parse(avd_frequency.Value), 2).ToString();
                 lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Text) / 6, 0).ToString();
                 //read vaule
                 if (_bIsPlcConnected)
@@ -278,7 +285,7 @@ namespace AdvancedHMICS
             if (e.RowHandle >= 0)
             {
                 string result = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ck_result"]);
-                e.Appearance.BackColor = result == "1" ? Color.Green : Color.Red;
+                e.Appearance.BackColor = result == "合格" ? Color.Green : Color.Red;
                 e.Appearance.ForeColor = Color.Yellow;
             }
         }
@@ -636,20 +643,38 @@ namespace AdvancedHMICS
                 var dr = _dtResult.NewRow();
                 foreach (DataColumn col in _dtResult.Columns)
                 {
-                    if (_drStepData.Table.Columns.Contains(col.ColumnName))
-                    {
-                        dr[col.ColumnName] = _drStepData[col.ColumnName];
-                    }
+                    dr["ck_serial"] = _drStepData["ck_serial"];
                     dr["ck_time"] = DateTime.Now;
-                    dr["ck_barcode"] = txt_barcode.Text;
-                    dr["ck_actual_power"] = lbl_actualP.Text;
-                    dr["ck_pid_stop"] = lbl_pidStop.Text;
-                    dr["ck_rot_speed"] = lbl_speedrpm.Text;
-                    dr["ck_noload_speed"] = _fNoloadRPM;
-                    dr["ck_fw_volt"] = avd_FWVolt.Text;
+                    dr["ck_model"] = cbm_model.Text;
+                    dr["ck_number"] = txt_barcode.Text;
+                    dr["ck_order"] = cbm_orderid.Text;
+                    dr["ck_rack"] = "1-1";
+                    dr["ck_speed_noload"] = _fNoloadRPM;
+                    dr["ck_load_percent"] = _drStepData["ck_Steppercentage"];
+                    dr["ck_speed_output"] = lbl_speedrpm.Text;
+                    dr["ck_power"] = lbl_actualP.Text;
+                    dr["ck_torque"] = avd_torque.Text;
+                    dr["ck_speed_adj"] = avd_rotspdmod.Text;
+                    dr["ck_speed_flt"] = avd_rotspdwav.Text;
+                    dr["ck_speed_max"] = _fmaxRPM;
+                    dr["ck_speed_min"] = _fminRPM;
+                    dr["ck_braking_time"] = _drStepData["ck_testbrakes"];
+                    dr["ck_result"] = isOk ? "合格" : "";
+                    dr["ck_tester"] = ClsVariables.User;
+                    dr["ck_upload"] = ClsVariables.User;
+                    dr["ck_test_type"] = "N/A";
                     dr["ck_volt"] = avd_voltage.Text;
                     dr["ck_current"] = avd_current.Text;
-                    dr["ck_result"] = isOk ? 1 : 0;
+                    dr["ck_frequency"] = avd_frequency.Text;
+                    dr["ck_pressure_neg"] = "N/A";
+                    dr["ck_reason"] = "N/A";
+                    dr["ck_volt_dc"] = avd_FWVolt.Text;
+                    dr["ck_current_dc"] = avd_FWcurr.Text;
+                    dr["ck_power_dc"] = avd_DCpower.Text;
+                    dr["linecd"] = "N/A";
+                    dr["machinecd"] = "N/A";
+                    dr["datimeregister"] = DateTime.Now;
+                    dr["ck_pid_stop"] = lbl_pidStop.Text;
                 }
                 _dtResult.Rows.Add(dr);
                 _drStepData = null;
@@ -694,7 +719,7 @@ namespace AdvancedHMICS
                 foreach (DataRow dr in _dtResult.Rows)
                 {
                     string values = "'" + string.Join("','", dr.ItemArray.Select(x => x?.ToString())) + "'";
-                    string sql = $"INSERT INTO m_ck_point_data ({columns}) VALUES ({values})";
+                    string sql = $"INSERT INTO m_history ({columns}) VALUES ({values})";
                     sqlite_.exeNonQuery_auto(sql);
                 }
                 _dtResult.Rows.Clear();
@@ -790,75 +815,105 @@ namespace AdvancedHMICS
         {
             _dtResult = new DataTable();
             _dtResult.Columns.Add("ck_serial");
-            _dtResult.Columns.Add("ck_Max_Noloadlimitspeed");
-            _dtResult.Columns.Add("ck_Min_Noloadlimitspeed");
-            _dtResult.Columns.Add("ck_Steppower");
-            _dtResult.Columns.Add("ck_power");
-            _dtResult.Columns.Add("ck_Steppercentage");
-            _dtResult.Columns.Add("ck_Max_Generator");
-            _dtResult.Columns.Add("ck_Min_Generator");
-            _dtResult.Columns.Add("ck_Max_VolGenerator");
-            _dtResult.Columns.Add("ck_Min_VolGenerator");
-            _dtResult.Columns.Add("ck_Max_frequency");
-            _dtResult.Columns.Add("ck_Min_frequency");
-            _dtResult.Columns.Add("ck_Max_braketime");
-            _dtResult.Columns.Add("ck_Min_braketime");
-            _dtResult.Columns.Add("ck_Max_regulationspeed");
-            _dtResult.Columns.Add("ck_Min_regulationSpeed");
-            _dtResult.Columns.Add("ck_Max_fluctuationspeed");
-            _dtResult.Columns.Add("ck_Min_fluctuationspeed");
-            _dtResult.Columns.Add("ck_LoadTime");
-            _dtResult.Columns.Add("ck_speed");
-            _dtResult.Columns.Add("ck_cycles");
-            _dtResult.Columns.Add("ck_model");
-            _dtResult.Columns.Add("ck_testbrakes");
             _dtResult.Columns.Add("ck_time");
-            _dtResult.Columns.Add("ck_barcode");
-            _dtResult.Columns.Add("ck_actual_power");
-            _dtResult.Columns.Add("ck_pid_stop");
-            _dtResult.Columns.Add("ck_rot_speed");
-            _dtResult.Columns.Add("ck_noload_speed");
-            _dtResult.Columns.Add("ck_fw_volt");
+            _dtResult.Columns.Add("ck_model");
+            _dtResult.Columns.Add("ck_number");
+            _dtResult.Columns.Add("ck_order");
+            _dtResult.Columns.Add("ck_rack");
+            _dtResult.Columns.Add("ck_speed_noload");
+            _dtResult.Columns.Add("ck_load_percent");
+            _dtResult.Columns.Add("ck_speed_output");
+            _dtResult.Columns.Add("ck_power");
+            _dtResult.Columns.Add("ck_torque");
+            _dtResult.Columns.Add("ck_speed_adj");
+            _dtResult.Columns.Add("ck_speed_flt");
+            _dtResult.Columns.Add("ck_speed_max");
+            _dtResult.Columns.Add("ck_speed_min");
+            _dtResult.Columns.Add("ck_braking_time");
+            _dtResult.Columns.Add("ck_result");
+            _dtResult.Columns.Add("ck_tester");
+            _dtResult.Columns.Add("ck_upload");
+            _dtResult.Columns.Add("ck_test_type");
             _dtResult.Columns.Add("ck_volt");
             _dtResult.Columns.Add("ck_current");
-            _dtResult.Columns.Add("ck_result");
+            _dtResult.Columns.Add("ck_frequency");
+            _dtResult.Columns.Add("ck_pressure_neg");
+            _dtResult.Columns.Add("ck_reason");
+            _dtResult.Columns.Add("ck_volt_dc");
+            _dtResult.Columns.Add("ck_current_dc");
+            _dtResult.Columns.Add("ck_power_dc");
+            _dtResult.Columns.Add("linecd");
+            _dtResult.Columns.Add("machinecd");
+            _dtResult.Columns.Add("datimeregister");
+            _dtResult.Columns.Add("ck_pid_stop");
             gc_main.DataSource = _dtResult;
 
-            gv_main.Columns["ck_Max_Noloadlimitspeed"].Visible = false;
-            gv_main.Columns["ck_Min_Noloadlimitspeed"].Visible = false;
-            gv_main.Columns["ck_Max_Generator"].Visible = false;
-            gv_main.Columns["ck_Min_Generator"].Visible = false;
-            gv_main.Columns["ck_Max_VolGenerator"].Visible = false;
-            gv_main.Columns["ck_Min_VolGenerator"].Visible = false;
-            gv_main.Columns["ck_Max_frequency"].Visible = false;
-            gv_main.Columns["ck_Min_frequency"].Visible = false;
-            gv_main.Columns["ck_Max_braketime"].Visible = false;
-            gv_main.Columns["ck_Min_braketime"].Visible = false;
-            gv_main.Columns["ck_Max_regulationspeed"].Visible = false;
-            gv_main.Columns["ck_Min_regulationSpeed"].Visible = false;
-            gv_main.Columns["ck_Max_fluctuationspeed"].Visible = false;
-            gv_main.Columns["ck_Min_fluctuationspeed"].Visible = false;
-            gv_main.Columns["ck_LoadTime"].Visible = false;
-            gv_main.Columns["ck_speed"].Visible = false;
-            gv_main.Columns["ck_cycles"].Visible = false;
-            gv_main.Columns["ck_model"].Visible = false;
-            gv_main.Columns["ck_testbrakes"].Visible = false;
+            gv_main.Columns["ck_serial"].Visible = true;
+            gv_main.Columns["ck_time"].Visible = true;
+            gv_main.Columns["ck_model"].Visible = true;
+            gv_main.Columns["ck_number"].Visible = true;
+            gv_main.Columns["ck_order"].Visible = true;
+            gv_main.Columns["ck_rack"].Visible = false;
+            gv_main.Columns["ck_speed_noload"].Visible = true;
+            gv_main.Columns["ck_load_percent"].Visible = true;
+            gv_main.Columns["ck_speed_output"].Visible = true;
+            gv_main.Columns["ck_power"].Visible = true;
+            gv_main.Columns["ck_torque"].Visible = true;
+            gv_main.Columns["ck_speed_adj"].Visible = true;
+            gv_main.Columns["ck_speed_flt"].Visible = true;
+            gv_main.Columns["ck_speed_max"].Visible = true;
+            gv_main.Columns["ck_speed_min"].Visible = true;
+            gv_main.Columns["ck_braking_time"].Visible = false;
+            gv_main.Columns["ck_result"].Visible = true;
+            gv_main.Columns["ck_tester"].Visible = false;
+            gv_main.Columns["ck_upload"].Visible = false;
+            gv_main.Columns["ck_test_type"].Visible = false;
+            gv_main.Columns["ck_volt"].Visible = true;
+            gv_main.Columns["ck_current"].Visible = true;
+            gv_main.Columns["ck_frequency"].Visible = true;
+            gv_main.Columns["ck_pressure_neg"].Visible = false;
+            gv_main.Columns["ck_reason"].Visible = false;
+            gv_main.Columns["ck_volt_dc"].Visible = true;
+            gv_main.Columns["ck_current_dc"].Visible = true;
+            gv_main.Columns["ck_power_dc"].Visible = true;
+            gv_main.Columns["linecd"].Visible = false;
+            gv_main.Columns["machinecd"].Visible = false;
+            gv_main.Columns["datimeregister"].Visible = false;
+            gv_main.Columns["ck_pid_stop"].Visible = true;
 
             gv_main.Columns["ck_serial"].Caption = "Step";
-            gv_main.Columns["ck_Steppower"].Caption = "Step Power";
-            gv_main.Columns["ck_power"].Caption = "Total Power";
-            gv_main.Columns["ck_Steppercentage"].Caption = "Percentage";
-            gv_main.Columns["ck_Steppercentage"].DisplayFormat.FormatString = "{0:P2}";
             gv_main.Columns["ck_time"].Caption = "Time";
-            gv_main.Columns["ck_barcode"].Caption = "Barcode";
-            gv_main.Columns["ck_actual_power"].Caption = "Actual Power";
-            gv_main.Columns["ck_pid_stop"].Caption = "PID Stop";
-            gv_main.Columns["ck_rot_speed"].Caption = "ROT Speed";
-            gv_main.Columns["ck_noload_speed"].Caption = "NoLoad Speed";
-            gv_main.Columns["ck_fw_volt"].Caption = "FW Voltage";
+            gv_main.Columns["ck_model"].Caption = "Model";
+            gv_main.Columns["ck_number"].Caption = "Barcode";
+            gv_main.Columns["ck_order"].Caption = "OrderId";
+            gv_main.Columns["ck_rack"].Caption = "";
+            gv_main.Columns["ck_speed_noload"].Caption = "Noload Speed";
+            gv_main.Columns["ck_load_percent"].Caption = "Percentage";
+            gv_main.Columns["ck_load_percent"].DisplayFormat.FormatString = "{0:P2}";
+            gv_main.Columns["ck_speed_output"].Caption = "ROT Speed";
+            gv_main.Columns["ck_power"].Caption = "Actual Power";
+            gv_main.Columns["ck_torque"].Caption = "Torque";
+            gv_main.Columns["ck_speed_adj"].Caption = "ROT Speed Mod";
+            gv_main.Columns["ck_speed_flt"].Caption = "ROT Speed Wav";
+            gv_main.Columns["ck_speed_max"].Caption = "Speed Max";
+            gv_main.Columns["ck_speed_min"].Caption = "Speed Min";
+            gv_main.Columns["ck_braking_time"].Caption = "";
+            gv_main.Columns["ck_result"].Caption = "Result";
+            gv_main.Columns["ck_tester"].Caption = "";
+            gv_main.Columns["ck_upload"].Caption = "";
+            gv_main.Columns["ck_test_type"].Caption = "";
             gv_main.Columns["ck_volt"].Caption = "Voltage";
             gv_main.Columns["ck_current"].Caption = "Current";
-            gv_main.Columns["ck_result"].Caption = "Result";
+            gv_main.Columns["ck_frequency"].Caption = "Frequency";
+            gv_main.Columns["ck_pressure_neg"].Caption = "";
+            gv_main.Columns["ck_reason"].Caption = "";
+            gv_main.Columns["ck_volt_dc"].Caption = "FW Voltage";
+            gv_main.Columns["ck_current_dc"].Caption = "FW Current";
+            gv_main.Columns["ck_power_dc"].Caption = "DC Power";
+            gv_main.Columns["linecd"].Caption = "";
+            gv_main.Columns["machinecd"].Caption = "";
+            gv_main.Columns["datimeregister"].Caption = "";
+            gv_main.Columns["ck_pid_stop"].Caption = "PID Stop";
         }
 
         private DataRow GetMasterStep(int step)
@@ -872,6 +927,104 @@ namespace AdvancedHMICS
         #endregion
 
         #region --- OLD ---
+        //private void btn_record_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (_dtResult.Rows.Count < 1)
+        //        {
+        //            return;
+        //        }
+        //        sqlite sqlite_ = new sqlite();
+        //        string columns = string.Join(",", _dtResult.Columns.Cast<DataColumn>().Select(c => c.ColumnName));
+        //        foreach (DataRow dr in _dtResult.Rows)
+        //        {
+        //            string values = "'" + string.Join("','", dr.ItemArray.Select(x => x?.ToString())) + "'";
+        //            string sql = $"INSERT INTO m_ck_point_data ({columns}) VALUES ({values})";
+        //            sqlite_.exeNonQuery_auto(sql);
+        //        }
+        //        _dtResult.Rows.Clear();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        timerLoad.Enabled = false;
+        //        MessageBox.Show("Error :" + ex.Message);
+        //    }
+        //}
+        //private void DefineResultTable()
+        //{
+        //    _dtResult = new DataTable();
+        //    _dtResult.Columns.Add("ck_serial");
+        //    _dtResult.Columns.Add("ck_Max_Noloadlimitspeed");
+        //    _dtResult.Columns.Add("ck_Min_Noloadlimitspeed");
+        //    _dtResult.Columns.Add("ck_Steppower");
+        //    _dtResult.Columns.Add("ck_power");
+        //    _dtResult.Columns.Add("ck_Steppercentage");
+        //    _dtResult.Columns.Add("ck_Max_Generator");
+        //    _dtResult.Columns.Add("ck_Min_Generator");
+        //    _dtResult.Columns.Add("ck_Max_VolGenerator");
+        //    _dtResult.Columns.Add("ck_Min_VolGenerator");
+        //    _dtResult.Columns.Add("ck_Max_frequency");
+        //    _dtResult.Columns.Add("ck_Min_frequency");
+        //    _dtResult.Columns.Add("ck_Max_braketime");
+        //    _dtResult.Columns.Add("ck_Min_braketime");
+        //    _dtResult.Columns.Add("ck_Max_regulationspeed");
+        //    _dtResult.Columns.Add("ck_Min_regulationSpeed");
+        //    _dtResult.Columns.Add("ck_Max_fluctuationspeed");
+        //    _dtResult.Columns.Add("ck_Min_fluctuationspeed");
+        //    _dtResult.Columns.Add("ck_LoadTime");
+        //    _dtResult.Columns.Add("ck_speed");
+        //    _dtResult.Columns.Add("ck_cycles");
+        //    _dtResult.Columns.Add("ck_model");
+        //    _dtResult.Columns.Add("ck_testbrakes");
+        //    _dtResult.Columns.Add("ck_time");
+        //    _dtResult.Columns.Add("ck_barcode");
+        //    _dtResult.Columns.Add("ck_actual_power");
+        //    _dtResult.Columns.Add("ck_pid_stop");
+        //    _dtResult.Columns.Add("ck_rot_speed");
+        //    _dtResult.Columns.Add("ck_noload_speed");
+        //    _dtResult.Columns.Add("ck_fw_volt");
+        //    _dtResult.Columns.Add("ck_volt");
+        //    _dtResult.Columns.Add("ck_current");
+        //    _dtResult.Columns.Add("ck_result");
+        //    gc_main.DataSource = _dtResult;
+
+        //    gv_main.Columns["ck_Max_Noloadlimitspeed"].Visible = false;
+        //    gv_main.Columns["ck_Min_Noloadlimitspeed"].Visible = false;
+        //    gv_main.Columns["ck_Max_Generator"].Visible = false;
+        //    gv_main.Columns["ck_Min_Generator"].Visible = false;
+        //    gv_main.Columns["ck_Max_VolGenerator"].Visible = false;
+        //    gv_main.Columns["ck_Min_VolGenerator"].Visible = false;
+        //    gv_main.Columns["ck_Max_frequency"].Visible = false;
+        //    gv_main.Columns["ck_Min_frequency"].Visible = false;
+        //    gv_main.Columns["ck_Max_braketime"].Visible = false;
+        //    gv_main.Columns["ck_Min_braketime"].Visible = false;
+        //    gv_main.Columns["ck_Max_regulationspeed"].Visible = false;
+        //    gv_main.Columns["ck_Min_regulationSpeed"].Visible = false;
+        //    gv_main.Columns["ck_Max_fluctuationspeed"].Visible = false;
+        //    gv_main.Columns["ck_Min_fluctuationspeed"].Visible = false;
+        //    gv_main.Columns["ck_LoadTime"].Visible = false;
+        //    gv_main.Columns["ck_speed"].Visible = false;
+        //    gv_main.Columns["ck_cycles"].Visible = false;
+        //    gv_main.Columns["ck_model"].Visible = false;
+        //    gv_main.Columns["ck_testbrakes"].Visible = false;
+
+        //    gv_main.Columns["ck_serial"].Caption = "Step";
+        //    gv_main.Columns["ck_Steppower"].Caption = "Step Power";
+        //    gv_main.Columns["ck_power"].Caption = "Total Power";
+        //    gv_main.Columns["ck_Steppercentage"].Caption = "Percentage";
+        //    gv_main.Columns["ck_Steppercentage"].DisplayFormat.FormatString = "{0:P2}";
+        //    gv_main.Columns["ck_time"].Caption = "Time";
+        //    gv_main.Columns["ck_barcode"].Caption = "Barcode";
+        //    gv_main.Columns["ck_actual_power"].Caption = "Actual Power";
+        //    gv_main.Columns["ck_pid_stop"].Caption = "PID Stop";
+        //    gv_main.Columns["ck_rot_speed"].Caption = "ROT Speed";
+        //    gv_main.Columns["ck_noload_speed"].Caption = "NoLoad Speed";
+        //    gv_main.Columns["ck_fw_volt"].Caption = "FW Voltage";
+        //    gv_main.Columns["ck_volt"].Caption = "Voltage";
+        //    gv_main.Columns["ck_current"].Caption = "Current";
+        //    gv_main.Columns["ck_result"].Caption = "Result";
+        //}
         // Khai báo điện trở fix
         //private int R = 500;
         //private int minrpm = 0;
@@ -955,6 +1108,213 @@ namespace AdvancedHMICS
         //        timerLoad.Enabled = true;
         //    }
         //}
+        #endregion
+
+        #region --- SQL BACKUP ---
+        private const string KEY = "keyofkey,notofnot";
+
+        private bool ReadAndInsertData()
+        {
+            /*
+             * S1: limited date for disconnect of network
+             * S2: fillter this table
+             * S3: check dulicate
+             * S4: insert data rows
+             */
+            DataTable dt_result = new DataTable();
+            StringBuilder sqlBuilder = new StringBuilder();
+            try
+            {
+                sqlite sqlite_ = new sqlite();
+                sqlBuilder.Append("SELECT ID,ck_serial,ck_time,ck_model,ck_number,ck_order,ck_rack,");
+                sqlBuilder.Append("ck_speed_noload,ck_load_percent,ck_speed_output,ck_power,");
+                sqlBuilder.Append("ck_torque,ck_speed_adj,ck_speed_flt,ck_speed_max,ck_speed_min,");
+                sqlBuilder.Append("ck_braking_time,ck_result,ck_tester,ck_upload,ck_test_type,");
+                sqlBuilder.Append("ck_volt,ck_current,ck_frequency,ck_pressure_neg,ck_reason,");
+                sqlBuilder.Append("ck_volt_dc,ck_current_dc,ck_power_dc,linecd,machinecd,datimeregister ");
+                sqlBuilder.Append("FROM m_history WHERE ck_time > DATE('now') -300;");
+                sqlite_.SelectData(sqlBuilder.ToString(), ref dt_result);
+            }
+            catch (Exception ex)
+            {
+                WriteSqlLog("Cannot Read Data from Data Access file", ex.ToString());
+            }
+            if (dt_result.Rows.Count > 0)
+            {
+                try
+                {
+                    foreach (DataRow dtRow in dt_result.Rows)
+                    {
+                        string srtcheck = dtRow[1].ToString() + dtRow[3].ToString() + dtRow[4].ToString() + dtRow[5].ToString();
+                        DateTime datetimecheck = DateTime.Parse(dtRow[2].ToString());
+                        string sqlcheck = @"select count(*) from 
+                        (SELECT cast(v_twin_02 as varchar(256))   + v_twin_04 + v_twin_05 + v_twin_06 as checkcolumn
+                        FROM m_v_twin_history where v_twin_03 > GETDATE() - 300" +
+                        " and  cast(v_twin_02 as varchar(256)) + v_twin_04 + v_twin_05 + v_twin_06 = N'" + srtcheck + "' " +
+                        " and v_twin_03 ='" + datetimecheck + "' )a";
+                        SqlGetClass con = new SqlGetClass();
+                        if (int.Parse(con.sqlExecuteScalarString_Autosystem(sqlcheck)) < 1) //insert
+                        {
+                            string values = "N'" + string.Join("',N'", dtRow.ItemArray.Select(x => x?.ToString())) + "'";
+                            //insert here
+                            StringBuilder sqlinsert = new StringBuilder();
+                            sqlinsert.Append("insert into m_v_twin_history (");
+                            sqlinsert.Append("v_twin_01,v_twin_02,v_twin_03,v_twin_04,v_twin_05,v_twin_06,v_twin_07,v_twin_08,v_twin_09,");
+                            sqlinsert.Append("v_twin_10,v_twin_11,v_twin_12,v_twin_13,v_twin_14,v_twin_15,v_twin_16,v_twin_17,v_twin_18,");
+                            sqlinsert.Append("v_twin_19,v_twin_20,v_twin_21,v_twin_22,v_twin_23,v_twin_24,v_twin_25,v_twin_26,v_twin_27,");
+                            sqlinsert.Append("v_twin_28,v_twin_29,");
+                            sqlinsert.AppendFormat("linecd, machinecd,datimeregister ) VALUES ({0});", values);
+                            //foreach (DataColumn dtcolumn in dt_result.Columns)
+                            //{
+                            //    sqlinsert.Append("N'" + dtRow[dtcolumn].ToString() + "',");
+                            //}
+                            //sqlinsert.Append("'" + cbm_linecd.Text + "',");
+                            //sqlinsert.Append("'" + cbm_machinecd.Text + "',");
+                            //sqlinsert.Append("GETDATE())");
+                            con.sqlExecuteScalarString_Autosystem(sqlinsert.ToString());
+                        }
+                    }
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    WriteSqlLog("Cannot insert data to the server", ex.ToString());
+                }
+            }
+            return false;
+        }
+
+        private string Decrypt(string toDecrypt)
+        {
+            try
+            {
+                bool useHashing = true;
+                byte[] keyArray;
+                byte[] toEncryptArray = Convert.FromBase64String(toDecrypt);
+
+                if (useHashing)
+                {
+                    MD5CryptoServiceProvider hashmd5 = new MD5CryptoServiceProvider();
+                    keyArray = hashmd5.ComputeHash(UTF8Encoding.UTF8.GetBytes(KEY));
+                }
+                else
+                    keyArray = UTF8Encoding.UTF8.GetBytes(KEY);
+
+                TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+                tdes.Key = keyArray;
+                tdes.Mode = CipherMode.ECB;
+                tdes.Padding = PaddingMode.PKCS7;
+
+                ICryptoTransform cTransform = tdes.CreateDecryptor();
+                byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
+                return UTF8Encoding.UTF8.GetString(resultArray);
+            }
+            catch (Exception ex)
+            {
+                WriteSqlLog(" Rows Decrypt Demo Error", ex.ToString());
+                return "122000";
+            }
+
+        }
+
+        private void SetAutoBackup(bool isConnected)
+        {
+            if (isConnected)
+            {
+                btnSqlConnect.Text = "SQL Connected";
+                btnSqlConnect.BackColor = Color.Green;
+            }
+            else
+            {
+                btnSqlConnect.Text = "SQL Connect";
+                btnSqlConnect.BackColor = Color.Red;
+            }
+            timerSQL.Enabled = isConnected;
+        }
+
+        private void timerSQL_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                ReadAndInsertData();
+            }
+            catch (Exception ex)
+            {
+                SetAutoBackup(false);
+                WriteSqlLog(ex.Message);
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+
+        private void btnSqlLogs_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btnSqlLogs.BackColor = Color.LightGray;
+                if (string.IsNullOrWhiteSpace(_logFile) || !File.Exists(_logFile))
+                {
+                    MessageBox.Show("Not found log file!", "Error");
+                    return;
+                }
+                Process.Start("notepad.exe", _logFile);
+            }
+            catch (Exception ex)
+            {
+                SetAutoBackup(false);
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+
+        private void btnSqlConnect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!timerSQL.Enabled)
+                {
+                    bool isBackup = ReadAndInsertData();
+                    SetAutoBackup(isBackup);
+                }
+                else
+                {
+                    SetAutoBackup(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                SetAutoBackup(false);
+                WriteSqlLog(ex.Message);
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+
+        private void WriteSqlLog(string header, params string[] lines)
+        {
+            try
+            {
+                btnSqlLogs.BackColor = Color.Red;
+                SetAutoBackup(false);
+                if (!Directory.Exists(_logFolder))
+                {
+                    Directory.CreateDirectory(_logFolder);
+                }
+                _logFile = Path.Combine(_logFolder, $"{DateTime.Today:yyyyMMdd}.log");
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("Error: " + header);
+                sb.AppendLine("Detail: ");
+                foreach (var line in lines)
+                {
+                    sb.AppendLine(line);
+                }
+                sb.AppendLine("DateTime: " + DateTime.Now.ToString("yyyyMMdd HHmmss"));
+                sb.AppendLine("--------------------------------------------------------");
+                File.AppendAllText(_logFile, sb.ToString());
+                MessageBox.Show(header, "Error");
+            }
+            catch
+            {
+
+            }
+        }
         #endregion
     }
 }

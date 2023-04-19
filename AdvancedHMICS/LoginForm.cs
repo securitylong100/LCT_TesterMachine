@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdvancedHMICS.Class;
+using System;
 using System.Windows.Forms;
-using System.Data.SQLite;
-using AdvancedHMICS.Class;
 
 namespace AdvancedHMICS
 {
@@ -41,6 +33,7 @@ namespace AdvancedHMICS
 
             if (username.Length > 1)
             {
+                ClsVariables.User = username;
                 frmMain f = new frmMain();
                 f.ShowDialog();
                 // this.Hide();

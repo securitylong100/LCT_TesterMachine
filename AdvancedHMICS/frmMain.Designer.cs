@@ -51,6 +51,8 @@ namespace AdvancedHMICS
             this.btn_loadStatus = new System.Windows.Forms.Button();
             this.btn_record = new System.Windows.Forms.Button();
             this.btn_user = new System.Windows.Forms.Button();
+            this.btnSqlConnect = new System.Windows.Forms.Button();
+            this.btnSqlLogs = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label63 = new System.Windows.Forms.Label();
@@ -136,6 +138,7 @@ namespace AdvancedHMICS
             this.gv_main = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.label1 = new System.Windows.Forms.Label();
             this.timerLoad = new System.Windows.Forms.Timer(this.components);
+            this.timerSQL = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -185,6 +188,7 @@ namespace AdvancedHMICS
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(144, 36);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -255,6 +259,8 @@ namespace AdvancedHMICS
             this.tableLayoutPanel4.Controls.Add(this.btn_loadStatus, 1, 3);
             this.tableLayoutPanel4.Controls.Add(this.btn_record, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.btn_user, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnSqlConnect, 3, 2);
+            this.tableLayoutPanel4.Controls.Add(this.btnSqlLogs, 3, 3);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -270,6 +276,7 @@ namespace AdvancedHMICS
             // 
             this.btn_data.BackColor = System.Drawing.Color.LightGray;
             this.btn_data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_data.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_data.Location = new System.Drawing.Point(3, 35);
             this.btn_data.Name = "btn_data";
             this.btn_data.Size = new System.Drawing.Size(92, 26);
@@ -282,6 +289,7 @@ namespace AdvancedHMICS
             // 
             this.btn_settingorder.BackColor = System.Drawing.Color.LightGray;
             this.btn_settingorder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_settingorder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_settingorder.Location = new System.Drawing.Point(297, 35);
             this.btn_settingorder.Name = "btn_settingorder";
             this.btn_settingorder.Size = new System.Drawing.Size(95, 26);
@@ -295,6 +303,7 @@ namespace AdvancedHMICS
             this.btn_deleterow.BackColor = System.Drawing.Color.LightGray;
             this.btn_deleterow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_deleterow.Enabled = false;
+            this.btn_deleterow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_deleterow.Location = new System.Drawing.Point(101, 3);
             this.btn_deleterow.Name = "btn_deleterow";
             this.btn_deleterow.Size = new System.Drawing.Size(92, 26);
@@ -308,6 +317,7 @@ namespace AdvancedHMICS
             this.btn_export.BackColor = System.Drawing.Color.LightGray;
             this.btn_export.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_export.Enabled = false;
+            this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_export.Location = new System.Drawing.Point(297, 3);
             this.btn_export.Name = "btn_export";
             this.btn_export.Size = new System.Drawing.Size(95, 26);
@@ -320,6 +330,7 @@ namespace AdvancedHMICS
             this.btn_autoload.BackColor = System.Drawing.Color.LightGray;
             this.btn_autoload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_autoload.Enabled = false;
+            this.btn_autoload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_autoload.Location = new System.Drawing.Point(101, 67);
             this.btn_autoload.Name = "btn_autoload";
             this.btn_autoload.Size = new System.Drawing.Size(92, 26);
@@ -332,6 +343,7 @@ namespace AdvancedHMICS
             // 
             this.btn_manualload.BackColor = System.Drawing.Color.LightGray;
             this.btn_manualload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_manualload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_manualload.Location = new System.Drawing.Point(199, 99);
             this.btn_manualload.Name = "btn_manualload";
             this.btn_manualload.Size = new System.Drawing.Size(92, 28);
@@ -343,6 +355,7 @@ namespace AdvancedHMICS
             // 
             this.btn_querysqlite.BackColor = System.Drawing.Color.LightGray;
             this.btn_querysqlite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_querysqlite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_querysqlite.Location = new System.Drawing.Point(199, 67);
             this.btn_querysqlite.Name = "btn_querysqlite";
             this.btn_querysqlite.Size = new System.Drawing.Size(92, 26);
@@ -355,6 +368,7 @@ namespace AdvancedHMICS
             // 
             this.btn_modelSetting.BackColor = System.Drawing.Color.LightGray;
             this.btn_modelSetting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_modelSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_modelSetting.Location = new System.Drawing.Point(199, 35);
             this.btn_modelSetting.Name = "btn_modelSetting";
             this.btn_modelSetting.Size = new System.Drawing.Size(92, 26);
@@ -367,6 +381,7 @@ namespace AdvancedHMICS
             // 
             this.btn_start.BackColor = System.Drawing.Color.Red;
             this.btn_start.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_start.Location = new System.Drawing.Point(3, 67);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(92, 26);
@@ -380,6 +395,7 @@ namespace AdvancedHMICS
             this.btn_clear.BackColor = System.Drawing.Color.LightGray;
             this.btn_clear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_clear.Enabled = false;
+            this.btn_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_clear.Location = new System.Drawing.Point(199, 3);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(92, 26);
@@ -393,6 +409,7 @@ namespace AdvancedHMICS
             this.btn_plcstatus.BackColor = System.Drawing.Color.LightGray;
             this.btn_plcstatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_plcstatus.Enabled = false;
+            this.btn_plcstatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_plcstatus.Location = new System.Drawing.Point(3, 99);
             this.btn_plcstatus.Name = "btn_plcstatus";
             this.btn_plcstatus.Size = new System.Drawing.Size(92, 28);
@@ -406,6 +423,7 @@ namespace AdvancedHMICS
             this.btn_loadStatus.BackColor = System.Drawing.Color.LightGray;
             this.btn_loadStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_loadStatus.Enabled = false;
+            this.btn_loadStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_loadStatus.Location = new System.Drawing.Point(101, 99);
             this.btn_loadStatus.Name = "btn_loadStatus";
             this.btn_loadStatus.Size = new System.Drawing.Size(92, 28);
@@ -419,6 +437,7 @@ namespace AdvancedHMICS
             this.btn_record.BackColor = System.Drawing.Color.LightGray;
             this.btn_record.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_record.Enabled = false;
+            this.btn_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_record.Location = new System.Drawing.Point(3, 3);
             this.btn_record.Name = "btn_record";
             this.btn_record.Size = new System.Drawing.Size(92, 26);
@@ -431,6 +450,7 @@ namespace AdvancedHMICS
             // 
             this.btn_user.BackColor = System.Drawing.Color.LightGray;
             this.btn_user.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_user.Location = new System.Drawing.Point(101, 35);
             this.btn_user.Name = "btn_user";
             this.btn_user.Size = new System.Drawing.Size(92, 26);
@@ -438,6 +458,31 @@ namespace AdvancedHMICS
             this.btn_user.Text = "User";
             this.btn_user.UseVisualStyleBackColor = false;
             this.btn_user.Click += new System.EventHandler(this.btn_user_Click);
+            // 
+            // btnSqlConnect
+            // 
+            this.btnSqlConnect.BackColor = System.Drawing.Color.Red;
+            this.btnSqlConnect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSqlConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSqlConnect.Location = new System.Drawing.Point(297, 67);
+            this.btnSqlConnect.Name = "btnSqlConnect";
+            this.btnSqlConnect.Size = new System.Drawing.Size(95, 26);
+            this.btnSqlConnect.TabIndex = 16;
+            this.btnSqlConnect.Text = "SQL Connect";
+            this.btnSqlConnect.UseVisualStyleBackColor = false;
+            this.btnSqlConnect.Click += new System.EventHandler(this.btnSqlConnect_Click);
+            // 
+            // btnSqlLogs
+            // 
+            this.btnSqlLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSqlLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSqlLogs.Location = new System.Drawing.Point(297, 99);
+            this.btnSqlLogs.Name = "btnSqlLogs";
+            this.btnSqlLogs.Size = new System.Drawing.Size(95, 28);
+            this.btnSqlLogs.TabIndex = 17;
+            this.btnSqlLogs.Text = "Logs";
+            this.btnSqlLogs.UseVisualStyleBackColor = true;
+            this.btnSqlLogs.Click += new System.EventHandler(this.btnSqlLogs_Click);
             // 
             // panel3
             // 
@@ -1752,6 +1797,11 @@ namespace AdvancedHMICS
             this.timerLoad.Interval = 1000;
             this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
             // 
+            // timerSQL
+            // 
+            this.timerSQL.Interval = 60000;
+            this.timerSQL.Tick += new System.EventHandler(this.timerSQL_Tick);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1901,5 +1951,8 @@ namespace AdvancedHMICS
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Button btnSqlConnect;
+        private System.Windows.Forms.Button btnSqlLogs;
+        private System.Windows.Forms.Timer timerSQL;
     }
 }

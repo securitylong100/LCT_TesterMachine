@@ -100,10 +100,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\ClsVariables.cs" />
     <Compile Include="Class\createDBsqlite.cs" />
     <Compile Include="Class\DataFuction.cs" />
     <Compile Include="Class\De_Encrypt.cs" />
     <Compile Include="Class\mysqlconnection.cs" />
+    <Compile Include="Class\SqlGetClass.cs" />
     <Compile Include="Class\sqlite.cs" />
     <Compile Include="Form\frmData.cs">
       <SubType>Form</SubType>
@@ -116,6 +118,12 @@
     </Compile>
     <Compile Include="Form\frmLoadStatus.Designer.cs">
       <DependentUpon>frmLoadStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDashboard.Designer.cs">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -184,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDashboard.resx">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
