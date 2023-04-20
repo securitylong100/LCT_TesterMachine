@@ -32,7 +32,7 @@ namespace AdvancedHMICS
             try
             {
                 sqlite sqlite_ = new sqlite();
-                sqlite_.getComboBoxData(sqlmodel, ref cbm_model);
+                sqlite_.GetComboBoxData(sqlmodel, ref cbm_model);
             }
             catch (Exception ex)
             {
@@ -72,7 +72,7 @@ namespace AdvancedHMICS
             if (txt_orderid.Text == "") return;
             sqlite sqlite_ = new sqlite();
             string sqldelte = "delete from m_orderid where orderid ='" + txt_orderid.Text + "'";
-            sqlite_.exeNonQuery_auto(sqldelte);
+            sqlite_.ExeNonQuery_auto(sqldelte);
             MessageBox.Show("OrderID : " + txt_orderid.Text + " deleted", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadData();
         }
@@ -139,7 +139,7 @@ namespace AdvancedHMICS
                     sqlinsert.Append("'" + rowdt["orderid"].ToString() + "',");                 
                     sqlinsert.Append("'" + rowdt["ck_model"].ToString() + "'");
                     sqlinsert.Append(")");
-                    sqlite_.exeNonQuery_auto(sqlinsert.ToString());
+                    sqlite_.ExeNonQuery_auto(sqlinsert.ToString());
 
                 }
                 else
@@ -149,7 +149,7 @@ namespace AdvancedHMICS
                     sqlupdate.Append("orderid = '" + rowdt["orderid"].ToString() + "',");              
                     sqlupdate.Append("ck_model = '" + rowdt["ck_model"].ToString() + "'");
                     sqlupdate.Append(" where 1=1 and ID = " + rowdt["ID"].ToString() + "");
-                    sqlite_.exeNonQuery_auto(sqlupdate.ToString());
+                    sqlite_.ExeNonQuery_auto(sqlupdate.ToString());
                 }
             }
             MessageBox.Show("Action Successful", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);

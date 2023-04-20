@@ -33,7 +33,7 @@ namespace AdvancedHMICS
         {
             gc_main.DataSource = null;
             sqlite _SQLite = new sqlite();
-            _SQLite.exeNonQuery(txt_query.Text.ToString().Trim());
+            _SQLite.ExeNonQuery(txt_query.Text.ToString().Trim());
         }
         private void btn_SelectData_Click(object sender, EventArgs e)
         {

@@ -50,7 +50,6 @@ namespace AdvancedHMICS
         private bool _bIsPlcConnected = false;
 
         private string _logFile;
-        private readonly string _logFolder;
 
         private DataRow _drStepData;
         private DataTable _dtResult;
@@ -67,7 +66,6 @@ namespace AdvancedHMICS
             gv_main.OptionsSelection.MultiSelect = true;
             gv_main.OptionsSelection.MultiSelectMode = GridMultiSelectMode.RowSelect;
             gv_main.CustomDrawCell += Gv_main_CustomDrawCell;
-            _logFolder = Path.Combine(Environment.CurrentDirectory, "logs");
         }
 
         #region --- TRẠNG THÁI ---
@@ -222,10 +220,11 @@ namespace AdvancedHMICS
         {
             try
             {
+                ClsVariables.ReadConfigFile();
                 DefineResultTable();
                 string sqlmodel = "select distinct(ck_model) from m_ck_point order by ck_model";
                 sqlite sqlite_ = new sqlite();
-                sqlite_.getComboBoxData(sqlmodel, ref cbm_model);
+                sqlite_.GetComboBoxData(sqlmodel, ref cbm_model);
             }
             catch (Exception ex)
             {
@@ -671,8 +670,8 @@ namespace AdvancedHMICS
                     dr["ck_volt_dc"] = avd_FWVolt.Text;
                     dr["ck_current_dc"] = avd_FWcurr.Text;
                     dr["ck_power_dc"] = avd_DCpower.Text;
-                    dr["linecd"] = "N/A";
-                    dr["machinecd"] = "N/A";
+                    dr["linecd"] = ClsVariables.Line;
+                    dr["machinecd"] = ClsVariables.Machine;
                     dr["datimeregister"] = DateTime.Now;
                     dr["ck_pid_stop"] = lbl_pidStop.Text;
                 }
@@ -720,7 +719,7 @@ namespace AdvancedHMICS
                 {
                     string values = "'" + string.Join("','", dr.ItemArray.Select(x => x?.ToString())) + "'";
                     string sql = $"INSERT INTO m_history ({columns}) VALUES ({values})";
-                    sqlite_.exeNonQuery_auto(sql);
+                    sqlite_.ExeNonQuery_auto(sql);
                 }
                 _dtResult.Rows.Clear();
             }
@@ -773,7 +772,7 @@ namespace AdvancedHMICS
             try
             {
                 sqlite sqlite_ = new sqlite();
-                sqlite_.getComboBoxData(sqlorderid.ToString(), ref cbm_orderid);
+                sqlite_.GetComboBoxData(sqlorderid.ToString(), ref cbm_orderid);
             }
             catch (Exception ex)
             {
@@ -1271,6 +1270,8 @@ namespace AdvancedHMICS
             {
                 if (!timerSQL.Enabled)
                 {
+                    btnSqlConnect.Text = "SQL Connected";
+                    btnSqlConnect.BackColor = Color.Green;
                     bool isBackup = ReadAndInsertData();
                     SetAutoBackup(isBackup);
                 }
@@ -1293,11 +1294,11 @@ namespace AdvancedHMICS
             {
                 btnSqlLogs.BackColor = Color.Red;
                 SetAutoBackup(false);
-                if (!Directory.Exists(_logFolder))
+                if (!Directory.Exists(ClsVariables.FOLDER_LOGS))
                 {
-                    Directory.CreateDirectory(_logFolder);
+                    Directory.CreateDirectory(ClsVariables.FOLDER_LOGS);
                 }
-                _logFile = Path.Combine(_logFolder, $"{DateTime.Today:yyyyMMdd}.log");
+                _logFile = Path.Combine(ClsVariables.FOLDER_LOGS, $"{DateTime.Today:yyyyMMdd}.log");
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("Error: " + header);
                 sb.AppendLine("Detail: ");

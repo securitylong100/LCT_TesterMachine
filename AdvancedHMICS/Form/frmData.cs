@@ -43,7 +43,7 @@ namespace AdvancedHMICS
             {
                 string sqlmodel = "select distinct(ck_model) from m_ck_point_data order by ck_model";
                 sqlite sqlite_ = new sqlite();
-                sqlite_.getComboBoxData(sqlmodel, ref cboModels);
+                sqlite_.GetComboBoxData(sqlmodel, ref cboModels);
             }
             catch (Exception ex)
             {
@@ -150,7 +150,7 @@ namespace AdvancedHMICS
             sqlBuilder.Append(string.Join(",", ids));
             sqlBuilder.Append(");");
             sqlite sqlite_ = new sqlite();
-            sqlite_.exeNonQuery_auto(sqlBuilder.ToString());
+            sqlite_.ExeNonQuery_auto(sqlBuilder.ToString());
             MessageBox.Show("Remove data successed");
             BtnRefresh_Click(sender, e);
         }

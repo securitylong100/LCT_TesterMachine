@@ -113,7 +113,7 @@ namespace AdvancedHMICS
                 string sql = $@"UPDATE m_loadstatus SET r_bits='{rBits}',l_power='{LPower}' WHERE l_bits='{lBits}';
                                 INSERT INTO m_loadstatus (l_bits, r_bits, l_power) SELECT '{lBits}','{rBits}','{LPower}'
                                 WHERE NOT EXISTS(SELECT 1 FROM m_loadstatus WHERE l_bits='{lBits}');";
-                sqlite_.exeNonQuery_auto(sql);
+                sqlite_.ExeNonQuery_auto(sql);
                 MessageBox.Show($"Update load success!\nPOWER: {LPower}\nR: {rBits}");
             }
             catch (Exception ex)

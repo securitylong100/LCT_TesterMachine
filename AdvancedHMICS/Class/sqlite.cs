@@ -8,7 +8,8 @@ namespace AdvancedHMICS.Class
     public class sqlite
     {
         static string connectionname = "Data Source=Data.db;datetimeformat=CurrentCulture";
-        public void getComboBoxData(string stringQuery, ref System.Windows.Forms.ComboBox cmb)
+        
+        public void GetComboBoxData(string stringQuery, ref ComboBox cmb)
         {
             SQLiteConnection conn = new SQLiteConnection(connectionname);
             DataSet ds = new DataSet();
@@ -32,6 +33,7 @@ namespace AdvancedHMICS.Class
                 conn.Close();
             }
         }
+        
         public void SelectData(string stringQuery, ref DataTable dt)
         {
             SQLiteConnection conn = new SQLiteConnection(connectionname);
@@ -104,7 +106,7 @@ namespace AdvancedHMICS.Class
         //    }
         //}
 
-        public void exeNonQuery(string stringQuery)
+        public void ExeNonQuery(string stringQuery)
         {
             SQLiteConnection conn = new SQLiteConnection(connectionname);
             try
@@ -124,7 +126,7 @@ namespace AdvancedHMICS.Class
                 conn.Close();
             }
         }
-        public void exeNonQuery_auto(string stringQuery)
+        public void ExeNonQuery_auto(string stringQuery)
         {
             SQLiteConnection conn = new SQLiteConnection(connectionname);
             try

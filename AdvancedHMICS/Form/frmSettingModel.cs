@@ -52,7 +52,7 @@ namespace AdvancedHMICS
             if (txt_newmodel.Text == "") return;
             sqlite sqlite_ = new sqlite();
             string sqldelte = "delete from m_ck_point where ck_model ='"+txt_newmodel.Text+"'";
-            sqlite_.exeNonQuery_auto(sqldelte);
+            sqlite_.ExeNonQuery_auto(sqldelte);
             MessageBox.Show("Model: "+txt_newmodel.Text+" deleted", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadData(txt_newmodel.Text);
 
@@ -181,7 +181,7 @@ namespace AdvancedHMICS
                     sqlinsert.Append("'" + rowdt["ck_testbrakes"].ToString() + "',");
                     sqlinsert.Append("'" + rowdt["ck_load"].ToString() + "'");
                     sqlinsert.Append(")");
-                    sqlite_.exeNonQuery_auto(sqlinsert.ToString());
+                    sqlite_.ExeNonQuery_auto(sqlinsert.ToString());
 
                 }
                 else
@@ -214,7 +214,7 @@ namespace AdvancedHMICS
                     sqlupdate.Append("ck_testbrakes = '" + rowdt["ck_testbrakes"].ToString() + "',");
                     sqlupdate.Append("ck_load = '" + rowdt["ck_load"].ToString() + "'");
                     sqlupdate.Append(" where 1=1 and ID = " + rowdt["ID"].ToString() + "");
-                    sqlite_.exeNonQuery_auto(sqlupdate.ToString());
+                    sqlite_.ExeNonQuery_auto(sqlupdate.ToString());
                 }
             }
             MessageBox.Show("Action Successful", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);

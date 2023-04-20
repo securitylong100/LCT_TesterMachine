@@ -19,10 +19,9 @@ namespace AdvancedHMICS.Class
             try
             {
                 string cn = "";
-                var fileName = Path.Combine(@"C:\LCT\", "connectsql_LCT_IFM.txt");
-                bool exists = File.Exists(fileName);
+                bool exists = File.Exists(ClsVariables.FILE_DB_CONFIG);
                 if (!exists) return string.Empty;
-                string[] datarow = File.ReadAllLines(fileName);
+                string[] datarow = File.ReadAllLines(ClsVariables.FILE_DB_CONFIG);
                 return cn = Decrypt(datarow[0]);
             }
             catch

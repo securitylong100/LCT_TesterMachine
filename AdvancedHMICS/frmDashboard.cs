@@ -60,7 +60,7 @@ namespace AdvancedHMICS
                 timer_realtime.Enabled = true;
                 string sqlmodel = "select distinct(ck_model) from m_ck_point order by ck_model";
                 sqlite sqlite_ = new sqlite();
-                sqlite_.getComboBoxData(sqlmodel, ref cbo_model);
+                sqlite_.GetComboBoxData(sqlmodel, ref cbo_model);
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace AdvancedHMICS
             try
             {
                 sqlite sqlite_ = new sqlite();
-                sqlite_.getComboBoxData(sqlorderid.ToString(), ref cbo_orderid);
+                sqlite_.GetComboBoxData(sqlorderid.ToString(), ref cbo_orderid);
             }
             catch (Exception ex)
             {
