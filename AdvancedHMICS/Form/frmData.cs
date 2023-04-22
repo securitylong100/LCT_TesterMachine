@@ -41,7 +41,7 @@ namespace AdvancedHMICS
             base.OnLoad(e);
             try
             {
-                string sqlmodel = "select distinct(ck_model) from m_ck_point_data order by ck_model";
+                string sqlmodel = "select distinct(ck_model) from m_history order by ck_model";
                 sqlite sqlite_ = new sqlite();
                 sqlite_.GetComboBoxData(sqlmodel, ref cboModels);
             }
@@ -57,14 +57,10 @@ namespace AdvancedHMICS
             {
                 DataTable dt = new DataTable();
                 StringBuilder sqlBuilder = new StringBuilder();
-                sqlBuilder.Append(@"SELECT ID, ck_serial, ck_Steppower, ck_power, ck_Steppercentage, 
-                                           ck_speed, ck_cycles, ck_model, ck_testbrakes, ck_time, 
-                                           ck_barcode, ck_actual_power, ck_pid_stop, ck_rot_speed, 
-                                           ck_fw_volt, ck_volt, ck_current, ck_result    
-                                    FROM m_ck_point_data WHERE 1=1 ");
+                sqlBuilder.Append(@"SELECT * FROM m_history WHERE 1=1 ");
                 if (!string.IsNullOrWhiteSpace(txtBarcode.Text))
                 {
-                    sqlBuilder.AppendFormat("AND ck_barcode='{0}' ", txtBarcode.Text);
+                    sqlBuilder.AppendFormat("AND ck_number='{0}' ", txtBarcode.Text);
                 }
                 if (!string.IsNullOrWhiteSpace(cboModels.Text))
                 {
@@ -81,40 +77,72 @@ namespace AdvancedHMICS
                 sqlite sqlite_ = new sqlite();
                 sqlite_.SelectData(sqlBuilder.ToString(), ref dt);
                 gc_main.DataSource = dt;
+                gv_main.Columns["ck_serial"].Visible = true;
+                gv_main.Columns["ck_time"].Visible = true;
+                gv_main.Columns["ck_model"].Visible = true;
+                gv_main.Columns["ck_number"].Visible = true;
+                gv_main.Columns["ck_order"].Visible = true;
+                gv_main.Columns["ck_rack"].Visible = false;
+                gv_main.Columns["ck_speed_noload"].Visible = true;
+                gv_main.Columns["ck_load_percent"].Visible = true;
+                gv_main.Columns["ck_speed_output"].Visible = true;
+                gv_main.Columns["ck_power"].Visible = true;
+                gv_main.Columns["ck_torque"].Visible = true;
+                gv_main.Columns["ck_speed_adj"].Visible = true;
+                gv_main.Columns["ck_speed_flt"].Visible = true;
+                gv_main.Columns["ck_speed_max"].Visible = true;
+                gv_main.Columns["ck_speed_min"].Visible = true;
+                gv_main.Columns["ck_braking_time"].Visible = false;
+                gv_main.Columns["ck_result"].Visible = true;
+                gv_main.Columns["ck_tester"].Visible = false;
+                gv_main.Columns["ck_upload"].Visible = false;
+                gv_main.Columns["ck_test_type"].Visible = false;
+                gv_main.Columns["ck_volt"].Visible = true;
+                gv_main.Columns["ck_current"].Visible = true;
+                gv_main.Columns["ck_frequency"].Visible = true;
+                gv_main.Columns["ck_pressure_neg"].Visible = false;
+                gv_main.Columns["ck_reason"].Visible = false;
+                gv_main.Columns["ck_volt_dc"].Visible = true;
+                gv_main.Columns["ck_current_dc"].Visible = true;
+                gv_main.Columns["ck_power_dc"].Visible = true;
+                gv_main.Columns["linecd"].Visible = false;
+                gv_main.Columns["machinecd"].Visible = false;
+                gv_main.Columns["datimeregister"].Visible = false;
+                gv_main.Columns["ck_pid_stop"].Visible = true;
+
+                gv_main.Columns["ck_serial"].Caption = "Step";
                 gv_main.Columns["ck_time"].Caption = "Time";
-                gv_main.Columns["ck_time"].VisibleIndex = 0;
                 gv_main.Columns["ck_model"].Caption = "Model";
-                gv_main.Columns["ck_model"].VisibleIndex = 1;
-                gv_main.Columns["ck_barcode"].Caption = "Barcode";
-                gv_main.Columns["ck_barcode"].VisibleIndex = 2;
-                gv_main.Columns["ck_power"].Caption = "Total Power";
-                gv_main.Columns["ck_power"].VisibleIndex = 3;
-                gv_main.Columns["ck_speed"].Caption = "Speed";
-                gv_main.Columns["ck_speed"].VisibleIndex = 4;
-                gv_main.Columns["ck_cycles"].Caption = "Cycles";
-                gv_main.Columns["ck_cycles"].VisibleIndex = 5;
-                gv_main.Columns["ck_serial"].Caption = "Step Id";
-                gv_main.Columns["ck_serial"].VisibleIndex = 6;
-                gv_main.Columns["ck_Steppercentage"].Caption = "Percentage";
-                gv_main.Columns["ck_Steppercentage"].VisibleIndex = 7;
-                gv_main.Columns["ck_Steppower"].Caption = "Step Power";
-                gv_main.Columns["ck_Steppower"].VisibleIndex = 8;
-                gv_main.Columns["ck_actual_power"].Caption = "Actual Power";
-                gv_main.Columns["ck_actual_power"].VisibleIndex = 9;
-                gv_main.Columns["ck_pid_stop"].Caption = "PID Stop";
-                gv_main.Columns["ck_pid_stop"].VisibleIndex = 10;
-                gv_main.Columns["ck_rot_speed"].Caption = "ROT Speed";
-                gv_main.Columns["ck_rot_speed"].VisibleIndex = 11;
-                gv_main.Columns["ck_fw_volt"].Caption = "FW Volt";
-                gv_main.Columns["ck_fw_volt"].VisibleIndex = 12;
-                gv_main.Columns["ck_volt"].Caption = "Volt";
-                gv_main.Columns["ck_volt"].VisibleIndex = 13;
-                gv_main.Columns["ck_current"].Caption = "Current";
-                gv_main.Columns["ck_current"].VisibleIndex = 14;
+                gv_main.Columns["ck_number"].Caption = "Barcode";
+                gv_main.Columns["ck_order"].Caption = "OrderId";
+                gv_main.Columns["ck_rack"].Caption = "";
+                gv_main.Columns["ck_speed_noload"].Caption = "Noload Speed";
+                gv_main.Columns["ck_load_percent"].Caption = "Percentage";
+                gv_main.Columns["ck_load_percent"].DisplayFormat.FormatString = "{0:P2}";
+                gv_main.Columns["ck_speed_output"].Caption = "ROT Speed";
+                gv_main.Columns["ck_power"].Caption = "Actual Power";
+                gv_main.Columns["ck_torque"].Caption = "Torque";
+                gv_main.Columns["ck_speed_adj"].Caption = "ROT Speed Mod";
+                gv_main.Columns["ck_speed_flt"].Caption = "ROT Speed Wav";
+                gv_main.Columns["ck_speed_max"].Caption = "Speed Max";
+                gv_main.Columns["ck_speed_min"].Caption = "Speed Min";
+                gv_main.Columns["ck_braking_time"].Caption = "";
                 gv_main.Columns["ck_result"].Caption = "Result";
-                gv_main.Columns["ck_result"].VisibleIndex = 15;
-                gv_main.Columns["ck_testbrakes"].Caption = "Testbrakes";
-                gv_main.Columns["ck_testbrakes"].VisibleIndex = 16;
+                gv_main.Columns["ck_tester"].Caption = "";
+                gv_main.Columns["ck_upload"].Caption = "";
+                gv_main.Columns["ck_test_type"].Caption = "";
+                gv_main.Columns["ck_volt"].Caption = "Voltage";
+                gv_main.Columns["ck_current"].Caption = "Current";
+                gv_main.Columns["ck_frequency"].Caption = "Frequency";
+                gv_main.Columns["ck_pressure_neg"].Caption = "";
+                gv_main.Columns["ck_reason"].Caption = "";
+                gv_main.Columns["ck_volt_dc"].Caption = "FW Voltage";
+                gv_main.Columns["ck_current_dc"].Caption = "FW Current";
+                gv_main.Columns["ck_power_dc"].Caption = "DC Power";
+                gv_main.Columns["linecd"].Caption = "";
+                gv_main.Columns["machinecd"].Caption = "";
+                gv_main.Columns["datimeregister"].Caption = "";
+                gv_main.Columns["ck_pid_stop"].Caption = "PID Stop";
             }
             catch (Exception ex)
             {
@@ -126,7 +154,7 @@ namespace AdvancedHMICS
         {
             try
             {
-                string path = "m_ck_point_data.xlsx";
+                string path = "m_history.xlsx";
                 gc_main.ExportToXlsx(path);
                 Process.Start(path);
             }
@@ -145,7 +173,7 @@ namespace AdvancedHMICS
             }
             int[] rows = gv_main.GetSelectedRows();
             StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.Append("DELETE FROM m_ck_point_data WHERE ID in (");
+            sqlBuilder.Append("DELETE FROM m_history WHERE ID in (");
             var ids = rows.Select(r => gv_main.GetRowCellValue(r, "ID")?.ToString());
             sqlBuilder.Append(string.Join(",", ids));
             sqlBuilder.Append(");");
@@ -157,11 +185,16 @@ namespace AdvancedHMICS
 
         private void Gv_main_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            GridView view = sender as GridView;
+            GridView View = sender as GridView;
             if (e.RowHandle >= 0)
             {
-                string result = view.GetRowCellDisplayText(e.RowHandle, view.Columns["ck_result"]);
-                e.Appearance.BackColor = result == "1" ? Color.Green : Color.Red;
+                string result = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ck_result"]);
+                if (result == "合格")
+                {
+                    result = "PASS";
+                    View.SetRowCellValue(e.RowHandle, View.Columns["ck_result"], result);
+                }
+                e.Appearance.BackColor = result == "PASS" ? Color.Green : Color.Red;
                 e.Appearance.ForeColor = Color.Yellow;
             }
         }

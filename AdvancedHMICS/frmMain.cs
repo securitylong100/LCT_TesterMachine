@@ -16,6 +16,7 @@ namespace AdvancedHMICS
 {
     public partial class frmMain : Form
     {
+        private const int SO_CAP_CUC = 1;
         private const int STEPS = 5;
 
         /// <summary>
@@ -28,15 +29,19 @@ namespace AdvancedHMICS
 
         private float _fSpeed = 0;
         private float _fModRPM = 0;
-        private float _fminRPM = 0;
         private float _fmaxRPM = 0;
+        private float _fminRPM = 0;
         private float _fNoloadRPM = 0;
         private float _fMinLimitRPM = 0;
         private float _fMaxLimitRPM = 0;
         private float _fMaxLimitCurr = 0;
+        private float _fMinLimitCurr = 0;
         private float _fMaxLimitVolt = 0;
+        private float _fMinLimitVolt = 0;
         private float _fMaxLimitFreq = 0;
+        private float _fMinLimitFreq = 0;
         private float _fMaxLimitFluc = 0;
+        private float _fMinLimitFluc = 0;
 
         private int _iTimeOut = 0;
         private int _iCounter = 0;
@@ -76,23 +81,23 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void lbl_speedrpm_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (lbl_speedrpm.Text != "0")
-                {
-                    avd_torque.Value = Math.Round(
-                        float.Parse(avd_voltage.Text)
-                        * float.Parse(avd_current.Text)
-                        * 9.95
-                        / float.Parse(lbl_speedrpm.Text),
-                        3).ToString();
-                }
-                else
-                {
-                    avd_torque.Value = "0";
-                }
-            }
-            catch { }
+            //try
+            //{
+            //    if (lbl_speedrpm.Text != "0")
+            //    {
+            //        avd_torque.Value = Math.Round(
+            //            float.Parse(avd_voltage.Value)
+            //            * float.Parse(avd_current.Value)
+            //            * 9.95
+            //            / float.Parse(lbl_speedrpm.Text),
+            //            3).ToString();
+            //    }
+            //    else
+            //    {
+            //        avd_torque.Value = "0";
+            //    }
+            //}
+            //catch { }
         }
 
         /// <summary>
@@ -102,14 +107,14 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void avd_FWcurr_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                avd_DCpower.Text = Math.Round(
-                    float.Parse(avd_FWVolt.Text)
-                    * float.Parse(avd_FWcurr.Text)
-                    ).ToString();
-            }
-            catch { }
+            //try
+            //{
+            //    avd_DCpower.Value = Math.Round(
+            //        float.Parse(avd_FWVolt.Value)
+            //        * float.Parse(avd_FWcurr.Value)
+            //        ).ToString();
+            //}
+            //catch { }
         }
 
         /// <summary>
@@ -119,17 +124,18 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void avd_FWVolt_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                avd_FWcurr.Value = Math.Round(
-                    double.Parse(avd_FWVolt.Value) / (FIXED_RES), 2).ToString();
-            }
-            catch { }
+            //try
+            //{
+            //    avd_FWcurr.Value = Math.Round(
+            //        double.Parse(avd_FWVolt.Value) / (FIXED_RES), 2).ToString();
+            //}
+            //catch { }
         }
 
         private void avd_voltage_ValueChanged(object sender, EventArgs e)
         {
-            avd_voltage.Text = Math.Round(double.Parse(avd_voltage.Value), 2).ToString();
+            CalcValues();
+            //avd_voltage.Value = Math.Round(double.Parse(avd_voltage.Value), 2).ToString();
         }
 
         /// <summary>
@@ -139,18 +145,19 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void avd_current_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                //dùng để test
-                avd_current.Text = Math.Round(double.Parse(avd_current.Value), 3).ToString();
-                avd_electricP.Text = Math.Round(
-                    float.Parse(avd_voltage.Text)
-                    * float.Parse(avd_current.Text) / 1000,
-                    3).ToString();
-                lbl_actualP.Text = avd_electricP.Text;
-            }
-            catch
-            { }
+            CalcValues();
+            //try
+            //{
+            //    //dùng để test
+            //    avd_current.Value = Math.Round(double.Parse(avd_current.Value), 3).ToString();
+            //    avd_electricP.Value = Math.Round(
+            //        float.Parse(avd_voltage.Value)
+            //        * float.Parse(avd_current.Value) / 1000,
+            //        3).ToString();
+            //    lbl_actualP.Text = avd_electricP.Value;
+            //}
+            //catch
+            //{ }
         }
 
         /// <summary>
@@ -161,23 +168,24 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void avd_frequency_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                //chi dung cho test
-                avd_frequency.Text = Math.Round(double.Parse(avd_frequency.Value), 2).ToString();
-                lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Text) / 6, 0).ToString();
-                //read vaule
-                if (_bIsPlcConnected)
-                {
-                    _plc.GetDevice2("D10", out short shortvalue); // đọc lên giá trị từ miền nhớ
-                    avd_FWVolt.Value = (shortvalue / 100).ToString();
-                }
-                else
-                {
-                    avd_FWVolt.Value = "0";
-                }
-            }
-            catch { }
+            CalcValues();
+            //try
+            //{
+            //    //chi dung cho test
+            //    avd_frequency.Value = Math.Round(double.Parse(avd_frequency.Value), 2).ToString();
+            //    lbl_speedrpm.Text = Math.Round(60 * float.Parse(avd_frequency.Value) / 6, 0).ToString();
+            //    //read vaule
+            //    if (_bIsPlcConnected)
+            //    {
+            //        _plc.GetDevice2("D10", out short shortvalue); // đọc lên giá trị từ miền nhớ
+            //        avd_FWVolt.Value = (shortvalue / 100).ToString();
+            //    }
+            //    else
+            //    {
+            //        avd_FWVolt.Value = "0";
+            //    }
+            //}
+            //catch { }
         }
 
         /// <summary>
@@ -208,6 +216,62 @@ namespace AdvancedHMICS
         private void btn_loadStatus_Click(object sender, EventArgs e)
         {
             _frmLoad.Show();
+        }
+
+        private void CalcValues()
+        {
+            try
+            {
+                //read vaule
+                if (_bIsPlcConnected)
+                {
+                    _plc.GetDevice2("D10", out short shortvalue); // đọc lên giá trị từ miền nhớ
+                    avd_FWVolt.Value = (shortvalue / 100).ToString();
+                }
+                else
+                {
+                    avd_FWVolt.Value = "0";
+                }
+                //chi dung cho test
+                if (!double.TryParse(avd_voltage.Value, out double volt))
+                {
+                    volt = 0;
+                }
+                if (!double.TryParse(avd_current.Value, out double curr))
+                {
+                    curr = 0;
+                }
+                if (!double.TryParse(avd_frequency.Value, out double freq))
+                {
+                    freq = 0;
+                }
+                if (!double.TryParse(avd_FWVolt.Value, out double fwVolt))
+                {
+                    fwVolt = 0;
+                }
+                if (!double.TryParse(avd_FWcurr.Value, out double fwCurr))
+                {
+                    fwCurr = 0;
+                }
+                double speed = Math.Round(60 * freq / SO_CAP_CUC, 0);
+                avd_voltage.Value = Math.Round(volt, 2).ToString();
+                avd_current.Value = Math.Round(curr, 3).ToString();
+                avd_frequency.Value = Math.Round(freq, 2).ToString();
+                avd_FWcurr.Value = Math.Round(fwVolt / (FIXED_RES), 2).ToString();
+                avd_electricP.Value = Math.Round(volt * curr / 1000, 3).ToString();
+                avd_DCpower.Value = Math.Round(fwVolt * fwCurr).ToString();
+                lbl_speedrpm.Text = speed.ToString();
+                lbl_actualP.Text = avd_electricP.Value;
+                if (speed != 0)
+                {
+                    avd_torque.Value = Math.Round(volt * curr * 9.95 / speed, 3).ToString();
+                }
+                else
+                {
+                    avd_torque.Value = "0";
+                }
+            }
+            catch { }
         }
         #endregion
         #region --- GIAO DIỆN ---
@@ -284,7 +348,12 @@ namespace AdvancedHMICS
             if (e.RowHandle >= 0)
             {
                 string result = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ck_result"]);
-                e.Appearance.BackColor = result == "合格" ? Color.Green : Color.Red;
+                if (result == "合格")
+                {
+                    result = "PASS";
+                    View.SetRowCellValue(e.RowHandle, View.Columns["ck_result"], result);
+                }
+                e.Appearance.BackColor = result == "PASS" ? Color.Green : Color.Red;
                 e.Appearance.ForeColor = Color.Yellow;
             }
         }
@@ -375,15 +444,15 @@ namespace AdvancedHMICS
                 {
                     reatedP = 0;
                 }
-                if (!float.TryParse(avd_current.Text, out float current))
+                if (!float.TryParse(avd_current.Value, out float current))
                 {
                     current = 0;
                 }
-                if (!float.TryParse(avd_voltage.Text, out float volt))
+                if (!float.TryParse(avd_voltage.Value, out float volt))
                 {
                     volt = 0;
                 }
-                if (!float.TryParse(avd_frequency.Text, out float freq))
+                if (!float.TryParse(avd_frequency.Value, out float freq))
                 {
                     freq = 0;
                 }
@@ -398,26 +467,34 @@ namespace AdvancedHMICS
                 lbl_pidStop.Text = $"{pidStop:0.##}";
 
                 _fSpeed = speedrpm;
+                if (_iCounter == _iLoadTime)
+                {
+                    _fminRPM = _fSpeed;
+                    _fmaxRPM = _fSpeed;
+                }
                 // Điều kiện kiểm tra (nếu không đạt điều kiện thì sẽ đợi)
-                if (_fMinLimitRPM <= _fSpeed && _fMaxLimitRPM >= _fSpeed
-                    && (_iCurrStep >= 1 && _fModRPM < _fMaxLimitFluc)
-                    && volt < _fMaxLimitVolt && current <= _fMaxLimitCurr && freq < _fMaxLimitFreq)
+                if (_iCurrStep > 0
+                    && (_fMinLimitRPM <= _fSpeed && _fMaxLimitRPM >= _fSpeed)
+                    && (_fModRPM >= _fMinLimitFluc && _fModRPM <= _fMaxLimitFluc)
+                    && (volt >= _fMinLimitVolt && volt <= _fMaxLimitVolt)
+                    && (current >= _fMinLimitCurr && current <= _fMaxLimitCurr)
+                    && (freq >= _fMinLimitFreq && freq <= _fMaxLimitFreq))
                 {
                     _iCounter--;
                     // Với các step > 1 thì tính mod speed
-                    if (_iCurrStep > 1)
+                    if (_iCurrStep > 0)
                     {
                         if (_fSpeed < _fminRPM)
                         {
                             _fminRPM = _fSpeed;
-                            _fModRPM = Math.Abs(_fminRPM - _fNoloadRPM);
-                            _fModRPM = _fModRPM / _fNoloadRPM * 100;
-                            avd_rotspdmod.Value = $"{_fModRPM:0.##}";
                         }
                         if (_fSpeed > _fmaxRPM)
                         {
                             _fmaxRPM = _fSpeed;
                         }
+                        _fModRPM = Math.Abs(_fminRPM - _fmaxRPM);
+                        _fModRPM = _fModRPM / _fNoloadRPM * 100;
+                        avd_rotspdmod.Value = $"{_fModRPM:0.##}";
                     }
                     if (actualP < min)
                     {
@@ -562,6 +639,7 @@ namespace AdvancedHMICS
                 avd_current.ValueLimitUpper = maxCurr;
                 avd_current.ValueLimitLower = minCurr;
                 _fMaxLimitCurr = maxCurr;
+                _fMinLimitCurr = minCurr;
                 #endregion
                 #region --- VOLTAGE LIMIT ---
                 if (!float.TryParse(_drStepData["ck_Min_VolGenerator"]?.ToString(), out float minVolt))
@@ -575,6 +653,7 @@ namespace AdvancedHMICS
                 avd_voltage.ValueLimitUpper = maxVolt;
                 avd_voltage.ValueLimitLower = minVolt;
                 _fMaxLimitVolt = maxVolt;
+                _fMinLimitVolt = minVolt;
                 #endregion
                 #region --- FREQUENCY LIMIT ---
                 if (!float.TryParse(_drStepData["ck_Min_frequency"]?.ToString(), out float minFreq))
@@ -587,6 +666,7 @@ namespace AdvancedHMICS
                 }
                 avd_frequency.ValueLimitUpper = maxFreq;
                 avd_frequency.ValueLimitLower = minFreq;
+                _fMinLimitFreq = minFreq;
                 _fMaxLimitFreq = maxFreq;
                 #endregion
                 #region --- SPEED MOD LIMIT ---
@@ -601,12 +681,13 @@ namespace AdvancedHMICS
                 avd_rotspdmod.ValueLimitUpper = maxFluc;
                 avd_rotspdmod.ValueLimitLower = minFluc;
                 _fMaxLimitFluc = maxFluc;
+                _fMinLimitFluc = minFluc;
                 #endregion
 
                 _fSpeed = 0;
                 _fmaxRPM = 0;
-                _fminRPM = 0;
                 _fModRPM = 0;
+                _fminRPM = 0;
                 _iMaxNG = MAX_NG;
                 _fMinLimitRPM = minRPM;
                 _fMaxLimitRPM = maxRPM;
@@ -650,9 +731,9 @@ namespace AdvancedHMICS
                 dr["ck_load_percent"] = _drStepData["ck_Steppercentage"];
                 dr["ck_speed_output"] = lbl_speedrpm.Text;
                 dr["ck_power"] = lbl_actualP.Text;
-                dr["ck_torque"] = avd_torque.Text;
-                dr["ck_speed_adj"] = avd_rotspdmod.Text;
-                dr["ck_speed_flt"] = avd_rotspdwav.Text;
+                dr["ck_torque"] = avd_torque.Value;
+                dr["ck_speed_adj"] = avd_rotspdmod.Value;
+                dr["ck_speed_flt"] = avd_rotspdwav.Value;
                 dr["ck_speed_max"] = _fmaxRPM;
                 dr["ck_speed_min"] = _fminRPM;
                 dr["ck_braking_time"] = _drStepData["ck_testbrakes"];
@@ -660,14 +741,14 @@ namespace AdvancedHMICS
                 dr["ck_tester"] = ClsVariables.User;
                 dr["ck_upload"] = ClsVariables.User;
                 dr["ck_test_type"] = "N/A";
-                dr["ck_volt"] = avd_voltage.Text;
-                dr["ck_current"] = avd_current.Text;
-                dr["ck_frequency"] = avd_frequency.Text;
+                dr["ck_volt"] = avd_voltage.Value;
+                dr["ck_current"] = avd_current.Value;
+                dr["ck_frequency"] = avd_frequency.Value;
                 dr["ck_pressure_neg"] = "N/A";
                 dr["ck_reason"] = "N/A";
-                dr["ck_volt_dc"] = avd_FWVolt.Text;
-                dr["ck_current_dc"] = avd_FWcurr.Text;
-                dr["ck_power_dc"] = avd_DCpower.Text;
+                dr["ck_volt_dc"] = avd_FWVolt.Value;
+                dr["ck_current_dc"] = avd_FWcurr.Value;
+                dr["ck_power_dc"] = avd_DCpower.Value;
                 dr["linecd"] = ClsVariables.Line;
                 dr["machinecd"] = ClsVariables.Machine;
                 dr["datimeregister"] = DateTime.Now;
@@ -1032,78 +1113,6 @@ namespace AdvancedHMICS
         //private bool result = false;
         //private bool _isTest = false;
 
-        /// <summary>
-        /// Chạy test
-        /// </summary>
-        /// <param name="btn"></param>
-        /// <param name="step"></param>
-        //private void Steptest(Button btn, int step)
-        //{
-        //    try
-        //    {
-        //        if (Checkinput() == false) return;
-        //        // Nếu đang chạy thì ngừng lại
-        //        if (_isTest)
-        //        {
-        //            if (_iCurrStep == step)
-        //            {
-        //                _isTest = false;
-        //                timerLoad.Enabled = false;
-        //                btn.BackColor = Color.LightGray;
-        //            }
-        //            return;
-        //        }
-        //        _isTest = true;
-        //        _iCurrStep = step;
-        //        btn.BackColor = Color.Green;
-
-        //        // step = 1;
-        //        counter = steadyT;
-        //        _iMaxNG = 3;
-        //        _iTimeOut = TIME_OUT;
-        //        lbl_pcStep.Text = step.ToString();
-        //        DataTable dt = new DataTable();
-        //        string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
-        //        sqlite sqlite_ = new sqlite();
-        //        sqlite_.SelectData(sqlmodel, ref dt);
-        //        _drStepData = dt.AsEnumerable().FirstOrDefault(row => row["ck_serial"].ToString() == step.ToString());
-        //        //timerlable
-        //        steadyT = int.Parse(_drStepData["ck_LoadTime"]?.ToString());
-        //        lbl_steadyT.Text = steadyT.ToString();
-        //        //ratedP step
-        //        lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
-        //        //get min max
-        //        minrpm = int.Parse(_drStepData["ck_Min_Noloadlimitspeed"]?.ToString());
-        //        maxrpm = int.Parse(_drStepData["ck_Max_Noloadlimitspeed"]?.ToString());
-
-        //        btn_90.Text = $"{_drStepData["ck_Steppercentage"]}%";
-
-        //        //condtion function.,
-        //        //if (btn.BackColor == Color.LightGray)
-        //        //{
-        //        //    btn.BackColor = Color.Green;
-        //        //    timerLoad.Enabled = true;
-        //        //}
-        //        //else
-        //        //{
-        //        //    timerLoad.Enabled = false;
-        //        //    btn.BackColor = Color.LightGray;
-        //        //}
-        //        //if (minrpm <= int.Parse(lbl_speedrpm.Text) && float.Parse(lbl_actualP.Text) >= float.Parse(lbl_rated_P.Text) * 0.85)
-        //        //{
-        //        //    timerLoad.Enabled = true;
-        //        //}
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        timerLoad.Enabled = false;
-        //        MessageBox.Show("Error :" + ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        timerLoad.Enabled = true;
-        //    }
-        //}
         #endregion
 
         #region --- SQL BACKUP ---

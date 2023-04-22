@@ -867,7 +867,7 @@ namespace AdvancedHMICS
             // 
             // gridColumn25
             // 
-            this.gridColumn25.Caption = "gridColumn25";
+            this.gridColumn25.Caption = "Load Name";
             this.gridColumn25.FieldName = "ck_load";
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.Visible = true;

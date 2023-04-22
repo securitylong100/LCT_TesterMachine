@@ -15,7 +15,7 @@ namespace AdvancedHMICS
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmMain());
             // Application.Run(new MainForm());
-            Application.Run(new frmDashboard());
+            Application.Run(new LoginForm());
             //Application.Run(new frmQuerySQLite());
             //Application.Run(new frmQuerySQLite());
             //Application.Run(new frmSettingModel());
