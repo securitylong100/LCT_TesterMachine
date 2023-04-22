@@ -1,5 +1,7 @@
 ﻿using ActUtlTypeLib;
 using AdvancedHMICS.Class;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Data;
 using System.Drawing;
@@ -11,6 +13,7 @@ namespace AdvancedHMICS
 {
     public partial class frmDashboard : Form
     {
+        #region --- CONSTANTS ---
         /// <summary>
         /// Địa chỉ FW Voltage
         /// </summary>
@@ -35,21 +38,303 @@ namespace AdvancedHMICS
         /// Điện trở
         /// </summary>
         private const double FIXED_RES = 100;
-
+        #endregion
+        #region --- FIELDS ---
         private int _iStep = 0;
         private int _iCounter = 0;
         private int _iMaxStep = STEPS;
         private bool _isAuto = false;
         private bool _isTesting = false;
         private bool _isConnectedPLC = false;
+        private double _maxSpeedNoload = 9999;
+        private double _minSpeedNoload = 0;
 
         private DataTable _dtMaster;
+        private DataTable _dtResult;
         private readonly ActUtlType _plc = new ActUtlType();
+        private readonly GridView _gv_main = new GridView();
+        private readonly GridControl _gc_main = new GridControl();
         private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
+        #endregion
+        #region --- VALUES ---
+        public double Frequency
+        {
+            get
+            {
+                if (double.TryParse(avd_freq.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+        }
 
+        public double Volt
+        {
+            get
+            {
+                if (double.TryParse(avd_volt.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+        }
+
+        public double Current
+        {
+            get
+            {
+                if (double.TryParse(avd_curr.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+        }
+
+        public double ElectricPower
+        {
+            get
+            {
+                if (double.TryParse(avd_power_e.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => avd_power_e.Value = $"{value:0.00}";
+        }
+
+        public double DcVolt
+        {
+            get
+            {
+                if (double.TryParse(avd_volt_fw.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => avd_volt_fw.Value = $"{value:0.00}";
+        }
+
+        public double DcCurrent
+        {
+            get
+            {
+                if (double.TryParse(avd_curr_fw.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => avd_curr_fw.Value = $"{value:0.00}";
+        }
+
+        public double DcPower
+        {
+            get
+            {
+                if (double.TryParse(avd_power_dc.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => avd_power_dc.Value = $"{value:0.00}";
+        }
+
+        public double Torque
+        {
+            get
+            {
+                if (double.TryParse(avd_torque.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => avd_torque.Value = $"{value:0.00}";
+        }
+
+        public double ROTSpeed
+        {
+            get
+            {
+                if (double.TryParse(avd_speed_rot.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => avd_speed_rot.Value = $"{value:0.00}";
+        }
+
+        public double ROTSpeedMod
+        {
+            get
+            {
+                if (double.TryParse(avd_speed_mod.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => avd_speed_mod.Value = $"{value:0.00}";
+        }
+
+        public double ROTSpeedWav
+        {
+            get
+            {
+                if (double.TryParse(avd_speed_wav.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => avd_speed_wav.Value = $"{value:0.00}";
+        }
+
+        public double MechanialPower
+        {
+            get
+            {
+                if (double.TryParse(avd_power_mec.Value, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => avd_power_mec.Value = $"{value:0.00}";
+        }
+
+        public double RatedPower
+        {
+            get
+            {
+                if (double.TryParse(lbl_power_p.Text, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => lbl_power_p.Text = $"{value:0.00}";
+        }
+
+        public double TargetPower
+        {
+            get
+            {
+                if (double.TryParse(lbl_power_target.Text, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => lbl_power_target.Text = $"{value:0.00}";
+        }
+
+        public double ActualPower
+        {
+            get
+            {
+                if (double.TryParse(lbl_power_actual.Text, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => lbl_power_actual.Text = $"{value:0.00}";
+        }
+
+        public double PIDStop
+        {
+            get
+            {
+                if (double.TryParse(lbl_pid_stop.Text, out double dVal))
+                {
+                    return dVal;
+                }
+                return 0;
+            }
+            set => lbl_pid_stop.Text = $"{value:0.00}";
+        }
+
+        public int SteadyTime
+        {
+            get
+            {
+                if (int.TryParse(lbl_steady_t.Text, out int iVal))
+                {
+                    return iVal;
+                }
+                return 0;
+            }
+            set => lbl_steady_t.Text = $"{value:N0}";
+        }
+        #endregion
+        #region --- LIMIT ---
+        public double MaxVolt
+        {
+            get => avd_volt.ValueLimitUpper;
+            set => avd_volt.ValueLimitUpper = value;
+        }
+
+        public double MinVolt
+        {
+            get => avd_volt.ValueLimitLower;
+            set => avd_volt.ValueLimitLower = value;
+        }
+
+        public double MaxCurrent
+        {
+            get => avd_curr.ValueLimitUpper;
+            set => avd_curr.ValueLimitUpper = value;
+        }
+
+        public double MinCurrent
+        {
+            get => avd_curr.ValueLimitLower;
+            set => avd_curr.ValueLimitLower = value;
+        }
+
+        public double MaxFrequency
+        {
+            get => avd_freq.ValueLimitUpper;
+            set => avd_freq.ValueLimitUpper = value;
+        }
+
+        public double MinFrequency
+        {
+            get => avd_freq.ValueLimitLower;
+            set => avd_freq.ValueLimitLower = value;
+        }
+
+        public double MaxSpeedMod
+        {
+            get => avd_speed_mod.ValueLimitUpper;
+            set => avd_speed_mod.ValueLimitUpper = value;
+        }
+
+        public double MinSpeedMod
+        {
+            get => avd_speed_mod.ValueLimitLower;
+            set => avd_speed_mod.ValueLimitLower = value;
+        }
+        #endregion
         public frmDashboard()
         {
             InitializeComponent();
+            _gc_main.Dock = DockStyle.Fill;
+            _gv_main.GridControl = _gc_main;
+            _gc_main.MainView = _gv_main;
+            _gc_main.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { _gv_main });
+            tlp_main.SetRow(_gc_main, 2);
+            tlp_main.SetColumn(_gc_main, 0);
+            tlp_main.SetColumnSpan(_gc_main, 3);
+            tlp_main.Controls.Add(_gc_main);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -57,6 +342,7 @@ namespace AdvancedHMICS
             base.OnLoad(e);
             try
             {
+                DefineResultTable();
                 timer_realtime.Enabled = true;
                 string sqlmodel = "select distinct(ck_model) from m_ck_point order by ck_model";
                 sqlite sqlite_ = new sqlite();
@@ -111,41 +397,53 @@ namespace AdvancedHMICS
         {
             try
             {
-                int fwVolt = 0;
                 if (_isConnectedPLC)
                 {
                     _plc.GetDevice2(FW_VOLT, out short shortValue);
-                    fwVolt = shortValue / 100;
+                    DcVolt = shortValue / 100;
                 }
-                avd_volt_fw.Value = fwVolt.ToString();
-                CalcValues();
             }
             catch
             {
             }
-        }
-
-        private void timer_load_Tick(object sender, EventArgs e)
-        {
             try
             {
-                if (_iCounter > 0)
+                if (_isTesting)
                 {
-                    _iCounter--;
-                    lbl_steady_t.Text = _iCounter.ToString();
-                }
-                else
-                {
-                    EndTest();
-                    if (_isAuto)
+                    double speed = ROTSpeed;
+                    double speedMod = ROTSpeedMod;
+                    double reatedPower = RatedPower;
+                    double actualPower = ActualPower;
+                    double minPower = reatedPower * 0.9;
+                    double maxPower = reatedPower * 1.1;
+                    PIDStop = reatedPower == actualPower ? 100 : reatedPower == 0
+                        ? 0 : (actualPower / reatedPower) * 100;
+                    if (0 < _iStep && speedMod < MaxSpeedMod && Volt < MaxVolt
+                        && _minSpeedNoload <= speed && speed <= _maxSpeedNoload)
                     {
-                        if (_iStep < _iMaxStep)
+                        if (speed < MaxSpeedMod)
                         {
-                            StartTest(_iStep + 1);
+
                         }
-                        else
+                    }
+
+                    if (SteadyTime > 0)
+                    {
+                        SteadyTime--;
+                    }
+                    else
+                    {
+                        EndTest();
+                        if (_isAuto)
                         {
-                            RunAuto();
+                            if (_iStep < _iMaxStep)
+                            {
+                                StartTest(_iStep + 1);
+                            }
+                            else
+                            {
+                                RunAuto();
+                            }
                         }
                     }
                 }
@@ -259,6 +557,11 @@ namespace AdvancedHMICS
         {
             CalcValues();
         }
+
+        private void avd_volt_fw_ValueChanged(object sender, EventArgs e)
+        {
+            CalcValues();
+        }
         #endregion
         #region --- METHODS ---
         private bool CheckInput()
@@ -272,41 +575,23 @@ namespace AdvancedHMICS
         {
             try
             {
-                if (!float.TryParse(avd_freq.Value, out float freq_))
-                {
-                    freq_ = 0;
-                }
-                float speed_ = (60 * freq_) / 6;
-                avd_speed_rot.Value = $"{speed_:N0}";
-
-                if (!float.TryParse(avd_volt.Value, out float volt_))
-                {
-                    volt_ = 0;
-                }
-                if (!float.TryParse(avd_curr.Value, out float curr_))
-                {
-                    curr_ = 0;
-                }
-                var power_ = (volt_ * curr_) / 1000;
-                avd_power_e.Value = $"{power_:0.000}";
-                lbl_power_actual.Text = avd_power_e.Text;
-
                 double torque_ = 0;
+                double volt_ = Volt;
+                double curr_ = Current;
+                double freq_ = Frequency;
+                double dcVolt_ = DcVolt;
+                double dcCurr_ = dcVolt_ / FIXED_RES;
+                double speed_ = (60 * freq_) / 6;
+                double actualP_ = (volt_ * curr_) / 1000;
                 if (speed_ > 0)
                 {
-                    torque_ = volt_ * curr_ * 9.95 / speed_;
+                    torque_ = (volt_ * curr_ * 9.95) / speed_;
                 }
-                avd_torque.Value = $"{torque_:0.000}";
 
-                if (!float.TryParse(avd_volt_fw.Value, out float fwVolt_))
-                {
-                    fwVolt_ = 0;
-                }
-                double fwCurrent_ = fwVolt_ / FIXED_RES;
-                avd_curr_fw.Value = $"{fwCurrent_:0.000}";
-
-                double fwPower_ = fwVolt_ * fwCurrent_;
-                avd_power_dc.Value = fwPower_.ToString();
+                Torque = torque_;
+                ROTSpeed = speed_;
+                DcPower = dcVolt_ * dcCurr_;
+                ActualPower = ElectricPower = actualP_;
             }
             catch
             {
@@ -399,10 +684,76 @@ namespace AdvancedHMICS
                     }
                     return;
                 }
+                var drStep = _dtMaster.AsEnumerable().FirstOrDefault(row => row["ck_serial"].ToString() == step.ToString());
+                #region --- CURRENT LIMIT ---
+                if (!double.TryParse(drStep["ck_Min_Generator"]?.ToString(), out double minCurr))
+                {
+                    minCurr = 0;
+                }
+                if (!double.TryParse(drStep["ck_Max_Generator"]?.ToString(), out double maxCurr))
+                {
+                    maxCurr = 9999;
+                }
+                MinCurrent = minCurr;
+                MaxCurrent = maxCurr;
+                #endregion
+                #region --- VOLTAGE LIMIT ---
+                if (!double.TryParse(drStep["ck_Min_VolGenerator"]?.ToString(), out double minVolt))
+                {
+                    minVolt = 0;
+                }
+                if (!double.TryParse(drStep["ck_Max_VolGenerator"]?.ToString(), out double maxVolt))
+                {
+                    maxVolt = 9999;
+                }
+                MaxVolt = maxVolt;
+                MinVolt = minVolt;
+                #endregion
+                #region --- FREQUENCY LIMIT ---
+                if (!double.TryParse(drStep["ck_Min_frequency"]?.ToString(), out double minFreq))
+                {
+                    minFreq = 0;
+                }
+                if (!double.TryParse(drStep["ck_Max_frequency"]?.ToString(), out double maxFreq))
+                {
+                    maxFreq = 9999;
+                }
+                MaxFrequency = maxFreq;
+                MinFrequency = minFreq;
+                #endregion
+                #region --- SPEED MOD LIMIT ---
+                if (!double.TryParse(drStep["ck_Min_fluctuationspeed"]?.ToString(), out double minFluc))
+                {
+                    minFluc = 0;
+                }
+                if (!double.TryParse(drStep["ck_Max_fluctuationspeed"]?.ToString(), out double maxFluc))
+                {
+                    maxFluc = 9999;
+                }
+                MaxSpeedMod = maxFluc;
+                MinSpeedMod = minFluc;
+                #endregion
+                if (!int.TryParse(drStep["ck_LoadTime"]?.ToString(), out int loadTime))
+                {
+                    loadTime = TIME_OUT;
+                }
+                if (!double.TryParse(drStep["ck_Min_Noloadlimitspeed"]?.ToString(), out double minSpeed))
+                {
+                    minSpeed = 0;
+                }
+                if (!double.TryParse(drStep["ck_Max_Noloadlimitspeed"]?.ToString(), out double maxSpeed))
+                {
+                    maxSpeed = 0;
+                }
+
+                ROTSpeed = 0;
+                SteadyTime = loadTime;
+
                 _iStep = step;
                 _isTesting = true;
-                timer_load.Enabled = true;
-                lbl_status.BackColor = Color.Green;
+                _iCounter = loadTime;
+                _minSpeedNoload = minSpeed;
+                _maxSpeedNoload = maxSpeed;
                 switch (_iStep)
                 {
                     case 1:
@@ -423,73 +774,13 @@ namespace AdvancedHMICS
                     default:
                         break;
                 }
-                var drStep = _dtMaster.AsEnumerable().FirstOrDefault(row => row["ck_serial"].ToString() == step.ToString());
-                #region --- CURRENT LIMIT ---
-                if (!float.TryParse(drStep["ck_Min_Generator"]?.ToString(), out float minCurr))
-                {
-                    minCurr = 0;
-                }
-                if (!float.TryParse(drStep["ck_Max_Generator"]?.ToString(), out float maxCurr))
-                {
-                    maxCurr = 9999;
-                }
-                avd_curr.ValueLimitUpper = maxCurr;
-                avd_curr.ValueLimitLower = minCurr;
-                #endregion
-                #region --- VOLTAGE LIMIT ---
-                if (!float.TryParse(drStep["ck_Min_VolGenerator"]?.ToString(), out float minVolt))
-                {
-                    minVolt = 0;
-                }
-                if (!float.TryParse(drStep["ck_Max_VolGenerator"]?.ToString(), out float maxVolt))
-                {
-                    maxVolt = 9999;
-                }
-                avd_volt.ValueLimitUpper = maxVolt;
-                avd_volt.ValueLimitLower = minVolt;
-                #endregion
-                #region --- FREQUENCY LIMIT ---
-                if (!float.TryParse(drStep["ck_Min_frequency"]?.ToString(), out float minFreq))
-                {
-                    minFreq = 0;
-                }
-                if (!float.TryParse(drStep["ck_Max_frequency"]?.ToString(), out float maxFreq))
-                {
-                    maxFreq = 9999;
-                }
-                avd_freq.ValueLimitUpper = maxFreq;
-                avd_freq.ValueLimitLower = minFreq;
-                #endregion
-                #region --- SPEED MOD LIMIT ---
-                if (!float.TryParse(drStep["ck_Min_fluctuationspeed"]?.ToString(), out float minFluc))
-                {
-                    minFluc = 0;
-                }
-                if (!float.TryParse(drStep["ck_Max_fluctuationspeed"]?.ToString(), out float maxFluc))
-                {
-                    maxFluc = 9999;
-                }
-                avd_speed_rot.ValueLimitUpper = maxFluc;
-                avd_speed_rot.ValueLimitLower = minFluc;
-                #endregion
+                lbl_status.BackColor = Color.Green;
                 _frmLoad.CheckBits(drStep["ck_load"]?.ToString());
-                if (!int.TryParse(drStep["ck_LoadTime"]?.ToString(), out int loadTime))
-                {
-                    loadTime =TIME_OUT;
-                }
-                if (!float.TryParse(drStep["ck_Min_Noloadlimitspeed"]?.ToString(), out float minSpeed))
-                {
-                    minSpeed = 0;
-                }
-                if (!float.TryParse(drStep["ck_Max_Noloadlimitspeed"]?.ToString(), out float maxSpeed))
-                {
-                    maxSpeed = 0;
-                }
-                _iCounter = loadTime;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex.Message);
+                EndTest();
             }
         }
 
@@ -498,7 +789,6 @@ namespace AdvancedHMICS
             try
             {
                 _isTesting = false;
-                timer_load.Enabled = false;
                 btn_00.BackColor = Color.LightGray;
                 btn_25.BackColor = Color.LightGray;
                 btn_50.BackColor = Color.LightGray;
@@ -531,6 +821,112 @@ namespace AdvancedHMICS
             sqlite sqlite_ = new sqlite();
             sqlite_.SelectData(sqlmodel, ref dt);
             return dt;
+        }
+
+        private void DefineResultTable()
+        {
+            _dtResult = new DataTable();
+            _dtResult.Columns.Add("ck_serial");
+            _dtResult.Columns.Add("ck_time");
+            _dtResult.Columns.Add("ck_model");
+            _dtResult.Columns.Add("ck_number");
+            _dtResult.Columns.Add("ck_order");
+            _dtResult.Columns.Add("ck_rack");
+            _dtResult.Columns.Add("ck_speed_noload");
+            _dtResult.Columns.Add("ck_load_percent");
+            _dtResult.Columns.Add("ck_speed_output");
+            _dtResult.Columns.Add("ck_power");
+            _dtResult.Columns.Add("ck_torque");
+            _dtResult.Columns.Add("ck_speed_adj");
+            _dtResult.Columns.Add("ck_speed_flt");
+            _dtResult.Columns.Add("ck_speed_max");
+            _dtResult.Columns.Add("ck_speed_min");
+            _dtResult.Columns.Add("ck_braking_time");
+            _dtResult.Columns.Add("ck_result");
+            _dtResult.Columns.Add("ck_tester");
+            _dtResult.Columns.Add("ck_upload");
+            _dtResult.Columns.Add("ck_test_type");
+            _dtResult.Columns.Add("ck_volt");
+            _dtResult.Columns.Add("ck_current");
+            _dtResult.Columns.Add("ck_frequency");
+            _dtResult.Columns.Add("ck_pressure_neg");
+            _dtResult.Columns.Add("ck_reason");
+            _dtResult.Columns.Add("ck_volt_dc");
+            _dtResult.Columns.Add("ck_current_dc");
+            _dtResult.Columns.Add("ck_power_dc");
+            _dtResult.Columns.Add("linecd");
+            _dtResult.Columns.Add("machinecd");
+            _dtResult.Columns.Add("datimeregister");
+            _dtResult.Columns.Add("ck_pid_stop");
+
+            _gc_main.DataSource = _dtResult;
+
+            _gv_main.Columns["ck_serial"].Visible = true;
+            _gv_main.Columns["ck_time"].Visible = true;
+            _gv_main.Columns["ck_model"].Visible = true;
+            _gv_main.Columns["ck_number"].Visible = true;
+            _gv_main.Columns["ck_order"].Visible = true;
+            _gv_main.Columns["ck_rack"].Visible = false;
+            _gv_main.Columns["ck_speed_noload"].Visible = true;
+            _gv_main.Columns["ck_load_percent"].Visible = true;
+            _gv_main.Columns["ck_speed_output"].Visible = true;
+            _gv_main.Columns["ck_power"].Visible = true;
+            _gv_main.Columns["ck_torque"].Visible = true;
+            _gv_main.Columns["ck_speed_adj"].Visible = true;
+            _gv_main.Columns["ck_speed_flt"].Visible = true;
+            _gv_main.Columns["ck_speed_max"].Visible = true;
+            _gv_main.Columns["ck_speed_min"].Visible = true;
+            _gv_main.Columns["ck_braking_time"].Visible = false;
+            _gv_main.Columns["ck_result"].Visible = true;
+            _gv_main.Columns["ck_tester"].Visible = false;
+            _gv_main.Columns["ck_upload"].Visible = false;
+            _gv_main.Columns["ck_test_type"].Visible = false;
+            _gv_main.Columns["ck_volt"].Visible = true;
+            _gv_main.Columns["ck_current"].Visible = true;
+            _gv_main.Columns["ck_frequency"].Visible = true;
+            _gv_main.Columns["ck_pressure_neg"].Visible = false;
+            _gv_main.Columns["ck_reason"].Visible = false;
+            _gv_main.Columns["ck_volt_dc"].Visible = true;
+            _gv_main.Columns["ck_current_dc"].Visible = true;
+            _gv_main.Columns["ck_power_dc"].Visible = true;
+            _gv_main.Columns["linecd"].Visible = false;
+            _gv_main.Columns["machinecd"].Visible = false;
+            _gv_main.Columns["datimeregister"].Visible = false;
+            _gv_main.Columns["ck_pid_stop"].Visible = true;
+
+            _gv_main.Columns["ck_serial"].Caption = "Step";
+            _gv_main.Columns["ck_time"].Caption = "Time";
+            _gv_main.Columns["ck_model"].Caption = "Model";
+            _gv_main.Columns["ck_number"].Caption = "Barcode";
+            _gv_main.Columns["ck_order"].Caption = "OrderId";
+            _gv_main.Columns["ck_rack"].Caption = "";
+            _gv_main.Columns["ck_speed_noload"].Caption = "Noload Speed";
+            _gv_main.Columns["ck_load_percent"].Caption = "Percentage";
+            _gv_main.Columns["ck_load_percent"].DisplayFormat.FormatString = "{0:P2}";
+            _gv_main.Columns["ck_speed_output"].Caption = "ROT Speed";
+            _gv_main.Columns["ck_power"].Caption = "Actual Power";
+            _gv_main.Columns["ck_torque"].Caption = "Torque";
+            _gv_main.Columns["ck_speed_adj"].Caption = "ROT Speed Mod";
+            _gv_main.Columns["ck_speed_flt"].Caption = "ROT Speed Wav";
+            _gv_main.Columns["ck_speed_max"].Caption = "Speed Max";
+            _gv_main.Columns["ck_speed_min"].Caption = "Speed Min";
+            _gv_main.Columns["ck_braking_time"].Caption = "";
+            _gv_main.Columns["ck_result"].Caption = "Result";
+            _gv_main.Columns["ck_tester"].Caption = "";
+            _gv_main.Columns["ck_upload"].Caption = "";
+            _gv_main.Columns["ck_test_type"].Caption = "";
+            _gv_main.Columns["ck_volt"].Caption = "Voltage";
+            _gv_main.Columns["ck_current"].Caption = "Current";
+            _gv_main.Columns["ck_frequency"].Caption = "Frequency";
+            _gv_main.Columns["ck_pressure_neg"].Caption = "";
+            _gv_main.Columns["ck_reason"].Caption = "";
+            _gv_main.Columns["ck_volt_dc"].Caption = "FW Voltage";
+            _gv_main.Columns["ck_current_dc"].Caption = "FW Current";
+            _gv_main.Columns["ck_power_dc"].Caption = "DC Power";
+            _gv_main.Columns["linecd"].Caption = "";
+            _gv_main.Columns["machinecd"].Caption = "";
+            _gv_main.Columns["datimeregister"].Caption = "";
+            _gv_main.Columns["ck_pid_stop"].Caption = "PID Stop";
         }
         #endregion
     }

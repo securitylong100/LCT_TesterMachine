@@ -34,7 +34,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvData = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tlp_topmid = new System.Windows.Forms.TableLayoutPanel();
             this.avd_power_dc = new AdvancedHMIControls.AnalogValueDisplay();
@@ -139,11 +138,9 @@
             this.btn_100 = new System.Windows.Forms.Button();
             this.btn_90 = new System.Windows.Forms.Button();
             this.timer_realtime = new System.Windows.Forms.Timer(this.components);
-            this.timer_load = new System.Windows.Forms.Timer(this.components);
             this.tlp_main.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.panel2.SuspendLayout();
             this.tlp_topmid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).BeginInit();
@@ -173,7 +170,6 @@
             this.tlp_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tlp_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tlp_main.Controls.Add(this.panel1, 0, 0);
-            this.tlp_main.Controls.Add(this.dgvData, 0, 2);
             this.tlp_main.Controls.Add(this.panel2, 1, 1);
             this.tlp_main.Controls.Add(this.panel3, 2, 1);
             this.tlp_main.Controls.Add(this.panel4, 0, 1);
@@ -226,17 +222,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "General Dynamics Intelligent Test System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dgvData
-            // 
-            this.dgvData.BackgroundColor = System.Drawing.Color.White;
-            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tlp_main.SetColumnSpan(this.dgvData, 3);
-            this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvData.Location = new System.Drawing.Point(3, 239);
-            this.dgvData.Name = "dgvData";
-            this.dgvData.Size = new System.Drawing.Size(1178, 118);
-            this.dgvData.TabIndex = 9;
             // 
             // panel2
             // 
@@ -1088,6 +1073,7 @@
             this.avd_volt_fw.ValuePrefix = null;
             this.avd_volt_fw.ValueSuffix = null;
             this.avd_volt_fw.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
+            this.avd_volt_fw.ValueChanged += new System.EventHandler(this.avd_volt_fw_ValueChanged);
             // 
             // avd_speed_rot
             // 
@@ -1948,11 +1934,6 @@
             this.timer_realtime.Interval = 1000;
             this.timer_realtime.Tick += new System.EventHandler(this.timer_realtime_Tick);
             // 
-            // timer_load
-            // 
-            this.timer_load.Interval = 1000;
-            this.timer_load.Tick += new System.EventHandler(this.timer_load_Tick);
-            // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1966,7 +1947,6 @@
             this.tlp_main.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.panel2.ResumeLayout(false);
             this.tlp_topmid.ResumeLayout(false);
             this.tlp_topmid.PerformLayout();
@@ -2046,7 +2026,6 @@
         private AdvancedHMIControls.AnalogValueDisplay avd_freq;
         private AdvancedHMIControls.AnalogValueDisplay avd_curr_fw;
         private AdvancedHMIControls.AnalogValueDisplay avd_power_mec;
-        private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -2107,6 +2086,5 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Timer timer_load;
     }
 }

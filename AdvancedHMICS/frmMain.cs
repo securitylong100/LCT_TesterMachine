@@ -640,41 +640,38 @@ namespace AdvancedHMICS
             if (_drStepData != null)
             {
                 var dr = _dtResult.NewRow();
-                foreach (DataColumn col in _dtResult.Columns)
-                {
-                    dr["ck_serial"] = _drStepData["ck_serial"];
-                    dr["ck_time"] = DateTime.Now;
-                    dr["ck_model"] = cbm_model.Text;
-                    dr["ck_number"] = txt_barcode.Text;
-                    dr["ck_order"] = cbm_orderid.Text;
-                    dr["ck_rack"] = "1-1";
-                    dr["ck_speed_noload"] = _fNoloadRPM;
-                    dr["ck_load_percent"] = _drStepData["ck_Steppercentage"];
-                    dr["ck_speed_output"] = lbl_speedrpm.Text;
-                    dr["ck_power"] = lbl_actualP.Text;
-                    dr["ck_torque"] = avd_torque.Text;
-                    dr["ck_speed_adj"] = avd_rotspdmod.Text;
-                    dr["ck_speed_flt"] = avd_rotspdwav.Text;
-                    dr["ck_speed_max"] = _fmaxRPM;
-                    dr["ck_speed_min"] = _fminRPM;
-                    dr["ck_braking_time"] = _drStepData["ck_testbrakes"];
-                    dr["ck_result"] = isOk ? "合格" : "";
-                    dr["ck_tester"] = ClsVariables.User;
-                    dr["ck_upload"] = ClsVariables.User;
-                    dr["ck_test_type"] = "N/A";
-                    dr["ck_volt"] = avd_voltage.Text;
-                    dr["ck_current"] = avd_current.Text;
-                    dr["ck_frequency"] = avd_frequency.Text;
-                    dr["ck_pressure_neg"] = "N/A";
-                    dr["ck_reason"] = "N/A";
-                    dr["ck_volt_dc"] = avd_FWVolt.Text;
-                    dr["ck_current_dc"] = avd_FWcurr.Text;
-                    dr["ck_power_dc"] = avd_DCpower.Text;
-                    dr["linecd"] = ClsVariables.Line;
-                    dr["machinecd"] = ClsVariables.Machine;
-                    dr["datimeregister"] = DateTime.Now;
-                    dr["ck_pid_stop"] = lbl_pidStop.Text;
-                }
+                dr["ck_serial"] = _drStepData["ck_serial"];
+                dr["ck_time"] = DateTime.Now;
+                dr["ck_model"] = cbm_model.Text;
+                dr["ck_number"] = txt_barcode.Text;
+                dr["ck_order"] = cbm_orderid.Text;
+                dr["ck_rack"] = "1-1";
+                dr["ck_speed_noload"] = _fNoloadRPM;
+                dr["ck_load_percent"] = _drStepData["ck_Steppercentage"];
+                dr["ck_speed_output"] = lbl_speedrpm.Text;
+                dr["ck_power"] = lbl_actualP.Text;
+                dr["ck_torque"] = avd_torque.Text;
+                dr["ck_speed_adj"] = avd_rotspdmod.Text;
+                dr["ck_speed_flt"] = avd_rotspdwav.Text;
+                dr["ck_speed_max"] = _fmaxRPM;
+                dr["ck_speed_min"] = _fminRPM;
+                dr["ck_braking_time"] = _drStepData["ck_testbrakes"];
+                dr["ck_result"] = isOk ? "合格" : "";
+                dr["ck_tester"] = ClsVariables.User;
+                dr["ck_upload"] = ClsVariables.User;
+                dr["ck_test_type"] = "N/A";
+                dr["ck_volt"] = avd_voltage.Text;
+                dr["ck_current"] = avd_current.Text;
+                dr["ck_frequency"] = avd_frequency.Text;
+                dr["ck_pressure_neg"] = "N/A";
+                dr["ck_reason"] = "N/A";
+                dr["ck_volt_dc"] = avd_FWVolt.Text;
+                dr["ck_current_dc"] = avd_FWcurr.Text;
+                dr["ck_power_dc"] = avd_DCpower.Text;
+                dr["linecd"] = ClsVariables.Line;
+                dr["machinecd"] = ClsVariables.Machine;
+                dr["datimeregister"] = DateTime.Now;
+                dr["ck_pid_stop"] = lbl_pidStop.Text;
                 _dtResult.Rows.Add(dr);
                 _drStepData = null;
             }
