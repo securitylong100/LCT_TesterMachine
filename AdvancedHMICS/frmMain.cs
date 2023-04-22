@@ -16,7 +16,7 @@ namespace AdvancedHMICS
 {
     public partial class frmMain : Form
     {
-        private const int SO_CAP_CUC = 1;
+        private const int SO_CAP_CUC = 6;
         private const int STEPS = 5;
 
         /// <summary>
@@ -31,6 +31,7 @@ namespace AdvancedHMICS
         private float _fModRPM = 0;
         private float _fmaxRPM = 0;
         private float _fminRPM = 0;
+        private float _pidStop = 0;
         private float _fNoloadRPM = 0;
         private float _fMinLimitRPM = 0;
         private float _fMaxLimitRPM = 0;
@@ -260,6 +261,8 @@ namespace AdvancedHMICS
                 avd_FWcurr.Value = Math.Round(fwVolt / (FIXED_RES), 2).ToString();
                 avd_electricP.Value = Math.Round(volt * curr / 1000, 3).ToString();
                 avd_DCpower.Value = Math.Round(fwVolt * fwCurr).ToString();
+                avd_rotspdmod.Value = $"{_fModRPM:0.##}";
+                lbl_pidStop.Text = $"{_pidStop:0.##}";
                 lbl_speedrpm.Text = speed.ToString();
                 lbl_actualP.Text = avd_electricP.Value;
                 if (speed != 0)
@@ -458,13 +461,11 @@ namespace AdvancedHMICS
                 }
                 double min = reatedP * 0.9;
                 double max = reatedP * 1.1;
-                double pidStop = reatedP == 0 ? 0 : (actualP / reatedP) * 100;
+                _pidStop = reatedP == 0 ? 0 : (actualP / reatedP) * 100;
                 if (actualP == reatedP)
                 {
-                    pidStop = 100;
+                    _pidStop = 100;
                 }
-
-                lbl_pidStop.Text = $"{pidStop:0.##}";
 
                 _fSpeed = speedrpm;
                 if (_iCounter == _iLoadTime)
@@ -482,7 +483,7 @@ namespace AdvancedHMICS
                 {
                     _iCounter--;
                     // Với các step > 1 thì tính mod speed
-                    if (_iCurrStep > 0)
+                    if (_iCurrStep > 1)
                     {
                         if (_fSpeed < _fminRPM)
                         {
@@ -494,7 +495,6 @@ namespace AdvancedHMICS
                         }
                         _fModRPM = Math.Abs(_fminRPM - _fmaxRPM);
                         _fModRPM = _fModRPM / _fNoloadRPM * 100;
-                        avd_rotspdmod.Value = $"{_fModRPM:0.##}";
                     }
                     if (actualP < min)
                     {
