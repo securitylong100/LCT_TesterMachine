@@ -57,7 +57,13 @@ namespace AdvancedHMICS
             {
                 DataTable dt = new DataTable();
                 StringBuilder sqlBuilder = new StringBuilder();
-                sqlBuilder.Append(@"SELECT * FROM m_history WHERE 1=1 ");
+                sqlBuilder.Append(@"SELECT ID,ck_serial,DATETIME(ck_time) as ck_time,ck_model,ck_number,");
+                sqlBuilder.Append("ck_order,ck_rack,ck_speed_noload,ck_load_percent,ck_speed_output,ck_power,");
+                sqlBuilder.Append("ck_torque,ck_speed_adj,ck_speed_flt,ck_speed_max,ck_speed_min,ck_braking_time,");
+                sqlBuilder.Append("ck_result,ck_tester,ck_upload,ck_test_type,ck_volt,ck_current,ck_frequency,");
+                sqlBuilder.Append("ck_pressure_neg,ck_reason,ck_volt_dc,ck_current_dc,ck_power_dc,linecd,machinecd,");
+                sqlBuilder.Append("DATETIME(datimeregister) as datimeregister,ck_pid_stop ");
+                sqlBuilder.Append("FROM m_history WHERE 1=1 ");
                 if (!string.IsNullOrWhiteSpace(txtBarcode.Text))
                 {
                     sqlBuilder.AppendFormat("AND ck_number='{0}' ", txtBarcode.Text);
@@ -191,10 +197,10 @@ namespace AdvancedHMICS
                 string result = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ck_result"]);
                 if (result == "合格")
                 {
-                    result = "PASS";
+                    result = "PASSED";
                     View.SetRowCellValue(e.RowHandle, View.Columns["ck_result"], result);
                 }
-                e.Appearance.BackColor = result == "PASS" ? Color.Green : Color.Red;
+                e.Appearance.BackColor = result == "PASSED" ? Color.Green : Color.Red;
                 e.Appearance.ForeColor = Color.Yellow;
             }
         }

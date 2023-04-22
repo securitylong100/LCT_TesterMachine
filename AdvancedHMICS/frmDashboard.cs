@@ -14,6 +14,8 @@ namespace AdvancedHMICS
     public partial class frmDashboard : Form
     {
         #region --- CONSTANTS ---
+        private const int SO_CAP_CUC = 6;
+
         /// <summary>
         /// Địa chỉ FW Voltage
         /// </summary>
@@ -581,7 +583,7 @@ namespace AdvancedHMICS
                 double freq_ = Frequency;
                 double dcVolt_ = DcVolt;
                 double dcCurr_ = dcVolt_ / FIXED_RES;
-                double speed_ = (60 * freq_) / 6;
+                double speed_ = (60 * freq_) / SO_CAP_CUC;
                 double actualP_ = (volt_ * curr_) / 1000;
                 if (speed_ > 0)
                 {

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 
 namespace AdvancedHMICS.Class
@@ -59,6 +60,18 @@ namespace AdvancedHMICS.Class
             {
 
             }
+        }
+
+        public static string ToDtString(this DateTime date)
+        {
+            StringBuilder timeBuilder = new StringBuilder();
+            timeBuilder.AppendFormat("{0:0000}", date.Year).Append("-");
+            timeBuilder.AppendFormat("{0:00}", date.Month).Append("-");
+            timeBuilder.AppendFormat("{0:00}", date.Day).Append(" ");
+            timeBuilder.AppendFormat("{0:00}", date.Hour).Append(":");
+            timeBuilder.AppendFormat("{0:00}", date.Minute).Append(":");
+            timeBuilder.AppendFormat("{0:00}", date.Second);
+            return timeBuilder.ToString();
         }
     }
 }

@@ -366,10 +366,10 @@ namespace AdvancedHMICS
                 string result = View.GetRowCellDisplayText(e.RowHandle, View.Columns["ck_result"]);
                 if (result == "合格")
                 {
-                    result = "PASS";
+                    result = "PASSED";
                     View.SetRowCellValue(e.RowHandle, View.Columns["ck_result"], result);
                 }
-                e.Appearance.BackColor = result == "PASS" ? Color.Green : Color.Red;
+                e.Appearance.BackColor = result == "PASSED" ? Color.Green : Color.Red;
                 e.Appearance.ForeColor = Color.Yellow;
             }
         }
@@ -499,15 +499,15 @@ namespace AdvancedHMICS
                             _iMaxNG--;
                         }
                     }
-                    if (_dActualP > max || _iMaxNG < 0)
-                    {
-                        EndTest(false);
-                        return;
-                    }
-                    if (_iCounter < 1)
-                    {
-                        EndTest(true);
-                    }
+                }
+                if (_dActualP > max || _iMaxNG < 0)
+                {
+                    EndTest(false);
+                    return;
+                }
+                if (_iCounter < 1)
+                {
+                    EndTest(true);
                 }
             }
             finally
@@ -563,6 +563,7 @@ namespace AdvancedHMICS
                         break;
                 }
                 timerLoad.Enabled = true;
+                lbl_pidStop.Text = "0.00";
                 lbl_pcStep.Text = _iCurrStep.ToString();
                 lbl_steadyT.Text = _iLoadTime.ToString();
                 lbl_status_automanual.BackColor = Color.Green;
@@ -713,9 +714,10 @@ namespace AdvancedHMICS
             // Hiển thị dữ liệu lên grid
             if (_drStepData != null)
             {
+                var test_time = DateTime.Now;
                 var dr = _dtResult.NewRow();
                 dr["ck_serial"] = _drStepData["ck_serial"];
-                dr["ck_time"] = DateTime.Now;
+                dr["ck_time"] = test_time.ToDtString();
                 dr["ck_model"] = cbm_model.Text;
                 dr["ck_number"] = txt_barcode.Text;
                 dr["ck_order"] = cbm_orderid.Text;
@@ -744,7 +746,7 @@ namespace AdvancedHMICS
                 dr["ck_power_dc"] = avd_DCpower.Value;
                 dr["linecd"] = ClsVariables.Line;
                 dr["machinecd"] = ClsVariables.Machine;
-                dr["datimeregister"] = DateTime.Now;
+                dr["datimeregister"] = test_time.ToDtString();
                 dr["ck_pid_stop"] = lbl_pidStop.Text;
                 _dtResult.Rows.Add(dr);
                 _drStepData = null;
