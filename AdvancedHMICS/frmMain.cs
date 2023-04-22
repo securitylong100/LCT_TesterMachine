@@ -27,22 +27,29 @@ namespace AdvancedHMICS
         private const int TIME_OUT = 20;
         private const double FIXED_RES = 100; //dơn vị là ôm.
 
-        private float _fSpeed = 0;
-        private float _fModRPM = 0;
-        private float _fmaxRPM = 0;
-        private float _fminRPM = 0;
-        private float _pidStop = 0;
-        private float _fNoloadRPM = 0;
-        private float _fMinLimitRPM = 0;
-        private float _fMaxLimitRPM = 0;
-        private float _fMaxLimitCurr = 0;
-        private float _fMinLimitCurr = 0;
-        private float _fMaxLimitVolt = 0;
-        private float _fMinLimitVolt = 0;
-        private float _fMaxLimitFreq = 0;
-        private float _fMinLimitFreq = 0;
-        private float _fMaxLimitFluc = 0;
-        private float _fMinLimitFluc = 0;
+        private double _dSpeed = 0;
+        private double _dModRPM = 0;
+        private double _dMaxRPM = 0;
+        private double _dMinRPM = 0;
+        private double _dPidStop = 0;
+        private double _dNoloadRPM = 0;
+        private double _dMinLimitRPM = 0;
+        private double _dMaxLimitRPM = 0;
+        private double _dMaxLimitCurr = 0;
+        private double _dMinLimitCurr = 0;
+        private double _dMaxLimitVolt = 0;
+        private double _dMinLimitVolt = 0;
+        private double _dMaxLimitFreq = 0;
+        private double _dMinLimitFreq = 0;
+        private double _dMaxLimitFluc = 0;
+        private double _dMinLimitFluc = 0;
+
+        private double _dFreq = 0;
+        private double _dVolt = 0;
+        private double _dCurr = 0;
+        private double _dFWCurr = 0;
+        private double _dFWVolt = 0;
+        private double _dActualP = 0;
 
         private int _iTimeOut = 0;
         private int _iCounter = 0;
@@ -250,24 +257,30 @@ namespace AdvancedHMICS
                 {
                     fwVolt = 0;
                 }
-                if (!double.TryParse(avd_FWcurr.Value, out double fwCurr))
-                {
-                    fwCurr = 0;
-                }
-                double speed = Math.Round(60 * freq / SO_CAP_CUC, 0);
-                avd_voltage.Value = Math.Round(volt, 2).ToString();
-                avd_current.Value = Math.Round(curr, 3).ToString();
-                avd_frequency.Value = Math.Round(freq, 2).ToString();
-                avd_FWcurr.Value = Math.Round(fwVolt / (FIXED_RES), 2).ToString();
-                avd_electricP.Value = Math.Round(volt * curr / 1000, 3).ToString();
-                avd_DCpower.Value = Math.Round(fwVolt * fwCurr).ToString();
-                avd_rotspdmod.Value = $"{_fModRPM:0.##}";
-                lbl_pidStop.Text = $"{_pidStop:0.##}";
-                lbl_speedrpm.Text = speed.ToString();
+                //if (!double.TryParse(avd_FWcurr.Value, out double fwCurr))
+                //{
+                //    fwCurr = 0;
+                //}
+                _dFWVolt = fwVolt;
+                _dFreq = Math.Round(freq, 2);
+                _dVolt = Math.Round(volt, 2);
+                _dCurr = Math.Round(curr, 3);
+                _dFWCurr = Math.Round(fwVolt / (FIXED_RES), 2);
+                _dActualP = Math.Round(_dVolt * _dCurr / 1000, 3);
+                _dSpeed = Math.Round(60 * _dFreq / SO_CAP_CUC, 0);
+
+                avd_voltage.Value = _dVolt.ToString();
+                avd_current.Value = _dCurr.ToString();
+                avd_FWcurr.Value = _dFWCurr.ToString();
+                avd_frequency.Value = _dFreq.ToString();
+                avd_rotspdmod.Value = $"{_dModRPM:0.##}";
+                avd_electricP.Value = _dActualP.ToString();
+                avd_DCpower.Value = Math.Round(_dFWVolt * _dFWCurr).ToString();
                 lbl_actualP.Text = avd_electricP.Value;
-                if (speed != 0)
+                lbl_speedrpm.Text = _dSpeed.ToString();
+                if (_dSpeed != 0)
                 {
-                    avd_torque.Value = Math.Round(volt * curr * 9.95 / speed, 3).ToString();
+                    avd_torque.Value = Math.Round(_dVolt * _dCurr * 9.95 / _dSpeed, 3).ToString();
                 }
                 else
                 {
@@ -435,68 +448,48 @@ namespace AdvancedHMICS
         {
             try
             {
-                if (!float.TryParse(lbl_speedrpm.Text, out float speedrpm))
-                {
-                    speedrpm = 0;
-                }
-                if (!float.TryParse(lbl_actualP.Text, out float actualP))
-                {
-                    actualP = 0;
-                }
                 if (!float.TryParse(lbl_rated_P.Text, out float reatedP))
                 {
                     reatedP = 0;
                 }
-                if (!float.TryParse(avd_current.Value, out float current))
-                {
-                    current = 0;
-                }
-                if (!float.TryParse(avd_voltage.Value, out float volt))
-                {
-                    volt = 0;
-                }
-                if (!float.TryParse(avd_frequency.Value, out float freq))
-                {
-                    freq = 0;
-                }
                 double min = reatedP * 0.9;
                 double max = reatedP * 1.1;
-                _pidStop = reatedP == 0 ? 0 : (actualP / reatedP) * 100;
-                if (actualP == reatedP)
+                _dPidStop = reatedP == 0 ? 0 : (_dActualP / reatedP) * 100;
+                if (_dActualP == reatedP)
                 {
-                    _pidStop = 100;
+                    _dPidStop = 100;
                 }
+                lbl_pidStop.Text = $"{_dPidStop:0.##}";
 
-                _fSpeed = speedrpm;
                 if (_iCounter == _iLoadTime)
                 {
-                    _fminRPM = _fSpeed;
-                    _fmaxRPM = _fSpeed;
+                    _dMinRPM = _dSpeed;
+                    _dMaxRPM = _dSpeed;
                 }
                 // Điều kiện kiểm tra (nếu không đạt điều kiện thì sẽ đợi)
                 if (_iCurrStep > 0
-                    && (_fMinLimitRPM <= _fSpeed && _fMaxLimitRPM >= _fSpeed)
-                    && (_fModRPM >= _fMinLimitFluc && _fModRPM <= _fMaxLimitFluc)
-                    && (volt >= _fMinLimitVolt && volt <= _fMaxLimitVolt)
-                    && (current >= _fMinLimitCurr && current <= _fMaxLimitCurr)
-                    && (freq >= _fMinLimitFreq && freq <= _fMaxLimitFreq))
+                    && (_dMinLimitRPM <= _dSpeed && _dMaxLimitRPM >= _dSpeed)
+                    && (_dModRPM >= _dMinLimitFluc && _dModRPM <= _dMaxLimitFluc)
+                    && (_dVolt >= _dMinLimitVolt && _dVolt <= _dMaxLimitVolt)
+                    && (_dCurr >= _dMinLimitCurr && _dCurr <= _dMaxLimitCurr)
+                    && (_dFreq >= _dMinLimitFreq && _dFreq <= _dMaxLimitFreq))
                 {
                     _iCounter--;
                     // Với các step > 1 thì tính mod speed
                     if (_iCurrStep > 1)
                     {
-                        if (_fSpeed < _fminRPM)
+                        if (_dSpeed < _dMinRPM)
                         {
-                            _fminRPM = _fSpeed;
+                            _dMinRPM = _dSpeed;
                         }
-                        if (_fSpeed > _fmaxRPM)
+                        if (_dSpeed > _dMaxRPM)
                         {
-                            _fmaxRPM = _fSpeed;
+                            _dMaxRPM = _dSpeed;
                         }
-                        _fModRPM = Math.Abs(_fminRPM - _fmaxRPM);
-                        _fModRPM = _fModRPM / _fNoloadRPM * 100;
+                        _dModRPM = Math.Abs(_dMinRPM - _dMaxRPM);
+                        _dModRPM = _dModRPM / _dNoloadRPM * 100;
                     }
-                    if (actualP < min)
+                    if (_dActualP < min)
                     {
                         // Đếm 20s trước khi xác định lại số lần test
                         _iTimeOut--;
@@ -506,7 +499,7 @@ namespace AdvancedHMICS
                             _iMaxNG--;
                         }
                     }
-                    if (actualP > max || _iMaxNG < 0)
+                    if (_dActualP > max || _iMaxNG < 0)
                     {
                         EndTest(false);
                         return;
@@ -638,8 +631,8 @@ namespace AdvancedHMICS
                 }
                 avd_current.ValueLimitUpper = maxCurr;
                 avd_current.ValueLimitLower = minCurr;
-                _fMaxLimitCurr = maxCurr;
-                _fMinLimitCurr = minCurr;
+                _dMaxLimitCurr = maxCurr;
+                _dMinLimitCurr = minCurr;
                 #endregion
                 #region --- VOLTAGE LIMIT ---
                 if (!float.TryParse(_drStepData["ck_Min_VolGenerator"]?.ToString(), out float minVolt))
@@ -652,8 +645,8 @@ namespace AdvancedHMICS
                 }
                 avd_voltage.ValueLimitUpper = maxVolt;
                 avd_voltage.ValueLimitLower = minVolt;
-                _fMaxLimitVolt = maxVolt;
-                _fMinLimitVolt = minVolt;
+                _dMaxLimitVolt = maxVolt;
+                _dMinLimitVolt = minVolt;
                 #endregion
                 #region --- FREQUENCY LIMIT ---
                 if (!float.TryParse(_drStepData["ck_Min_frequency"]?.ToString(), out float minFreq))
@@ -666,8 +659,8 @@ namespace AdvancedHMICS
                 }
                 avd_frequency.ValueLimitUpper = maxFreq;
                 avd_frequency.ValueLimitLower = minFreq;
-                _fMinLimitFreq = minFreq;
-                _fMaxLimitFreq = maxFreq;
+                _dMinLimitFreq = minFreq;
+                _dMaxLimitFreq = maxFreq;
                 #endregion
                 #region --- SPEED MOD LIMIT ---
                 if (!float.TryParse(_drStepData["ck_Min_fluctuationspeed"]?.ToString(), out float minFluc))
@@ -680,17 +673,17 @@ namespace AdvancedHMICS
                 }
                 avd_rotspdmod.ValueLimitUpper = maxFluc;
                 avd_rotspdmod.ValueLimitLower = minFluc;
-                _fMaxLimitFluc = maxFluc;
-                _fMinLimitFluc = minFluc;
+                _dMaxLimitFluc = maxFluc;
+                _dMinLimitFluc = minFluc;
                 #endregion
 
-                _fSpeed = 0;
-                _fmaxRPM = 0;
-                _fModRPM = 0;
-                _fminRPM = 0;
+                _dSpeed = 0;
+                _dMaxRPM = 0;
+                _dModRPM = 0;
+                _dMinRPM = 0;
                 _iMaxNG = MAX_NG;
-                _fMinLimitRPM = minRPM;
-                _fMaxLimitRPM = maxRPM;
+                _dMinLimitRPM = minRPM;
+                _dMaxLimitRPM = maxRPM;
                 _iCurrStep = step;
                 _iTimeOut = TIME_OUT;
                 _iLoadTime = loadTime;
@@ -714,7 +707,7 @@ namespace AdvancedHMICS
             // Step đầu tiên thì set tốc độ không tải
             if (_iCurrStep == 1)
             {
-                _fNoloadRPM = _fSpeed;
+                _dNoloadRPM = _dSpeed;
             }
             SetTestStatus(false);
             // Hiển thị dữ liệu lên grid
@@ -727,15 +720,15 @@ namespace AdvancedHMICS
                 dr["ck_number"] = txt_barcode.Text;
                 dr["ck_order"] = cbm_orderid.Text;
                 dr["ck_rack"] = "1-1";
-                dr["ck_speed_noload"] = _fNoloadRPM;
+                dr["ck_speed_noload"] = _dNoloadRPM;
                 dr["ck_load_percent"] = _drStepData["ck_Steppercentage"];
                 dr["ck_speed_output"] = lbl_speedrpm.Text;
                 dr["ck_power"] = lbl_actualP.Text;
                 dr["ck_torque"] = avd_torque.Value;
                 dr["ck_speed_adj"] = avd_rotspdmod.Value;
                 dr["ck_speed_flt"] = avd_rotspdwav.Value;
-                dr["ck_speed_max"] = _fmaxRPM;
-                dr["ck_speed_min"] = _fminRPM;
+                dr["ck_speed_max"] = _dMaxRPM;
+                dr["ck_speed_min"] = _dMinRPM;
                 dr["ck_braking_time"] = _drStepData["ck_testbrakes"];
                 dr["ck_result"] = isOk ? "合格" : "";
                 dr["ck_tester"] = ClsVariables.User;

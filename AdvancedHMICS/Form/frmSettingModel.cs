@@ -17,25 +17,35 @@ namespace AdvancedHMICS
             AcceptButton = btn_loaddata;
         }
         DataTable dt;
+        DataTable _dtLoads;
+
         private void frmSettingModel_Load(object sender, EventArgs e)
         {
             dt = new DataTable();
+            _dtLoads = new DataTable();
             LoadData(txt_newmodel.Text);
+            GetLoads();
         }
 
         private void LoadData(string model_)
         {
             StringBuilder sql = new StringBuilder();
             sql.Append("select * from m_ck_point where 1=1 ");
-            if(txt_newmodel.Text !="")
+            if (txt_newmodel.Text != "")
             {
                 sql.Append(" and ck_model ='" + txt_newmodel.Text + "'");
-            }    
+            }
             sqlite sqlite = new sqlite();
             sqlite.SelectData(sql.ToString(), ref dt);
             gc_main.DataSource = dt;
             GetComboxIntoGrid(cbm_testbarkes, "ck_testbrakes");
 
+        }
+        private void GetLoads()
+        {
+            string sql = "SELECT l_bits, r_bits, l_power FROM m_loadstatus;";
+            sqlite sqlite = new sqlite();
+            sqlite.SelectData(sql, ref _dtLoads);
         }
         private void btn_loaddata_Click(object sender, EventArgs e)
         {
@@ -51,15 +61,15 @@ namespace AdvancedHMICS
             if (dt.Rows.Count == 0) return;
             if (txt_newmodel.Text == "") return;
             sqlite sqlite_ = new sqlite();
-            string sqldelte = "delete from m_ck_point where ck_model ='"+txt_newmodel.Text+"'";
+            string sqldelte = "delete from m_ck_point where ck_model ='" + txt_newmodel.Text + "'";
             sqlite_.ExeNonQuery_auto(sqldelte);
-            MessageBox.Show("Model: "+txt_newmodel.Text+" deleted", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Model: " + txt_newmodel.Text + " deleted", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadData(txt_newmodel.Text);
 
         }
         private void btn_save_Click(object sender, EventArgs e)
         {
-             savedb();
+            savedb();
         }
         private void btn_export_Click(object sender, EventArgs e)
         {
@@ -92,7 +102,7 @@ namespace AdvancedHMICS
 
                 double cal_steppower = 0;
                 double cal_steppercentage = 0;
-                if (checkcondition()&& checkmodelDB())
+                if (checkcondition() && checkmodelDB())
                 {
                     for (int i = 1; i <= numberofstep; i++)
                     {
@@ -122,6 +132,11 @@ namespace AdvancedHMICS
                         row["ck_model"] = txt_newmodel.Text;
                         row["ck_testbrakes"] = cbm_testbarkes.SelectedItem.ToString();
                         row["ck_load"] = "0000000000000000";
+                        var drLoad = _dtLoads.AsEnumerable().FirstOrDefault(r => row["ck_Steppower"]?.ToString() == r["l_power"]?.ToString());
+                        if (drLoad != null)
+                        {
+                            row["ck_load"] = drLoad["l_bits"];
+                        }
                         dt.Rows.Add(row);
                         cal_steppower = cal_steppower + steppower;
                         cal_steppercentage = cal_steppercentage + steppercentage;
@@ -141,12 +156,12 @@ namespace AdvancedHMICS
             dt.AcceptChanges();
             if (dt.Rows.Count == 0) return;
             sqlite sqlite_ = new sqlite();
-            int id_current =int.Parse( sqlite_.ExecuteScalarString("select ifnull(max(id),0) as ID_current  from m_ck_point"));
+            int id_current = int.Parse(sqlite_.ExecuteScalarString("select ifnull(max(id),0) as ID_current  from m_ck_point"));
             foreach (DataRow rowdt in dt.Rows)
             {
                 if (rowdt["ID"].ToString() == "")
                 {
-                    id_current = id_current+1;
+                    id_current = id_current + 1;
                     StringBuilder sqlinsert = new StringBuilder();
                     sqlinsert.Append(@"INSERT INTO m_ck_point
                                     (ID, ck_serial, ck_Max_Noloadlimitspeed,ck_Min_Noloadlimitspeed,ck_Steppower,ck_power,ck_Steppercentage,ck_Max_Generator,ck_Min_Generator,
@@ -155,7 +170,7 @@ namespace AdvancedHMICS
                                     ck_Max_fluctuationspeed ,ck_Min_fluctuationspeed ,ck_LoadTime ,ck_speed ,ck_cycles,ck_model,ck_testbrakes,ck_load )
                                     VALUES("
                                     );
-                    sqlinsert.Append("'" + id_current+ "',");
+                    sqlinsert.Append("'" + id_current + "',");
                     sqlinsert.Append("'" + rowdt["ck_serial"].ToString() + "',");
                     sqlinsert.Append("'" + rowdt["ck_Max_Noloadlimitspeed"].ToString() + "',");
                     sqlinsert.Append("'" + rowdt["ck_Min_Noloadlimitspeed"].ToString() + "',");
@@ -220,6 +235,19 @@ namespace AdvancedHMICS
             MessageBox.Show("Action Successful", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
             LoadData(txt_newmodel.Text);
         }
+        bool checkmodelDB()
+        {
+            sqlite sqlite_ = new sqlite();
+            string sql = "select  count(*)  from m_ck_point where ck_model =  '" + txt_newmodel.Text + "'";
+            int model_ = int.Parse(sqlite_.ExecuteScalarString(sql));
+            if (model_ > 0)
+            {
+                MessageBox.Show("Model " + txt_newmodel.Text + " Đã có trên hệ thống, hãy thực hiện chỉnh sửa, đừng thêm mới", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LoadData(txt_newmodel.Text);
+                return false;
+            }
+            return true;
+        }
         bool checkcondition()
         {
             if (checknull(txt_newmodel) == false) return false;
@@ -258,20 +286,7 @@ namespace AdvancedHMICS
             return true;
 
         }
-        bool checkmodelDB()
-        {
-            sqlite sqlite_ = new sqlite();
-            string sql = "select  count(*)  from m_ck_point where ck_model =  '" + txt_newmodel.Text + "'";
-            int model_ = int.Parse(sqlite_.ExecuteScalarString(sql));
-            if(model_ >0)
-            {
-                MessageBox.Show("Model " + txt_newmodel.Text + " Đã có trên hệ thống, hãy thực hiện chỉnh sửa, đừng thêm mới", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                LoadData(txt_newmodel.Text);
-                return false;   
-            }         
-            return true;
-        }
-        void GetComboxIntoGrid(System.Windows.Forms.ComboBox cbm, string colHeader)
+        void GetComboxIntoGrid(ComboBox cbm, string colHeader)
         {
             try
             {
@@ -363,7 +378,5 @@ namespace AdvancedHMICS
             //int f = 0;
             //call save function
         }
-
-       
     }
 }
