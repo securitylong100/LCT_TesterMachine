@@ -306,8 +306,6 @@ E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\bin\Debug\es\DevExpress.
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\bin\Debug\ja\DevExpress.Office.v20.1.Core.resources.dll
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\bin\Debug\ru\DevExpress.Office.v20.1.Core.resources.dll
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.AssemblyReference.cache
-E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\Interop.ActUtlTypeLib.dll
-E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.ResolveComReference.cache
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmPLCValueRealtime.resources
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmQuerySQLite.resources
 E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmSettingModel.resources
@@ -368,3 +366,6 @@ G:\01.Github\LCT\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
 G:\01.Github\LCT\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmLoadStatus.resources
 G:\01.Github\LCT\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmData.resources
 G:\01.Github\LCT\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmDashboard.resources
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmData.resources
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmLoadStatus.resources
+E:\C#\Git\TesterMachine\LCT_TesterMachine\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmDashboard.resources
