@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ActUtlTypeLib;
+﻿using ActUtlTypeLib;
 using AdvancedHMICS.Class;
 using DevExpress.XtraGrid.Views.Grid;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace AdvancedHMICS
 {
@@ -51,11 +45,10 @@ namespace AdvancedHMICS
                 sqlite sqlite_ = new sqlite();
                 sqlite_.SelectData("select * from m_plcstatus", ref dt);
                 //insert into gridcontroll
-                Class.DataFuction data_ = new Class.DataFuction();
                 string nvalue = "";// data_.ToBinary(output_[0]);
                 for (int n = 0; n < 8; n++)
                 {
-                    nvalue = data_.ToBinary(D_output[n]);
+                    nvalue = DataFuction.ToBinary(D_output[n]);
                     DataRow row = dt.NewRow();
                     row["address_"] = "D" + n;
                     int[] split = new int[16];

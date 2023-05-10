@@ -27,6 +27,7 @@ namespace AdvancedHMICS
         private const int TIME_OUT = 20;
         private const double FIXED_RES = 100; //dơn vị là ôm.
 
+        private readonly FloatType _modbusFloatType = FloatType.BigEndian; // BigEndian là float reverse
         private double _dSpeed = 0;
         private double _dModRPM = 0;
         private double _dMaxRPM = 0;
@@ -142,6 +143,7 @@ namespace AdvancedHMICS
 
         private void avd_voltage_ValueChanged(object sender, EventArgs e)
         {
+            avd_voltage.Text = avd_voltage.Value.ToFloatType(_modbusFloatType);
             CalcValues();
             //avd_voltage.Value = Math.Round(double.Parse(avd_voltage.Value), 2).ToString();
         }
@@ -153,6 +155,7 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void avd_current_ValueChanged(object sender, EventArgs e)
         {
+            avd_current.Text = avd_current.Value.ToFloatType(_modbusFloatType);
             CalcValues();
             //try
             //{
@@ -176,6 +179,7 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void avd_frequency_ValueChanged(object sender, EventArgs e)
         {
+            avd_frequency.Text = avd_frequency.Value.ToFloatType(_modbusFloatType);
             CalcValues();
             //try
             //{
@@ -241,15 +245,15 @@ namespace AdvancedHMICS
                     avd_FWVolt.Value = "0";
                 }
                 //chi dung cho test
-                if (!double.TryParse(avd_voltage.Value, out double volt))
+                if (!double.TryParse(avd_voltage.Text, out double volt))
                 {
                     volt = 0;
                 }
-                if (!double.TryParse(avd_current.Value, out double curr))
+                if (!double.TryParse(avd_current.Text, out double curr))
                 {
                     curr = 0;
                 }
-                if (!double.TryParse(avd_frequency.Value, out double freq))
+                if (!double.TryParse(avd_frequency.Text, out double freq))
                 {
                     freq = 0;
                 }
