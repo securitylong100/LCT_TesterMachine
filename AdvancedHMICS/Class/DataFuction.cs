@@ -15,30 +15,6 @@ namespace AdvancedHMICS.Class
             return ToBinary(divisor) + remainder;
         }
 
-        public static float Reverse(this float f)
-        {
-            byte[] bytes = BitConverter.GetBytes(f);
-            if (BitConverter.IsLittleEndian)
-            {
-                bytes = bytes.Reverse().ToArray();
-            }
-            return BitConverter.ToSingle(bytes, 0);
-        }
-
-        //public static string ToFloatReverse(this string strFloat)
-        //{
-        //    if (float.TryParse(strFloat, out float f))
-        //    {
-        //        byte[] bytes = BitConverter.GetBytes(f);
-        //        if (BitConverter.IsLittleEndian)
-        //        {
-        //            bytes = bytes.Reverse().ToArray();
-        //        }
-        //        return BitConverter.ToSingle(bytes, 0).ToString();
-        //    }
-        //    return strFloat;
-        //}
-
         public static string ToFloatType(this string strFloat, FloatType floatType)
         {
             if (strFloat.Length > 4 && UInt32.TryParse(strFloat, out UInt32 value))
@@ -47,9 +23,9 @@ namespace AdvancedHMICS.Class
                 byte[] bytes = BitConverter.GetBytes(value);
                 switch (floatType)
                 {
-                    case FloatType.BigEndianByteSwap:
+                    case FloatType.FloatSwap:
                         return BitConverter.ToSingle(bytes.Reverse().ToArray(), 0).ToString();
-                    case FloatType.BigEndian:
+                    case FloatType.FloatReverse:
                         convertedBytes[0] = bytes[2];
                         convertedBytes[1] = bytes[3];
                         convertedBytes[2] = bytes[0];
@@ -61,9 +37,15 @@ namespace AdvancedHMICS.Class
                         convertedBytes[2] = bytes[3];
                         convertedBytes[3] = bytes[2];
                         return BitConverter.ToSingle(convertedBytes, 0).ToString();
-                    default:
                     case FloatType.LittleEndianByteSwap:
-                        return BitConverter.ToSingle(bytes, 0).ToString();
+                        convertedBytes[0] = bytes[1];
+                        convertedBytes[1] = bytes[0];
+                        convertedBytes[2] = bytes[3];
+                        convertedBytes[3] = bytes[2];
+                        return BitConverter.ToSingle(convertedBytes.Reverse().ToArray(), 0).ToString();
+                    case FloatType.Float:
+                    default:
+                        break;
                 }
             }
             return strFloat;
@@ -72,9 +54,10 @@ namespace AdvancedHMICS.Class
 
     public enum FloatType
     {
-        BigEndianByteSwap = 0,
-        LittleEndianByteSwap = 1,
-        BigEndian = 2,
+        Float = 0,
+        FloatSwap = 1,
+        FloatReverse = 2,
         LittleEndian = 3,
+        LittleEndianByteSwap = 4,
     }
 }

@@ -27,7 +27,7 @@ namespace AdvancedHMICS
         private const int TIME_OUT = 20;
         private const double FIXED_RES = 100; //dơn vị là ôm.
 
-        private readonly FloatType _modbusFloatType = FloatType.BigEndian; // BigEndian là float reverse
+        private readonly FloatType _modbusFloatType = FloatType.FloatReverse; // BigEndian là float reverse
         private double _dSpeed = 0;
         private double _dModRPM = 0;
         private double _dMaxRPM = 0;
