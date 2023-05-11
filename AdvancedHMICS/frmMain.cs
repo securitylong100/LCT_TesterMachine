@@ -8,10 +8,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 
 namespace AdvancedHMICS
 {
@@ -1358,5 +1358,20 @@ namespace AdvancedHMICS
             }
         }
         #endregion
+
+        private void ResizeFont(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control.HasChildren)
+                {
+                    ResizeFont(control);
+                }
+                if (!string.IsNullOrWhiteSpace(control.Text))
+                {
+
+                }
+            }
+        }
     }
 }
