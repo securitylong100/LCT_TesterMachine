@@ -585,7 +585,7 @@ namespace AdvancedHMICS
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.Gray;
+            this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.avd_machanicalP);
             this.panel5.Controls.Add(this.avd_FWcurr);
@@ -613,10 +613,10 @@ namespace AdvancedHMICS
             this.avd_machanicalP.AutoSize = true;
             this.avd_machanicalP.ComComponent = this.modbusRTUCom1;
             this.avd_machanicalP.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_machanicalP.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_machanicalP.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_machanicalP.ForeColor = System.Drawing.Color.Red;
+            this.avd_machanicalP.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_machanicalP.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_machanicalP.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_machanicalP.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_machanicalP.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_machanicalP.KeypadMaxValue = 0D;
             this.avd_machanicalP.KeypadMinValue = 0D;
@@ -654,9 +654,9 @@ namespace AdvancedHMICS
             this.modbusRTUCom1.MaxReadGroupSize = 20;
             this.modbusRTUCom1.Parity = System.IO.Ports.Parity.None;
             this.modbusRTUCom1.PollRateOverride = 500;
-            this.modbusRTUCom1.PortName = "COM10";
+            this.modbusRTUCom1.PortName = "COM6";
             this.modbusRTUCom1.StationAddress = ((byte)(1));
-            this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.One;
+            this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.Two;
             this.modbusRTUCom1.SwapBytes = true;
             this.modbusRTUCom1.SwapWords = false;
             this.modbusRTUCom1.TimeOut = 1000;
@@ -666,10 +666,10 @@ namespace AdvancedHMICS
             this.avd_FWcurr.AutoSize = true;
             this.avd_FWcurr.ComComponent = this.modbusRTUCom1;
             this.avd_FWcurr.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_FWcurr.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_FWcurr.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_FWcurr.ForeColor = System.Drawing.Color.Red;
+            this.avd_FWcurr.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_FWcurr.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_FWcurr.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_FWcurr.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_FWcurr.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_FWcurr.KeypadMaxValue = 0D;
             this.avd_FWcurr.KeypadMinValue = 0D;
@@ -702,10 +702,10 @@ namespace AdvancedHMICS
             this.avd_frequency.AutoSize = true;
             this.avd_frequency.ComComponent = this.modbusRTUCom1;
             this.avd_frequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_frequency.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_frequency.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_frequency.ForeColor = System.Drawing.Color.Red;
+            this.avd_frequency.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_frequency.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_frequency.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_frequency.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_frequency.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_frequency.KeypadMaxValue = 0D;
             this.avd_frequency.KeypadMinValue = 0D;
@@ -738,10 +738,10 @@ namespace AdvancedHMICS
             this.avd_rotspdwav.AutoSize = true;
             this.avd_rotspdwav.ComComponent = this.modbusRTUCom1;
             this.avd_rotspdwav.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_rotspdwav.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_rotspdwav.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_rotspdwav.ForeColor = System.Drawing.Color.Red;
+            this.avd_rotspdwav.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_rotspdwav.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_rotspdwav.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_rotspdwav.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_rotspdwav.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_rotspdwav.KeypadMaxValue = 0D;
             this.avd_rotspdwav.KeypadMinValue = 0D;
@@ -773,10 +773,10 @@ namespace AdvancedHMICS
             this.avd_rotspdmod.AutoSize = true;
             this.avd_rotspdmod.ComComponent = this.modbusRTUCom1;
             this.avd_rotspdmod.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_rotspdmod.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_rotspdmod.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_rotspdmod.ForeColor = System.Drawing.Color.Red;
+            this.avd_rotspdmod.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_rotspdmod.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_rotspdmod.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_rotspdmod.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_rotspdmod.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_rotspdmod.KeypadMaxValue = 0D;
             this.avd_rotspdmod.KeypadMinValue = 0D;
@@ -856,7 +856,7 @@ namespace AdvancedHMICS
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label32.BackColor = System.Drawing.Color.White;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label32.Location = new System.Drawing.Point(8, 192);
             this.label32.Name = "label32";
@@ -867,7 +867,7 @@ namespace AdvancedHMICS
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label33.BackColor = System.Drawing.Color.White;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label33.Location = new System.Drawing.Point(8, 152);
             this.label33.Name = "label33";
@@ -878,7 +878,7 @@ namespace AdvancedHMICS
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label34.BackColor = System.Drawing.Color.White;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(8, 18);
             this.label34.Name = "label34";
@@ -889,7 +889,7 @@ namespace AdvancedHMICS
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label35.BackColor = System.Drawing.Color.White;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(8, 106);
             this.label35.Name = "label35";
@@ -900,7 +900,7 @@ namespace AdvancedHMICS
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label36.BackColor = System.Drawing.Color.White;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(8, 62);
             this.label36.Name = "label36";
@@ -910,7 +910,7 @@ namespace AdvancedHMICS
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Gray;
+            this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel4.Controls.Add(this.avd_torque);
             this.panel4.Controls.Add(this.avd_DCpower);
@@ -929,10 +929,10 @@ namespace AdvancedHMICS
             this.avd_torque.AutoSize = true;
             this.avd_torque.ComComponent = this.modbusRTUCom1;
             this.avd_torque.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_torque.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_torque.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_torque.ForeColor = System.Drawing.Color.Red;
+            this.avd_torque.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_torque.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_torque.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_torque.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_torque.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_torque.KeypadMaxValue = 0D;
             this.avd_torque.KeypadMinValue = 0D;
@@ -964,10 +964,10 @@ namespace AdvancedHMICS
             this.avd_DCpower.AutoSize = true;
             this.avd_DCpower.ComComponent = this.modbusRTUCom1;
             this.avd_DCpower.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_DCpower.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_DCpower.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_DCpower.ForeColor = System.Drawing.Color.Red;
+            this.avd_DCpower.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_DCpower.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_DCpower.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_DCpower.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_DCpower.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_DCpower.KeypadMaxValue = 0D;
             this.avd_DCpower.KeypadMinValue = 0D;
@@ -1017,7 +1017,7 @@ namespace AdvancedHMICS
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label22.BackColor = System.Drawing.Color.White;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(12, 64);
             this.label22.Name = "label22";
@@ -1028,7 +1028,7 @@ namespace AdvancedHMICS
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label23.BackColor = System.Drawing.Color.White;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(12, 18);
             this.label23.Name = "label23";
@@ -1038,7 +1038,7 @@ namespace AdvancedHMICS
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.lbl_speedrpm);
             this.panel2.Controls.Add(this.avd_voltage);
@@ -1077,10 +1077,10 @@ namespace AdvancedHMICS
             this.avd_voltage.AutoSize = true;
             this.avd_voltage.ComComponent = this.modbusRTUCom1;
             this.avd_voltage.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_voltage.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_voltage.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_voltage.ForeColor = System.Drawing.Color.Red;
+            this.avd_voltage.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_voltage.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_voltage.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_voltage.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_voltage.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_voltage.KeypadMaxValue = 0D;
             this.avd_voltage.KeypadMinValue = 0D;
@@ -1113,10 +1113,10 @@ namespace AdvancedHMICS
             this.avd_FWVolt.AutoSize = true;
             this.avd_FWVolt.ComComponent = this.modbusRTUCom1;
             this.avd_FWVolt.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_FWVolt.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_FWVolt.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_FWVolt.ForeColor = System.Drawing.Color.Red;
+            this.avd_FWVolt.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_FWVolt.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_FWVolt.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_FWVolt.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_FWVolt.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_FWVolt.KeypadMaxValue = 0D;
             this.avd_FWVolt.KeypadMinValue = 0D;
@@ -1149,10 +1149,10 @@ namespace AdvancedHMICS
             this.avd_electricP.AutoSize = true;
             this.avd_electricP.ComComponent = this.modbusRTUCom1;
             this.avd_electricP.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_electricP.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_electricP.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_electricP.ForeColor = System.Drawing.Color.Red;
+            this.avd_electricP.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_electricP.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_electricP.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_electricP.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_electricP.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_electricP.KeypadMaxValue = 0D;
             this.avd_electricP.KeypadMinValue = 0D;
@@ -1184,10 +1184,10 @@ namespace AdvancedHMICS
             this.avd_current.AutoSize = true;
             this.avd_current.ComComponent = this.modbusRTUCom1;
             this.avd_current.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.avd_current.ForeColor = System.Drawing.Color.Yellow;
-            this.avd_current.ForeColorInLimits = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.avd_current.ForeColor = System.Drawing.Color.Red;
+            this.avd_current.ForeColorInLimits = System.Drawing.Color.Black;
             this.avd_current.ForeColorOverLimit = System.Drawing.Color.Red;
-            this.avd_current.ForeColorUnderLimit = System.Drawing.Color.Yellow;
+            this.avd_current.ForeColorUnderLimit = System.Drawing.Color.Red;
             this.avd_current.KeypadFontColor = System.Drawing.Color.WhiteSmoke;
             this.avd_current.KeypadMaxValue = 0D;
             this.avd_current.KeypadMinValue = 0D;
@@ -1268,7 +1268,7 @@ namespace AdvancedHMICS
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(8, 188);
             this.label6.Name = "label6";
@@ -1279,7 +1279,7 @@ namespace AdvancedHMICS
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(8, 148);
             this.label5.Name = "label5";
@@ -1290,7 +1290,7 @@ namespace AdvancedHMICS
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label2.Location = new System.Drawing.Point(8, 19);
@@ -1302,7 +1302,7 @@ namespace AdvancedHMICS
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(8, 103);
             this.label4.Name = "label4";
@@ -1313,7 +1313,7 @@ namespace AdvancedHMICS
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(8, 60);
             this.label3.Name = "label3";

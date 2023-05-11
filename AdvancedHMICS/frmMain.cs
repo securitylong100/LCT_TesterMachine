@@ -11,12 +11,13 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace AdvancedHMICS
 {
     public partial class frmMain : Form
     {
-        private const int SO_CAP_CUC = 6;
+        private const int SO_CAP_CUC = 1;
         private const int STEPS = 5;
 
         /// <summary>
@@ -24,8 +25,8 @@ namespace AdvancedHMICS
         /// </summary>
         private const int MAX_NG = 3;
 
-        private const int TIME_OUT = 20;
-        private const double FIXED_RES = 100; //dơn vị là ôm.
+        private const int TIME_OUT = 30;
+        private const double FIXED_RES = 0.3; //dơn vị là ôm.
 
         private readonly FloatType _modbusFloatType = FloatType.FloatReverse; // BigEndian là float reverse
         private double _dSpeed = 0;
@@ -140,10 +141,28 @@ namespace AdvancedHMICS
             //}
             //catch { }
         }
+        [StructLayout(LayoutKind.Explicit)]
+        struct MyUnion
+        {
+            [FieldOffset(0)] public byte byte1;
+            [FieldOffset(1)] public byte byte2;
+            [FieldOffset(2)] public byte byte3;
+            [FieldOffset(3)] public byte byte4;
+            [FieldOffset(0)] public UInt32 int32Value;
+            [FieldOffset(0)] public float floatValue;
+        }
 
         private void avd_voltage_ValueChanged(object sender, EventArgs e)
         {
-            avd_voltage.Text = avd_voltage.Value.ToFloatType(_modbusFloatType);
+            //avd_voltage.Text = avd_voltage.Value.ToFloatType(_modbusFloatType);
+            MyUnion u = new MyUnion();
+            MyUnion w = new MyUnion();
+            u.int32Value = (UInt32)int.Parse(avd_voltage.Value);
+            w.byte1 = u.byte3;
+            w.byte2 = u.byte4;
+            w.byte3 = u.byte1;
+            w.byte4 = u.byte2;
+            avd_voltage.Text = w.floatValue.ToString();
             CalcValues();
             //avd_voltage.Value = Math.Round(double.Parse(avd_voltage.Value), 2).ToString();
         }
@@ -155,7 +174,16 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void avd_current_ValueChanged(object sender, EventArgs e)
         {
-            avd_current.Text = avd_current.Value.ToFloatType(_modbusFloatType);
+            //avd_current.Text = avd_current.Value.ToFloatType(_modbusFloatType);
+            MyUnion u = new MyUnion();
+            MyUnion w = new MyUnion();
+            u.int32Value = (UInt32)int.Parse(avd_current.Value);
+            w.byte1 = u.byte3;
+            w.byte2 = u.byte4;
+            w.byte3 = u.byte1;
+            w.byte4 = u.byte2;
+            //command fixing
+            avd_current.Text = (u.int32Value) == 0 ? "0" : (w.floatValue * 22.464618).ToString();
             CalcValues();
             //try
             //{
@@ -179,7 +207,15 @@ namespace AdvancedHMICS
         /// <param name="e"></param>
         private void avd_frequency_ValueChanged(object sender, EventArgs e)
         {
-            avd_frequency.Text = avd_frequency.Value.ToFloatType(_modbusFloatType);
+            // avd_frequency.Text = avd_frequency.Value.ToFloatType(_modbusFloatType);
+            MyUnion u = new MyUnion();
+            MyUnion w = new MyUnion();
+            u.int32Value = (UInt32)int.Parse(avd_frequency.Value);
+            w.byte1 = u.byte3;
+            w.byte2 = u.byte4;
+            w.byte3 = u.byte1;
+            w.byte4 = u.byte2;
+            avd_frequency.Text = w.floatValue.ToString();
             CalcValues();
             //try
             //{
@@ -238,7 +274,7 @@ namespace AdvancedHMICS
                 if (_bIsPlcConnected)
                 {
                     _plc.GetDevice2("D10", out short shortvalue); // đọc lên giá trị từ miền nhớ
-                    avd_FWVolt.Value = (shortvalue / 100).ToString();
+                    avd_FWVolt.Value = (shortvalue).ToString();
                 }
                 else
                 {
@@ -268,9 +304,9 @@ namespace AdvancedHMICS
                 _dFWVolt = fwVolt;
                 _dFreq = Math.Round(freq, 2);
                 _dVolt = Math.Round(volt, 2);
-                _dCurr = Math.Round(curr, 3);
+                _dCurr = Math.Round(curr, 2);
                 _dFWCurr = Math.Round(fwVolt / (FIXED_RES), 2);
-                _dActualP = Math.Round(_dVolt * _dCurr / 1000, 3);
+                _dActualP = Math.Round(_dVolt * _dCurr / 1000, 2);
                 _dSpeed = Math.Round(60 * _dFreq / SO_CAP_CUC, 0);
 
                 avd_voltage.Value = _dVolt.ToString();
@@ -456,8 +492,8 @@ namespace AdvancedHMICS
                 {
                     reatedP = 0;
                 }
-                double min = reatedP * 0.9;
-                double max = reatedP * 1.1;
+                double min = reatedP * 0.95;
+                double max = reatedP * 1.05;
                 _dPidStop = reatedP == 0 ? 0 : (_dActualP / reatedP) * 100;
                 if (_dActualP == reatedP)
                 {
@@ -740,9 +776,9 @@ namespace AdvancedHMICS
                 dr["ck_tester"] = ClsVariables.User;
                 dr["ck_upload"] = ClsVariables.User;
                 dr["ck_test_type"] = "N/A";
-                dr["ck_volt"] = avd_voltage.Value;
-                dr["ck_current"] = avd_current.Value;
-                dr["ck_frequency"] = avd_frequency.Value;
+                dr["ck_volt"] = avd_voltage.Text;
+                dr["ck_current"] = avd_current.Text;
+                dr["ck_frequency"] = avd_frequency.Text;
                 dr["ck_pressure_neg"] = "N/A";
                 dr["ck_reason"] = "N/A";
                 dr["ck_volt_dc"] = avd_FWVolt.Value;

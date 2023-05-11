@@ -50,16 +50,8 @@
             this.cbLoad9 = new System.Windows.Forms.CheckBox();
             this.grLoadSelfList = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.modbusRTUCom1 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
-            this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnKills = new System.Windows.Forms.Button();
-            this.btnAll = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnSelfTest = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.cbR16 = new AdvancedHMIControls.CheckBox();
+            this.modbusRTUCom1 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
             this.cbR15 = new AdvancedHMIControls.CheckBox();
             this.cbR14 = new AdvancedHMIControls.CheckBox();
             this.cbR13 = new AdvancedHMIControls.CheckBox();
@@ -75,6 +67,14 @@
             this.cbR3 = new AdvancedHMIControls.CheckBox();
             this.cbR2 = new AdvancedHMIControls.CheckBox();
             this.cbR1 = new AdvancedHMIControls.CheckBox();
+            this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnKills = new System.Windows.Forms.Button();
+            this.btnAll = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSelfTest = new System.Windows.Forms.Button();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tlpMain.SuspendLayout();
             this.grLoadList.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -401,140 +401,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(788, 168);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
-            // modbusRTUCom1
-            // 
-            this.modbusRTUCom1.BaudRate = 9600;
-            this.modbusRTUCom1.DataBits = 8;
-            this.modbusRTUCom1.DisableSubscriptions = false;
-            this.modbusRTUCom1.EnableLogging = false;
-            this.modbusRTUCom1.IniFileName = "";
-            this.modbusRTUCom1.IniFileSection = null;
-            this.modbusRTUCom1.MaxReadGroupSize = 20;
-            this.modbusRTUCom1.Parity = System.IO.Ports.Parity.None;
-            this.modbusRTUCom1.PollRateOverride = 500;
-            this.modbusRTUCom1.PortName = "COM4";
-            this.modbusRTUCom1.StationAddress = ((byte)(3));
-            this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.One;
-            this.modbusRTUCom1.SwapBytes = true;
-            this.modbusRTUCom1.SwapWords = false;
-            this.modbusRTUCom1.TimeOut = 3000;
-            // 
-            // tlpButtons
-            // 
-            this.tlpButtons.ColumnCount = 7;
-            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpButtons.Controls.Add(this.btnClose, 6, 0);
-            this.tlpButtons.Controls.Add(this.btnKills, 5, 0);
-            this.tlpButtons.Controls.Add(this.btnAll, 4, 0);
-            this.tlpButtons.Controls.Add(this.btnClear, 2, 0);
-            this.tlpButtons.Controls.Add(this.btnSelfTest, 3, 0);
-            this.tlpButtons.Controls.Add(this.lblStatus, 0, 0);
-            this.tlpButtons.Controls.Add(this.btnSave, 1, 0);
-            this.tlpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpButtons.Location = new System.Drawing.Point(3, 198);
-            this.tlpButtons.Name = "tlpButtons";
-            this.tlpButtons.RowCount = 1;
-            this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpButtons.Size = new System.Drawing.Size(794, 54);
-            this.tlpButtons.TabIndex = 3;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Salmon;
-            this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(693, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(98, 48);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnKills
-            // 
-            this.btnKills.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnKills.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKills.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKills.Location = new System.Drawing.Point(595, 3);
-            this.btnKills.Name = "btnKills";
-            this.btnKills.Size = new System.Drawing.Size(92, 48);
-            this.btnKills.TabIndex = 3;
-            this.btnKills.Text = "All kill";
-            this.btnKills.UseVisualStyleBackColor = true;
-            this.btnKills.Click += new System.EventHandler(this.btnKills_Click);
-            // 
-            // btnAll
-            // 
-            this.btnAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAll.Location = new System.Drawing.Point(497, 3);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(92, 48);
-            this.btnAll.TabIndex = 2;
-            this.btnAll.Text = "All bright";
-            this.btnAll.UseVisualStyleBackColor = true;
-            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(301, 3);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(92, 48);
-            this.btnClear.TabIndex = 0;
-            this.btnClear.Text = "Clear s-test";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnSelfTest
-            // 
-            this.btnSelfTest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSelfTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelfTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelfTest.Location = new System.Drawing.Point(399, 3);
-            this.btnSelfTest.Name = "btnSelfTest";
-            this.btnSelfTest.Size = new System.Drawing.Size(92, 48);
-            this.btnSelfTest.TabIndex = 1;
-            this.btnSelfTest.Text = "Self-test";
-            this.btnSelfTest.UseVisualStyleBackColor = true;
-            this.btnSelfTest.Click += new System.EventHandler(this.btnSelfTest_Click);
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(3, 0);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(194, 54);
-            this.lblStatus.TabIndex = 5;
-            this.lblStatus.Text = "L POWER: 0 W\r\nR POWER: 0 W";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(203, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(92, 48);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // cbR16
             // 
             this.cbR16.AutoSize = true;
@@ -552,6 +418,24 @@
             this.cbR16.Text = "R16 = 000 W";
             this.cbR16.UseVisualStyleBackColor = true;
             this.cbR16.CheckedChanged += new System.EventHandler(this.RChanged);
+            // 
+            // modbusRTUCom1
+            // 
+            this.modbusRTUCom1.BaudRate = 9600;
+            this.modbusRTUCom1.DataBits = 8;
+            this.modbusRTUCom1.DisableSubscriptions = false;
+            this.modbusRTUCom1.EnableLogging = false;
+            this.modbusRTUCom1.IniFileName = "";
+            this.modbusRTUCom1.IniFileSection = null;
+            this.modbusRTUCom1.MaxReadGroupSize = 20;
+            this.modbusRTUCom1.Parity = System.IO.Ports.Parity.None;
+            this.modbusRTUCom1.PollRateOverride = 500;
+            this.modbusRTUCom1.PortName = "COM3";
+            this.modbusRTUCom1.StationAddress = ((byte)(1));
+            this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.One;
+            this.modbusRTUCom1.SwapBytes = true;
+            this.modbusRTUCom1.SwapWords = false;
+            this.modbusRTUCom1.TimeOut = 3000;
             // 
             // cbR15
             // 
@@ -822,6 +706,122 @@
             this.cbR1.Text = "R1 = 000 W";
             this.cbR1.UseVisualStyleBackColor = true;
             this.cbR1.CheckedChanged += new System.EventHandler(this.RChanged);
+            // 
+            // tlpButtons
+            // 
+            this.tlpButtons.ColumnCount = 7;
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpButtons.Controls.Add(this.btnClose, 6, 0);
+            this.tlpButtons.Controls.Add(this.btnKills, 5, 0);
+            this.tlpButtons.Controls.Add(this.btnAll, 4, 0);
+            this.tlpButtons.Controls.Add(this.btnClear, 2, 0);
+            this.tlpButtons.Controls.Add(this.btnSelfTest, 3, 0);
+            this.tlpButtons.Controls.Add(this.lblStatus, 0, 0);
+            this.tlpButtons.Controls.Add(this.btnSave, 1, 0);
+            this.tlpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpButtons.Location = new System.Drawing.Point(3, 198);
+            this.tlpButtons.Name = "tlpButtons";
+            this.tlpButtons.RowCount = 1;
+            this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpButtons.Size = new System.Drawing.Size(794, 54);
+            this.tlpButtons.TabIndex = 3;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Salmon;
+            this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(693, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(98, 48);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnKills
+            // 
+            this.btnKills.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnKills.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKills.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKills.Location = new System.Drawing.Point(595, 3);
+            this.btnKills.Name = "btnKills";
+            this.btnKills.Size = new System.Drawing.Size(92, 48);
+            this.btnKills.TabIndex = 3;
+            this.btnKills.Text = "All kill";
+            this.btnKills.UseVisualStyleBackColor = true;
+            this.btnKills.Click += new System.EventHandler(this.btnKills_Click);
+            // 
+            // btnAll
+            // 
+            this.btnAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAll.Location = new System.Drawing.Point(497, 3);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(92, 48);
+            this.btnAll.TabIndex = 2;
+            this.btnAll.Text = "All bright";
+            this.btnAll.UseVisualStyleBackColor = true;
+            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(301, 3);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(92, 48);
+            this.btnClear.TabIndex = 0;
+            this.btnClear.Text = "Clear s-test";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSelfTest
+            // 
+            this.btnSelfTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSelfTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelfTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelfTest.Location = new System.Drawing.Point(399, 3);
+            this.btnSelfTest.Name = "btnSelfTest";
+            this.btnSelfTest.Size = new System.Drawing.Size(92, 48);
+            this.btnSelfTest.TabIndex = 1;
+            this.btnSelfTest.Text = "Self-test";
+            this.btnSelfTest.UseVisualStyleBackColor = true;
+            this.btnSelfTest.Click += new System.EventHandler(this.btnSelfTest_Click);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(3, 0);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(194, 54);
+            this.lblStatus.TabIndex = 5;
+            this.lblStatus.Text = "L POWER: 0 W\r\nR POWER: 0 W";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(203, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(92, 48);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmLoadStatus
             // 
