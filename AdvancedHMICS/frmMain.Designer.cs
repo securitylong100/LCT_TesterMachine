@@ -583,7 +583,6 @@ namespace AdvancedHMICS
             this.lbl_speedrpm.TabIndex = 80;
             this.lbl_speedrpm.Text = "0.00";
             this.lbl_speedrpm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbl_speedrpm.TextChanged += new System.EventHandler(this.lbl_speedrpm_TextChanged);
             // 
             // avd_FWVolt
             // 
@@ -621,7 +620,6 @@ namespace AdvancedHMICS
             this.avd_FWVolt.ValuePrefix = null;
             this.avd_FWVolt.ValueSuffix = null;
             this.avd_FWVolt.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
-            this.avd_FWVolt.ValueChanged += new System.EventHandler(this.avd_FWVolt_ValueChanged);
             // 
             // modbusRTUCom1
             // 
@@ -1296,7 +1294,6 @@ namespace AdvancedHMICS
             this.avd_FWcurr.ValuePrefix = null;
             this.avd_FWcurr.ValueSuffix = null;
             this.avd_FWcurr.VisibleControl = AdvancedHMIControls.AnalogValueDisplay.VisibleControlEnum.Always;
-            this.avd_FWcurr.ValueChanged += new System.EventHandler(this.avd_FWcurr_ValueChanged);
             // 
             // avd_rotspdmod
             // 
@@ -1931,6 +1928,7 @@ namespace AdvancedHMICS
             // 
             // timerLoad
             // 
+            this.timerLoad.Enabled = true;
             this.timerLoad.Interval = 1000;
             this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
             // 
