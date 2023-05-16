@@ -11,29 +11,12 @@ namespace AdvancedHMICS
         //public const string ON_BITS = "1111 1111 1111 111";
         //public const string OFF_BITS = "0000 0000 0000 0000";
         public char[] RBits { get; }
-        public char[] LBits { get; }
-
         public CheckBox[] RList { get; }
         public int RPower { get; private set; }
-
-        public CheckBox[] LoadList { get; }
-        public int LPower { get; private set; }
-
         public frmLoadStatus()
         {
             InitializeComponent();
             RBits = new char[]
-            {
-                // 0    // 1    // 2    // 3
-                '0',    '0',    '0',    '0',
-                // 4    // 5    // 6    // 7
-                '0',    '0',    '0',    '0',
-                // 8    // 9    // 10   // 11
-                '0',    '0',    '0',    '0',
-                // 12   // 13   // 14   // 15
-                '0',    '0',    '0',    '0',
-            };
-            LBits = new char[]
             {
                 // 0    // 1    // 2    // 3
                 '0',    '0',    '0',    '0',
@@ -55,24 +38,12 @@ namespace AdvancedHMICS
                 // 12   // 13   // 14   // 15
                 cbR13,  cbR14,  cbR15,  cbR16,
             };
-            LoadList = new CheckBox[]
-            {
-                // 0        // 1        // 2        // 3
-                cbLoad1,    cbLoad2,    cbLoad3,    cbLoad4,
-                // 4        // 5        // 6        // 7
-                cbLoad5,    cbLoad6,    cbLoad7,    cbLoad8,
-                // 8        // 9        // 10       // 11
-                cbLoad9,    cbLoad10,   cbLoad11,   cbLoad12,
-                // 12       // 13       // 14       // 15
-                cbLoad13,   cbLoad14,   cbLoad15,   cbLoad16,
-            };
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 16; i++)
             {
-                LBits[i] = '0';
                 RBits[i] = '0';
             }
         }
@@ -107,27 +78,18 @@ namespace AdvancedHMICS
         {
             try
             {
-                string rBits = string.Join("", RBits);
-                string lBits = string.Join("", LBits);
-                sqlite sqlite_ = new sqlite();
-                string sql = $@"UPDATE m_loadstatus SET r_bits='{rBits}',l_power='{LPower}' WHERE l_bits='{lBits}';
-                                INSERT INTO m_loadstatus (l_bits, r_bits, l_power) SELECT '{lBits}','{rBits}','{LPower}'
-                                WHERE NOT EXISTS(SELECT 1 FROM m_loadstatus WHERE l_bits='{lBits}');";
-                sqlite_.ExeNonQuery_auto(sql);
-                MessageBox.Show($"Update load success!\nPOWER: {LPower}\nR: {rBits}");
+                //string rBits = string.Join("", RBits);
+                //sqlite sqlite_ = new sqlite();
+                //string sql = $@"UPDATE m_loadstatus SET r_bits='{rBits}',l_power='{LPower}' WHERE l_bits='{lBits}';
+                //                INSERT INTO m_loadstatus (l_bits, r_bits, l_power) SELECT '{lBits}','{rBits}','{LPower}'
+                //                WHERE NOT EXISTS(SELECT 1 FROM m_loadstatus WHERE l_bits='{lBits}');";
+                //sqlite_.ExeNonQuery_auto(sql);
+                //MessageBox.Show($"Update load success!\nPOWER: {LPower}\nR: {rBits}");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
-        }
-
-        private void LoadChanged(object sender, EventArgs e)
-        {
-            var cb = sender as CheckBox;
-            LBits[cb.TabIndex-1] = cb.Checked ? '1' : '0';
-            LPower = GetPower(LoadList).Sum();
-            lblStatus.Text = $"L POWER: {LPower} W\nR POWER: {RPower} W";
         }
 
         private void RChanged(object sender, EventArgs e)
@@ -136,7 +98,7 @@ namespace AdvancedHMICS
             RBits[cb.TabIndex-1] = cb.Checked ? '1' : '0';
             cb.ComComponent.Write(cb.PLCAddressCheckChanged, RBits[cb.TabIndex-1].ToString());
             RPower = GetPower(RList).Sum();
-            lblStatus.Text = $"L POWER: {LPower} W\nR POWER: {RPower} W";
+            lblStatus.Text = $"POWER: {RPower} W";
         }
 
         public void CheckBits(string loadbits)
@@ -147,7 +109,7 @@ namespace AdvancedHMICS
                 {
                     loadbits = "0000000000000000";
                 }
-                string sqlmodel = $"select r_bits from m_loadstatus where l_bits='{loadbits}' order by l_bits";
+                string sqlmodel = $"select r_bits from m_loadstatus where l_bits='{loadbits}' order by l_power";
                 sqlite sqlite_ = new sqlite();
                 string data = sqlite_.ExecuteScalarString(sqlmodel);
                 if (string.IsNullOrWhiteSpace(data))
@@ -159,7 +121,6 @@ namespace AdvancedHMICS
                 for (int i = 0; i < 16; i++)
                 {
                     RList[i].Checked = data.Length == 16 && data[i] == '1';
-                    LoadList[i].Checked = loadbits.Length == 16 && loadbits[i] == '1';
                 }
             }
             catch (Exception ex)

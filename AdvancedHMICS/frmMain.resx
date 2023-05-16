@@ -122,13 +122,13 @@
   </metadata>
   <assembly alias="MfgControl.AdvancedHMI.Drivers" name="MfgControl.AdvancedHMI.Drivers, Version=3.99.19.2, Culture=neutral, PublicKeyToken=null" />
   <data name="avd_voltage.PLCAddressValue" type="MfgControl.AdvancedHMI.Drivers.PLCAddressItem, MfgControl.AdvancedHMI.Drivers">
-    <value>L44097</value>
+    <value>44097</value>
   </data>
   <data name="avd_current.PLCAddressValue" type="MfgControl.AdvancedHMI.Drivers.PLCAddressItem, MfgControl.AdvancedHMI.Drivers">
-    <value>L44099</value>
+    <value>44099</value>
   </data>
   <data name="avd_frequency.PLCAddressValue" type="MfgControl.AdvancedHMI.Drivers.PLCAddressItem, MfgControl.AdvancedHMI.Drivers">
-    <value>L44105</value>
+    <value>44105</value>
   </data>
   <metadata name="gc_main.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>14, 14</value>

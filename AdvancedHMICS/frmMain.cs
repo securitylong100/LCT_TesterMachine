@@ -29,23 +29,6 @@ namespace AdvancedHMICS
         private const int TIME_OUT = 30;
         private const float FIXED_RES = 0.3f; //dơn vị là ôm.
 
-        //private double _dSpeed = 0;
-        //private double _dModRPM = 0;
-        //private double _dMaxRPM = 0;
-        //private double _dMinRPM = 0;
-        //private double _dPidStop = 0;
-        //private double _dNoloadRPM = 0;
-        //private double _dMinLimitRPM = 0;
-        //private double _dMaxLimitRPM = 0;
-        //private double _dMaxLimitCurr = 0;
-        //private double _dMinLimitCurr = 0;
-        //private double _dMaxLimitVolt = 0;
-        //private double _dMinLimitVolt = 0;
-        //private double _dMaxLimitFreq = 0;
-        //private double _dMinLimitFreq = 0;
-        //private double _dMaxLimitFluc = 0;
-        //private double _dMinLimitFluc = 0;
-
         private int _iTimeOut = 0;
         private int _iCounter = 0;
         private int _iLoadTime = 0;
@@ -69,10 +52,6 @@ namespace AdvancedHMICS
         private readonly frmSettingModel _frmModels = new frmSettingModel();
         private readonly frmSettingOrder _frmOrders = new frmSettingOrder();
         private readonly frmPLCValueRealtime _frmPlc = new frmPLCValueRealtime();
-
-        //private readonly AnalogValueDisplay _avdVoltage = new AnalogValueDisplay();
-        //private readonly AnalogValueDisplay _avdCurrent = new AnalogValueDisplay();
-        //private readonly AnalogValueDisplay _avdFrequency = new AnalogValueDisplay();
 
         // Khai báo kết nối PLC
         private readonly ActUtlType _plc = new ActUtlType();
@@ -106,13 +85,11 @@ namespace AdvancedHMICS
 
         private float _fTorque = 0;
         private float _fPidStop = 0;
-
         #endregion
         #region --- KHỞI TẠO ---
         public frmMain()
         {
             InitializeComponent();
-            //DefinePLCControls();
             DefineResultTable();
             _plc.ActLogicalStationNumber = 1;
             gv_main.OptionsBehavior.ReadOnly = true;
@@ -225,21 +202,6 @@ namespace AdvancedHMICS
             gv_main.Columns["datimeregister"].Caption = "";
             gv_main.Columns["ck_pid_stop"].Caption = "PID Stop";
         }
-
-        //private void DefinePLCControls()
-        //{
-        //    _avdVoltage.ComComponent = modbusRTUCom1;
-        //    _avdVoltage.PLCAddressValue = new PLCAddressItem("44097", 1);
-        //    _avdVoltage.ValueChanged += avd_voltage_ValueChanged;
-
-        //    _avdCurrent.ComComponent = modbusRTUCom1;
-        //    _avdCurrent.PLCAddressValue = new PLCAddressItem("44099", 1);
-        //    _avdCurrent.ValueChanged += avd_current_ValueChanged;
-
-        //    _avdFrequency.ComComponent = modbusRTUCom1;
-        //    _avdFrequency.PLCAddressValue = new PLCAddressItem("44105", 1);
-        //    _avdFrequency.ValueChanged += avd_frequency_ValueChanged;
-        //}
         #endregion
         #region --- SỰ KIỆN ---
         private void frmMain_Load(object sender, EventArgs e)
@@ -440,8 +402,8 @@ namespace AdvancedHMICS
                     {
                         reatedPower = 0;
                     }
-                    double minPower = reatedPower * 0.95;
-                    double maxPower = reatedPower * 1.05;
+                    double minPower = reatedPower * 0.99;
+                    double maxPower = reatedPower * 1.01;
                     _fPidStop = reatedPower == _fActualPower
                         ? 100 : (reatedPower == 0 ? 0 : (_fActualPower / reatedPower) * 100);
                     if (_fActualPower < minPower)
@@ -463,7 +425,7 @@ namespace AdvancedHMICS
                     {
                         EndTest(true);
                     }
-                    lbl_pidStop.Text = $"{_fPidStop:0.##}";
+                    lbl_adj_value.Text = $"{_fPidStop:0.##}";
                 }
             }
             finally
@@ -518,7 +480,7 @@ namespace AdvancedHMICS
                     default:
                         break;
                 }
-                lbl_pidStop.Text = "0.00";
+                lbl_adj_value.Text = "0.00";
                 lbl_pcStep.Text = _iCurrStep.ToString();
                 lbl_steadyT.Text = _iLoadTime.ToString();
                 lbl_status_automanual.BackColor = Color.Green;
@@ -533,9 +495,9 @@ namespace AdvancedHMICS
             btn_75.BackColor = Color.LightGray;
             btn_90.BackColor = Color.LightGray;
             btn_100.BackColor = Color.LightGray;
-            btn_autoload.BackColor = Color.Red;
             lbl_status_automanual.Text = "Manual";
             lbl_status_automanual.BackColor = Color.LightGray;
+            btn_autoload.BackColor = _isAuto ? Color.Green : Color.Red;
         }
 
         /// <summary>
@@ -702,7 +664,7 @@ namespace AdvancedHMICS
                 dr["linecd"] = ClsVariables.Line;
                 dr["machinecd"] = ClsVariables.Machine;
                 dr["datimeregister"] = test_time.ToDtString();
-                dr["ck_pid_stop"] = lbl_pidStop.Text;
+                dr["ck_pid_stop"] = lbl_adj_value.Text;
                 _dtResult.Rows.Add(dr);
                 _drStepData = null;
             }
@@ -1106,16 +1068,18 @@ namespace AdvancedHMICS
                 _fTorque = _fSpeed != 0 ? _fVolt * _fCurrent * 9.95f / _fSpeed : 0;
                 #endregion
                 #region --- Cập nhật giao diện ---
-                avd_frequency.Text = $"{_fFreq:N2}";
-                avd_FWVolt.Text = $"{_fDcVolt:N2}";
-                avd_voltage.Text = $"{_fVolt:N2}";
-                avd_current.Text = $"{_fCurrent:N2}";
-                avd_DCpower.Text = $"{_fDcPower:N2}";
-                avd_FWcurr.Text = $"{_fDcCurrent:N2}";
-                avd_electricP.Text = $"{_fActualPower:N3}";
-                avd_rotspdmod.Text = $"{_fModSpeed:N2}";
-                avd_torque.Text = $"{_fTorque:N3}";
-                lbl_speedrpm.Text = $"{_fSpeed:N2}";
+                avd_voltage.Text = $"{_fVolt:0.0}";
+                avd_current.Text = $"{_fCurrent:0.00}";
+                avd_electricP.Text = $"{_fActualPower:0.000}";
+                avd_FWVolt.Text = $"{_fDcVolt:0.0}";
+
+                avd_DCpower.Text = $"{_fDcPower:0}";
+                avd_torque.Text = $"{_fTorque:0.00}";
+
+                avd_rotspdmod.Text = $"{_fModSpeed:0.00}";
+                avd_frequency.Text = $"{_fFreq:0.0}";
+                avd_FWcurr.Text = $"{_fDcCurrent:0.0}";
+                lbl_speedrpm.Text = $"{_fSpeed}";
                 lbl_actualP.Text = avd_electricP.Text;
                 #endregion
             }

@@ -65,6 +65,10 @@ namespace AdvancedHMICS.Class
 
         public static float ToFloat(this UInt32 uint32Value)
         {
+            if (uint32Value == 0)
+            {
+                return 0;
+            }
             MyUnion u = new MyUnion();
             MyUnion w = new MyUnion();
             u.int32Value = uint32Value;
