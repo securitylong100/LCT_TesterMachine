@@ -1,5 +1,4 @@
-﻿using AdvancedHMICS.Class;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,23 +9,11 @@ namespace AdvancedHMICS
     {
         //public const string ON_BITS = "1111 1111 1111 111";
         //public const string OFF_BITS = "0000 0000 0000 0000";
-        public char[] RBits { get; }
         public CheckBox[] RList { get; }
         public int RPower { get; private set; }
         public frmLoadStatus()
         {
             InitializeComponent();
-            RBits = new char[]
-            {
-                // 0    // 1    // 2    // 3
-                '0',    '0',    '0',    '0',
-                // 4    // 5    // 6    // 7
-                '0',    '0',    '0',    '0',
-                // 8    // 9    // 10   // 11
-                '0',    '0',    '0',    '0',
-                // 12   // 13   // 14   // 15
-                '0',    '0',    '0',    '0',
-            };
             RList = new CheckBox[]
             {
                 // 0    // 1    // 2    // 3
@@ -40,24 +27,11 @@ namespace AdvancedHMICS
             };
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 16; i++)
-            {
-                RBits[i] = '0';
-            }
-        }
-
-        private void btnSelfTest_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAll_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < 16; i++)
             {
-                RBits[i] = '1';
+                RList[i].Checked = true;
             }
         }
 
@@ -65,7 +39,7 @@ namespace AdvancedHMICS
         {
             for (int i = 0; i < 16; i++)
             {
-                RBits[i] = '0';
+                RList[i].Checked = false;
             }
         }
 
@@ -94,33 +68,25 @@ namespace AdvancedHMICS
 
         private void RChanged(object sender, EventArgs e)
         {
-            var cb = sender as AdvancedHMIControls.CheckBox;
-            RBits[cb.TabIndex-1] = cb.Checked ? '1' : '0';
-            cb.ComComponent.Write(cb.PLCAddressCheckChanged, RBits[cb.TabIndex-1].ToString());
+            AdvancedHMIControls.CheckBox cb = sender as AdvancedHMIControls.CheckBox;
+            string value = cb.Checked ? "1" : "0";
+            cb.ComComponent.Write(cb.PLCAddressCheckChanged, value);
             RPower = GetPower(RList).Sum();
             lblStatus.Text = $"POWER: {RPower} W";
         }
 
-        public void CheckBits(string loadbits)
+        public void CheckBits(string rbits)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(loadbits))
+                rbits = rbits.Replace(" ", "");
+                if (rbits.Length < 16 || string.IsNullOrWhiteSpace(rbits))
                 {
-                    loadbits = "0000000000000000";
+                    rbits = "0000000000000000";
                 }
-                string sqlmodel = $"select r_bits from m_loadstatus where l_bits='{loadbits}' order by l_power";
-                sqlite sqlite_ = new sqlite();
-                string data = sqlite_.ExecuteScalarString(sqlmodel);
-                if (string.IsNullOrWhiteSpace(data))
-                {
-                    data = "0000000000000000";
-                }
-                data = data.Replace(" ", "");
-                loadbits = loadbits.Replace(" ", "");
                 for (int i = 0; i < 16; i++)
                 {
-                    RList[i].Checked = data.Length == 16 && data[i] == '1';
+                    RList[i].Checked = rbits[i] == '1';
                 }
             }
             catch (Exception ex)

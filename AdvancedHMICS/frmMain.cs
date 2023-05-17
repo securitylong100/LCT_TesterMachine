@@ -28,9 +28,13 @@ namespace AdvancedHMICS
 
         private const int TIME_OUT = 30;
         private const float FIXED_RES = 0.3f; //dơn vị là ôm.
+        private static readonly object _lock = new object();
 
         private int _iTimeOut = 0;
         private int _iCounter = 0;
+        /// <summary>
+        /// ck_LoadTime
+        /// </summary>
         private int _iLoadTime = 0;
         private int _iCurrStep = 0;
         private int _iSteps = STEPS;
@@ -38,11 +42,13 @@ namespace AdvancedHMICS
 
         private bool _isRun = false;
         private bool _isAuto = false;
+        private bool _isAdjusted = false;
         private bool _isPlcConnected = false;
 
         private string _logFile;
 
         private DataRow _drStepData;
+        private DataTable _dtRelays = new DataTable();
         private readonly DataTable _dtResult = new DataTable();
 
         private readonly frmData _frmData = new frmData();
@@ -57,16 +63,34 @@ namespace AdvancedHMICS
         private readonly ActUtlType _plc = new ActUtlType();
 
         private float _fFreq = 0;
+        /// <summary>
+        /// ck_Max_frequency
+        /// </summary>
         private float _fUperFreq = 0;
+        /// <summary>
+        /// ck_Min_frequency
+        /// </summary>
         private float _fLowerFreq = 0;
 
         private float _fVolt = 0;
+        /// <summary>
+        /// ck_Max_VolGenerator
+        /// </summary>
         private float _fUperVolt = 0;
+        /// <summary>
+        /// ck_Min_VolGenerator
+        /// </summary>
         private float _fLowerVolt = 0;
         private float _fDcVolt = 0;
 
         private float _fCurrent = 0;
+        /// <summary>
+        /// ck_Max_Generator
+        /// </summary>
         private float _fUperCurrent = 0;
+        /// <summary>
+        /// ck_Min_Generator
+        /// </summary>
         private float _fLowerCurrent = 0;
         private float _fDcCurrent = 0;
 
@@ -76,15 +100,29 @@ namespace AdvancedHMICS
         private float _fSpeed = 0;
         private float _fMaxSpeed = 0;
         private float _fMinSpeed = 0;
+        /// <summary>
+        /// ck_Max_Noloadlimitspeed
+        /// </summary>
         private float _fUperSpeed = 0;
+        /// <summary>
+        /// ck_Min_Noloadlimitspeed
+        /// </summary>
         private float _fLowerSpeed = 0;
         private float _fNoLoadSpeed = 0;
         private float _fModSpeed = 0;
+        /// <summary>
+        /// ck_Max_fluctuationspeed
+        /// </summary>
         private float _fUperModlSpeed = 0;
+        /// <summary>
+        /// ck_Min_fluctuationspeed
+        /// </summary>
         private float _fLowerModSpeed = 0;
 
         private float _fTorque = 0;
         private float _fPidStop = 0;
+        private float _fAdjust = 0;
+        private float _fLoadPower = 0;
         #endregion
         #region --- KHỞI TẠO ---
         public frmMain()
@@ -366,67 +404,6 @@ namespace AdvancedHMICS
             try
             {
                 CalcValues();
-                if (_isRun)
-                {
-                    if (_iCounter == _iLoadTime)
-                    {
-                        _fMinSpeed = _fSpeed;
-                        _fMaxSpeed = _fSpeed;
-                    }
-                    // Điều kiện kiểm tra (nếu không đạt điều kiện thì sẽ đợi)
-                    if (_iCurrStep > 0
-                        && (_fLowerSpeed <= _fSpeed && _fUperSpeed >= _fSpeed)
-                        && (_fLowerModSpeed <= _fModSpeed && _fModSpeed <= _fUperModlSpeed)
-                        && (_fLowerVolt <= _fVolt && _fVolt <= _fUperVolt)
-                        && (_fLowerCurrent <= _fCurrent && _fCurrent <= _fUperCurrent)
-                        && (_fLowerFreq <= _fFreq && _fFreq <= _fUperFreq))
-                    {
-                        _iCounter--;
-                        // Với các step > 1 thì tính mod speed
-                        if (_iCurrStep > 1)
-                        {
-                            if (_fSpeed < _fMinSpeed)
-                            {
-                                _fMinSpeed = _fSpeed;
-                            }
-                            if (_fSpeed > _fMaxSpeed)
-                            {
-                                _fMaxSpeed = _fSpeed;
-                            }
-                            _fModSpeed = Math.Abs(_fMinSpeed - _fMaxSpeed);
-                            _fModSpeed = _fModSpeed / _fNoLoadSpeed * 100;
-                        }
-
-                    }
-                    if (!float.TryParse(lbl_rated_P.Text, out float reatedPower))
-                    {
-                        reatedPower = 0;
-                    }
-                    double minPower = reatedPower * 0.99;
-                    double maxPower = reatedPower * 1.01;
-                    _fPidStop = reatedPower == _fActualPower
-                        ? 100 : (reatedPower == 0 ? 0 : (_fActualPower / reatedPower) * 100);
-                    if (_fActualPower < minPower)
-                    {
-                        // Đếm 20s trước khi xác định lại số lần test
-                        _iTimeOut--;
-                        _iCounter = _iLoadTime;
-                        if (_iTimeOut < 1)
-                        {
-                            _iMaxNG--;
-                        }
-                    }
-                    if (_fActualPower > maxPower || _iMaxNG < 0)
-                    {
-                        EndTest(false);
-                        return;
-                    }
-                    if (_iCounter < 1)
-                    {
-                        EndTest(true);
-                    }
-                    lbl_adj_value.Text = $"{_fPidStop:0.##}";
-                }
             }
             finally
             {
@@ -523,26 +500,28 @@ namespace AdvancedHMICS
             try
             {
                 if (Checkinput() == false || CheckPressure() == false) return;
+                // Tải thông số kiểm tra của step
                 _drStepData = GetMasterStep(step);
+
                 if (!int.TryParse(_drStepData["ck_LoadTime"]?.ToString(), out int loadTime))
                 {
                     loadTime = 0;
                 }
                 _iLoadTime = loadTime;
                 _iCounter = _iLoadTime;
-
+                #region --- SPEED LIMIT ---
                 if (!float.TryParse(_drStepData["ck_Min_Noloadlimitspeed"]?.ToString(), out float minRPM))
                 {
                     minRPM = 0;
                 }
-
                 _fLowerSpeed = minRPM;
+
                 if (!float.TryParse(_drStepData["ck_Max_Noloadlimitspeed"]?.ToString(), out float maxRPM))
                 {
                     maxRPM = 0;
                 }
                 _fUperSpeed = maxRPM;
-
+                #endregion
                 #region --- CURRENT LIMIT ---
                 if (!float.TryParse(_drStepData["ck_Min_Generator"]?.ToString(), out float minCurr))
                 {
@@ -603,10 +582,28 @@ namespace AdvancedHMICS
                 _fSpeed = 0;
                 _fMaxSpeed = 0;
                 _fMinSpeed = 0;
+                _fPidStop = 0;
+                _fAdjust = 0;
                 _iMaxNG = MAX_NG;
                 _iCurrStep = step;
                 _iTimeOut = TIME_OUT;
-                _frmLoad.CheckBits(_drStepData["ck_load"]?.ToString());
+                _isAdjusted = false;
+                // Lấy bộ relay tương ứng tải
+                _fLoadPower = 0;
+                string ckLoad = _drStepData["ck_load"]?.ToString();
+                _dtRelays = GetRelays(ckLoad);
+                if (_dtRelays.Rows.Count > 0)
+                {
+                    // Chạy bộ tải mặc định
+                    foreach (DataRow dataRow in _dtRelays.Rows)
+                    {
+                        if (ckLoad == dataRow["l_power"]?.ToString())
+                        {
+                            string rbits = dataRow["r_bits"]?.ToString();
+                            _frmLoad.CheckBits(rbits);
+                        }
+                    }
+                }
                 SetTestStatus(true);
             }
             catch (Exception ex)
@@ -664,7 +661,7 @@ namespace AdvancedHMICS
                 dr["linecd"] = ClsVariables.Line;
                 dr["machinecd"] = ClsVariables.Machine;
                 dr["datimeregister"] = test_time.ToDtString();
-                dr["ck_pid_stop"] = lbl_adj_value.Text;
+                dr["ck_pid_stop"] = _fPidStop.ToString();
                 _dtResult.Rows.Add(dr);
                 _drStepData = null;
             }
@@ -1002,6 +999,177 @@ namespace AdvancedHMICS
         #endregion
 
         #region --- 20230515 ---
+        private void CalcValues()
+        {
+            lock (_lock)
+            {
+                try
+                {
+                    #region --- Đọc giá trị DC voltage ---
+                    _fDcVolt = 0;
+                    if (_isPlcConnected)
+                    {
+                        _plc.GetDevice2("D10", out short shortD10); // đọc lên giá trị từ miền nhớ
+                        _fDcVolt = Convert.ToSingle(shortD10);
+                    }
+                    #endregion
+                    #region --- Đọc giá trị voltage ---
+                    _fVolt = 0;
+                    if (UInt32.TryParse(avd_voltage.Value, out UInt32 intVolt))
+                    {
+                        _fVolt = intVolt.ToFloat();
+                    }
+                    #endregion
+                    #region --- Đọc giá trị current ---
+                    _fCurrent = 0;
+                    if (UInt32.TryParse(avd_current.Value, out UInt32 intCurrent))
+                    {
+                        _fCurrent = intCurrent.ToFloat() * 20;
+                    }
+                    #endregion
+                    #region --- Đọc giá trị frequency ---
+                    _fFreq = 0;
+                    if (UInt32.TryParse(avd_frequency.Value, out UInt32 intFreq))
+                    {
+                        _fFreq = intFreq.ToFloat();
+                    }
+                    #endregion
+                    #region --- Tính tỉ lệ PID stop và adjusting ---
+                    if (!float.TryParse(lbl_rated_P.Text, out float reatedPower))
+                    {
+                        reatedPower = 0;
+                    }
+                    if (!float.TryParse(lbl_targetP.Text, out float targetPower))
+                    {
+                        targetPower = 0;
+                    }
+                    double minPower = reatedPower * 0.99;
+                    double maxPower = reatedPower * 1.01;
+                    _fPidStop = reatedPower == _fActualPower
+                        ? 100 : (reatedPower == 0 ? 0 : (_fActualPower / reatedPower) * 100);
+                    _fAdjust = targetPower == 0 ? 0 : (_fActualPower / targetPower) * 100;
+                    #endregion
+                    #region --- Tính toán các giá trị còn lại ---
+                    _fDcPower = _fDcVolt * _fDcCurrent;
+                    _fSpeed = 60 * _fFreq / SO_CAP_CUC;
+                    _fDcCurrent = _fDcVolt / FIXED_RES;
+                    _fActualPower = (_fVolt * _fCurrent) / 1000;
+                    _fTorque = _fSpeed != 0 ? _fVolt * _fCurrent * 9.95f / _fSpeed : 0;
+                    #endregion
+                    #region --- Tính toán khi đang test ---
+                    if (_isRun)
+                    {
+                        if (!float.TryParse(_drStepData["ck_load"]?.ToString(), out float fCkLoad))
+                        {
+                            fCkLoad = 0;
+                        }
+                        if (_iCounter == _iLoadTime)
+                        {
+                            _fMinSpeed = _fSpeed;
+                            _fMaxSpeed = _fSpeed;
+                        }
+                        // Điều kiện kiểm tra (nếu không đạt điều kiện thì sẽ đợi)
+                        if (_iCurrStep > 0
+                            && _fSpeed >= _fLowerSpeed
+                            && _fSpeed <= _fUperSpeed
+                            && _fModSpeed >= _fLowerModSpeed
+                            && _fModSpeed <= _fUperModlSpeed
+                            && _fVolt >= _fLowerVolt
+                            && _fVolt <= _fUperVolt
+                            && _fCurrent >= _fLowerCurrent
+                            && _fCurrent <= _fUperCurrent
+                            && _fFreq >= _fLowerFreq
+                            && _fFreq <= _fUperFreq
+                            && _fActualPower >= minPower
+                            && _fActualPower <= maxPower)
+                        {
+                            _isAdjusted = true;
+                            _iCounter--;
+                            // Với các step > 1 thì tính mod speed
+                            if (_iCurrStep > 1)
+                            {
+                                if (_fSpeed < _fMinSpeed)
+                                {
+                                    _fMinSpeed = _fSpeed;
+                                }
+                                if (_fSpeed > _fMaxSpeed)
+                                {
+                                    _fMaxSpeed = _fSpeed;
+                                }
+                                _fModSpeed = Math.Abs(_fMinSpeed - _fMaxSpeed);
+                                _fModSpeed = _fModSpeed / _fNoLoadSpeed * 100;
+                            }
+                            if (_iCounter < 1)
+                            {
+                                EndTest(true);
+                                return;
+                            }
+                        }
+                        else if (_fActualPower < minPower)
+                        {
+                            for (int r = 0; r < _dtRelays.Rows.Count; r++)
+                            {
+                                if (float.TryParse(_dtRelays.Rows[r]["l_power"]?.ToString(),
+                                    out float fPower) && fPower != fCkLoad && fPower > _fLoadPower)
+                                {
+                                    _fLoadPower = fPower;
+                                    string rbits = _dtRelays.Rows[r]["r_bits"]?.ToString();
+                                    _frmLoad.CheckBits(rbits);
+                                    break;
+                                }
+                            }
+                            // Đếm 30s trước khi xác định lại số lần test
+                            _iTimeOut--;
+                            _iCounter = _iLoadTime;
+                            if (_iTimeOut < 1)
+                            {
+                                _iMaxNG--;
+                            }
+                        }
+                        else if (_fActualPower > maxPower || _iMaxNG < 0)
+                        {
+                            for (int r = _dtRelays.Rows.Count - 1; r > -1; r--)
+                            {
+                                if (float.TryParse(_dtRelays.Rows[r]["l_power"]?.ToString(),
+                                    out float fPower) && fPower != fCkLoad && fPower < _fLoadPower)
+                                {
+                                    _fLoadPower = fPower;
+                                    string rbits = _dtRelays.Rows[r]["r_bits"]?.ToString();
+                                    _frmLoad.CheckBits(rbits);
+                                    break;
+                                }
+                            }
+                            EndTest(false);
+                            return;
+                        }
+                    }
+                    #endregion
+                }
+                catch { }
+                finally
+                {
+                    #region --- Cập nhật giao diện ---
+                    avd_voltage.Text = $"{_fVolt:0.0}";
+                    avd_current.Text = $"{_fCurrent:0.00}";
+                    avd_electricP.Text = $"{_fActualPower:0.000}";
+                    avd_FWVolt.Text = $"{_fDcVolt:0.0}";
+
+                    avd_DCpower.Text = $"{_fDcPower:0}";
+                    avd_torque.Text = $"{_fTorque:0.00}";
+
+                    avd_rotspdmod.Text = $"{_fModSpeed:0.00}";
+                    avd_frequency.Text = $"{_fFreq:0.0}";
+                    avd_FWcurr.Text = $"{_fDcCurrent:0.0}";
+                    lbl_speedrpm.Text = $"{_fSpeed}";
+                    lbl_actualP.Text = avd_electricP.Text;
+                    lbl_adj_value.Text = $"{_fAdjust:0.##}";
+                    lbl_adj.Text = _isAdjusted ? "Adjusted" : "Adjusting";
+                    lbl_adj.BackColor = _isAdjusted ? Color.Green : Color.LightGray;
+                    #endregion
+                }
+            }
+        }
+
         private bool CheckPressure()
         {
             try
@@ -1027,63 +1195,13 @@ namespace AdvancedHMICS
             return false;
         }
 
-        private void CalcValues()
+        private DataTable GetRelays(string ckload)
         {
-            try
-            {
-                #region --- Đọc giá trị DC voltage ---
-                _fDcVolt = 0;
-                if (_isPlcConnected)
-                {
-                    _plc.GetDevice2("D10", out short shortD10); // đọc lên giá trị từ miền nhớ
-                    _fDcVolt = Convert.ToSingle(shortD10);
-                }
-                #endregion
-                #region --- Đọc giá trị voltage ---
-                _fVolt = 0;
-                if (UInt32.TryParse(avd_voltage.Value, out UInt32 intVolt))
-                {
-                    _fVolt = intVolt.ToFloat();
-                }
-                #endregion
-                #region --- Đọc giá trị current ---
-                _fCurrent = 0;
-                if (UInt32.TryParse(avd_current.Value, out UInt32 intCurrent))
-                {
-                    _fCurrent = intCurrent.ToFloat() * 20;
-                }
-                #endregion
-                #region --- Đọc giá trị frequency ---
-                _fFreq = 0;
-                if (UInt32.TryParse(avd_frequency.Value, out UInt32 intFreq))
-                {
-                    _fFreq = intFreq.ToFloat();
-                }
-                #endregion
-                #region --- Tính toán các giá trị còn lại ---
-                _fDcPower = _fDcVolt * _fDcCurrent;
-                _fSpeed = 60 * _fFreq / SO_CAP_CUC;
-                _fDcCurrent = _fDcVolt / FIXED_RES;
-                _fActualPower = (_fVolt * _fCurrent) / 1000;
-                _fTorque = _fSpeed != 0 ? _fVolt * _fCurrent * 9.95f / _fSpeed : 0;
-                #endregion
-                #region --- Cập nhật giao diện ---
-                avd_voltage.Text = $"{_fVolt:0.0}";
-                avd_current.Text = $"{_fCurrent:0.00}";
-                avd_electricP.Text = $"{_fActualPower:0.000}";
-                avd_FWVolt.Text = $"{_fDcVolt:0.0}";
-
-                avd_DCpower.Text = $"{_fDcPower:0}";
-                avd_torque.Text = $"{_fTorque:0.00}";
-
-                avd_rotspdmod.Text = $"{_fModSpeed:0.00}";
-                avd_frequency.Text = $"{_fFreq:0.0}";
-                avd_FWcurr.Text = $"{_fDcCurrent:0.0}";
-                lbl_speedrpm.Text = $"{_fSpeed}";
-                lbl_actualP.Text = avd_electricP.Text;
-                #endregion
-            }
-            catch { }
+            string sqlmodel = $"select l_power,ck_load,r_bits from m_loadstatus where ck_load='{ckload}' order by l_power";
+            DataTable dt = new DataTable();
+            sqlite sqlite_ = new sqlite();
+            sqlite_.SelectData(sqlmodel, ref dt);
+            return dt;
         }
         #endregion
     }
