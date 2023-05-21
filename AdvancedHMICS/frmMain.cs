@@ -18,27 +18,36 @@ namespace AdvancedHMICS
     public partial class frmMain : Form
     {
         #region --- Fields ---
-        private const int SO_CAP_CUC = 1;
-        private const int STEPS = 5;
-
         /// <summary>
-        /// Số lần NG tối đa cho phép
+        /// Số bước kiểm tra
+        /// </summary>
+        private const int STEPS = 5;
+        /// <summary>
+        /// Số lần NG trước khi xác nhận kết quả
         /// </summary>
         private const int MAX_NG = 3;
-
+        /// <summary>
+        /// Thời gian đợi trước 
+        /// </summary>
         private const int TIME_OUT = 30;
+        /// <summary>
+        /// Số cặp cực
+        /// </summary>
+        private const int SO_CAP_CUC = 1;
+        /// <summary>
+        /// Điện trở dùng để tính dòng DC
+        /// </summary>
         private const float FIXED_RES = 0.3f; //dơn vị là ôm.
-        private static readonly object _lock = new object();
 
-        private int _iTimeOut = 0;
-        private int _iCounter = 0;
+        private int _intTimeOut = 0;
+        private int _intCounter = 0;
         /// <summary>
         /// ck_LoadTime
         /// </summary>
-        private int _iLoadTime = 0;
-        private int _iCurrStep = 0;
-        private int _iSteps = STEPS;
-        private int _iMaxNG = MAX_NG;
+        private int _intLoadTime = 0;
+        private int _intCurrStep = 0;
+        private int _intMaxNG = MAX_NG;
+        private int _intMaxSteps = STEPS;
 
         private bool _isRun = false;
         private bool _isAuto = false;
@@ -48,16 +57,11 @@ namespace AdvancedHMICS
         private string _logFile;
 
         private DataRow _drStepData;
+        private DataTable _dtModel = new DataTable();
         private DataTable _dtRelays = new DataTable();
         private readonly DataTable _dtResult = new DataTable();
 
-        private readonly frmData _frmData = new frmData();
-        private readonly frmUser _frmUser = new frmUser();
         private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
-        private readonly frmQuerySQLite _frmSqlLite = new frmQuerySQLite();
-        private readonly frmSettingModel _frmModels = new frmSettingModel();
-        private readonly frmSettingOrder _frmOrders = new frmSettingOrder();
-        private readonly frmPLCValueRealtime _frmPlc = new frmPLCValueRealtime();
 
         // Khai báo kết nối PLC
         private readonly ActUtlType _plc = new ActUtlType();
@@ -81,7 +85,6 @@ namespace AdvancedHMICS
         /// ck_Min_VolGenerator
         /// </summary>
         private float _fLowerVolt = 0;
-        private float _fDcVolt = 0;
 
         private float _fCurrent = 0;
         /// <summary>
@@ -92,9 +95,10 @@ namespace AdvancedHMICS
         /// ck_Min_Generator
         /// </summary>
         private float _fLowerCurrent = 0;
-        private float _fDcCurrent = 0;
 
-        private float _fDcPower = 0;
+        /// <summary>
+        /// Công suất thực tế
+        /// </summary>
         private float _fActualPower = 0;
 
         private float _fSpeed = 0;
@@ -119,10 +123,11 @@ namespace AdvancedHMICS
         /// </summary>
         private float _fLowerModSpeed = 0;
 
-        private float _fTorque = 0;
-        private float _fPidStop = 0;
         private float _fAdjust = 0;
+        private float _fPidStop = 0;
+        private float _fCkLoad = 0;
         private float _fLoadPower = 0;
+        private float _fRatedPower = 0;
         #endregion
         #region --- KHỞI TẠO ---
         public frmMain()
@@ -240,8 +245,7 @@ namespace AdvancedHMICS
             gv_main.Columns["datimeregister"].Caption = "";
             gv_main.Columns["ck_pid_stop"].Caption = "PID Stop";
         }
-        #endregion
-        #region --- SỰ KIỆN ---
+
         private void frmMain_Load(object sender, EventArgs e)
         {
             try
@@ -254,65 +258,54 @@ namespace AdvancedHMICS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error :" + ex.Message);
+                MessageBox.Show($"Get list models fail.\n{ex.Message}", "Error",
+                    buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
             }
         }
-
+        #endregion
+        #region --- BẢNG ĐIỀU KHIỂN ---
         private void btn_user_Click(object sender, EventArgs e)
         {
-            _frmUser.ShowDialog();
+            frmUser frmUser = new frmUser();
+            frmUser.ShowDialog();
         }
 
         private void btn_data_Click(object sender, EventArgs e)
         {
-            _frmData.Show();
+            frmData frmData = new frmData();
+            frmData.Show();
         }
 
         private void btn_plcstatus_Click(object sender, EventArgs e)
         {
-            _frmPlc.ShowDialog();
+            frmPLCValueRealtime frmPlc = new frmPLCValueRealtime();
+            frmPlc.ShowDialog();
+        }
+
+        private void btn_querysqlite_Click(object sender, EventArgs e)
+        {
+            frmQuerySQLite frmSqlLite = new frmQuerySQLite();
+            frmSqlLite.ShowDialog();
+        }
+
+        private void btn_modelSetting_Click(object sender, EventArgs e)
+        {
+            frmSettingModel frmModels = new frmSettingModel();
+            frmModels.ShowDialog();
+        }
+
+        private void btn_settingorder_Click(object sender, EventArgs e)
+        {
+            frmSettingOrder frmOrders = new frmSettingOrder();
+            frmOrders.ShowDialog();
         }
 
         private void btn_loadStatus_Click(object sender, EventArgs e)
         {
             _frmLoad.Show();
         }
-
-        private void btn_querysqlite_Click(object sender, EventArgs e)
-        {
-            _frmSqlLite.ShowDialog();
-        }
-
-        private void btn_modelSetting_Click(object sender, EventArgs e)
-        {
-            _frmModels.ShowDialog();
-        }
-
-        private void btn_settingorder_Click(object sender, EventArgs e)
-        {
-            _frmOrders.ShowDialog();
-        }
-
-        private void avd_voltage_ValueChanged(object sender, EventArgs e)
-        {
-            CalcValues();
-        }
-
-        private void avd_current_ValueChanged(object sender, EventArgs e)
-        {
-            CalcValues();
-        }
-
-        private void avd_frequency_ValueChanged(object sender, EventArgs e)
-        {
-            CalcValues();
-        }
-
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            _plc.Close();
-        }
-
+        #endregion
+        #region --- DỮ LIỆU GRID ---
         private void Gv_main_CustomDrawCell(object sender, RowCellCustomDrawEventArgs e)
         {
             GridView View = sender as GridView;
@@ -329,154 +322,7 @@ namespace AdvancedHMICS
             }
         }
         #endregion
-        #region --- CHẾ ĐỘ TEST ---
-        private void btn_start_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                _dtResult.Rows.Clear();
-                if (Checkinput() == false || CheckPressure() == false) return;
-                if (_isPlcConnected)
-                {
-                    SetPLCStatus(false);
-                    _plc.Close();
-                    return;
-                }
-                SetPLCStatus(true);
-                _plc.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex.Message);
-            }
-        }
-
-        private void btn_manual_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!_isAuto)
-                {
-                    var btn = (Button)sender;
-                    if (int.TryParse(btn.Tag?.ToString(), out int step))
-                    {
-                        if (_isRun)
-                        {
-                            if (step == _iCurrStep) SetTestStatus(false);
-                            return;
-                        }
-                        StartTest(step);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex.Message);
-            }
-        }
-
-        private void btn_autoload_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_isRun)
-                {
-                    if (_isAuto)
-                    {
-                        _isAuto = false;
-                        SetTestStatus(false);
-                    }
-                    return;
-                }
-                _isAuto = true;
-                _dtResult.Rows.Clear();
-                _iSteps = GetTestSteps();
-                StartTest(1);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex.Message);
-            }
-        }
-
-        private void timerLoad_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                CalcValues();
-            }
-            finally
-            {
-                lbl_steadyT.Text = _iCounter.ToString();
-            }
-        }
-
-        private void SetPLCStatus(bool isConnect)
-        {
-            _isPlcConnected = isConnect;
-            btn_clear.Enabled = isConnect;
-            btn_record.Enabled = isConnect;
-            btn_export.Enabled = isConnect;
-            cbm_model.Enabled = !isConnect;
-            cbm_orderid.Enabled = !isConnect;
-            txt_barcode.ReadOnly = isConnect;
-            btn_autoload.Enabled = isConnect;
-            btn_plcstatus.Enabled = isConnect;
-            btn_deleterow.Enabled = isConnect;
-            btn_loadStatus.Enabled = isConnect;
-            btn_start.Text = isConnect ? "Running" : "Start/Run";
-            btn_start.BackColor = isConnect ? Color.Green : Color.Red;
-            btn_autoload.BackColor = isConnect ? Color.Red : Color.LightGray;
-            btn_plcstatus.BackColor = isConnect ? Color.Green : Color.LightGray;
-            btn_loadStatus.BackColor = isConnect ? Color.Green : Color.LightGray;
-        }
-
-        private void SetTestStatus(bool isRun)
-        {
-            _isRun = isRun;
-            btn_start.Enabled = !isRun;
-            if (isRun)
-            {
-                switch (_iCurrStep)
-                {
-                    case 1:
-                        btn_0.BackColor = Color.Green;
-                        break;
-                    case 2:
-                        btn_25.BackColor = Color.Green;
-                        break;
-                    case 3:
-                        btn_50.BackColor = Color.Green;
-                        break;
-                    case 4:
-                        btn_75.BackColor = Color.Green;
-                        break;
-                    case 5:
-                        btn_100.BackColor = Color.Green;
-                        break;
-                    default:
-                        break;
-                }
-                lbl_adj_value.Text = "0.00";
-                lbl_pcStep.Text = _iCurrStep.ToString();
-                lbl_steadyT.Text = _iLoadTime.ToString();
-                lbl_status_automanual.BackColor = Color.Green;
-                lbl_status_automanual.Text = _isAuto ? "AutoLoad" : "Manual";
-                lbl_rated_P.Text = _drStepData["ck_Steppower"]?.ToString();
-                return;
-            }
-            _frmLoad.CheckBits("0000000000000000");
-            btn_0.BackColor = Color.LightGray;
-            btn_25.BackColor = Color.LightGray;
-            btn_50.BackColor = Color.LightGray;
-            btn_75.BackColor = Color.LightGray;
-            btn_90.BackColor = Color.LightGray;
-            btn_100.BackColor = Color.LightGray;
-            lbl_status_automanual.Text = "Manual";
-            lbl_status_automanual.BackColor = Color.LightGray;
-            btn_autoload.BackColor = _isAuto ? Color.Green : Color.Red;
-        }
-
+        #region --- GIÁ TRỊ ĐO ---
         /// <summary>
         /// Kiểm tra đã chọn model hay chưa
         /// </summary>
@@ -491,199 +337,687 @@ namespace AdvancedHMICS
             return true;
         }
 
-        /// <summary>
-        /// Bắt đầu step theo step
-        /// </summary>
-        /// <param name="step"></param>
-        private void StartTest(int step)
+        private void UpdateValues()
         {
+            float fTorque_ = 0;
+            float fDcPower_ = 0;
+            float fDcCurrent_ = 0;
+            float fDcVolt_ = 0;
+            #region --- 1. Đọc giá trị voltage ---
             try
             {
-                if (Checkinput() == false || CheckPressure() == false) return;
-                // Tải thông số kiểm tra của step
-                _drStepData = GetMasterStep(step);
-
-                if (!int.TryParse(_drStepData["ck_LoadTime"]?.ToString(), out int loadTime))
+                _fVolt = 0;
+                if (UInt32.TryParse(avd_voltage.Value, out UInt32 intVolt))
                 {
-                    loadTime = 0;
+                    _fVolt = intVolt.ToFloat();
                 }
-                _iLoadTime = loadTime;
-                _iCounter = _iLoadTime;
-                #region --- SPEED LIMIT ---
-                if (!float.TryParse(_drStepData["ck_Min_Noloadlimitspeed"]?.ToString(), out float minRPM))
-                {
-                    minRPM = 0;
-                }
-                _fLowerSpeed = minRPM;
-
-                if (!float.TryParse(_drStepData["ck_Max_Noloadlimitspeed"]?.ToString(), out float maxRPM))
-                {
-                    maxRPM = 0;
-                }
-                _fUperSpeed = maxRPM;
-                #endregion
-                #region --- CURRENT LIMIT ---
-                if (!float.TryParse(_drStepData["ck_Min_Generator"]?.ToString(), out float minCurr))
-                {
-                    minCurr = 0;
-                }
-                if (!float.TryParse(_drStepData["ck_Max_Generator"]?.ToString(), out float maxCurr))
-                {
-                    maxCurr = 9999;
-                }
-                _fUperCurrent = maxCurr;
-                _fLowerCurrent = minCurr;
-                avd_current.ValueLimitUpper = maxCurr;
-                avd_current.ValueLimitLower = minCurr;
-                #endregion
-                #region --- VOLTAGE LIMIT ---
-                if (!float.TryParse(_drStepData["ck_Min_VolGenerator"]?.ToString(), out float minVolt))
-                {
-                    minVolt = 0;
-                }
-                if (!float.TryParse(_drStepData["ck_Max_VolGenerator"]?.ToString(), out float maxVolt))
-                {
-                    maxVolt = 9999;
-                }
-                _fUperVolt = maxVolt;
-                _fLowerVolt = minVolt;
-                avd_voltage.ValueLimitUpper = maxVolt;
-                avd_voltage.ValueLimitLower = minVolt;
-                #endregion
-                #region --- FREQUENCY LIMIT ---
-                if (!float.TryParse(_drStepData["ck_Min_frequency"]?.ToString(), out float minFreq))
-                {
-                    minFreq = 0;
-                }
-                if (!float.TryParse(_drStepData["ck_Max_frequency"]?.ToString(), out float maxFreq))
-                {
-                    maxFreq = 9999;
-                }
-                _fUperFreq = maxFreq;
-                _fLowerFreq = minFreq;
-                avd_frequency.ValueLimitUpper = maxFreq;
-                avd_frequency.ValueLimitLower = minFreq;
-                #endregion
-                #region --- SPEED MOD LIMIT ---
-                if (!float.TryParse(_drStepData["ck_Min_fluctuationspeed"]?.ToString(), out float minFluc))
-                {
-                    minFluc = 0;
-                }
-                if (!float.TryParse(_drStepData["ck_Max_fluctuationspeed"]?.ToString(), out float maxFluc))
-                {
-                    maxFluc = 9999;
-                }
-                _fUperModlSpeed = maxFluc;
-                _fLowerModSpeed = minFluc;
-                avd_rotspdmod.ValueLimitUpper = maxFluc;
-                avd_rotspdmod.ValueLimitLower = minFluc;
-                #endregion
-
-                _fSpeed = 0;
-                _fMaxSpeed = 0;
-                _fMinSpeed = 0;
-                _fPidStop = 0;
-                _fAdjust = 0;
-                _iMaxNG = MAX_NG;
-                _iCurrStep = step;
-                _iTimeOut = TIME_OUT;
-                _isAdjusted = false;
-                // Lấy bộ relay tương ứng tải
-                _fLoadPower = 0;
-                string ckLoad = _drStepData["ck_load"]?.ToString();
-                _dtRelays = GetRelays(ckLoad);
-                if (_dtRelays.Rows.Count > 0)
-                {
-                    // Chạy bộ tải mặc định
-                    foreach (DataRow dataRow in _dtRelays.Rows)
-                    {
-                        if (ckLoad == dataRow["l_power"]?.ToString())
-                        {
-                            string rbits = dataRow["r_bits"]?.ToString();
-                            _frmLoad.CheckBits(rbits);
-                        }
-                    }
-                }
-                SetTestStatus(true);
             }
-            catch (Exception ex)
+            catch { }
+            #endregion
+            #region --- 2. Đọc giá trị current / actual power ---
+            try
             {
-                SetTestStatus(false);
-                MessageBox.Show("Error :" + ex.Message);
+                _fCurrent = 0;
+                if (UInt32.TryParse(avd_current.Value, out UInt32 intCurrent))
+                {
+                    _fCurrent = intCurrent.ToFloat() * 20;
+                }
             }
+            catch { }
+            _fActualPower = (_fVolt * _fCurrent) / 1000;
+            #endregion
+            #region --- 3. Đọc giá trị frequency / speed / torque ---
+            try
+            {
+                _fFreq = 0;
+                if (UInt32.TryParse(avd_frequency.Value, out UInt32 intFreq))
+                {
+                    _fFreq = intFreq.ToFloat();
+                }
+            }
+            catch { }
+            _fSpeed = SO_CAP_CUC == 0 ? 0 : 60 * _fFreq / SO_CAP_CUC;
+            fTorque_ = _fSpeed == 0 ? 0 : _fVolt * _fCurrent * 9.95f / _fSpeed;
+            #endregion
+            #region --- 4. Đọc giá trị DC voltage / current / power ---
+            try
+            {
+                if (_isPlcConnected)
+                {
+                    _plc.GetDevice2("D10", out short shortD10); // đọc lên giá trị từ miền nhớ
+                    fDcVolt_ = Convert.ToSingle(shortD10);
+                }
+            }
+            catch { }
+            fDcCurrent_ = FIXED_RES == 0 ? 0 : fDcVolt_ / FIXED_RES;
+            fDcPower_ = fDcVolt_ * fDcCurrent_;
+            #endregion
+            #region --- 5. Tính tỉ lệ PID stop ---
+            try
+            {
+                _fPidStop = _fRatedPower == _fActualPower
+                    ? 100 : (_fRatedPower == 0 ? 0 : (_fActualPower / _fRatedPower) * 100);
+            }
+            catch { }
+            #endregion
+            #region --- 6. Tính tỉ lệ adjusting ---
+            try
+            {
+                if (!float.TryParse(lbl_targetP.Text, out float targetPower))
+                {
+                    targetPower = 0;
+                }
+                _fAdjust = targetPower == 0 ? 0 : (_fActualPower / targetPower) * 100;
+            }
+            catch { }
+            #endregion
+            #region --- 7. Cập nhật giao diện ---
+            avd_voltage.Text = $"{_fVolt:0.0}";
+            avd_current.Text = $"{_fCurrent:0.00}";
+            avd_electricP.Text = $"{_fActualPower:0.000}";
+            lbl_actualP.Text = avd_electricP.Text;
+
+            avd_frequency.Text = $"{_fFreq:0.0}";
+            avd_torque.Text = $"{fTorque_:0.00}";
+            lbl_speedrpm.Text = $"{_fSpeed}";
+
+            avd_FWVolt.Text = $"{fDcVolt_:0.0}";
+            avd_FWcurr.Text = $"{fDcCurrent_:0.0}";
+            avd_DCpower.Text = $"{fDcPower_:0}";
+
+            lbl_adj_value.Text = _isRun ? $"{_fAdjust:0.##}" : $"{_fPidStop:0.##}";
+            lbl_adj.BackColor = _isRun && _isAdjusted ? Color.Green : Color.LightGray;
+            lbl_adj.Text = _isRun ? (_isAdjusted ? "Adjusted" : "Adjusting") : "PID Stop";
+            #endregion
         }
 
         /// <summary>
-        /// Kết thúc test
+        /// Kiểm tra áp suất (bit 15 của D0)
         /// </summary>
-        /// <param name="isOk"></param>
-        private void EndTest(bool isOk)
+        /// <returns></returns>
+        private bool CheckPressure()
         {
-            // Step đầu tiên thì set tốc độ không tải
-            if (_iCurrStep == 1)
+            try
             {
-                _fNoLoadSpeed = _fSpeed;
-            }
-            SetTestStatus(false);
-            // Hiển thị dữ liệu lên grid
-            if (_drStepData != null)
-            {
-                var test_time = DateTime.Now;
-                var dr = _dtResult.NewRow();
-                dr["ck_serial"] = _drStepData["ck_serial"];
-                dr["ck_time"] = test_time.ToDtString();
-                dr["ck_model"] = cbm_model.Text;
-                dr["ck_number"] = txt_barcode.Text;
-                dr["ck_order"] = cbm_orderid.Text;
-                dr["ck_rack"] = "1-1";
-                dr["ck_speed_noload"] = _fNoLoadSpeed;
-                dr["ck_load_percent"] = _drStepData["ck_Steppercentage"];
-                dr["ck_speed_output"] = lbl_speedrpm.Text;
-                dr["ck_power"] = lbl_actualP.Text;
-                dr["ck_torque"] = avd_torque.Value;
-                dr["ck_speed_adj"] = avd_rotspdmod.Value;
-                dr["ck_speed_flt"] = avd_rotspdwav.Value;
-                dr["ck_speed_max"] = _fMaxSpeed;
-                dr["ck_speed_min"] = _fMinSpeed;
-                dr["ck_braking_time"] = _drStepData["ck_testbrakes"];
-                dr["ck_result"] = isOk ? "合格" : "";
-                dr["ck_tester"] = ClsVariables.User;
-                dr["ck_upload"] = ClsVariables.User;
-                dr["ck_test_type"] = "N/A";
-                dr["ck_volt"] = avd_voltage.Text;
-                dr["ck_current"] = avd_current.Text;
-                dr["ck_frequency"] = avd_frequency.Text;
-                dr["ck_pressure_neg"] = "N/A";
-                dr["ck_reason"] = "N/A";
-                dr["ck_volt_dc"] = avd_FWVolt.Value;
-                dr["ck_current_dc"] = avd_FWcurr.Value;
-                dr["ck_power_dc"] = avd_DCpower.Value;
-                dr["linecd"] = ClsVariables.Line;
-                dr["machinecd"] = ClsVariables.Machine;
-                dr["datimeregister"] = test_time.ToDtString();
-                dr["ck_pid_stop"] = _fPidStop.ToString();
-                _dtResult.Rows.Add(dr);
-                _drStepData = null;
-            }
-            // Chuyển sang step kế khi chạy auto
-            if (isOk && _isAuto && _iCurrStep < _iSteps)
-            {
-                _iCurrStep++;
-                StartTest(_iCurrStep);
-                _isRun = _iCurrStep <= _iSteps;
-            }
-            // Kết thúc kiểm tra
-            if (!_isRun)
-            {
-                _isAuto = false;
-                SetTestStatus(false);
-                string result = isOk ? "OK" : "NG";
-                if (MessageBox.Show($"Test complete!\nResult: {result}\nDo you want record data?",
-                    "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (!_isPlcConnected) _plc.Open();
+                _plc.GetDevice2("D0", out short shortX17);
+                var bytes = BitConverter.GetBytes(shortX17);
+                var bits = new BitArray(bytes);
+                if (bits[15])
                 {
-                    btn_record_Click(this, null);
+                    return true;
+                }
+                if (MessageBox.Show("Pressure not reached!", "Error",
+                    MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    return CheckPressure();
+                }
+                return false;
+            }
+            finally
+            {
+                if (!_isPlcConnected) _plc.Close();
+            }
+        }
+
+        private void avd_voltage_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateValues();
+        }
+
+        private void avd_current_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateValues();
+        }
+
+        private void avd_frequency_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateValues();
+        }
+
+        private void cbm_model_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //show order id
+            cbm_orderid.Text = "";
+            StringBuilder sqlorderid = new StringBuilder();
+            sqlorderid.Append("select distinct(orderid) from m_orderid where 1=1 ");
+            if (cbm_model.SelectedItem != null)
+            {
+                sqlorderid.Append(" and ck_model ='" + cbm_model.SelectedItem.ToString() + "'");
+            }
+            sqlorderid.Append(" order by orderid");
+            try
+            {
+                sqlite sqlite_ = new sqlite();
+                sqlite_.GetComboBoxData(sqlorderid.ToString(), ref cbm_orderid);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+
+            //show details
+            DataTable dt = new DataTable();
+            string sqlmodel = $"select * from m_ck_point where ck_model = '{cbm_model.Text}' order by ck_model";
+            try
+            {
+                sqlite sqlite_ = new sqlite();
+                sqlite_.SelectData(sqlmodel, ref dt);
+                lbl_targetP.Text = dt.AsEnumerable()
+                    .Where(row => row["ck_model"].ToString() == cbm_model.Text)
+                    .Max(row => row["ck_power"])
+                    .ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Get max steps fail.\n{ex.Message}", "Error",
+                    buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
+            }
+            _dtModel = dt;
+
+            // Get max steps
+            try
+            {
+                _intMaxSteps = STEPS;
+                string sql = $"select max(ck_serial) as ck_serial from m_ck_point where ck_model = '{cbm_model.Text}'";
+                sqlite sqlite_ = new sqlite();
+                string strMaxStep = sqlite_.ExecuteScalarString(sql);
+                if (int.TryParse(strMaxStep, out int maxStep))
+                {
+                    _intMaxSteps = maxStep;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Get max steps fail.\n{ex.Message}", "Error",
+                    buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _plc.Close();
+            _frmLoad.Dispose();
+        }
+        #endregion
+        #region --- CHẾ ĐỘ TEST ---
+        private void CheckValues()
+        {
+            try
+            {
+                // Nếu reset bộ đếm thì tính lại min speed / max speed
+                if (_intCounter == _intLoadTime)
+                {
+                    _fMinSpeed = _fSpeed;
+                    _fMaxSpeed = _fSpeed;
+                }
+                double minPower = _fRatedPower * 0.99;
+                double maxPower = _fRatedPower * 1.01;
+                // Điều kiện kiểm tra (nếu không đạt điều kiện thì sẽ đợi)
+                if (_intCurrStep > 0
+                    && _fSpeed >= _fLowerSpeed
+                    && _fSpeed <= _fUperSpeed
+                    && _fModSpeed >= _fLowerModSpeed
+                    && _fModSpeed <= _fUperModlSpeed
+                    && _fVolt >= _fLowerVolt
+                    && _fVolt <= _fUperVolt
+                    && _fCurrent >= _fLowerCurrent
+                    && _fCurrent <= _fUperCurrent
+                    && _fFreq >= _fLowerFreq
+                    && _fFreq <= _fUperFreq
+                    && _fActualPower >= minPower
+                    && _fActualPower <= maxPower)
+                {
+                    _isAdjusted = true;
+                    _intCounter--;
+                    // Với các step > 1 thì tính mod speed
+                    if (_intCurrStep > 1)
+                    {
+                        if (_fSpeed < _fMinSpeed)
+                        {
+                            _fMinSpeed = _fSpeed;
+                        }
+                        if (_fSpeed > _fMaxSpeed)
+                        {
+                            _fMaxSpeed = _fSpeed;
+                        }
+                        _fModSpeed = Math.Abs(_fMinSpeed - _fMaxSpeed);
+                        _fModSpeed = _fNoLoadSpeed == 0 ? 0 : _fModSpeed / _fNoLoadSpeed * 100;
+                    }
+                    if (_intCounter < 1)
+                    {
+                        ChangeRunState(false, _intCurrStep, RunResults.OK);
+                        _intCounter = _intLoadTime;
+                        return;
+                    }
+                }
+                else
+                {
+                    _isAdjusted = false;
+                    _intCounter = _intLoadTime;
+                    string rbits = string.Empty;
+                    if (_fActualPower < minPower)
+                    {
+                        for (int r = 0; r < _dtRelays.Rows.Count; r++)
+                        {
+                            if (float.TryParse(_dtRelays.Rows[r]["l_power"]?.ToString(), out float fPower)
+                                && fPower != _fCkLoad && fPower > _fLoadPower)
+                            {
+                                _fLoadPower = fPower;
+                                rbits = _dtRelays.Rows[r]["r_bits"]?.ToString();
+                                break;
+                            }
+                        }
+                    }
+                    else if (_fActualPower > maxPower)
+                    {
+                        for (int r = _dtRelays.Rows.Count - 1; r > -1; r--)
+                        {
+                            if (float.TryParse(_dtRelays.Rows[r]["l_power"]?.ToString(), out float fPower)
+                                    && fPower != _fCkLoad && fPower > _fLoadPower)
+                            {
+                                _fLoadPower = fPower;
+                                rbits = _dtRelays.Rows[r]["r_bits"]?.ToString();
+                                break;
+                            }
+                        }
+                    }
+                    if (!string.IsNullOrWhiteSpace(rbits))
+                    {
+                        _frmLoad.CheckBits(rbits);
+                    }
+                    else
+                    {
+                        // Đếm 30s trước khi xác định lại số lần test
+                        _intTimeOut--;
+                        if (_intTimeOut < 1)
+                        {
+                            _intMaxNG--;
+                        }
+                        if (_intMaxNG < 0)
+                        {
+                            ChangeRunState(false, _intCurrStep, RunResults.NG);
+                        }
+                    }
+                }
+            }
+            catch { }
+            finally
+            {
+                lbl_steadyT.Text = _intCounter.ToString();
+                avd_rotspdmod.Text = $"{_fModSpeed:0.00}";
+            }
+        }
+
+        private void GetCheckValues()
+        {
+            if (int.TryParse(_drStepData["ck_LoadTime"]?.ToString(), out int loadTime))
+            {
+                _intLoadTime = loadTime;
+            }
+            _intCounter = _intLoadTime;
+            #region --- SPEED LIMIT ---
+            if (float.TryParse(_drStepData["ck_Min_Noloadlimitspeed"]?.ToString(), out float minRPM))
+            {
+                _fLowerSpeed = minRPM;
+            }
+            if (float.TryParse(_drStepData["ck_Max_Noloadlimitspeed"]?.ToString(), out float maxRPM))
+            {
+                _fUperSpeed = maxRPM;
+            }
+            #endregion
+            #region --- VOLTAGE LIMIT ---
+            if (float.TryParse(_drStepData["ck_Min_VolGenerator"]?.ToString(), out float minVolt))
+            {
+                _fLowerVolt = minVolt;
+            }
+            if (float.TryParse(_drStepData["ck_Max_VolGenerator"]?.ToString(), out float maxVolt))
+            {
+                _fUperVolt = maxVolt;
+            }
+            #endregion
+            #region --- CURRENT LIMIT ---
+            if (float.TryParse(_drStepData["ck_Min_Generator"]?.ToString(), out float minCurr))
+            {
+                _fLowerCurrent = minCurr;
+            }
+            if (float.TryParse(_drStepData["ck_Max_Generator"]?.ToString(), out float maxCurr))
+            {
+                _fUperCurrent = maxCurr;
+            }
+            #endregion
+            #region --- FREQUENCY LIMIT ---
+            if (float.TryParse(_drStepData["ck_Min_frequency"]?.ToString(), out float minFreq))
+            {
+                _fLowerFreq = minFreq;
+            }
+            if (float.TryParse(_drStepData["ck_Max_frequency"]?.ToString(), out float maxFreq))
+            {
+                _fUperFreq = maxFreq;
+            }
+            #endregion
+            #region --- SPEED MOD LIMIT ---
+            if (float.TryParse(_drStepData["ck_Min_fluctuationspeed"]?.ToString(), out float minFluc))
+            {
+                _fLowerModSpeed = minFluc;
+            }
+            if (float.TryParse(_drStepData["ck_Max_fluctuationspeed"]?.ToString(), out float maxFluc))
+            {
+                _fUperModlSpeed = maxFluc;
+            }
+            #endregion
+        }
+
+        private DataRow GetMasterStep(int step)
+        {
+            try
+            {
+                return _dtModel.AsEnumerable()
+                               .FirstOrDefault(dr => !dr.IsNull("ck_serial")
+                                                   && dr["ck_serial"].ToString() == step.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Get master fail.\nStep: {step}.\n{ex.Message}", "Error",
+                    buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        private DataTable GetRelays(string ckload)
+        {
+            try
+            {
+                string sqlmodel = $"select l_power,ck_load,r_bits from m_loadstatus where ck_load='{ckload}' order by l_power";
+                DataTable dt = new DataTable();
+                sqlite sqlite_ = new sqlite();
+                sqlite_.SelectData(sqlmodel, ref dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Get relays fail.\nLoad: {ckload}.\n{ex.Message}", "Error",
+                    buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        private void ChangeRunState(bool isRun, int step = 0, RunResults result = RunResults.Cancel)
+        {
+            try
+            {
+                _isRun = isRun;
+                if (_isRun)
+                {
+                    _fMaxSpeed = 0;
+                    _fMinSpeed = 0;
+                    _intLoadTime = 0;
+                    _fLowerSpeed = 0;
+                    _fUperSpeed = 9999;
+                    _fLowerVolt = 0;
+                    _fUperVolt = 360;
+                    _fLowerCurrent = 0;
+                    _fUperCurrent = 10;
+                    _fLowerFreq = 0;
+                    _fUperFreq = 240;
+                    _fLowerModSpeed = 0;
+                    _fUperModlSpeed = 9999;
+                    _fLoadPower = 0;
+
+                    _intMaxNG = MAX_NG;
+                    _intCurrStep = step;
+                    _intTimeOut = TIME_OUT;
+                    _isAdjusted = false;
+
+                    if (Checkinput() == false || CheckPressure() == false) return;
+                    // Tải thông số kiểm tra của step
+                    _drStepData = GetMasterStep(step);
+                    if (_drStepData != null)
+                    {
+                        #region --- Đọc giá trị rated power ---
+                        try
+                        {
+                            _fRatedPower = 0;
+                            if (_drStepData != null && !_drStepData.IsNull("ck_Steppower")
+                                && float.TryParse(_drStepData["ck_Steppower"]?.ToString(), out float reatedPower))
+                            {
+                                _fRatedPower = reatedPower;
+                            }
+                        }
+                        catch { }
+                        #endregion
+                        if (float.TryParse(_drStepData["ck_load"]?.ToString(), out float fckLoad))
+                        {
+                            _fCkLoad = fckLoad;
+                            _fLoadPower = fckLoad;
+                        }
+                        _dtRelays = GetRelays(_fCkLoad.ToString());
+                        if (_dtRelays != null)
+                        {
+                            GetCheckValues();
+                            // Chạy bộ tải mặc định
+                            foreach (DataRow dataRow in _dtRelays.Rows)
+                            {
+                                if (_fCkLoad.ToString() == dataRow["l_power"]?.ToString())
+                                {
+                                    string rbits = dataRow["r_bits"]?.ToString();
+                                    _frmLoad.CheckBits(rbits);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    _frmLoad.CheckBits("0000000000000000");
+                    if (result != RunResults.Cancel)
+                    {
+                        // Step đầu tiên thì set tốc độ không tải
+                        if (_intCurrStep == 1)
+                        {
+                            _fNoLoadSpeed = _fSpeed;
+                        }
+                        // Hiển thị dữ liệu lên grid
+                        if (_drStepData != null)
+                        {
+                            var test_time = DateTime.Now;
+                            var dr = _dtResult.NewRow();
+                            dr["ck_serial"] = _drStepData["ck_serial"];
+                            dr["ck_time"] = test_time.ToDtString();
+                            dr["ck_model"] = cbm_model.Text;
+                            dr["ck_number"] = txt_barcode.Text;
+                            dr["ck_order"] = cbm_orderid.Text;
+                            dr["ck_rack"] = "1-1";
+                            dr["ck_speed_noload"] = _fNoLoadSpeed;
+                            dr["ck_load_percent"] = _drStepData["ck_Steppercentage"];
+                            dr["ck_speed_output"] = lbl_speedrpm.Text;
+                            dr["ck_power"] = lbl_actualP.Text;
+                            dr["ck_torque"] = avd_torque.Value;
+                            dr["ck_speed_adj"] = avd_rotspdmod.Value;
+                            dr["ck_speed_flt"] = avd_rotspdwav.Value;
+                            dr["ck_speed_max"] = _fMaxSpeed;
+                            dr["ck_speed_min"] = _fMinSpeed;
+                            dr["ck_braking_time"] = _drStepData["ck_testbrakes"];
+                            dr["ck_result"] = result == RunResults.OK ? "合格" : "";
+                            dr["ck_tester"] = ClsVariables.User;
+                            dr["ck_upload"] = ClsVariables.User;
+                            dr["ck_test_type"] = "N/A";
+                            dr["ck_volt"] = avd_voltage.Text;
+                            dr["ck_current"] = avd_current.Text;
+                            dr["ck_frequency"] = avd_frequency.Text;
+                            dr["ck_pressure_neg"] = "N/A";
+                            dr["ck_reason"] = "N/A";
+                            dr["ck_volt_dc"] = avd_FWVolt.Value;
+                            dr["ck_current_dc"] = avd_FWcurr.Value;
+                            dr["ck_power_dc"] = avd_DCpower.Value;
+                            dr["linecd"] = ClsVariables.Line;
+                            dr["machinecd"] = ClsVariables.Machine;
+                            dr["datimeregister"] = test_time.ToDtString();
+                            dr["ck_pid_stop"] = _fPidStop.ToString();
+                            _dtResult.Rows.Add(dr);
+                            _drStepData = null;
+                        }
+                        // Chuyển sang step kế khi chạy auto
+                        if (result == RunResults.OK && _isAuto && _intCurrStep < _intMaxSteps)
+                        {
+                            _intCurrStep++;
+                            _isRun = _intCurrStep <= _intMaxSteps;
+                        }
+                        // Kết thúc kiểm tra
+                        if (!_isRun)
+                        {
+                            _isAuto = false;
+                            _intCurrStep = 0;
+                            timerLoad.Enabled = false;
+                            if (MessageBox.Show($"Test complete!\nResult: {result}\nDo you want record data?",
+                                "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                btn_record_Click(this, null);
+                            }
+                        }
+                        else
+                        {
+                            ChangeRunState(_isRun, _intCurrStep);
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Reset loads fail.\n{ex.Message}", "Error",
+                    buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
+            }
+            finally
+            {
+                avd_voltage.ValueLimitUpper = _fUperVolt;
+                avd_voltage.ValueLimitLower = _fLowerVolt;
+                avd_current.ValueLimitUpper = _fUperCurrent;
+                avd_current.ValueLimitLower = _fLowerCurrent;
+                avd_frequency.ValueLimitUpper = _fUperFreq;
+                avd_frequency.ValueLimitLower = _fLowerFreq;
+                avd_rotspdmod.ValueLimitUpper = _fUperModlSpeed;
+                avd_rotspdmod.ValueLimitLower = _fLowerModSpeed;
+
+                timerLoad.Enabled = _isRun;
+                btn_start.Enabled = !_isRun;
+                lbl_adj_value.Text = "0.00";
+                lbl_rated_P.Text = _isRun ? $"{_fRatedPower}" : "0";
+                lbl_steadyT.Text = _isRun ? _intLoadTime.ToString() : "0";
+                lbl_pcStep.Text = _isRun ? _intCurrStep.ToString() : "1 - 5";
+                lbl_status_automanual.Text = _isAuto ? "AutoLoad" : "Manual";
+                lbl_status_automanual.BackColor = _isRun ? Color.Green : Color.LightGray;
+                lbl_adj_value.Text = _isRun ? $"{_fAdjust:0.##}" : $"{_fPidStop:0.##}";
+                lbl_adj.BackColor = _isRun && _isAdjusted ? Color.Green : Color.LightGray;
+                lbl_adj.Text = _isRun ? (_isAdjusted ? "Adjusted" : "Adjusting") : "PID Stop";
+
+                btn_autoload.BackColor = _isRun && _isAuto ? Color.Green : Color.Red;
+                btn_0.BackColor = _isRun && _intCurrStep == 1 ? Color.Green : Color.LightGray;
+                btn_25.BackColor = _isRun && _intCurrStep == 2 ? Color.Green : Color.LightGray;
+                btn_50.BackColor = _isRun && _intCurrStep == 3 ? Color.Green : Color.LightGray;
+                btn_75.BackColor = _isRun && _intCurrStep == 4 ? Color.Green : Color.LightGray;
+                btn_90.BackColor = _isRun && _intCurrStep == 6 ? Color.Green : Color.LightGray;
+                btn_100.BackColor = _isRun && _intCurrStep == 5 ? Color.Green : Color.LightGray;
+            }
+        }
+
+        private void btn_start_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _dtResult.Rows.Clear();
+                if (Checkinput() == false || CheckPressure() == false) return;
+                if (_isPlcConnected)
+                {
+                    _isPlcConnected = false;
+                    _plc.Close();
+                    return;
+                }
+                _isPlcConnected = true;
+                _plc.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"PLC start fail.\n{ex.Message}", "Error",
+                    buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
+                _isPlcConnected = false;
+            }
+            finally
+            {
+                btn_clear.Enabled = _isPlcConnected;
+                btn_record.Enabled = _isPlcConnected;
+                btn_export.Enabled = _isPlcConnected;
+                cbm_model.Enabled = !_isPlcConnected;
+                cbm_orderid.Enabled = !_isPlcConnected;
+                txt_barcode.ReadOnly = _isPlcConnected;
+                btn_autoload.Enabled = _isPlcConnected;
+                btn_plcstatus.Enabled = _isPlcConnected;
+                btn_deleterow.Enabled = _isPlcConnected;
+                btn_loadStatus.Enabled = _isPlcConnected;
+                btn_start.Text = _isPlcConnected ? "Running" : "Start/Run";
+                btn_start.BackColor = _isPlcConnected ? Color.Green : Color.Red;
+                btn_autoload.BackColor = _isPlcConnected ? Color.Red : Color.LightGray;
+                btn_plcstatus.BackColor = _isPlcConnected ? Color.Green : Color.LightGray;
+                btn_loadStatus.BackColor = _isPlcConnected ? Color.Green : Color.LightGray;
+            }
+        }
+
+        private void btn_manual_Click(object sender, EventArgs e)
+        {
+            if (sender is Button btn && int.TryParse(btn.Tag?.ToString(), out int step))
+            {
+                if (_isAuto)
+                {
+                    MessageBox.Show("Processing in automatic mode.", "Information",
+                        buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Information);
+                    return;
+                }
+                try
+                {
+                    if (_isRun)
+                    {
+                        // Nếu step đang chạy thì hủy test
+                        if (step == _intCurrStep) ChangeRunState(false);
+                        return;
+                    }
+                    // Nếu chưa chạy thì bắt đầu chạy
+                    ChangeRunState(true, step);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Start manual-test fail.\nStep: {step}\n{ex.Message}", "Error",
+                        buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btn_autoload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_isRun)
+                {
+                    if (_isAuto)
+                    {
+                        _isAuto = false;
+                        ChangeRunState(false);
+                    }
+                    return;
+                }
+                _isAuto = true;
+                _dtResult.Rows.Clear();
+                ChangeRunState(true, 1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Start auto-test fail.\nStep: {_intCurrStep}\n{ex.Message}", "Error",
+                    buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Error);
+            }
+        }
+
+        private void timerLoad_Tick(object sender, EventArgs e)
+        {
+            CheckValues();
         }
         #endregion
         #region --- XỬ LÝ DỮ LIỆU ---
@@ -726,67 +1060,6 @@ namespace AdvancedHMICS
                     _dtResult.Rows.RemoveAt(row);
                 }
             }
-        }
-
-        private void cbm_model_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //show order id
-            cbm_orderid.Text = "";
-            StringBuilder sqlorderid = new StringBuilder();
-            sqlorderid.Append("select distinct(orderid) from m_orderid where 1=1 ");
-            if (cbm_model.SelectedItem != null)
-            {
-                sqlorderid.Append(" and ck_model ='" + cbm_model.SelectedItem.ToString() + "'");
-            }
-            sqlorderid.Append(" order by orderid");
-            try
-            {
-                sqlite sqlite_ = new sqlite();
-                sqlite_.GetComboBoxData(sqlorderid.ToString(), ref cbm_orderid);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex.Message);
-            }
-
-            //show details
-            DataTable dt = new DataTable();
-            string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
-            try
-            {
-                sqlite sqlite_ = new sqlite();
-                sqlite_.SelectData(sqlmodel, ref dt);
-                lbl_targetP.Text = dt.AsEnumerable()
-                    .Where(row => row["ck_model"].ToString() == cbm_model.Text)
-                    .Max(row => row["ck_power"])
-                    .ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex.Message);
-            }
-
-        }
-
-        private int GetTestSteps()
-        {
-            string sql = "select max(ck_serial) as ck_serial from m_ck_point where ck_model = '" + cbm_model.Text + "'";
-            sqlite sqlite_ = new sqlite();
-            string strMaxStep = sqlite_.ExecuteScalarString(sql);
-            if (!int.TryParse(strMaxStep, out int maxStep))
-            {
-                maxStep = STEPS;
-            }
-            return maxStep;
-        }
-
-        private DataRow GetMasterStep(int step)
-        {
-            DataTable dt = new DataTable();
-            string sqlmodel = "select * from m_ck_point where ck_model = '" + cbm_model.Text + "' order by ck_model";
-            sqlite sqlite_ = new sqlite();
-            sqlite_.SelectData(sqlmodel, ref dt);
-            return dt.AsEnumerable().FirstOrDefault(row => row["ck_serial"].ToString() == step.ToString());
         }
         #endregion
         #region --- SQL BACKUP ---
@@ -998,211 +1271,11 @@ namespace AdvancedHMICS
         }
         #endregion
 
-        #region --- 20230515 ---
-        private void CalcValues()
+        private enum RunResults
         {
-            lock (_lock)
-            {
-                try
-                {
-                    #region --- Đọc giá trị DC voltage ---
-                    _fDcVolt = 0;
-                    if (_isPlcConnected)
-                    {
-                        _plc.GetDevice2("D10", out short shortD10); // đọc lên giá trị từ miền nhớ
-                        _fDcVolt = Convert.ToSingle(shortD10);
-                    }
-                    #endregion
-                    #region --- Đọc giá trị voltage ---
-                    _fVolt = 0;
-                    if (UInt32.TryParse(avd_voltage.Value, out UInt32 intVolt))
-                    {
-                        _fVolt = intVolt.ToFloat();
-                    }
-                    #endregion
-                    #region --- Đọc giá trị current ---
-                    _fCurrent = 0;
-                    if (UInt32.TryParse(avd_current.Value, out UInt32 intCurrent))
-                    {
-                        _fCurrent = intCurrent.ToFloat() * 20;
-                    }
-                    #endregion
-                    #region --- Đọc giá trị frequency ---
-                    _fFreq = 0;
-                    if (UInt32.TryParse(avd_frequency.Value, out UInt32 intFreq))
-                    {
-                        _fFreq = intFreq.ToFloat();
-                    }
-                    #endregion
-                    #region --- Tính tỉ lệ PID stop và adjusting ---
-                    if (!float.TryParse(lbl_rated_P.Text, out float reatedPower))
-                    {
-                        reatedPower = 0;
-                    }
-                    if (!float.TryParse(lbl_targetP.Text, out float targetPower))
-                    {
-                        targetPower = 0;
-                    }
-                    double minPower = reatedPower * 0.99;
-                    double maxPower = reatedPower * 1.01;
-                    _fPidStop = reatedPower == _fActualPower
-                        ? 100 : (reatedPower == 0 ? 0 : (_fActualPower / reatedPower) * 100);
-                    _fAdjust = targetPower == 0 ? 0 : (_fActualPower / targetPower) * 100;
-                    #endregion
-                    #region --- Tính toán các giá trị còn lại ---
-                    _fDcPower = _fDcVolt * _fDcCurrent;
-                    _fSpeed = 60 * _fFreq / SO_CAP_CUC;
-                    _fDcCurrent = _fDcVolt / FIXED_RES;
-                    _fActualPower = (_fVolt * _fCurrent) / 1000;
-                    _fTorque = _fSpeed != 0 ? _fVolt * _fCurrent * 9.95f / _fSpeed : 0;
-                    #endregion
-                    #region --- Tính toán khi đang test ---
-                    if (_isRun)
-                    {
-                        if (!float.TryParse(_drStepData["ck_load"]?.ToString(), out float fCkLoad))
-                        {
-                            fCkLoad = 0;
-                        }
-                        if (_iCounter == _iLoadTime)
-                        {
-                            _fMinSpeed = _fSpeed;
-                            _fMaxSpeed = _fSpeed;
-                        }
-                        // Điều kiện kiểm tra (nếu không đạt điều kiện thì sẽ đợi)
-                        if (_iCurrStep > 0
-                            && _fSpeed >= _fLowerSpeed
-                            && _fSpeed <= _fUperSpeed
-                            && _fModSpeed >= _fLowerModSpeed
-                            && _fModSpeed <= _fUperModlSpeed
-                            && _fVolt >= _fLowerVolt
-                            && _fVolt <= _fUperVolt
-                            && _fCurrent >= _fLowerCurrent
-                            && _fCurrent <= _fUperCurrent
-                            && _fFreq >= _fLowerFreq
-                            && _fFreq <= _fUperFreq
-                            && _fActualPower >= minPower
-                            && _fActualPower <= maxPower)
-                        {
-                            _isAdjusted = true;
-                            _iCounter--;
-                            // Với các step > 1 thì tính mod speed
-                            if (_iCurrStep > 1)
-                            {
-                                if (_fSpeed < _fMinSpeed)
-                                {
-                                    _fMinSpeed = _fSpeed;
-                                }
-                                if (_fSpeed > _fMaxSpeed)
-                                {
-                                    _fMaxSpeed = _fSpeed;
-                                }
-                                _fModSpeed = Math.Abs(_fMinSpeed - _fMaxSpeed);
-                                _fModSpeed = _fModSpeed / _fNoLoadSpeed * 100;
-                            }
-                            if (_iCounter < 1)
-                            {
-                                EndTest(true);
-                                return;
-                            }
-                        }
-                        else if (_fActualPower < minPower)
-                        {
-                            for (int r = 0; r < _dtRelays.Rows.Count; r++)
-                            {
-                                if (float.TryParse(_dtRelays.Rows[r]["l_power"]?.ToString(),
-                                    out float fPower) && fPower != fCkLoad && fPower > _fLoadPower)
-                                {
-                                    _fLoadPower = fPower;
-                                    string rbits = _dtRelays.Rows[r]["r_bits"]?.ToString();
-                                    _frmLoad.CheckBits(rbits);
-                                    break;
-                                }
-                            }
-                            // Đếm 30s trước khi xác định lại số lần test
-                            _iTimeOut--;
-                            _iCounter = _iLoadTime;
-                            if (_iTimeOut < 1)
-                            {
-                                _iMaxNG--;
-                            }
-                        }
-                        else if (_fActualPower > maxPower || _iMaxNG < 0)
-                        {
-                            for (int r = _dtRelays.Rows.Count - 1; r > -1; r--)
-                            {
-                                if (float.TryParse(_dtRelays.Rows[r]["l_power"]?.ToString(),
-                                    out float fPower) && fPower != fCkLoad && fPower < _fLoadPower)
-                                {
-                                    _fLoadPower = fPower;
-                                    string rbits = _dtRelays.Rows[r]["r_bits"]?.ToString();
-                                    _frmLoad.CheckBits(rbits);
-                                    break;
-                                }
-                            }
-                            EndTest(false);
-                            return;
-                        }
-                    }
-                    #endregion
-                }
-                catch { }
-                finally
-                {
-                    #region --- Cập nhật giao diện ---
-                    avd_voltage.Text = $"{_fVolt:0.0}";
-                    avd_current.Text = $"{_fCurrent:0.00}";
-                    avd_electricP.Text = $"{_fActualPower:0.000}";
-                    avd_FWVolt.Text = $"{_fDcVolt:0.0}";
-
-                    avd_DCpower.Text = $"{_fDcPower:0}";
-                    avd_torque.Text = $"{_fTorque:0.00}";
-
-                    avd_rotspdmod.Text = $"{_fModSpeed:0.00}";
-                    avd_frequency.Text = $"{_fFreq:0.0}";
-                    avd_FWcurr.Text = $"{_fDcCurrent:0.0}";
-                    lbl_speedrpm.Text = $"{_fSpeed}";
-                    lbl_actualP.Text = avd_electricP.Text;
-                    lbl_adj_value.Text = $"{_fAdjust:0.##}";
-                    lbl_adj.Text = _isAdjusted ? "Adjusted" : "Adjusting";
-                    lbl_adj.BackColor = _isAdjusted ? Color.Green : Color.LightGray;
-                    #endregion
-                }
-            }
+            Cancel = 0,
+            OK = 1,
+            NG = 2
         }
-
-        private bool CheckPressure()
-        {
-            try
-            {
-                if (!_isPlcConnected) _plc.Open();
-                _plc.GetDevice2("D0", out short shortX17);
-                var bytes = BitConverter.GetBytes(shortX17);
-                var bits = new BitArray(bytes);
-                if (bits[15])
-                {
-                    return true;
-                }
-            }
-            finally
-            {
-                if (!_isPlcConnected) _plc.Close();
-            }
-            if (MessageBox.Show("Pressure not reached!", "Error",
-                MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
-            {
-                CheckPressure();
-            }
-            return false;
-        }
-
-        private DataTable GetRelays(string ckload)
-        {
-            string sqlmodel = $"select l_power,ck_load,r_bits from m_loadstatus where ck_load='{ckload}' order by l_power";
-            DataTable dt = new DataTable();
-            sqlite sqlite_ = new sqlite();
-            sqlite_.SelectData(sqlmodel, ref dt);
-            return dt;
-        }
-        #endregion
     }
 }

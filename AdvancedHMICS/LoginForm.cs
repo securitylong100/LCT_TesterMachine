@@ -29,20 +29,26 @@ namespace AdvancedHMICS
             //string username = con.sqlExecuteScalarString(sqllogin);
             sqlite sqlite_ = new sqlite();
             string sql = "select  User  from m_user where User =  '" + txt_user.Text + "' and Pass = '" + txt_pass.Text + "'";
-            string username =  sqlite_.ExecuteScalarString(sql);
+            string username = sqlite_.ExecuteScalarString(sql);
 
             if (username.Length > 1)
             {
                 ClsVariables.User = username;
                 frmMain f = new frmMain();
+                f.FormClosed += F_FormClosed;
+                this.Hide();
                 f.ShowDialog();
-                // this.Hide();
             }
             else
             {
                 MessageBox.Show("Tên đăng nhập hoặc Mật khẩu không đúng", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        private void F_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

@@ -1097,7 +1097,7 @@ namespace AdvancedHMICS
             this.lbl_pcStep.Name = "lbl_pcStep";
             this.lbl_pcStep.Size = new System.Drawing.Size(144, 18);
             this.lbl_pcStep.TabIndex = 75;
-            this.lbl_pcStep.Text = "1-5";
+            this.lbl_pcStep.Text = "1 - 5";
             this.lbl_pcStep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label43
@@ -1927,7 +1927,6 @@ namespace AdvancedHMICS
             // 
             // timerLoad
             // 
-            this.timerLoad.Enabled = true;
             this.timerLoad.Interval = 1000;
             this.timerLoad.Tick += new System.EventHandler(this.timerLoad_Tick);
             // 
