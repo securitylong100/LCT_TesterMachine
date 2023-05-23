@@ -414,3 +414,4 @@ G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CoreCompi
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.exe
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.pdb
+G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmLoadStatusTest.resources

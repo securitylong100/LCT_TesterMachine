@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -51,7 +52,7 @@ namespace AdvancedHMICS
 
         private bool _isRun = false;
         private bool _isAuto = false;
-        private bool _isAdjusted = false;
+        //private bool _isAdjusted = false;
         private bool _isPlcConnected = false;
 
         private string _logFile;
@@ -62,6 +63,7 @@ namespace AdvancedHMICS
         private readonly DataTable _dtResult = new DataTable();
 
         private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
+        //private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
 
         // Khai báo kết nối PLC
         private readonly ActUtlType _plc = new ActUtlType();
@@ -347,10 +349,18 @@ namespace AdvancedHMICS
             try
             {
                 _fVolt = 0;
-                if (UInt32.TryParse(avd_voltage.Value, out UInt32 intVolt))
-                {
-                    _fVolt = intVolt.ToFloat();
-                }
+                MyUnion u = new MyUnion();
+                MyUnion w = new MyUnion();
+                u.int32Value = (UInt32)int.Parse(avd_voltage.Value);
+                w.byte1 = u.byte3;
+                w.byte2 = u.byte4;
+                w.byte3 = u.byte1;
+                w.byte4 = u.byte2;
+                _fVolt = (u.int32Value) == 0 ? 0 : w.floatValue;
+                //if (UInt32.TryParse(avd_voltage.Value, out UInt32 intVolt))
+                //{
+                //    _fVolt = intVolt.ToFloat();
+                //}
             }
             catch { }
             #endregion
@@ -358,10 +368,20 @@ namespace AdvancedHMICS
             try
             {
                 _fCurrent = 0;
-                if (UInt32.TryParse(avd_current.Value, out UInt32 intCurrent))
-                {
-                    _fCurrent = intCurrent.ToFloat() * 20;
-                }
+                MyUnion u = new MyUnion();
+                MyUnion w = new MyUnion();
+                u.int32Value = (UInt32)int.Parse(avd_current.Value);
+                w.byte1 = u.byte3;
+                w.byte2 = u.byte4;
+                w.byte3 = u.byte1;
+                w.byte4 = u.byte2;
+                _fCurrent = (u.int32Value) == 0 ? 0 : w.floatValue * 20;
+                //command fixing
+                //avd_current.Text = (u.int32Value) == 0 ? "0" : (w.floatValue * 22.464618).ToString();
+                //if (UInt32.TryParse(avd_current.Value, out UInt32 intCurrent))
+                //{
+                //    _fCurrent = intCurrent.ToFloat() * 20;
+                //}
             }
             catch { }
             _fActualPower = (_fVolt * _fCurrent) / 1000;
@@ -370,10 +390,18 @@ namespace AdvancedHMICS
             try
             {
                 _fFreq = 0;
-                if (UInt32.TryParse(avd_frequency.Value, out UInt32 intFreq))
-                {
-                    _fFreq = intFreq.ToFloat();
-                }
+                MyUnion u = new MyUnion();
+                MyUnion w = new MyUnion();
+                u.int32Value = (UInt32)int.Parse(avd_frequency.Value);
+                w.byte1 = u.byte3;
+                w.byte2 = u.byte4;
+                w.byte3 = u.byte1;
+                w.byte4 = u.byte2;
+                _fFreq = (u.int32Value) == 0 ? 0 : w.floatValue;
+                //if (UInt32.TryParse(avd_frequency.Value, out UInt32 intFreq))
+                //{
+                //    _fFreq = intFreq.ToFloat();
+                //}
             }
             catch { }
             _fSpeed = SO_CAP_CUC == 0 ? 0 : 60 * _fFreq / SO_CAP_CUC;
@@ -385,7 +413,15 @@ namespace AdvancedHMICS
                 if (_isPlcConnected)
                 {
                     _plc.GetDevice2("D10", out short shortD10); // đọc lên giá trị từ miền nhớ
-                    fDcVolt_ = Convert.ToSingle(shortD10);
+                    MyUnion u = new MyUnion();
+                    MyUnion w = new MyUnion();
+                    u.int32Value = (UInt32)shortD10;
+                    w.byte1 = u.byte3;
+                    w.byte2 = u.byte4;
+                    w.byte3 = u.byte1;
+                    w.byte4 = u.byte2;
+                    fDcVolt_ = (u.int32Value) == 0 ? 0 : w.floatValue;
+                    //fDcVolt_ = Convert.ToSingle(shortD10);
                 }
             }
             catch { }
@@ -425,9 +461,9 @@ namespace AdvancedHMICS
             avd_FWcurr.Text = $"{fDcCurrent_:0.0}";
             avd_DCpower.Text = $"{fDcPower_:0}";
 
-            lbl_adj_value.Text = _isRun ? $"{_fAdjust:0.##}" : $"{_fPidStop:0.##}";
-            lbl_adj.BackColor = _isRun && _isAdjusted ? Color.Green : Color.LightGray;
-            lbl_adj.Text = _isRun ? (_isAdjusted ? "Adjusted" : "Adjusting") : "PID Stop";
+            //lbl_adj_value.Text = _isRun ? $"{_fAdjust:0.##}" : $"{_fPidStop:0.##}";
+            //lbl_adj.BackColor = _isRun && _isAdjusted ? Color.Green : Color.LightGray;
+            //lbl_adj.Text = _isRun ? (_isAdjusted ? "Adjusted" : "Adjusting") : "PID Stop";
             #endregion
         }
 
@@ -553,6 +589,7 @@ namespace AdvancedHMICS
                 }
                 double minPower = _fRatedPower * 0.99;
                 double maxPower = _fRatedPower * 1.01;
+                double ngPower = _fRatedPower * 1.2;
                 // Điều kiện kiểm tra (nếu không đạt điều kiện thì sẽ đợi)
                 if (_intCurrStep > 0
                     && _fSpeed >= _fLowerSpeed
@@ -568,7 +605,6 @@ namespace AdvancedHMICS
                     && _fActualPower >= minPower
                     && _fActualPower <= maxPower)
                 {
-                    _isAdjusted = true;
                     _intCounter--;
                     // Với các step > 1 thì tính mod speed
                     if (_intCurrStep > 1)
@@ -584,6 +620,10 @@ namespace AdvancedHMICS
                         _fModSpeed = Math.Abs(_fMinSpeed - _fMaxSpeed);
                         _fModSpeed = _fNoLoadSpeed == 0 ? 0 : _fModSpeed / _fNoLoadSpeed * 100;
                     }
+                    //_isAdjusted = true;
+                    lbl_adj.Text = "Adjusted";
+                    lbl_adj.BackColor = Color.Green;
+                    lbl_adj_value.Text = $"{_fAdjust:0.##}";
                     if (_intCounter < 1)
                     {
                         ChangeRunState(false, _intCurrStep, RunResults.OK);
@@ -593,7 +633,10 @@ namespace AdvancedHMICS
                 }
                 else
                 {
-                    _isAdjusted = false;
+                    //_isAdjusted = false;
+                    lbl_adj.Text = "Adjusting";
+                    lbl_adj.BackColor = Color.White;
+                    lbl_adj_value.Text = $"{_fAdjust:0.##}";
                     _intCounter = _intLoadTime;
                     string rbits = string.Empty;
                     if (_fActualPower < minPower)
@@ -620,6 +663,10 @@ namespace AdvancedHMICS
                                 rbits = _dtRelays.Rows[r]["r_bits"]?.ToString();
                                 break;
                             }
+                        }
+                        if (_fActualPower > ngPower)
+                        {
+                            ChangeRunState(false, _intCurrStep, RunResults.NG);
                         }
                     }
                     if (!string.IsNullOrWhiteSpace(rbits))
@@ -767,7 +814,7 @@ namespace AdvancedHMICS
                     _intMaxNG = MAX_NG;
                     _intCurrStep = step;
                     _intTimeOut = TIME_OUT;
-                    _isAdjusted = false;
+                    //_isAdjusted = false;
 
                     if (Checkinput() == false || CheckPressure() == false) return;
                     // Tải thông số kiểm tra của step
@@ -906,10 +953,13 @@ namespace AdvancedHMICS
                 lbl_steadyT.Text = _isRun ? _intLoadTime.ToString() : "0";
                 lbl_pcStep.Text = _isRun ? _intCurrStep.ToString() : "1 - 5";
                 lbl_status_automanual.Text = _isAuto ? "AutoLoad" : "Manual";
-                lbl_status_automanual.BackColor = _isRun ? Color.Green : Color.LightGray;
-                lbl_adj_value.Text = _isRun ? $"{_fAdjust:0.##}" : $"{_fPidStop:0.##}";
-                lbl_adj.BackColor = _isRun && _isAdjusted ? Color.Green : Color.LightGray;
-                lbl_adj.Text = _isRun ? (_isAdjusted ? "Adjusted" : "Adjusting") : "PID Stop";
+                lbl_status_automanual.BackColor = _isRun ? Color.Green : Color.White;
+                //lbl_adj_value.Text = _isRun ? $"{_fAdjust:0.##}" : $"{_fPidStop:0.##}";
+                //lbl_adj.BackColor = _isRun && _isAdjusted ? Color.Green : Color.LightGray;
+                //lbl_adj.Text = _isRun ? (_isAdjusted ? "Adjusted" : "Adjusting") : "PID Stop";
+                lbl_adj.Text = "PID Stop";
+                lbl_adj.BackColor = Color.LightGray;
+                lbl_adj_value.Text = $"{_fPidStop:0.##}";
 
                 btn_autoload.BackColor = _isRun && _isAuto ? Color.Green : Color.Red;
                 btn_0.BackColor = _isRun && _intCurrStep == 1 ? Color.Green : Color.LightGray;
@@ -1276,6 +1326,17 @@ namespace AdvancedHMICS
             Cancel = 0,
             OK = 1,
             NG = 2
+        }
+
+        [StructLayout(LayoutKind.Explicit)]
+        struct MyUnion
+        {
+            [FieldOffset(0)] public byte byte1;
+            [FieldOffset(1)] public byte byte2;
+            [FieldOffset(2)] public byte byte3;
+            [FieldOffset(3)] public byte byte4;
+            [FieldOffset(0)] public UInt32 int32Value;
+            [FieldOffset(0)] public float floatValue;
         }
     }
 }

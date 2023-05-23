@@ -113,6 +113,12 @@
     <Compile Include="Form\frmData.Designer.cs">
       <DependentUpon>frmData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form\frmLoadStatusTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\frmLoadStatusTest.Designer.cs">
+      <DependentUpon>frmLoadStatusTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form\frmLoadStatus.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </Compile>
     <EmbeddedResource Include="Form\frmData.resx">
       <DependentUpon>frmData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\frmLoadStatusTest.resx">
+      <DependentUpon>frmLoadStatusTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\frmLoadStatus.resx">
       <DependentUpon>frmLoadStatus.cs</DependentUpon>
