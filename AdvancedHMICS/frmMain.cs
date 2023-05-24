@@ -413,15 +413,15 @@ namespace AdvancedHMICS
                 if (_isPlcConnected)
                 {
                     _plc.GetDevice2("D10", out short shortD10); // đọc lên giá trị từ miền nhớ
-                    MyUnion u = new MyUnion();
-                    MyUnion w = new MyUnion();
-                    u.int32Value = (UInt32)shortD10;
-                    w.byte1 = u.byte3;
-                    w.byte2 = u.byte4;
-                    w.byte3 = u.byte1;
-                    w.byte4 = u.byte2;
-                    fDcVolt_ = (u.int32Value) == 0 ? 0 : w.floatValue;
-                    //fDcVolt_ = Convert.ToSingle(shortD10);
+                    //MyUnion u = new MyUnion();
+                    //MyUnion w = new MyUnion();
+                    //u.int32Value = (UInt32)shortD10;
+                    //w.byte1 = u.byte3;
+                    //w.byte2 = u.byte4;
+                    //w.byte3 = u.byte1;
+                    //w.byte4 = u.byte2;
+                    //fDcVolt_ = (u.int32Value) == 0 ? 0 : w.floatValue;
+                    fDcVolt_ = Convert.ToSingle(shortD10);
                 }
             }
             catch { }
