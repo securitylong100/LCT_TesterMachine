@@ -6,13 +6,13 @@ using System.Windows.Forms;
 
 namespace AdvancedHMICS
 {
-    public partial class frmLoadStatus : Form
+    public partial class frmLoadStatusTest : Form
     {
         //public const string ON_BITS = "1111 1111 1111 111";
         //public const string OFF_BITS = "0000 0000 0000 0000";
         public CheckBox[] RList { get; }
         public int RPower { get; private set; }
-        public frmLoadStatus()
+        public frmLoadStatusTest()
         {
             InitializeComponent();
             RList = new CheckBox[]
@@ -69,9 +69,6 @@ namespace AdvancedHMICS
 
         private void RChanged(object sender, EventArgs e)
         {
-            AdvancedHMIControls.CheckBox cb = sender as AdvancedHMIControls.CheckBox;
-            string value = cb.Checked ? "1" : "0";
-            cb.ComComponent.Write(cb.PLCAddressCheckChanged, value);
             RPower = GetPower(RList).Sum();
             lblStatus.Text = $"POWER: {RPower} W";
         }

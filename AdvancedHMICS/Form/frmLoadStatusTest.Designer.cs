@@ -1,6 +1,6 @@
 ﻿namespace AdvancedHMICS
 {
-    partial class frmLoadStatus
+    partial class frmLoadStatusTest
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
@@ -37,28 +36,26 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.grLoadList = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.cbR16 = new AdvancedHMIControls.CheckBox();
-            this.modbusRTUCom1 = new AdvancedHMIDrivers.ModbusRTUCom(this.components);
-            this.cbR15 = new AdvancedHMIControls.CheckBox();
-            this.cbR14 = new AdvancedHMIControls.CheckBox();
-            this.cbR13 = new AdvancedHMIControls.CheckBox();
-            this.cbR12 = new AdvancedHMIControls.CheckBox();
-            this.cbR11 = new AdvancedHMIControls.CheckBox();
-            this.cbR10 = new AdvancedHMIControls.CheckBox();
-            this.cbR9 = new AdvancedHMIControls.CheckBox();
-            this.cbR8 = new AdvancedHMIControls.CheckBox();
-            this.cbR7 = new AdvancedHMIControls.CheckBox();
-            this.cbR6 = new AdvancedHMIControls.CheckBox();
-            this.cbR5 = new AdvancedHMIControls.CheckBox();
-            this.cbR4 = new AdvancedHMIControls.CheckBox();
-            this.cbR3 = new AdvancedHMIControls.CheckBox();
-            this.cbR2 = new AdvancedHMIControls.CheckBox();
-            this.cbR1 = new AdvancedHMIControls.CheckBox();
+            this.cbR16 = new System.Windows.Forms.CheckBox();
+            this.cbR15 = new System.Windows.Forms.CheckBox();
+            this.cbR14 = new System.Windows.Forms.CheckBox();
+            this.cbR13 = new System.Windows.Forms.CheckBox();
+            this.cbR12 = new System.Windows.Forms.CheckBox();
+            this.cbR11 = new System.Windows.Forms.CheckBox();
+            this.cbR10 = new System.Windows.Forms.CheckBox();
+            this.cbR9 = new System.Windows.Forms.CheckBox();
+            this.cbR8 = new System.Windows.Forms.CheckBox();
+            this.cbR7 = new System.Windows.Forms.CheckBox();
+            this.cbR6 = new System.Windows.Forms.CheckBox();
+            this.cbR5 = new System.Windows.Forms.CheckBox();
+            this.cbR4 = new System.Windows.Forms.CheckBox();
+            this.cbR3 = new System.Windows.Forms.CheckBox();
+            this.cbR2 = new System.Windows.Forms.CheckBox();
+            this.cbR1 = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.tlpButtons.SuspendLayout();
             this.grLoadList.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -103,9 +100,9 @@
             this.btnClose.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(487, 3);
+            this.btnClose.Location = new System.Drawing.Point(489, 3);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(139, 48);
+            this.btnClose.Size = new System.Drawing.Size(137, 48);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -116,9 +113,9 @@
             this.btnKills.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnKills.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKills.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKills.Location = new System.Drawing.Point(345, 3);
+            this.btnKills.Location = new System.Drawing.Point(346, 3);
             this.btnKills.Name = "btnKills";
-            this.btnKills.Size = new System.Drawing.Size(136, 48);
+            this.btnKills.Size = new System.Drawing.Size(137, 48);
             this.btnKills.TabIndex = 3;
             this.btnKills.Text = "All kill";
             this.btnKills.UseVisualStyleBackColor = true;
@@ -131,7 +128,7 @@
             this.btnAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAll.Location = new System.Drawing.Point(203, 3);
             this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(136, 48);
+            this.btnAll.Size = new System.Drawing.Size(137, 48);
             this.btnAll.TabIndex = 2;
             this.btnAll.Text = "All bright";
             this.btnAll.UseVisualStyleBackColor = true;
@@ -197,14 +194,9 @@
             // cbR16
             // 
             this.cbR16.AutoSize = true;
-            this.cbR16.ComComponent = this.modbusRTUCom1;
             this.cbR16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR16.Location = new System.Drawing.Point(468, 111);
             this.cbR16.Name = "cbR16";
-            this.cbR16.PLCAddressCheckChanged = "00016";
-            this.cbR16.PLCAddressChecked = "";
-            this.cbR16.PLCAddressText = "";
-            this.cbR16.PLCAddressVisible = "";
             this.cbR16.Size = new System.Drawing.Size(152, 33);
             this.cbR16.TabIndex = 16;
             this.cbR16.Tag = "0";
@@ -212,35 +204,12 @@
             this.cbR16.UseVisualStyleBackColor = true;
             this.cbR16.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
-            // modbusRTUCom1
-            // 
-            this.modbusRTUCom1.BaudRate = 9600;
-            this.modbusRTUCom1.DataBits = 8;
-            this.modbusRTUCom1.DisableSubscriptions = false;
-            this.modbusRTUCom1.EnableLogging = false;
-            this.modbusRTUCom1.IniFileName = "";
-            this.modbusRTUCom1.IniFileSection = null;
-            this.modbusRTUCom1.MaxReadGroupSize = 20;
-            this.modbusRTUCom1.Parity = System.IO.Ports.Parity.None;
-            this.modbusRTUCom1.PollRateOverride = 500;
-            this.modbusRTUCom1.PortName = "COM3";
-            this.modbusRTUCom1.StationAddress = ((byte)(1));
-            this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.One;
-            this.modbusRTUCom1.SwapBytes = true;
-            this.modbusRTUCom1.SwapWords = false;
-            this.modbusRTUCom1.TimeOut = 3000;
-            // 
             // cbR15
             // 
             this.cbR15.AutoSize = true;
-            this.cbR15.ComComponent = this.modbusRTUCom1;
             this.cbR15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR15.Location = new System.Drawing.Point(313, 111);
             this.cbR15.Name = "cbR15";
-            this.cbR15.PLCAddressCheckChanged = "00015";
-            this.cbR15.PLCAddressChecked = "";
-            this.cbR15.PLCAddressText = "";
-            this.cbR15.PLCAddressVisible = "";
             this.cbR15.Size = new System.Drawing.Size(149, 33);
             this.cbR15.TabIndex = 15;
             this.cbR15.Tag = "0";
@@ -251,14 +220,9 @@
             // cbR14
             // 
             this.cbR14.AutoSize = true;
-            this.cbR14.ComComponent = this.modbusRTUCom1;
             this.cbR14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR14.Location = new System.Drawing.Point(158, 111);
             this.cbR14.Name = "cbR14";
-            this.cbR14.PLCAddressCheckChanged = "00014";
-            this.cbR14.PLCAddressChecked = "";
-            this.cbR14.PLCAddressText = "";
-            this.cbR14.PLCAddressVisible = "";
             this.cbR14.Size = new System.Drawing.Size(149, 33);
             this.cbR14.TabIndex = 14;
             this.cbR14.Tag = "4000";
@@ -269,14 +233,9 @@
             // cbR13
             // 
             this.cbR13.AutoSize = true;
-            this.cbR13.ComComponent = this.modbusRTUCom1;
             this.cbR13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR13.Location = new System.Drawing.Point(3, 111);
             this.cbR13.Name = "cbR13";
-            this.cbR13.PLCAddressCheckChanged = "00013";
-            this.cbR13.PLCAddressChecked = "";
-            this.cbR13.PLCAddressText = "";
-            this.cbR13.PLCAddressVisible = "";
             this.cbR13.Size = new System.Drawing.Size(149, 33);
             this.cbR13.TabIndex = 13;
             this.cbR13.Tag = "4000";
@@ -287,14 +246,9 @@
             // cbR12
             // 
             this.cbR12.AutoSize = true;
-            this.cbR12.ComComponent = this.modbusRTUCom1;
             this.cbR12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR12.Location = new System.Drawing.Point(468, 75);
             this.cbR12.Name = "cbR12";
-            this.cbR12.PLCAddressCheckChanged = "00012";
-            this.cbR12.PLCAddressChecked = "";
-            this.cbR12.PLCAddressText = "";
-            this.cbR12.PLCAddressVisible = "";
             this.cbR12.Size = new System.Drawing.Size(152, 30);
             this.cbR12.TabIndex = 12;
             this.cbR12.Tag = "4000";
@@ -305,14 +259,9 @@
             // cbR11
             // 
             this.cbR11.AutoSize = true;
-            this.cbR11.ComComponent = this.modbusRTUCom1;
             this.cbR11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR11.Location = new System.Drawing.Point(313, 75);
             this.cbR11.Name = "cbR11";
-            this.cbR11.PLCAddressCheckChanged = "00011";
-            this.cbR11.PLCAddressChecked = "";
-            this.cbR11.PLCAddressText = "";
-            this.cbR11.PLCAddressVisible = "";
             this.cbR11.Size = new System.Drawing.Size(149, 30);
             this.cbR11.TabIndex = 11;
             this.cbR11.Tag = "4000";
@@ -323,14 +272,9 @@
             // cbR10
             // 
             this.cbR10.AutoSize = true;
-            this.cbR10.ComComponent = this.modbusRTUCom1;
             this.cbR10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR10.Location = new System.Drawing.Point(158, 75);
             this.cbR10.Name = "cbR10";
-            this.cbR10.PLCAddressCheckChanged = "00010";
-            this.cbR10.PLCAddressChecked = "";
-            this.cbR10.PLCAddressText = "";
-            this.cbR10.PLCAddressVisible = "";
             this.cbR10.Size = new System.Drawing.Size(149, 30);
             this.cbR10.TabIndex = 10;
             this.cbR10.Tag = "2000";
@@ -341,14 +285,9 @@
             // cbR9
             // 
             this.cbR9.AutoSize = true;
-            this.cbR9.ComComponent = this.modbusRTUCom1;
             this.cbR9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR9.Location = new System.Drawing.Point(3, 75);
             this.cbR9.Name = "cbR9";
-            this.cbR9.PLCAddressCheckChanged = "00009";
-            this.cbR9.PLCAddressChecked = "";
-            this.cbR9.PLCAddressText = "";
-            this.cbR9.PLCAddressVisible = "";
             this.cbR9.Size = new System.Drawing.Size(149, 30);
             this.cbR9.TabIndex = 9;
             this.cbR9.Tag = "1280";
@@ -359,14 +298,9 @@
             // cbR8
             // 
             this.cbR8.AutoSize = true;
-            this.cbR8.ComComponent = this.modbusRTUCom1;
             this.cbR8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR8.Location = new System.Drawing.Point(468, 39);
             this.cbR8.Name = "cbR8";
-            this.cbR8.PLCAddressCheckChanged = "00008";
-            this.cbR8.PLCAddressChecked = "";
-            this.cbR8.PLCAddressText = "";
-            this.cbR8.PLCAddressVisible = "";
             this.cbR8.Size = new System.Drawing.Size(152, 30);
             this.cbR8.TabIndex = 8;
             this.cbR8.Tag = "640";
@@ -377,14 +311,9 @@
             // cbR7
             // 
             this.cbR7.AutoSize = true;
-            this.cbR7.ComComponent = this.modbusRTUCom1;
             this.cbR7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR7.Location = new System.Drawing.Point(313, 39);
             this.cbR7.Name = "cbR7";
-            this.cbR7.PLCAddressCheckChanged = "00007";
-            this.cbR7.PLCAddressChecked = "";
-            this.cbR7.PLCAddressText = "";
-            this.cbR7.PLCAddressVisible = "";
             this.cbR7.Size = new System.Drawing.Size(149, 30);
             this.cbR7.TabIndex = 7;
             this.cbR7.Tag = "320";
@@ -395,14 +324,9 @@
             // cbR6
             // 
             this.cbR6.AutoSize = true;
-            this.cbR6.ComComponent = this.modbusRTUCom1;
             this.cbR6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR6.Location = new System.Drawing.Point(158, 39);
             this.cbR6.Name = "cbR6";
-            this.cbR6.PLCAddressCheckChanged = "00006";
-            this.cbR6.PLCAddressChecked = "";
-            this.cbR6.PLCAddressText = "";
-            this.cbR6.PLCAddressVisible = "";
             this.cbR6.Size = new System.Drawing.Size(149, 30);
             this.cbR6.TabIndex = 6;
             this.cbR6.Tag = "160";
@@ -413,14 +337,9 @@
             // cbR5
             // 
             this.cbR5.AutoSize = true;
-            this.cbR5.ComComponent = this.modbusRTUCom1;
             this.cbR5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR5.Location = new System.Drawing.Point(3, 39);
             this.cbR5.Name = "cbR5";
-            this.cbR5.PLCAddressCheckChanged = "00005";
-            this.cbR5.PLCAddressChecked = "";
-            this.cbR5.PLCAddressText = "";
-            this.cbR5.PLCAddressVisible = "";
             this.cbR5.Size = new System.Drawing.Size(149, 30);
             this.cbR5.TabIndex = 5;
             this.cbR5.Tag = "80";
@@ -431,14 +350,9 @@
             // cbR4
             // 
             this.cbR4.AutoSize = true;
-            this.cbR4.ComComponent = this.modbusRTUCom1;
             this.cbR4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR4.Location = new System.Drawing.Point(468, 3);
             this.cbR4.Name = "cbR4";
-            this.cbR4.PLCAddressCheckChanged = "00004";
-            this.cbR4.PLCAddressChecked = "";
-            this.cbR4.PLCAddressText = "";
-            this.cbR4.PLCAddressVisible = "";
             this.cbR4.Size = new System.Drawing.Size(152, 30);
             this.cbR4.TabIndex = 4;
             this.cbR4.Tag = "40";
@@ -449,14 +363,9 @@
             // cbR3
             // 
             this.cbR3.AutoSize = true;
-            this.cbR3.ComComponent = this.modbusRTUCom1;
             this.cbR3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR3.Location = new System.Drawing.Point(313, 3);
             this.cbR3.Name = "cbR3";
-            this.cbR3.PLCAddressCheckChanged = "00003";
-            this.cbR3.PLCAddressChecked = "";
-            this.cbR3.PLCAddressText = "";
-            this.cbR3.PLCAddressVisible = "";
             this.cbR3.Size = new System.Drawing.Size(149, 30);
             this.cbR3.TabIndex = 3;
             this.cbR3.Tag = "20";
@@ -467,14 +376,9 @@
             // cbR2
             // 
             this.cbR2.AutoSize = true;
-            this.cbR2.ComComponent = this.modbusRTUCom1;
             this.cbR2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR2.Location = new System.Drawing.Point(158, 3);
             this.cbR2.Name = "cbR2";
-            this.cbR2.PLCAddressCheckChanged = "00002";
-            this.cbR2.PLCAddressChecked = "";
-            this.cbR2.PLCAddressText = "";
-            this.cbR2.PLCAddressVisible = "";
             this.cbR2.Size = new System.Drawing.Size(149, 30);
             this.cbR2.TabIndex = 2;
             this.cbR2.Tag = "10";
@@ -485,14 +389,9 @@
             // cbR1
             // 
             this.cbR1.AutoSize = true;
-            this.cbR1.ComComponent = this.modbusRTUCom1;
             this.cbR1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbR1.Location = new System.Drawing.Point(3, 3);
             this.cbR1.Name = "cbR1";
-            this.cbR1.PLCAddressCheckChanged = "00001";
-            this.cbR1.PLCAddressChecked = "";
-            this.cbR1.PLCAddressText = "";
-            this.cbR1.PLCAddressVisible = "";
             this.cbR1.Size = new System.Drawing.Size(149, 30);
             this.cbR1.TabIndex = 1;
             this.cbR1.Tag = "5";
@@ -500,21 +399,21 @@
             this.cbR1.UseVisualStyleBackColor = true;
             this.cbR1.CheckedChanged += new System.EventHandler(this.RChanged);
             // 
-            // frmLoadStatus
+            // frmLoadStatusTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 234);
             this.ControlBox = false;
             this.Controls.Add(this.tlpMain);
-            this.Name = "frmLoadStatus";
+            this.Name = "frmLoadStatusTest";
             this.Text = "Load Debug";
+            this.TopMost = true;
             this.tlpMain.ResumeLayout(false);
             this.tlpButtons.ResumeLayout(false);
             this.grLoadList.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.modbusRTUCom1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -525,23 +424,22 @@
         private System.Windows.Forms.GroupBox grLoadList;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tlpButtons;
-        private AdvancedHMIControls.CheckBox cbR1;
-        private AdvancedHMIControls.CheckBox cbR16;
-        private AdvancedHMIDrivers.ModbusRTUCom modbusRTUCom1;
-        private AdvancedHMIControls.CheckBox cbR15;
-        private AdvancedHMIControls.CheckBox cbR14;
-        private AdvancedHMIControls.CheckBox cbR13;
-        private AdvancedHMIControls.CheckBox cbR12;
-        private AdvancedHMIControls.CheckBox cbR11;
-        private AdvancedHMIControls.CheckBox cbR10;
-        private AdvancedHMIControls.CheckBox cbR9;
-        private AdvancedHMIControls.CheckBox cbR8;
-        private AdvancedHMIControls.CheckBox cbR7;
-        private AdvancedHMIControls.CheckBox cbR6;
-        private AdvancedHMIControls.CheckBox cbR5;
-        private AdvancedHMIControls.CheckBox cbR4;
-        private AdvancedHMIControls.CheckBox cbR3;
-        private AdvancedHMIControls.CheckBox cbR2;
+        private System.Windows.Forms.CheckBox cbR1;
+        private System.Windows.Forms.CheckBox cbR16;
+        private System.Windows.Forms.CheckBox cbR15;
+        private System.Windows.Forms.CheckBox cbR14;
+        private System.Windows.Forms.CheckBox cbR13;
+        private System.Windows.Forms.CheckBox cbR12;
+        private System.Windows.Forms.CheckBox cbR11;
+        private System.Windows.Forms.CheckBox cbR10;
+        private System.Windows.Forms.CheckBox cbR9;
+        private System.Windows.Forms.CheckBox cbR8;
+        private System.Windows.Forms.CheckBox cbR7;
+        private System.Windows.Forms.CheckBox cbR6;
+        private System.Windows.Forms.CheckBox cbR5;
+        private System.Windows.Forms.CheckBox cbR4;
+        private System.Windows.Forms.CheckBox cbR3;
+        private System.Windows.Forms.CheckBox cbR2;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnKills;
         private System.Windows.Forms.Button btnAll;
