@@ -122,25 +122,19 @@
   </metadata>
   <assembly alias="MfgControl.AdvancedHMI.Drivers" name="MfgControl.AdvancedHMI.Drivers, Version=3.99.19.2, Culture=neutral, PublicKeyToken=null" />
   <data name="avd_voltage.PLCAddressValue" type="MfgControl.AdvancedHMI.Drivers.PLCAddressItem, MfgControl.AdvancedHMI.Drivers">
-    <value>44097</value>
+    <value>L30001</value>
   </data>
   <data name="avd_current.PLCAddressValue" type="MfgControl.AdvancedHMI.Drivers.PLCAddressItem, MfgControl.AdvancedHMI.Drivers">
-    <value>44099</value>
+    <value>L30003</value>
   </data>
   <data name="avd_frequency.PLCAddressValue" type="MfgControl.AdvancedHMI.Drivers.PLCAddressItem, MfgControl.AdvancedHMI.Drivers">
-    <value>44105</value>
+    <value>L30005</value>
   </data>
-  <metadata name="gc_main.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>14, 14</value>
-  </metadata>
   <metadata name="timerLoad.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>227, 15</value>
   </metadata>
   <metadata name="timerSQL.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>340, 13</value>
-  </metadata>
-  <metadata name="tablePanel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>499, 16</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>42</value>
