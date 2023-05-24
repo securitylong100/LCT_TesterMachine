@@ -62,8 +62,8 @@ namespace AdvancedHMICS
         private DataTable _dtRelays = new DataTable();
         private readonly DataTable _dtResult = new DataTable();
 
-        //private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
-        private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
+        private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
+        //private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
 
         // Khai báo kết nối PLC
         private readonly ActUtlType _plc = new ActUtlType();
