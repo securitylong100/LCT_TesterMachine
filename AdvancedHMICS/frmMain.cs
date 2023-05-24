@@ -62,8 +62,8 @@ namespace AdvancedHMICS
         private DataTable _dtRelays = new DataTable();
         private readonly DataTable _dtResult = new DataTable();
 
-        private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
-        //private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
+        //private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
+        private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
 
         // Khai báo kết nối PLC
         private readonly ActUtlType _plc = new ActUtlType();
@@ -793,6 +793,14 @@ namespace AdvancedHMICS
         {
             try
             {
+                timerLoad.Enabled = false;
+                if (result == RunResults.NG
+                    && MessageBox.Show($"Test result is NG\nStep: {step}.\nDo you want retry?", "Question",
+                    buttons: MessageBoxButtons.RetryCancel, icon: MessageBoxIcon.Question) == DialogResult.Retry)
+                {
+                    ChangeRunState(true, _intCurrStep);
+                    return;
+                }
                 _isRun = isRun;
                 if (_isRun)
                 {
