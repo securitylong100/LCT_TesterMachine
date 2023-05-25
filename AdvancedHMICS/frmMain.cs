@@ -62,8 +62,8 @@ namespace AdvancedHMICS
         private DataTable _dtRelays = new DataTable();
         private readonly DataTable _dtResult = new DataTable();
 
-        private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
-        //private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
+        //private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
+        private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
 
         // Khai báo kết nối PLC
         private readonly ActUtlType _plc = new ActUtlType();
@@ -1147,7 +1147,7 @@ namespace AdvancedHMICS
             }
             catch (Exception ex)
             {
-                WriteSqlLog("Cannot Read Data from Data Access file", ex.ToString());
+                WriteSqlLog("Cannot Read Data from SQL lite", ex.ToString());
             }
             if (dt_result.Rows.Count > 0)
             {
@@ -1173,7 +1173,9 @@ namespace AdvancedHMICS
                             sqlinsert.Append("v_twin_10,v_twin_11,v_twin_12,v_twin_13,v_twin_14,v_twin_15,v_twin_16,v_twin_17,v_twin_18,");
                             sqlinsert.Append("v_twin_19,v_twin_20,v_twin_21,v_twin_22,v_twin_23,v_twin_24,v_twin_25,v_twin_26,v_twin_27,");
                             sqlinsert.Append("v_twin_28,v_twin_29,");
-                            sqlinsert.AppendFormat("linecd, machinecd,datimeregister ) VALUES ({0});", values);
+                            sqlinsert.AppendFormat("linecd, machinecd,datimeregister ) SELECT {0} ", values);
+                            sqlinsert.Append("WHERE NOT EXISTS(SELECT 1 FROM m_v_twin_history WHERE 1=1 ");
+                            sqlinsert.AppendFormat("and  cast(v_twin_02 as varchar(256)) + v_twin_04 + v_twin_05 + v_twin_06 = N'{0}' and v_twin_03 ='{1}' ); ", srtcheck, datetimecheck);
                             //foreach (DataColumn dtcolumn in dt_result.Columns)
                             //{
                             //    sqlinsert.Append("N'" + dtRow[dtcolumn].ToString() + "',");
