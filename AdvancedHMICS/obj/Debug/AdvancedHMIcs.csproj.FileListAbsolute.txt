@@ -397,6 +397,7 @@ G:\01.Github\LCT_20230511\AdvancedHMICS\bin\Debug\OpcNetApi.Com.xml
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.AssemblyReference.cache
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.SuggestedBindingRedirects.cache
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmData.resources
+G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmLoadStatusTest.resources
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmLoadStatus.resources
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmPLCValueRealtime.resources
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmQuerySQLite.resources
@@ -414,4 +415,3 @@ G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CoreCompi
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMIcs.csproj.CopyComplete
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.exe
 G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.pdb
-G:\01.Github\LCT_20230511\AdvancedHMICS\obj\Debug\AdvancedHMICS.frmLoadStatusTest.resources

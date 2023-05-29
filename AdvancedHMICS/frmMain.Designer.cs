@@ -173,27 +173,29 @@ namespace AdvancedHMICS
             // 
             this.tlp_ground.BackColor = System.Drawing.Color.White;
             this.tlp_ground.ColumnCount = 2;
-            this.tlp_ground.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tlp_ground.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tlp_ground.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlp_ground.Controls.Add(this.pictureBox1, 0, 0);
             this.tlp_ground.Controls.Add(this.label1, 1, 0);
             this.tlp_ground.Controls.Add(this.tlp_layout, 0, 1);
             this.tlp_ground.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_ground.Location = new System.Drawing.Point(0, 0);
+            this.tlp_ground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlp_ground.Name = "tlp_ground";
             this.tlp_ground.RowCount = 2;
-            this.tlp_ground.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tlp_ground.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.tlp_ground.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_ground.Size = new System.Drawing.Size(1184, 561);
+            this.tlp_ground.Size = new System.Drawing.Size(1579, 690);
             this.tlp_ground.TabIndex = 0;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::AdvancedHMICS.Properties.Resources.ifmbigsize;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(144, 36);
+            this.pictureBox1.Size = new System.Drawing.Size(192, 44);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -204,9 +206,10 @@ namespace AdvancedHMICS
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(153, 0);
+            this.label1.Location = new System.Drawing.Point(204, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1028, 42);
+            this.label1.Size = new System.Drawing.Size(1371, 52);
             this.label1.TabIndex = 2;
             this.label1.Text = "General Dynamics Intelligent Test System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -227,14 +230,15 @@ namespace AdvancedHMICS
             this.tlp_layout.Controls.Add(this.pnl_botright_ground, 2, 3);
             this.tlp_layout.Controls.Add(this.gc_main, 0, 1);
             this.tlp_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_layout.Location = new System.Drawing.Point(3, 45);
+            this.tlp_layout.Location = new System.Drawing.Point(4, 56);
+            this.tlp_layout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlp_layout.Name = "tlp_layout";
             this.tlp_layout.RowCount = 4;
             this.tlp_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tlp_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tlp_layout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlp_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tlp_layout.Size = new System.Drawing.Size(1178, 513);
+            this.tlp_layout.Size = new System.Drawing.Size(1571, 630);
             this.tlp_layout.TabIndex = 3;
             // 
             // pnl_botmid_ground
@@ -242,9 +246,10 @@ namespace AdvancedHMICS
             this.pnl_botmid_ground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnl_botmid_ground.Controls.Add(this.tlp_botmid);
             this.pnl_botmid_ground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_botmid_ground.Location = new System.Drawing.Point(395, 379);
+            this.pnl_botmid_ground.Location = new System.Drawing.Point(527, 466);
+            this.pnl_botmid_ground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnl_botmid_ground.Name = "pnl_botmid_ground";
-            this.pnl_botmid_ground.Size = new System.Drawing.Size(386, 131);
+            this.pnl_botmid_ground.Size = new System.Drawing.Size(515, 160);
             this.pnl_botmid_ground.TabIndex = 78;
             // 
             // tlp_botmid
@@ -260,13 +265,14 @@ namespace AdvancedHMICS
             this.tlp_botmid.Controls.Add(this.txt_barcode, 1, 1);
             this.tlp_botmid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_botmid.Location = new System.Drawing.Point(0, 0);
+            this.tlp_botmid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlp_botmid.Name = "tlp_botmid";
             this.tlp_botmid.RowCount = 4;
             this.tlp_botmid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlp_botmid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlp_botmid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlp_botmid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlp_botmid.Size = new System.Drawing.Size(382, 127);
+            this.tlp_botmid.Size = new System.Drawing.Size(511, 156);
             this.tlp_botmid.TabIndex = 71;
             // 
             // label63
@@ -274,9 +280,10 @@ namespace AdvancedHMICS
             this.label63.AutoSize = true;
             this.label63.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(3, 0);
+            this.label63.Location = new System.Drawing.Point(4, 0);
+            this.label63.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(110, 31);
+            this.label63.Size = new System.Drawing.Size(136, 39);
             this.label63.TabIndex = 61;
             this.label63.Text = "Test Standard";
             this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -286,9 +293,10 @@ namespace AdvancedHMICS
             this.label45.AutoSize = true;
             this.label45.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(3, 31);
+            this.label45.Location = new System.Drawing.Point(4, 39);
+            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(110, 31);
+            this.label45.Size = new System.Drawing.Size(136, 39);
             this.label45.TabIndex = 62;
             this.label45.Text = "Barcode";
             this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -298,9 +306,10 @@ namespace AdvancedHMICS
             this.label46.AutoSize = true;
             this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(3, 62);
+            this.label46.Location = new System.Drawing.Point(4, 78);
+            this.label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(110, 31);
+            this.label46.Size = new System.Drawing.Size(136, 39);
             this.label46.TabIndex = 63;
             this.label46.Text = "Order ID";
             this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -310,9 +319,10 @@ namespace AdvancedHMICS
             this.cbm_orderid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbm_orderid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbm_orderid.FormattingEnabled = true;
-            this.cbm_orderid.Location = new System.Drawing.Point(119, 65);
+            this.cbm_orderid.Location = new System.Drawing.Point(148, 82);
+            this.cbm_orderid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbm_orderid.Name = "cbm_orderid";
-            this.cbm_orderid.Size = new System.Drawing.Size(260, 24);
+            this.cbm_orderid.Size = new System.Drawing.Size(359, 28);
             this.cbm_orderid.TabIndex = 68;
             // 
             // cbm_model
@@ -320,9 +330,10 @@ namespace AdvancedHMICS
             this.cbm_model.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbm_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbm_model.FormattingEnabled = true;
-            this.cbm_model.Location = new System.Drawing.Point(119, 3);
+            this.cbm_model.Location = new System.Drawing.Point(148, 4);
+            this.cbm_model.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbm_model.Name = "cbm_model";
-            this.cbm_model.Size = new System.Drawing.Size(260, 24);
+            this.cbm_model.Size = new System.Drawing.Size(359, 28);
             this.cbm_model.TabIndex = 67;
             this.cbm_model.SelectedIndexChanged += new System.EventHandler(this.cbm_model_SelectedIndexChanged);
             // 
@@ -330,9 +341,10 @@ namespace AdvancedHMICS
             // 
             this.txt_barcode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_barcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_barcode.Location = new System.Drawing.Point(119, 34);
+            this.txt_barcode.Location = new System.Drawing.Point(148, 43);
+            this.txt_barcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_barcode.Name = "txt_barcode";
-            this.txt_barcode.Size = new System.Drawing.Size(260, 22);
+            this.txt_barcode.Size = new System.Drawing.Size(359, 26);
             this.txt_barcode.TabIndex = 65;
             this.txt_barcode.Text = "barcodetest";
             // 
@@ -364,20 +376,22 @@ namespace AdvancedHMICS
             this.tlp_steps.Controls.Add(this.pictureBox2, 1, 0);
             this.tlp_steps.Controls.Add(this.btn_0, 0, 0);
             this.tlp_steps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_steps.Location = new System.Drawing.Point(3, 319);
+            this.tlp_steps.Location = new System.Drawing.Point(4, 392);
+            this.tlp_steps.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlp_steps.Name = "tlp_steps";
             this.tlp_steps.RowCount = 1;
             this.tlp_steps.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_steps.Size = new System.Drawing.Size(1172, 54);
+            this.tlp_steps.Size = new System.Drawing.Size(1563, 66);
             this.tlp_steps.TabIndex = 76;
             // 
             // btn_90
             // 
             this.btn_90.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_90.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_90.Location = new System.Drawing.Point(1056, 6);
+            this.btn_90.Location = new System.Drawing.Point(1412, 7);
+            this.btn_90.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_90.Name = "btn_90";
-            this.btn_90.Size = new System.Drawing.Size(110, 42);
+            this.btn_90.Size = new System.Drawing.Size(144, 52);
             this.btn_90.TabIndex = 10;
             this.btn_90.Text = "90%";
             this.btn_90.UseVisualStyleBackColor = true;
@@ -386,9 +400,10 @@ namespace AdvancedHMICS
             // 
             this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox6.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox6.Location = new System.Drawing.Point(956, 6);
+            this.pictureBox6.Location = new System.Drawing.Point(1278, 7);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(91, 42);
+            this.pictureBox6.Size = new System.Drawing.Size(123, 52);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 9;
             this.pictureBox6.TabStop = false;
@@ -397,9 +412,10 @@ namespace AdvancedHMICS
             // 
             this.btn_100.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_100.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_100.Location = new System.Drawing.Point(846, 6);
+            this.btn_100.Location = new System.Drawing.Point(1131, 7);
+            this.btn_100.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_100.Name = "btn_100";
-            this.btn_100.Size = new System.Drawing.Size(101, 42);
+            this.btn_100.Size = new System.Drawing.Size(136, 52);
             this.btn_100.TabIndex = 8;
             this.btn_100.Tag = "5";
             this.btn_100.Text = "100%";
@@ -410,9 +426,10 @@ namespace AdvancedHMICS
             // 
             this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox5.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox5.Location = new System.Drawing.Point(746, 6);
+            this.pictureBox5.Location = new System.Drawing.Point(997, 7);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(91, 42);
+            this.pictureBox5.Size = new System.Drawing.Size(123, 52);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 7;
             this.pictureBox5.TabStop = false;
@@ -421,9 +438,10 @@ namespace AdvancedHMICS
             // 
             this.btn_75.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_75.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_75.Location = new System.Drawing.Point(636, 6);
+            this.btn_75.Location = new System.Drawing.Point(850, 7);
+            this.btn_75.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_75.Name = "btn_75";
-            this.btn_75.Size = new System.Drawing.Size(101, 42);
+            this.btn_75.Size = new System.Drawing.Size(136, 52);
             this.btn_75.TabIndex = 6;
             this.btn_75.Tag = "4";
             this.btn_75.Text = "75%";
@@ -434,9 +452,10 @@ namespace AdvancedHMICS
             // 
             this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox4.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox4.Location = new System.Drawing.Point(536, 6);
+            this.pictureBox4.Location = new System.Drawing.Point(716, 7);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(91, 42);
+            this.pictureBox4.Size = new System.Drawing.Size(123, 52);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
@@ -445,9 +464,10 @@ namespace AdvancedHMICS
             // 
             this.btn_50.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_50.Location = new System.Drawing.Point(426, 6);
+            this.btn_50.Location = new System.Drawing.Point(569, 7);
+            this.btn_50.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_50.Name = "btn_50";
-            this.btn_50.Size = new System.Drawing.Size(101, 42);
+            this.btn_50.Size = new System.Drawing.Size(136, 52);
             this.btn_50.TabIndex = 4;
             this.btn_50.Tag = "3";
             this.btn_50.Text = "50%";
@@ -458,9 +478,10 @@ namespace AdvancedHMICS
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox3.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox3.Location = new System.Drawing.Point(326, 6);
+            this.pictureBox3.Location = new System.Drawing.Point(435, 7);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(91, 42);
+            this.pictureBox3.Size = new System.Drawing.Size(123, 52);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
@@ -469,9 +490,10 @@ namespace AdvancedHMICS
             // 
             this.btn_25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_25.Location = new System.Drawing.Point(216, 6);
+            this.btn_25.Location = new System.Drawing.Point(288, 7);
+            this.btn_25.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_25.Name = "btn_25";
-            this.btn_25.Size = new System.Drawing.Size(101, 42);
+            this.btn_25.Size = new System.Drawing.Size(136, 52);
             this.btn_25.TabIndex = 2;
             this.btn_25.Tag = "2";
             this.btn_25.Text = "25%";
@@ -482,9 +504,10 @@ namespace AdvancedHMICS
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox2.Image = global::AdvancedHMICS.Properties.Resources.nexticon;
-            this.pictureBox2.Location = new System.Drawing.Point(116, 6);
+            this.pictureBox2.Location = new System.Drawing.Point(154, 7);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(91, 42);
+            this.pictureBox2.Size = new System.Drawing.Size(123, 52);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -493,9 +516,10 @@ namespace AdvancedHMICS
             // 
             this.btn_0.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_0.Location = new System.Drawing.Point(6, 6);
+            this.btn_0.Location = new System.Drawing.Point(7, 7);
+            this.btn_0.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_0.Name = "btn_0";
-            this.btn_0.Size = new System.Drawing.Size(101, 42);
+            this.btn_0.Size = new System.Drawing.Size(136, 52);
             this.btn_0.TabIndex = 1;
             this.btn_0.Tag = "1";
             this.btn_0.Text = "0%";
@@ -508,9 +532,10 @@ namespace AdvancedHMICS
             this.pnl_topleft_ground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnl_topleft_ground.Controls.Add(this.tlp_topleft);
             this.pnl_topleft_ground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_topleft_ground.Location = new System.Drawing.Point(3, 3);
+            this.pnl_topleft_ground.Location = new System.Drawing.Point(4, 4);
+            this.pnl_topleft_ground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnl_topleft_ground.Name = "pnl_topleft_ground";
-            this.pnl_topleft_ground.Size = new System.Drawing.Size(386, 175);
+            this.pnl_topleft_ground.Size = new System.Drawing.Size(515, 214);
             this.pnl_topleft_ground.TabIndex = 69;
             // 
             // tlp_topleft
@@ -536,6 +561,7 @@ namespace AdvancedHMICS
             this.tlp_topleft.Controls.Add(this.label4, 0, 2);
             this.tlp_topleft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_topleft.Location = new System.Drawing.Point(0, 0);
+            this.tlp_topleft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlp_topleft.Name = "tlp_topleft";
             this.tlp_topleft.RowCount = 5;
             this.tlp_topleft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -543,7 +569,7 @@ namespace AdvancedHMICS
             this.tlp_topleft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlp_topleft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlp_topleft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_topleft.Size = new System.Drawing.Size(382, 171);
+            this.tlp_topleft.Size = new System.Drawing.Size(511, 210);
             this.tlp_topleft.TabIndex = 79;
             // 
             // label12
@@ -551,9 +577,10 @@ namespace AdvancedHMICS
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(340, 136);
+            this.label12.Location = new System.Drawing.Point(459, 168);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(39, 35);
+            this.label12.Size = new System.Drawing.Size(48, 42);
             this.label12.TabIndex = 73;
             this.label12.Text = "rpm";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -565,9 +592,10 @@ namespace AdvancedHMICS
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Location = new System.Drawing.Point(4, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 34);
+            this.label2.Size = new System.Drawing.Size(126, 42);
             this.label2.TabIndex = 61;
             this.label2.Text = "Voltage";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -577,9 +605,10 @@ namespace AdvancedHMICS
             this.lbl_speedrpm.AutoSize = true;
             this.lbl_speedrpm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_speedrpm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_speedrpm.Location = new System.Drawing.Point(111, 136);
+            this.lbl_speedrpm.Location = new System.Drawing.Point(138, 168);
+            this.lbl_speedrpm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_speedrpm.Name = "lbl_speedrpm";
-            this.lbl_speedrpm.Size = new System.Drawing.Size(223, 35);
+            this.lbl_speedrpm.Size = new System.Drawing.Size(313, 42);
             this.lbl_speedrpm.TabIndex = 80;
             this.lbl_speedrpm.Text = "0.00";
             this.lbl_speedrpm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -601,7 +630,8 @@ namespace AdvancedHMICS
             this.avd_FWVolt.KeypadScaleFactor = 1D;
             this.avd_FWVolt.KeypadText = null;
             this.avd_FWVolt.KeypadWidth = 300;
-            this.avd_FWVolt.Location = new System.Drawing.Point(111, 102);
+            this.avd_FWVolt.Location = new System.Drawing.Point(138, 126);
+            this.avd_FWVolt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_FWVolt.Name = "avd_FWVolt";
             this.avd_FWVolt.NumericFormat = null;
             this.avd_FWVolt.PLCAddressKeypad = "";
@@ -610,7 +640,7 @@ namespace AdvancedHMICS
             this.avd_FWVolt.PLCAddressValueLimitUpper = null;
             this.avd_FWVolt.PLCAddressVisible = null;
             this.avd_FWVolt.ShowValue = true;
-            this.avd_FWVolt.Size = new System.Drawing.Size(223, 34);
+            this.avd_FWVolt.Size = new System.Drawing.Size(313, 42);
             this.avd_FWVolt.TabIndex = 77;
             this.avd_FWVolt.Text = "0.00";
             this.avd_FWVolt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -632,7 +662,7 @@ namespace AdvancedHMICS
             this.modbusRTUCom1.MaxReadGroupSize = 20;
             this.modbusRTUCom1.Parity = System.IO.Ports.Parity.None;
             this.modbusRTUCom1.PollRateOverride = 500;
-            this.modbusRTUCom1.PortName = "COM6";
+            this.modbusRTUCom1.PortName = "COM10";
             this.modbusRTUCom1.StationAddress = ((byte)(1));
             this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.Two;
             this.modbusRTUCom1.SwapBytes = true;
@@ -644,9 +674,10 @@ namespace AdvancedHMICS
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(340, 102);
+            this.label13.Location = new System.Drawing.Point(459, 126);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(39, 34);
+            this.label13.Size = new System.Drawing.Size(48, 42);
             this.label13.TabIndex = 72;
             this.label13.Text = "V";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -668,7 +699,8 @@ namespace AdvancedHMICS
             this.avd_voltage.KeypadScaleFactor = 1D;
             this.avd_voltage.KeypadText = null;
             this.avd_voltage.KeypadWidth = 300;
-            this.avd_voltage.Location = new System.Drawing.Point(111, 0);
+            this.avd_voltage.Location = new System.Drawing.Point(138, 0);
+            this.avd_voltage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_voltage.Name = "avd_voltage";
             this.avd_voltage.NumericFormat = "0.00";
             this.avd_voltage.PLCAddressKeypad = "";
@@ -677,7 +709,7 @@ namespace AdvancedHMICS
             this.avd_voltage.PLCAddressValueLimitUpper = null;
             this.avd_voltage.PLCAddressVisible = null;
             this.avd_voltage.ShowValue = true;
-            this.avd_voltage.Size = new System.Drawing.Size(223, 34);
+            this.avd_voltage.Size = new System.Drawing.Size(313, 42);
             this.avd_voltage.TabIndex = 79;
             this.avd_voltage.Text = "0.00";
             this.avd_voltage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -706,7 +738,8 @@ namespace AdvancedHMICS
             this.avd_electricP.KeypadScaleFactor = 1D;
             this.avd_electricP.KeypadText = null;
             this.avd_electricP.KeypadWidth = 300;
-            this.avd_electricP.Location = new System.Drawing.Point(111, 68);
+            this.avd_electricP.Location = new System.Drawing.Point(138, 84);
+            this.avd_electricP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_electricP.Name = "avd_electricP";
             this.avd_electricP.NumericFormat = null;
             this.avd_electricP.PLCAddressKeypad = "";
@@ -715,7 +748,7 @@ namespace AdvancedHMICS
             this.avd_electricP.PLCAddressValueLimitUpper = null;
             this.avd_electricP.PLCAddressVisible = null;
             this.avd_electricP.ShowValue = true;
-            this.avd_electricP.Size = new System.Drawing.Size(223, 34);
+            this.avd_electricP.Size = new System.Drawing.Size(313, 42);
             this.avd_electricP.TabIndex = 76;
             this.avd_electricP.Text = "0.00";
             this.avd_electricP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -732,9 +765,10 @@ namespace AdvancedHMICS
             this.label6.BackColor = System.Drawing.Color.White;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 136);
+            this.label6.Location = new System.Drawing.Point(4, 168);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 35);
+            this.label6.Size = new System.Drawing.Size(126, 42);
             this.label6.TabIndex = 68;
             this.label6.Text = "ROT Speed";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -744,9 +778,10 @@ namespace AdvancedHMICS
             this.label15.AutoSize = true;
             this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(340, 68);
+            this.label15.Location = new System.Drawing.Point(459, 84);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(39, 34);
+            this.label15.Size = new System.Drawing.Size(48, 42);
             this.label15.TabIndex = 71;
             this.label15.Text = "kW";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -756,9 +791,10 @@ namespace AdvancedHMICS
             this.label14.AutoSize = true;
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(340, 0);
+            this.label14.Location = new System.Drawing.Point(459, 0);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 34);
+            this.label14.Size = new System.Drawing.Size(48, 42);
             this.label14.TabIndex = 69;
             this.label14.Text = "V";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -780,7 +816,8 @@ namespace AdvancedHMICS
             this.avd_current.KeypadScaleFactor = 1D;
             this.avd_current.KeypadText = null;
             this.avd_current.KeypadWidth = 300;
-            this.avd_current.Location = new System.Drawing.Point(111, 34);
+            this.avd_current.Location = new System.Drawing.Point(138, 42);
+            this.avd_current.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_current.Name = "avd_current";
             this.avd_current.NumericFormat = null;
             this.avd_current.PLCAddressKeypad = "";
@@ -789,7 +826,7 @@ namespace AdvancedHMICS
             this.avd_current.PLCAddressValueLimitUpper = null;
             this.avd_current.PLCAddressVisible = null;
             this.avd_current.ShowValue = true;
-            this.avd_current.Size = new System.Drawing.Size(223, 34);
+            this.avd_current.Size = new System.Drawing.Size(313, 42);
             this.avd_current.TabIndex = 75;
             this.avd_current.Text = "0.00";
             this.avd_current.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -807,9 +844,10 @@ namespace AdvancedHMICS
             this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 102);
+            this.label5.Location = new System.Drawing.Point(4, 126);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 34);
+            this.label5.Size = new System.Drawing.Size(126, 42);
             this.label5.TabIndex = 67;
             this.label5.Text = "FW Volt";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -820,9 +858,10 @@ namespace AdvancedHMICS
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 34);
+            this.label3.Location = new System.Drawing.Point(4, 42);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 34);
+            this.label3.Size = new System.Drawing.Size(126, 42);
             this.label3.TabIndex = 65;
             this.label3.Text = "Current";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -832,9 +871,10 @@ namespace AdvancedHMICS
             this.label16.AutoSize = true;
             this.label16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(340, 34);
+            this.label16.Location = new System.Drawing.Point(459, 42);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(39, 34);
+            this.label16.Size = new System.Drawing.Size(48, 42);
             this.label16.TabIndex = 70;
             this.label16.Text = "A";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -845,9 +885,10 @@ namespace AdvancedHMICS
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 68);
+            this.label4.Location = new System.Drawing.Point(4, 84);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 34);
+            this.label4.Size = new System.Drawing.Size(126, 42);
             this.label4.TabIndex = 66;
             this.label4.Text = "Electric P";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -857,9 +898,10 @@ namespace AdvancedHMICS
             this.pnl_botleft_ground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnl_botleft_ground.Controls.Add(this.tlp_botleft);
             this.pnl_botleft_ground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_botleft_ground.Location = new System.Drawing.Point(3, 379);
+            this.pnl_botleft_ground.Location = new System.Drawing.Point(4, 466);
+            this.pnl_botleft_ground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnl_botleft_ground.Name = "pnl_botleft_ground";
-            this.pnl_botleft_ground.Size = new System.Drawing.Size(386, 131);
+            this.pnl_botleft_ground.Size = new System.Drawing.Size(515, 160);
             this.pnl_botleft_ground.TabIndex = 75;
             // 
             // tlp_botleft
@@ -867,10 +909,10 @@ namespace AdvancedHMICS
             this.tlp_botleft.ColumnCount = 5;
             this.tlp_botleft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlp_botleft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlp_botleft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlp_botleft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tlp_botleft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlp_botleft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlp_botleft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlp_botleft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tlp_botleft.Controls.Add(this.lbl_status_automanual, 1, 6);
             this.tlp_botleft.Controls.Add(this.label25, 0, 0);
             this.tlp_botleft.Controls.Add(this.label41, 0, 6);
@@ -892,6 +934,7 @@ namespace AdvancedHMICS
             this.tlp_botleft.Controls.Add(this.lbl_adj, 3, 4);
             this.tlp_botleft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_botleft.Location = new System.Drawing.Point(0, 0);
+            this.tlp_botleft.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlp_botleft.Name = "tlp_botleft";
             this.tlp_botleft.RowCount = 7;
             this.tlp_botleft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -901,7 +944,7 @@ namespace AdvancedHMICS
             this.tlp_botleft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tlp_botleft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tlp_botleft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tlp_botleft.Size = new System.Drawing.Size(382, 127);
+            this.tlp_botleft.Size = new System.Drawing.Size(511, 156);
             this.tlp_botleft.TabIndex = 71;
             // 
             // lbl_status_automanual
@@ -910,9 +953,10 @@ namespace AdvancedHMICS
             this.tlp_botleft.SetColumnSpan(this.lbl_status_automanual, 4);
             this.lbl_status_automanual.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_status_automanual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status_automanual.Location = new System.Drawing.Point(152, 108);
+            this.lbl_status_automanual.Location = new System.Drawing.Point(208, 132);
+            this.lbl_status_automanual.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_status_automanual.Name = "lbl_status_automanual";
-            this.lbl_status_automanual.Size = new System.Drawing.Size(227, 19);
+            this.lbl_status_automanual.Size = new System.Drawing.Size(299, 24);
             this.lbl_status_automanual.TabIndex = 84;
             this.lbl_status_automanual.Text = "Manual";
             this.lbl_status_automanual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -923,9 +967,10 @@ namespace AdvancedHMICS
             this.tlp_botleft.SetColumnSpan(this.label25, 2);
             this.label25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(3, 0);
+            this.label25.Location = new System.Drawing.Point(4, 0);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(179, 18);
+            this.label25.Size = new System.Drawing.Size(239, 22);
             this.label25.TabIndex = 61;
             this.label25.Text = "Rated P:";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -935,9 +980,10 @@ namespace AdvancedHMICS
             this.label41.AutoSize = true;
             this.label41.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(3, 108);
+            this.label41.Location = new System.Drawing.Point(4, 132);
+            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(143, 19);
+            this.label41.Size = new System.Drawing.Size(196, 24);
             this.label41.TabIndex = 83;
             this.label41.Text = "Status:";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -948,9 +994,10 @@ namespace AdvancedHMICS
             this.tlp_botleft.SetColumnSpan(this.label11, 2);
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 36);
+            this.label11.Location = new System.Drawing.Point(4, 44);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(179, 18);
+            this.label11.Size = new System.Drawing.Size(239, 22);
             this.label11.TabIndex = 68;
             this.label11.Text = "Target P";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -961,9 +1008,10 @@ namespace AdvancedHMICS
             this.tlp_botleft.SetColumnSpan(this.label21, 2);
             this.label21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(3, 72);
+            this.label21.Location = new System.Drawing.Point(4, 88);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(179, 18);
+            this.label21.Size = new System.Drawing.Size(239, 22);
             this.label21.TabIndex = 71;
             this.label21.Text = "Actual P";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -973,9 +1021,10 @@ namespace AdvancedHMICS
             this.lbl_rated_P.AutoSize = true;
             this.lbl_rated_P.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_rated_P.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_rated_P.Location = new System.Drawing.Point(3, 18);
+            this.lbl_rated_P.Location = new System.Drawing.Point(4, 22);
+            this.lbl_rated_P.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_rated_P.Name = "lbl_rated_P";
-            this.lbl_rated_P.Size = new System.Drawing.Size(143, 18);
+            this.lbl_rated_P.Size = new System.Drawing.Size(196, 22);
             this.lbl_rated_P.TabIndex = 66;
             this.lbl_rated_P.Text = "0.000";
             this.lbl_rated_P.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -985,9 +1034,10 @@ namespace AdvancedHMICS
             this.lbl_targetP.AutoSize = true;
             this.lbl_targetP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_targetP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_targetP.Location = new System.Drawing.Point(3, 54);
+            this.lbl_targetP.Location = new System.Drawing.Point(4, 66);
+            this.lbl_targetP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_targetP.Name = "lbl_targetP";
-            this.lbl_targetP.Size = new System.Drawing.Size(143, 18);
+            this.lbl_targetP.Size = new System.Drawing.Size(196, 22);
             this.lbl_targetP.TabIndex = 69;
             this.lbl_targetP.Text = "0.000";
             this.lbl_targetP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -997,9 +1047,10 @@ namespace AdvancedHMICS
             this.lbl_actualP.AutoSize = true;
             this.lbl_actualP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_actualP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_actualP.Location = new System.Drawing.Point(3, 90);
+            this.lbl_actualP.Location = new System.Drawing.Point(4, 110);
+            this.lbl_actualP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_actualP.Name = "lbl_actualP";
-            this.lbl_actualP.Size = new System.Drawing.Size(143, 18);
+            this.lbl_actualP.Size = new System.Drawing.Size(196, 22);
             this.lbl_actualP.TabIndex = 72;
             this.lbl_actualP.Text = "0.000";
             this.lbl_actualP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1009,9 +1060,10 @@ namespace AdvancedHMICS
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(152, 18);
+            this.label8.Location = new System.Drawing.Point(208, 22);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 18);
+            this.label8.Size = new System.Drawing.Size(35, 22);
             this.label8.TabIndex = 67;
             this.label8.Text = "kW";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1021,9 +1073,10 @@ namespace AdvancedHMICS
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(152, 54);
+            this.label9.Location = new System.Drawing.Point(208, 66);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 18);
+            this.label9.Size = new System.Drawing.Size(35, 22);
             this.label9.TabIndex = 70;
             this.label9.Text = "kW";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1033,9 +1086,10 @@ namespace AdvancedHMICS
             this.label19.AutoSize = true;
             this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(152, 90);
+            this.label19.Location = new System.Drawing.Point(208, 110);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(30, 18);
+            this.label19.Size = new System.Drawing.Size(35, 22);
             this.label19.TabIndex = 73;
             this.label19.Text = "kW";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1045,9 +1099,10 @@ namespace AdvancedHMICS
             this.label38.AutoSize = true;
             this.label38.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(357, 54);
+            this.label38.Location = new System.Drawing.Point(482, 66);
+            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(22, 18);
+            this.label38.Size = new System.Drawing.Size(25, 22);
             this.label38.TabIndex = 79;
             this.label38.Text = "s";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1057,9 +1112,10 @@ namespace AdvancedHMICS
             this.label24.AutoSize = true;
             this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(357, 90);
+            this.label24.Location = new System.Drawing.Point(482, 110);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(22, 18);
+            this.label24.Size = new System.Drawing.Size(25, 22);
             this.label24.TabIndex = 82;
             this.label24.Text = "%";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1069,9 +1125,10 @@ namespace AdvancedHMICS
             this.lbl_adj_value.AutoSize = true;
             this.lbl_adj_value.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_adj_value.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_adj_value.Location = new System.Drawing.Point(208, 90);
+            this.lbl_adj_value.Location = new System.Drawing.Point(278, 110);
+            this.lbl_adj_value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_adj_value.Name = "lbl_adj_value";
-            this.lbl_adj_value.Size = new System.Drawing.Size(143, 18);
+            this.lbl_adj_value.Size = new System.Drawing.Size(196, 22);
             this.lbl_adj_value.TabIndex = 81;
             this.lbl_adj_value.Text = "0.00";
             this.lbl_adj_value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1081,9 +1138,10 @@ namespace AdvancedHMICS
             this.lbl_steadyT.AutoSize = true;
             this.lbl_steadyT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_steadyT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_steadyT.Location = new System.Drawing.Point(208, 54);
+            this.lbl_steadyT.Location = new System.Drawing.Point(278, 66);
+            this.lbl_steadyT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_steadyT.Name = "lbl_steadyT";
-            this.lbl_steadyT.Size = new System.Drawing.Size(143, 18);
+            this.lbl_steadyT.Size = new System.Drawing.Size(196, 22);
             this.lbl_steadyT.TabIndex = 78;
             this.lbl_steadyT.Text = "0";
             this.lbl_steadyT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1093,9 +1151,10 @@ namespace AdvancedHMICS
             this.lbl_pcStep.AutoSize = true;
             this.lbl_pcStep.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_pcStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_pcStep.Location = new System.Drawing.Point(208, 18);
+            this.lbl_pcStep.Location = new System.Drawing.Point(278, 22);
+            this.lbl_pcStep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_pcStep.Name = "lbl_pcStep";
-            this.lbl_pcStep.Size = new System.Drawing.Size(143, 18);
+            this.lbl_pcStep.Size = new System.Drawing.Size(196, 22);
             this.lbl_pcStep.TabIndex = 75;
             this.lbl_pcStep.Text = "1 - 5";
             this.lbl_pcStep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1106,9 +1165,10 @@ namespace AdvancedHMICS
             this.tlp_botleft.SetColumnSpan(this.label43, 2);
             this.label43.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(208, 0);
+            this.label43.Location = new System.Drawing.Point(278, 0);
+            this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(171, 18);
+            this.label43.Size = new System.Drawing.Size(229, 22);
             this.label43.TabIndex = 74;
             this.label43.Text = "PC Step: ";
             this.label43.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1119,9 +1179,10 @@ namespace AdvancedHMICS
             this.tlp_botleft.SetColumnSpan(this.label40, 2);
             this.label40.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(208, 36);
+            this.label40.Location = new System.Drawing.Point(278, 44);
+            this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(171, 18);
+            this.label40.Size = new System.Drawing.Size(229, 22);
             this.label40.TabIndex = 77;
             this.label40.Text = "Steady T:";
             this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1132,9 +1193,10 @@ namespace AdvancedHMICS
             this.tlp_botleft.SetColumnSpan(this.lbl_adj, 2);
             this.lbl_adj.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_adj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_adj.Location = new System.Drawing.Point(208, 72);
+            this.lbl_adj.Location = new System.Drawing.Point(278, 88);
+            this.lbl_adj.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_adj.Name = "lbl_adj";
-            this.lbl_adj.Size = new System.Drawing.Size(171, 18);
+            this.lbl_adj.Size = new System.Drawing.Size(229, 22);
             this.lbl_adj.TabIndex = 80;
             this.lbl_adj.Text = "Adjusting";
             this.lbl_adj.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1145,9 +1207,10 @@ namespace AdvancedHMICS
             this.pnl_topright_ground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnl_topright_ground.Controls.Add(this.tlp_topright);
             this.pnl_topright_ground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_topright_ground.Location = new System.Drawing.Point(787, 3);
+            this.pnl_topright_ground.Location = new System.Drawing.Point(1050, 4);
+            this.pnl_topright_ground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnl_topright_ground.Name = "pnl_topright_ground";
-            this.pnl_topright_ground.Size = new System.Drawing.Size(388, 175);
+            this.pnl_topright_ground.Size = new System.Drawing.Size(517, 214);
             this.pnl_topright_ground.TabIndex = 73;
             // 
             // tlp_topright
@@ -1173,6 +1236,7 @@ namespace AdvancedHMICS
             this.tlp_topright.Controls.Add(this.label35, 0, 2);
             this.tlp_topright.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_topright.Location = new System.Drawing.Point(0, 0);
+            this.tlp_topright.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlp_topright.Name = "tlp_topright";
             this.tlp_topright.RowCount = 5;
             this.tlp_topright.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -1180,7 +1244,7 @@ namespace AdvancedHMICS
             this.tlp_topright.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlp_topright.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlp_topright.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlp_topright.Size = new System.Drawing.Size(384, 171);
+            this.tlp_topright.Size = new System.Drawing.Size(513, 210);
             this.tlp_topright.TabIndex = 79;
             // 
             // label27
@@ -1188,9 +1252,10 @@ namespace AdvancedHMICS
             this.label27.AutoSize = true;
             this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(349, 136);
+            this.label27.Location = new System.Drawing.Point(467, 168);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(32, 35);
+            this.label27.Size = new System.Drawing.Size(42, 42);
             this.label27.TabIndex = 73;
             this.label27.Text = "Kw";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1212,7 +1277,8 @@ namespace AdvancedHMICS
             this.avd_machanicalP.KeypadScaleFactor = 1D;
             this.avd_machanicalP.KeypadText = null;
             this.avd_machanicalP.KeypadWidth = 300;
-            this.avd_machanicalP.Location = new System.Drawing.Point(135, 136);
+            this.avd_machanicalP.Location = new System.Drawing.Point(167, 168);
+            this.avd_machanicalP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_machanicalP.Name = "avd_machanicalP";
             this.avd_machanicalP.NumericFormat = null;
             this.avd_machanicalP.PLCAddressKeypad = "";
@@ -1221,7 +1287,7 @@ namespace AdvancedHMICS
             this.avd_machanicalP.PLCAddressValueLimitUpper = null;
             this.avd_machanicalP.PLCAddressVisible = null;
             this.avd_machanicalP.ShowValue = true;
-            this.avd_machanicalP.Size = new System.Drawing.Size(208, 35);
+            this.avd_machanicalP.Size = new System.Drawing.Size(292, 42);
             this.avd_machanicalP.TabIndex = 78;
             this.avd_machanicalP.Text = "0.00";
             this.avd_machanicalP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1237,9 +1303,10 @@ namespace AdvancedHMICS
             this.label28.AutoSize = true;
             this.label28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(349, 102);
+            this.label28.Location = new System.Drawing.Point(467, 126);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(32, 34);
+            this.label28.Size = new System.Drawing.Size(42, 42);
             this.label28.TabIndex = 72;
             this.label28.Text = "A";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1250,9 +1317,10 @@ namespace AdvancedHMICS
             this.label34.BackColor = System.Drawing.Color.White;
             this.label34.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(3, 0);
+            this.label34.Location = new System.Drawing.Point(4, 0);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(126, 34);
+            this.label34.Size = new System.Drawing.Size(155, 42);
             this.label34.TabIndex = 61;
             this.label34.Text = "ROT Spd. mod";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1274,7 +1342,8 @@ namespace AdvancedHMICS
             this.avd_FWcurr.KeypadScaleFactor = 1D;
             this.avd_FWcurr.KeypadText = null;
             this.avd_FWcurr.KeypadWidth = 300;
-            this.avd_FWcurr.Location = new System.Drawing.Point(135, 102);
+            this.avd_FWcurr.Location = new System.Drawing.Point(167, 126);
+            this.avd_FWcurr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_FWcurr.Name = "avd_FWcurr";
             this.avd_FWcurr.NumericFormat = null;
             this.avd_FWcurr.PLCAddressKeypad = "";
@@ -1283,7 +1352,7 @@ namespace AdvancedHMICS
             this.avd_FWcurr.PLCAddressValueLimitUpper = null;
             this.avd_FWcurr.PLCAddressVisible = null;
             this.avd_FWcurr.ShowValue = true;
-            this.avd_FWcurr.Size = new System.Drawing.Size(208, 34);
+            this.avd_FWcurr.Size = new System.Drawing.Size(292, 42);
             this.avd_FWcurr.TabIndex = 77;
             this.avd_FWcurr.Text = "0.00";
             this.avd_FWcurr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1311,7 +1380,8 @@ namespace AdvancedHMICS
             this.avd_rotspdmod.KeypadScaleFactor = 1D;
             this.avd_rotspdmod.KeypadText = null;
             this.avd_rotspdmod.KeypadWidth = 300;
-            this.avd_rotspdmod.Location = new System.Drawing.Point(135, 0);
+            this.avd_rotspdmod.Location = new System.Drawing.Point(167, 0);
+            this.avd_rotspdmod.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_rotspdmod.Name = "avd_rotspdmod";
             this.avd_rotspdmod.NumericFormat = null;
             this.avd_rotspdmod.PLCAddressKeypad = "";
@@ -1320,7 +1390,7 @@ namespace AdvancedHMICS
             this.avd_rotspdmod.PLCAddressValueLimitUpper = null;
             this.avd_rotspdmod.PLCAddressVisible = null;
             this.avd_rotspdmod.ShowValue = true;
-            this.avd_rotspdmod.Size = new System.Drawing.Size(208, 34);
+            this.avd_rotspdmod.Size = new System.Drawing.Size(292, 42);
             this.avd_rotspdmod.TabIndex = 74;
             this.avd_rotspdmod.Text = "0.00";
             this.avd_rotspdmod.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1348,7 +1418,8 @@ namespace AdvancedHMICS
             this.avd_frequency.KeypadScaleFactor = 1D;
             this.avd_frequency.KeypadText = null;
             this.avd_frequency.KeypadWidth = 300;
-            this.avd_frequency.Location = new System.Drawing.Point(135, 68);
+            this.avd_frequency.Location = new System.Drawing.Point(167, 84);
+            this.avd_frequency.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_frequency.Name = "avd_frequency";
             this.avd_frequency.NumericFormat = null;
             this.avd_frequency.PLCAddressKeypad = "";
@@ -1357,7 +1428,7 @@ namespace AdvancedHMICS
             this.avd_frequency.PLCAddressValueLimitUpper = null;
             this.avd_frequency.PLCAddressVisible = null;
             this.avd_frequency.ShowValue = true;
-            this.avd_frequency.Size = new System.Drawing.Size(208, 34);
+            this.avd_frequency.Size = new System.Drawing.Size(292, 42);
             this.avd_frequency.TabIndex = 76;
             this.avd_frequency.Text = "0.00";
             this.avd_frequency.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1374,9 +1445,10 @@ namespace AdvancedHMICS
             this.label29.AutoSize = true;
             this.label29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(349, 0);
+            this.label29.Location = new System.Drawing.Point(467, 0);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(32, 34);
+            this.label29.Size = new System.Drawing.Size(42, 42);
             this.label29.TabIndex = 69;
             this.label29.Text = "%";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1387,9 +1459,10 @@ namespace AdvancedHMICS
             this.label32.BackColor = System.Drawing.Color.White;
             this.label32.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(3, 136);
+            this.label32.Location = new System.Drawing.Point(4, 168);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(126, 35);
+            this.label32.Size = new System.Drawing.Size(155, 42);
             this.label32.TabIndex = 68;
             this.label32.Text = "Mechanical P";
             this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1399,9 +1472,10 @@ namespace AdvancedHMICS
             this.label30.AutoSize = true;
             this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(349, 68);
+            this.label30.Location = new System.Drawing.Point(467, 84);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(32, 34);
+            this.label30.Size = new System.Drawing.Size(42, 42);
             this.label30.TabIndex = 71;
             this.label30.Text = "Hz";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1412,9 +1486,10 @@ namespace AdvancedHMICS
             this.label33.BackColor = System.Drawing.Color.White;
             this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(3, 102);
+            this.label33.Location = new System.Drawing.Point(4, 126);
+            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(126, 34);
+            this.label33.Size = new System.Drawing.Size(155, 42);
             this.label33.TabIndex = 67;
             this.label33.Text = "FW Curr";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1436,7 +1511,8 @@ namespace AdvancedHMICS
             this.avd_rotspdwav.KeypadScaleFactor = 1D;
             this.avd_rotspdwav.KeypadText = null;
             this.avd_rotspdwav.KeypadWidth = 300;
-            this.avd_rotspdwav.Location = new System.Drawing.Point(135, 34);
+            this.avd_rotspdwav.Location = new System.Drawing.Point(167, 42);
+            this.avd_rotspdwav.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_rotspdwav.Name = "avd_rotspdwav";
             this.avd_rotspdwav.NumericFormat = null;
             this.avd_rotspdwav.PLCAddressKeypad = "";
@@ -1445,7 +1521,7 @@ namespace AdvancedHMICS
             this.avd_rotspdwav.PLCAddressValueLimitUpper = null;
             this.avd_rotspdwav.PLCAddressVisible = null;
             this.avd_rotspdwav.ShowValue = true;
-            this.avd_rotspdwav.Size = new System.Drawing.Size(208, 34);
+            this.avd_rotspdwav.Size = new System.Drawing.Size(292, 42);
             this.avd_rotspdwav.TabIndex = 75;
             this.avd_rotspdwav.Text = "0.00";
             this.avd_rotspdwav.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1462,9 +1538,10 @@ namespace AdvancedHMICS
             this.label36.BackColor = System.Drawing.Color.White;
             this.label36.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(3, 34);
+            this.label36.Location = new System.Drawing.Point(4, 42);
+            this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(126, 34);
+            this.label36.Size = new System.Drawing.Size(155, 42);
             this.label36.TabIndex = 65;
             this.label36.Text = "ROT Spd. wav";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1474,9 +1551,10 @@ namespace AdvancedHMICS
             this.label31.AutoSize = true;
             this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(349, 34);
+            this.label31.Location = new System.Drawing.Point(467, 42);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(32, 34);
+            this.label31.Size = new System.Drawing.Size(42, 42);
             this.label31.TabIndex = 70;
             this.label31.Text = "%";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1487,9 +1565,10 @@ namespace AdvancedHMICS
             this.label35.BackColor = System.Drawing.Color.White;
             this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(3, 68);
+            this.label35.Location = new System.Drawing.Point(4, 84);
+            this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(126, 34);
+            this.label35.Size = new System.Drawing.Size(155, 42);
             this.label35.TabIndex = 66;
             this.label35.Text = "Frequency";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1500,9 +1579,10 @@ namespace AdvancedHMICS
             this.pnl_topmid_ground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnl_topmid_ground.Controls.Add(this.tlp_topmid);
             this.pnl_topmid_ground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_topmid_ground.Location = new System.Drawing.Point(395, 3);
+            this.pnl_topmid_ground.Location = new System.Drawing.Point(527, 4);
+            this.pnl_topmid_ground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnl_topmid_ground.Name = "pnl_topmid_ground";
-            this.pnl_topmid_ground.Size = new System.Drawing.Size(386, 175);
+            this.pnl_topmid_ground.Size = new System.Drawing.Size(515, 214);
             this.pnl_topmid_ground.TabIndex = 72;
             // 
             // tlp_topmid
@@ -1519,12 +1599,13 @@ namespace AdvancedHMICS
             this.tlp_topmid.Controls.Add(this.label22, 0, 1);
             this.tlp_topmid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_topmid.Location = new System.Drawing.Point(0, 0);
+            this.tlp_topmid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlp_topmid.Name = "tlp_topmid";
             this.tlp_topmid.RowCount = 3;
-            this.tlp_topmid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tlp_topmid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tlp_topmid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
+            this.tlp_topmid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 49F));
             this.tlp_topmid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_topmid.Size = new System.Drawing.Size(382, 171);
+            this.tlp_topmid.Size = new System.Drawing.Size(511, 210);
             this.tlp_topmid.TabIndex = 79;
             // 
             // label23
@@ -1533,9 +1614,10 @@ namespace AdvancedHMICS
             this.label23.BackColor = System.Drawing.Color.White;
             this.label23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(3, 0);
+            this.label23.Location = new System.Drawing.Point(4, 0);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(88, 40);
+            this.label23.Size = new System.Drawing.Size(109, 49);
             this.label23.TabIndex = 67;
             this.label23.Text = "DC Power";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1545,9 +1627,10 @@ namespace AdvancedHMICS
             this.label17.AutoSize = true;
             this.label17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(339, 40);
+            this.label17.Location = new System.Drawing.Point(457, 49);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(40, 40);
+            this.label17.Size = new System.Drawing.Size(50, 49);
             this.label17.TabIndex = 73;
             this.label17.Text = "N.m";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1569,7 +1652,8 @@ namespace AdvancedHMICS
             this.avd_torque.KeypadScaleFactor = 1D;
             this.avd_torque.KeypadText = null;
             this.avd_torque.KeypadWidth = 300;
-            this.avd_torque.Location = new System.Drawing.Point(97, 40);
+            this.avd_torque.Location = new System.Drawing.Point(121, 49);
+            this.avd_torque.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_torque.Name = "avd_torque";
             this.avd_torque.NumericFormat = null;
             this.avd_torque.PLCAddressKeypad = "";
@@ -1578,7 +1662,7 @@ namespace AdvancedHMICS
             this.avd_torque.PLCAddressValueLimitUpper = null;
             this.avd_torque.PLCAddressVisible = null;
             this.avd_torque.ShowValue = true;
-            this.avd_torque.Size = new System.Drawing.Size(236, 40);
+            this.avd_torque.Size = new System.Drawing.Size(328, 49);
             this.avd_torque.TabIndex = 78;
             this.avd_torque.Text = "0.00";
             this.avd_torque.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1606,7 +1690,8 @@ namespace AdvancedHMICS
             this.avd_DCpower.KeypadScaleFactor = 1D;
             this.avd_DCpower.KeypadText = null;
             this.avd_DCpower.KeypadWidth = 300;
-            this.avd_DCpower.Location = new System.Drawing.Point(97, 0);
+            this.avd_DCpower.Location = new System.Drawing.Point(121, 0);
+            this.avd_DCpower.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.avd_DCpower.Name = "avd_DCpower";
             this.avd_DCpower.NumericFormat = null;
             this.avd_DCpower.PLCAddressKeypad = "";
@@ -1615,7 +1700,7 @@ namespace AdvancedHMICS
             this.avd_DCpower.PLCAddressValueLimitUpper = null;
             this.avd_DCpower.PLCAddressVisible = null;
             this.avd_DCpower.ShowValue = true;
-            this.avd_DCpower.Size = new System.Drawing.Size(236, 40);
+            this.avd_DCpower.Size = new System.Drawing.Size(328, 49);
             this.avd_DCpower.TabIndex = 77;
             this.avd_DCpower.Text = "0";
             this.avd_DCpower.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1631,9 +1716,10 @@ namespace AdvancedHMICS
             this.label18.AutoSize = true;
             this.label18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(339, 0);
+            this.label18.Location = new System.Drawing.Point(457, 0);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(40, 40);
+            this.label18.Size = new System.Drawing.Size(50, 49);
             this.label18.TabIndex = 72;
             this.label18.Text = "W";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1644,9 +1730,10 @@ namespace AdvancedHMICS
             this.label22.BackColor = System.Drawing.Color.White;
             this.label22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(3, 40);
+            this.label22.Location = new System.Drawing.Point(4, 49);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(88, 40);
+            this.label22.Size = new System.Drawing.Size(109, 49);
             this.label22.TabIndex = 68;
             this.label22.Text = "Torque";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1656,9 +1743,10 @@ namespace AdvancedHMICS
             this.pnl_botright_ground.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnl_botright_ground.Controls.Add(this.tlp_botright);
             this.pnl_botright_ground.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_botright_ground.Location = new System.Drawing.Point(787, 379);
+            this.pnl_botright_ground.Location = new System.Drawing.Point(1050, 466);
+            this.pnl_botright_ground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnl_botright_ground.Name = "pnl_botright_ground";
-            this.pnl_botright_ground.Size = new System.Drawing.Size(388, 131);
+            this.pnl_botright_ground.Size = new System.Drawing.Size(517, 160);
             this.pnl_botright_ground.TabIndex = 79;
             // 
             // tlp_botright
@@ -1686,13 +1774,14 @@ namespace AdvancedHMICS
             this.tlp_botright.Controls.Add(this.btnSqlLogs, 3, 3);
             this.tlp_botright.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_botright.Location = new System.Drawing.Point(0, 0);
+            this.tlp_botright.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tlp_botright.Name = "tlp_botright";
             this.tlp_botright.RowCount = 4;
             this.tlp_botright.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlp_botright.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlp_botright.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlp_botright.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlp_botright.Size = new System.Drawing.Size(384, 127);
+            this.tlp_botright.Size = new System.Drawing.Size(513, 156);
             this.tlp_botright.TabIndex = 16;
             // 
             // btn_data
@@ -1700,9 +1789,10 @@ namespace AdvancedHMICS
             this.btn_data.BackColor = System.Drawing.Color.LightGray;
             this.btn_data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_data.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_data.Location = new System.Drawing.Point(3, 34);
+            this.btn_data.Location = new System.Drawing.Point(4, 43);
+            this.btn_data.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_data.Name = "btn_data";
-            this.btn_data.Size = new System.Drawing.Size(90, 25);
+            this.btn_data.Size = new System.Drawing.Size(120, 31);
             this.btn_data.TabIndex = 1;
             this.btn_data.Text = "Data";
             this.btn_data.UseVisualStyleBackColor = false;
@@ -1713,9 +1803,10 @@ namespace AdvancedHMICS
             this.btn_settingorder.BackColor = System.Drawing.Color.LightGray;
             this.btn_settingorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_settingorder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_settingorder.Location = new System.Drawing.Point(291, 34);
+            this.btn_settingorder.Location = new System.Drawing.Point(388, 43);
+            this.btn_settingorder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_settingorder.Name = "btn_settingorder";
-            this.btn_settingorder.Size = new System.Drawing.Size(90, 25);
+            this.btn_settingorder.Size = new System.Drawing.Size(121, 31);
             this.btn_settingorder.TabIndex = 15;
             this.btn_settingorder.Text = "Order Setting";
             this.btn_settingorder.UseVisualStyleBackColor = false;
@@ -1727,9 +1818,10 @@ namespace AdvancedHMICS
             this.btn_deleterow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_deleterow.Enabled = false;
             this.btn_deleterow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_deleterow.Location = new System.Drawing.Point(99, 3);
+            this.btn_deleterow.Location = new System.Drawing.Point(132, 4);
+            this.btn_deleterow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_deleterow.Name = "btn_deleterow";
-            this.btn_deleterow.Size = new System.Drawing.Size(90, 25);
+            this.btn_deleterow.Size = new System.Drawing.Size(120, 31);
             this.btn_deleterow.TabIndex = 4;
             this.btn_deleterow.Text = "Delete";
             this.btn_deleterow.UseVisualStyleBackColor = false;
@@ -1741,9 +1833,10 @@ namespace AdvancedHMICS
             this.btn_export.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_export.Enabled = false;
             this.btn_export.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_export.Location = new System.Drawing.Point(291, 3);
+            this.btn_export.Location = new System.Drawing.Point(388, 4);
+            this.btn_export.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(90, 25);
+            this.btn_export.Size = new System.Drawing.Size(121, 31);
             this.btn_export.TabIndex = 14;
             this.btn_export.Text = "Export";
             this.btn_export.UseVisualStyleBackColor = false;
@@ -1754,9 +1847,10 @@ namespace AdvancedHMICS
             this.btn_autoload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_autoload.Enabled = false;
             this.btn_autoload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_autoload.Location = new System.Drawing.Point(99, 65);
+            this.btn_autoload.Location = new System.Drawing.Point(132, 82);
+            this.btn_autoload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_autoload.Name = "btn_autoload";
-            this.btn_autoload.Size = new System.Drawing.Size(90, 25);
+            this.btn_autoload.Size = new System.Drawing.Size(120, 31);
             this.btn_autoload.TabIndex = 5;
             this.btn_autoload.Text = "Auto Load";
             this.btn_autoload.UseVisualStyleBackColor = false;
@@ -1767,9 +1861,10 @@ namespace AdvancedHMICS
             this.btn_manualload.BackColor = System.Drawing.Color.LightGray;
             this.btn_manualload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_manualload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_manualload.Location = new System.Drawing.Point(195, 96);
+            this.btn_manualload.Location = new System.Drawing.Point(260, 121);
+            this.btn_manualload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_manualload.Name = "btn_manualload";
-            this.btn_manualload.Size = new System.Drawing.Size(90, 28);
+            this.btn_manualload.Size = new System.Drawing.Size(120, 31);
             this.btn_manualload.TabIndex = 10;
             this.btn_manualload.Text = "Manual Load";
             this.btn_manualload.UseVisualStyleBackColor = false;
@@ -1779,9 +1874,10 @@ namespace AdvancedHMICS
             this.btn_querysqlite.BackColor = System.Drawing.Color.LightGray;
             this.btn_querysqlite.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_querysqlite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_querysqlite.Location = new System.Drawing.Point(195, 65);
+            this.btn_querysqlite.Location = new System.Drawing.Point(260, 82);
+            this.btn_querysqlite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_querysqlite.Name = "btn_querysqlite";
-            this.btn_querysqlite.Size = new System.Drawing.Size(90, 25);
+            this.btn_querysqlite.Size = new System.Drawing.Size(120, 31);
             this.btn_querysqlite.TabIndex = 11;
             this.btn_querysqlite.Text = "Query SQLite";
             this.btn_querysqlite.UseVisualStyleBackColor = false;
@@ -1792,9 +1888,10 @@ namespace AdvancedHMICS
             this.btn_modelSetting.BackColor = System.Drawing.Color.LightGray;
             this.btn_modelSetting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_modelSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_modelSetting.Location = new System.Drawing.Point(195, 34);
+            this.btn_modelSetting.Location = new System.Drawing.Point(260, 43);
+            this.btn_modelSetting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_modelSetting.Name = "btn_modelSetting";
-            this.btn_modelSetting.Size = new System.Drawing.Size(90, 25);
+            this.btn_modelSetting.Size = new System.Drawing.Size(120, 31);
             this.btn_modelSetting.TabIndex = 13;
             this.btn_modelSetting.Text = "Model Setting";
             this.btn_modelSetting.UseVisualStyleBackColor = false;
@@ -1805,9 +1902,10 @@ namespace AdvancedHMICS
             this.btn_start.BackColor = System.Drawing.Color.Red;
             this.btn_start.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_start.Location = new System.Drawing.Point(3, 65);
+            this.btn_start.Location = new System.Drawing.Point(4, 82);
+            this.btn_start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_start.Name = "btn_start";
-            this.btn_start.Size = new System.Drawing.Size(90, 25);
+            this.btn_start.Size = new System.Drawing.Size(120, 31);
             this.btn_start.TabIndex = 2;
             this.btn_start.Text = "Start/Run";
             this.btn_start.UseVisualStyleBackColor = false;
@@ -1819,9 +1917,10 @@ namespace AdvancedHMICS
             this.btn_clear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_clear.Enabled = false;
             this.btn_clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_clear.Location = new System.Drawing.Point(195, 3);
+            this.btn_clear.Location = new System.Drawing.Point(260, 4);
+            this.btn_clear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(90, 25);
+            this.btn_clear.Size = new System.Drawing.Size(120, 31);
             this.btn_clear.TabIndex = 12;
             this.btn_clear.Text = "Clear";
             this.btn_clear.UseVisualStyleBackColor = false;
@@ -1833,9 +1932,10 @@ namespace AdvancedHMICS
             this.btn_plcstatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_plcstatus.Enabled = false;
             this.btn_plcstatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_plcstatus.Location = new System.Drawing.Point(3, 96);
+            this.btn_plcstatus.Location = new System.Drawing.Point(4, 121);
+            this.btn_plcstatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_plcstatus.Name = "btn_plcstatus";
-            this.btn_plcstatus.Size = new System.Drawing.Size(90, 28);
+            this.btn_plcstatus.Size = new System.Drawing.Size(120, 31);
             this.btn_plcstatus.TabIndex = 3;
             this.btn_plcstatus.Text = "PLC Status";
             this.btn_plcstatus.UseVisualStyleBackColor = false;
@@ -1847,9 +1947,10 @@ namespace AdvancedHMICS
             this.btn_loadStatus.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_loadStatus.Enabled = false;
             this.btn_loadStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_loadStatus.Location = new System.Drawing.Point(99, 96);
+            this.btn_loadStatus.Location = new System.Drawing.Point(132, 121);
+            this.btn_loadStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_loadStatus.Name = "btn_loadStatus";
-            this.btn_loadStatus.Size = new System.Drawing.Size(90, 28);
+            this.btn_loadStatus.Size = new System.Drawing.Size(120, 31);
             this.btn_loadStatus.TabIndex = 9;
             this.btn_loadStatus.Text = "Load Status";
             this.btn_loadStatus.UseVisualStyleBackColor = false;
@@ -1861,9 +1962,10 @@ namespace AdvancedHMICS
             this.btn_record.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_record.Enabled = false;
             this.btn_record.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_record.Location = new System.Drawing.Point(3, 3);
+            this.btn_record.Location = new System.Drawing.Point(4, 4);
+            this.btn_record.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_record.Name = "btn_record";
-            this.btn_record.Size = new System.Drawing.Size(90, 25);
+            this.btn_record.Size = new System.Drawing.Size(120, 31);
             this.btn_record.TabIndex = 0;
             this.btn_record.Text = "Record";
             this.btn_record.UseVisualStyleBackColor = false;
@@ -1874,9 +1976,10 @@ namespace AdvancedHMICS
             this.btn_user.BackColor = System.Drawing.Color.LightGray;
             this.btn_user.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_user.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_user.Location = new System.Drawing.Point(99, 34);
+            this.btn_user.Location = new System.Drawing.Point(132, 43);
+            this.btn_user.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_user.Name = "btn_user";
-            this.btn_user.Size = new System.Drawing.Size(90, 25);
+            this.btn_user.Size = new System.Drawing.Size(120, 31);
             this.btn_user.TabIndex = 6;
             this.btn_user.Text = "User";
             this.btn_user.UseVisualStyleBackColor = false;
@@ -1887,9 +1990,10 @@ namespace AdvancedHMICS
             this.btnSqlConnect.BackColor = System.Drawing.Color.Red;
             this.btnSqlConnect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSqlConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSqlConnect.Location = new System.Drawing.Point(291, 65);
+            this.btnSqlConnect.Location = new System.Drawing.Point(388, 82);
+            this.btnSqlConnect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSqlConnect.Name = "btnSqlConnect";
-            this.btnSqlConnect.Size = new System.Drawing.Size(90, 25);
+            this.btnSqlConnect.Size = new System.Drawing.Size(121, 31);
             this.btnSqlConnect.TabIndex = 16;
             this.btnSqlConnect.Text = "SQL Connect";
             this.btnSqlConnect.UseVisualStyleBackColor = false;
@@ -1900,9 +2004,10 @@ namespace AdvancedHMICS
             this.btnSqlLogs.BackColor = System.Drawing.Color.LightGray;
             this.btnSqlLogs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSqlLogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSqlLogs.Location = new System.Drawing.Point(291, 96);
+            this.btnSqlLogs.Location = new System.Drawing.Point(388, 121);
+            this.btnSqlLogs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSqlLogs.Name = "btnSqlLogs";
-            this.btnSqlLogs.Size = new System.Drawing.Size(90, 28);
+            this.btnSqlLogs.Size = new System.Drawing.Size(121, 31);
             this.btnSqlLogs.TabIndex = 17;
             this.btnSqlLogs.Text = "Logs";
             this.btnSqlLogs.UseVisualStyleBackColor = false;
@@ -1912,16 +2017,22 @@ namespace AdvancedHMICS
             // 
             this.tlp_layout.SetColumnSpan(this.gc_main, 3);
             this.gc_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gc_main.Location = new System.Drawing.Point(3, 184);
+            // 
+            // 
+            // 
+            this.gc_main.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gc_main.Location = new System.Drawing.Point(4, 226);
             this.gc_main.MainView = this.gv_main;
+            this.gc_main.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gc_main.Name = "gc_main";
-            this.gc_main.Size = new System.Drawing.Size(1172, 129);
+            this.gc_main.Size = new System.Drawing.Size(1563, 158);
             this.gc_main.TabIndex = 80;
             this.gc_main.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_main});
             // 
             // gv_main
             // 
+            this.gv_main.DetailHeight = 431;
             this.gv_main.GridControl = this.gc_main;
             this.gv_main.Name = "gv_main";
             // 
@@ -1939,16 +2050,16 @@ namespace AdvancedHMICS
             // 
             this.tablePanel1.Location = new System.Drawing.Point(0, 0);
             this.tablePanel1.Name = "tablePanel1";
-            this.tablePanel1.Size = new System.Drawing.Size(340, 140);
             this.tablePanel1.TabIndex = 0;
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.ClientSize = new System.Drawing.Size(1579, 690);
             this.Controls.Add(this.tlp_ground);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmMain";
             this.Text = "Tester Machine v1.0.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);

@@ -17,14 +17,14 @@ namespace AdvancedHMICS
             AcceptButton = btn_loaddata;
         }
         DataTable dt;
-        DataTable _dtLoads;
+        //DataTable _dtLoads;
 
         private void frmSettingModel_Load(object sender, EventArgs e)
         {
             dt = new DataTable();
-            _dtLoads = new DataTable();
+            //_dtLoads = new DataTable();
             LoadData(txt_newmodel.Text);
-            GetLoads();
+            //GetLoads();
         }
 
         private void LoadData(string model_)
@@ -43,9 +43,9 @@ namespace AdvancedHMICS
         }
         private void GetLoads()
         {
-            string sql = "SELECT l_bits, r_bits, l_power FROM m_loadstatus;";
+            string sql = "SELECT l_power,ck_load,r_bits FROM m_loadstatus;";
             sqlite sqlite = new sqlite();
-            sqlite.SelectData(sql, ref _dtLoads);
+            //sqlite.SelectData(sql, ref _dtLoads);
         }
         private void btn_loaddata_Click(object sender, EventArgs e)
         {
@@ -131,12 +131,12 @@ namespace AdvancedHMICS
                         row["ck_cycles"] = txt_cycles.Text;
                         row["ck_model"] = txt_newmodel.Text;
                         row["ck_testbrakes"] = cbm_testbarkes.SelectedItem.ToString();
-                        row["ck_load"] = "0000000000000000";
-                        var drLoad = _dtLoads.AsEnumerable().FirstOrDefault(r => row["ck_Steppower"]?.ToString() == r["l_power"]?.ToString());
-                        if (drLoad != null)
-                        {
-                            row["ck_load"] = drLoad["l_bits"];
-                        }
+                        row["ck_load"] = Math.Round(cal_steppower, 3) * 1000;
+                        //var drLoad = _dtLoads.AsEnumerable().FirstOrDefault(r => row["ck_Steppower"]?.ToString() == r["l_power"]?.ToString());
+                        //if (drLoad != null)
+                        //{
+                        //    row["ck_load"] = drLoad["l_bits"];
+                        //}
                         dt.Rows.Add(row);
                         cal_steppower = cal_steppower + steppower;
                         cal_steppercentage = cal_steppercentage + steppercentage;

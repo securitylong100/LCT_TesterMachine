@@ -12,8 +12,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
-using System.Threading.Tasks;
 
 namespace AdvancedHMICS
 {
@@ -63,12 +63,8 @@ namespace AdvancedHMICS
         private DataTable _dtRelays = new DataTable();
         private readonly DataTable _dtResult = new DataTable();
 
-        private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
-<<<<<<< Updated upstream
-        //private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
-=======
-        // private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
->>>>>>> Stashed changes
+        //private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
+        private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
 
         // Khai báo kết nối PLC
         private readonly ActUtlType _plc = new ActUtlType();
@@ -860,7 +856,7 @@ namespace AdvancedHMICS
                                 {
                                     string rbits = dataRow["r_bits"]?.ToString();
                                     _frmLoad.CheckBits(rbits);
-                                    System.Threading.Thread.Sleep(500);
+                                    Thread.Sleep(500);
                                 }
                             }
                         }
@@ -932,8 +928,8 @@ namespace AdvancedHMICS
                             _intCurrStep = 0;
                             timerLoad.Enabled = false;
                             _frmLoad.CheckBits("0000000000000000");
-                            if (MessageBox.Show($"Test complete!\nResult: {result}\nDo you want record data?",
-                                "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            //if (MessageBox.Show($"Test complete!\nResult: {result}\nDo you want record data?",
+                            //    "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 btn_record_Click(this, null);
                             }
@@ -1108,7 +1104,7 @@ namespace AdvancedHMICS
                     string sql = $"INSERT INTO m_history ({columns}) VALUES ({values})";
                     sqlite_.ExeNonQuery_auto(sql);
                 }
-                _dtResult.Rows.Clear();
+                //_dtResult.Rows.Clear();
             }
             catch (Exception ex)
             {
