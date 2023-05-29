@@ -632,7 +632,7 @@ namespace AdvancedHMICS
             this.modbusRTUCom1.MaxReadGroupSize = 20;
             this.modbusRTUCom1.Parity = System.IO.Ports.Parity.None;
             this.modbusRTUCom1.PollRateOverride = 500;
-            this.modbusRTUCom1.PortName = "COM10";
+            this.modbusRTUCom1.PortName = "COM6";
             this.modbusRTUCom1.StationAddress = ((byte)(1));
             this.modbusRTUCom1.StopBits = System.IO.Ports.StopBits.Two;
             this.modbusRTUCom1.SwapBytes = true;
@@ -910,9 +910,9 @@ namespace AdvancedHMICS
             this.tlp_botleft.SetColumnSpan(this.lbl_status_automanual, 4);
             this.lbl_status_automanual.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_status_automanual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status_automanual.Location = new System.Drawing.Point(153, 108);
+            this.lbl_status_automanual.Location = new System.Drawing.Point(152, 108);
             this.lbl_status_automanual.Name = "lbl_status_automanual";
-            this.lbl_status_automanual.Size = new System.Drawing.Size(226, 19);
+            this.lbl_status_automanual.Size = new System.Drawing.Size(227, 19);
             this.lbl_status_automanual.TabIndex = 84;
             this.lbl_status_automanual.Text = "Manual";
             this.lbl_status_automanual.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -937,7 +937,7 @@ namespace AdvancedHMICS
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.Location = new System.Drawing.Point(3, 108);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(144, 19);
+            this.label41.Size = new System.Drawing.Size(143, 19);
             this.label41.TabIndex = 83;
             this.label41.Text = "Status:";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -975,7 +975,7 @@ namespace AdvancedHMICS
             this.lbl_rated_P.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_rated_P.Location = new System.Drawing.Point(3, 18);
             this.lbl_rated_P.Name = "lbl_rated_P";
-            this.lbl_rated_P.Size = new System.Drawing.Size(144, 18);
+            this.lbl_rated_P.Size = new System.Drawing.Size(143, 18);
             this.lbl_rated_P.TabIndex = 66;
             this.lbl_rated_P.Text = "0.000";
             this.lbl_rated_P.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -987,7 +987,7 @@ namespace AdvancedHMICS
             this.lbl_targetP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_targetP.Location = new System.Drawing.Point(3, 54);
             this.lbl_targetP.Name = "lbl_targetP";
-            this.lbl_targetP.Size = new System.Drawing.Size(144, 18);
+            this.lbl_targetP.Size = new System.Drawing.Size(143, 18);
             this.lbl_targetP.TabIndex = 69;
             this.lbl_targetP.Text = "0.000";
             this.lbl_targetP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -999,7 +999,7 @@ namespace AdvancedHMICS
             this.lbl_actualP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_actualP.Location = new System.Drawing.Point(3, 90);
             this.lbl_actualP.Name = "lbl_actualP";
-            this.lbl_actualP.Size = new System.Drawing.Size(144, 18);
+            this.lbl_actualP.Size = new System.Drawing.Size(143, 18);
             this.lbl_actualP.TabIndex = 72;
             this.lbl_actualP.Text = "0.000";
             this.lbl_actualP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1009,9 +1009,9 @@ namespace AdvancedHMICS
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(153, 18);
+            this.label8.Location = new System.Drawing.Point(152, 18);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 18);
+            this.label8.Size = new System.Drawing.Size(30, 18);
             this.label8.TabIndex = 67;
             this.label8.Text = "kW";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1021,9 +1021,9 @@ namespace AdvancedHMICS
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(153, 54);
+            this.label9.Location = new System.Drawing.Point(152, 54);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 18);
+            this.label9.Size = new System.Drawing.Size(30, 18);
             this.label9.TabIndex = 70;
             this.label9.Text = "kW";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1033,9 +1033,9 @@ namespace AdvancedHMICS
             this.label19.AutoSize = true;
             this.label19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(153, 90);
+            this.label19.Location = new System.Drawing.Point(152, 90);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(29, 18);
+            this.label19.Size = new System.Drawing.Size(30, 18);
             this.label19.TabIndex = 73;
             this.label19.Text = "kW";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1045,9 +1045,9 @@ namespace AdvancedHMICS
             this.label38.AutoSize = true;
             this.label38.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(358, 54);
+            this.label38.Location = new System.Drawing.Point(357, 54);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(21, 18);
+            this.label38.Size = new System.Drawing.Size(22, 18);
             this.label38.TabIndex = 79;
             this.label38.Text = "s";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1057,9 +1057,9 @@ namespace AdvancedHMICS
             this.label24.AutoSize = true;
             this.label24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(358, 90);
+            this.label24.Location = new System.Drawing.Point(357, 90);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(21, 18);
+            this.label24.Size = new System.Drawing.Size(22, 18);
             this.label24.TabIndex = 82;
             this.label24.Text = "%";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1071,7 +1071,7 @@ namespace AdvancedHMICS
             this.lbl_adj_value.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_adj_value.Location = new System.Drawing.Point(208, 90);
             this.lbl_adj_value.Name = "lbl_adj_value";
-            this.lbl_adj_value.Size = new System.Drawing.Size(144, 18);
+            this.lbl_adj_value.Size = new System.Drawing.Size(143, 18);
             this.lbl_adj_value.TabIndex = 81;
             this.lbl_adj_value.Text = "0.00";
             this.lbl_adj_value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1083,7 +1083,7 @@ namespace AdvancedHMICS
             this.lbl_steadyT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_steadyT.Location = new System.Drawing.Point(208, 54);
             this.lbl_steadyT.Name = "lbl_steadyT";
-            this.lbl_steadyT.Size = new System.Drawing.Size(144, 18);
+            this.lbl_steadyT.Size = new System.Drawing.Size(143, 18);
             this.lbl_steadyT.TabIndex = 78;
             this.lbl_steadyT.Text = "0";
             this.lbl_steadyT.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1095,7 +1095,7 @@ namespace AdvancedHMICS
             this.lbl_pcStep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pcStep.Location = new System.Drawing.Point(208, 18);
             this.lbl_pcStep.Name = "lbl_pcStep";
-            this.lbl_pcStep.Size = new System.Drawing.Size(144, 18);
+            this.lbl_pcStep.Size = new System.Drawing.Size(143, 18);
             this.lbl_pcStep.TabIndex = 75;
             this.lbl_pcStep.Text = "1 - 5";
             this.lbl_pcStep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1939,6 +1939,7 @@ namespace AdvancedHMICS
             // 
             this.tablePanel1.Location = new System.Drawing.Point(0, 0);
             this.tablePanel1.Name = "tablePanel1";
+            this.tablePanel1.Size = new System.Drawing.Size(340, 140);
             this.tablePanel1.TabIndex = 0;
             // 
             // frmMain

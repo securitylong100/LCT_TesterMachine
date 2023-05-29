@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace AdvancedHMICS
 {
@@ -63,7 +64,11 @@ namespace AdvancedHMICS
         private readonly DataTable _dtResult = new DataTable();
 
         private readonly frmLoadStatus _frmLoad = new frmLoadStatus();
+<<<<<<< Updated upstream
         //private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
+=======
+        // private readonly frmLoadStatusTest _frmLoad = new frmLoadStatusTest();
+>>>>>>> Stashed changes
 
         // Khai báo kết nối PLC
         private readonly ActUtlType _plc = new ActUtlType();
@@ -413,19 +418,17 @@ namespace AdvancedHMICS
                 if (_isPlcConnected)
                 {
                     _plc.GetDevice2("D10", out short shortD10); // đọc lên giá trị từ miền nhớ
-                    //MyUnion u = new MyUnion();
-                    //MyUnion w = new MyUnion();
-                    //u.int32Value = (UInt32)shortD10;
-                    //w.byte1 = u.byte3;
-                    //w.byte2 = u.byte4;
-                    //w.byte3 = u.byte1;
-                    //w.byte4 = u.byte2;
-                    //fDcVolt_ = (u.int32Value) == 0 ? 0 : w.floatValue;
-                    fDcVolt_ = Convert.ToSingle(shortD10);
+                    fDcVolt_ = Convert.ToSingle(shortD10) < 500 ? 0 : Convert.ToSingle(shortD10) / 322;
+
+                    //D11
+                    _plc.GetDevice2("D11", out short shortD11); // đọc lên giá trị từ miền nhớ
+                    fDcCurrent_ = Convert.ToSingle(shortD11) < 100 ? 0 : Convert.ToSingle(shortD11) / 160;
+                    // fDcCurrent_ = Convert.ToSingle(shortD11);
+
                 }
             }
             catch { }
-            fDcCurrent_ = FIXED_RES == 0 ? 0 : fDcVolt_ / FIXED_RES;
+            //fDcCurrent_ = FIXED_RES == 0 ? 0 : fDcVolt_ / FIXED_RES;
             fDcPower_ = fDcVolt_ * fDcCurrent_;
             #endregion
             #region --- 5. Tính tỉ lệ PID stop ---
@@ -443,7 +446,7 @@ namespace AdvancedHMICS
                 {
                     targetPower = 0;
                 }
-                _fAdjust = targetPower == 0 ? 0 : (_fActualPower / targetPower) * 100;
+                _fAdjust = targetPower == 0 ? 0 : (_fLoadPower / targetPower) / 10;
             }
             catch { }
             #endregion
@@ -624,7 +627,7 @@ namespace AdvancedHMICS
                     lbl_adj.Text = "Adjusted";
                     lbl_adj.BackColor = Color.Green;
                     lbl_adj_value.Text = $"{_fAdjust:0.##}";
-                    if (_intCounter < 1)
+                    if (_intCounter < 0)
                     {
                         ChangeRunState(false, _intCurrStep, RunResults.OK);
                         _intCounter = _intLoadTime;
@@ -857,6 +860,7 @@ namespace AdvancedHMICS
                                 {
                                     string rbits = dataRow["r_bits"]?.ToString();
                                     _frmLoad.CheckBits(rbits);
+                                    System.Threading.Thread.Sleep(500);
                                 }
                             }
                         }
@@ -864,7 +868,10 @@ namespace AdvancedHMICS
                 }
                 else
                 {
-                    _frmLoad.CheckBits("0000000000000000");
+                    if (_isAuto ==false)
+                    {
+                        _frmLoad.CheckBits("0000000000000000");
+                    }    
                     if (result != RunResults.Cancel)
                     {
                         // Step đầu tiên thì set tốc độ không tải
@@ -924,6 +931,7 @@ namespace AdvancedHMICS
                             _isAuto = false;
                             _intCurrStep = 0;
                             timerLoad.Enabled = false;
+                            _frmLoad.CheckBits("0000000000000000");
                             if (MessageBox.Show($"Test complete!\nResult: {result}\nDo you want record data?",
                                 "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
